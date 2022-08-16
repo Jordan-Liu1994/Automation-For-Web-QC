@@ -1,0 +1,86 @@
+package automations_WEB;
+
+import java.awt.AWTException;
+import java.awt.Robot;
+import java.awt.event.KeyEvent;
+
+import javax.security.auth.login.FailedLoginException;
+
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.interactions.Actions;
+import org.testng.ITestResult;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Test;
+
+import functions_WEB.Login_Option_Button;
+import functions_WEB.Login_Option_Captcha;
+import functions_WEB.Login_Option_Password;
+import functions_WEB.Login_Option_UserID;
+import utilities.Base_Driver;
+import utilities.Create_Report;
+import utilities.Result_Listener;
+
+public class WEB_Login_Site {
+
+	static String site_Url = "https://wl003.the777888.com/";
+	static String driver_Type = "webdriver.chrome.driver";
+	static String driver_Path = "chromedriver.exe";
+	static String name_Of_Report = "WEB_Open_Site";
+	static String browser_Name = "Chrome";
+
+	Base_Driver base_Driver = Base_Driver.get_Instance();
+	Create_Report create_Report = Create_Report.getInstance();
+	Result_Listener result_Listener = Result_Listener.getInstance();
+	Login_Option_Button login_Option_Button = Login_Option_Button.getInstance();
+	Login_Option_UserID login_Option_UserID = Login_Option_UserID.getInstance();
+	Login_Option_Password login_Option_Password = Login_Option_Password.getInstance();
+	Login_Option_Captcha login_Option_Captcha = Login_Option_Captcha.getInstance();
+
+	@BeforeClass
+	public void StartUp() {
+		create_Report.generateReport(name_Of_Report, browser_Name);
+		base_Driver.setDriverProperty(driver_Type, driver_Path);
+	}
+
+	String current_Url;
+	String current_WindowHandle;
+
+	@Test(priority = 0)
+	public void OpenBrowserToSite() throws InterruptedException, AWTException {
+		create_Report.createTest("OpenBrowserToSite");
+		base_Driver.startDriver(site_Url);
+	}
+
+	@Test(priority = 1, dependsOnMethods = "OpenBrowserToSite")
+	public void ClickLoginOptionButton() throws InterruptedException, FailedLoginException {
+		create_Report.createTest("ClickLoginOptionButton");
+		Thread.sleep(1000);
+		login_Option_Button.ClickLoginOptionButton();
+	}
+	
+	@Test(priority = 1, dependsOnMethods = "ClickLoginOptionButton")
+	public void EnterLoginData() throws InterruptedException, FailedLoginException {
+		create_Report.createTest("EnterLoginData");
+		Thread.sleep(1000);
+		login_Option_UserID.ClickAndSetLoginOptionUserID();
+		Thread.sleep(500);
+		login_Option_Password.ClickAndSetLoginOptionPassword();
+		login_Option_Password.ClickPasswordEyeIcon();
+		Thread.sleep(500);
+		login_Option_Captcha.ClickAndSetLoginOptionCaptcha();
+	}
+
+	@AfterMethod
+	public void Log_Case_Status(ITestResult result) {
+		result_Listener.caseLogging(result);
+	}
+
+	@AfterClass
+	public void ShutDown() throws InterruptedException {
+		create_Report.flushTest();
+		Thread.sleep(1000);
+		base_Driver.stopDriver();
+	}
+}

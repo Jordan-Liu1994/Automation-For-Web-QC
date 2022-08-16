@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="3" passed="3" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2022-08-16T17:59:43 SGT" name="Suite" finished-at="2022-08-16T17:59:56 SGT" duration-ms="12790">
+    <groups>
+    </groups>
+    <test started-at="2022-08-16T17:59:43 SGT" name="Automation-For-Web-QC" finished-at="2022-08-16T17:59:56 SGT" duration-ms="12790">
+      <class name="automations_WEB.WEB_Login_Site">
+        <test-method is-config="true" signature="StartUp()[pri:0, instance:automations_WEB.WEB_Login_Site@130a0f66]" started-at="2022-08-16T17:59:43 SGT" name="StartUp" finished-at="2022-08-16T17:59:44 SGT" duration-ms="988" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- StartUp -->
+        <test-method signature="OpenBrowserToSite()[pri:0, instance:automations_WEB.WEB_Login_Site@130a0f66]" started-at="2022-08-16T17:59:44 SGT" name="OpenBrowserToSite" finished-at="2022-08-16T17:59:49 SGT" duration-ms="4747" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- OpenBrowserToSite -->
+        <test-method is-config="true" signature="Log_Case_Status(org.testng.ITestResult)[pri:0, instance:automations_WEB.WEB_Login_Site@130a0f66]" started-at="2022-08-16T17:59:49 SGT" name="Log_Case_Status" finished-at="2022-08-16T17:59:49 SGT" duration-ms="13" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=OpenBrowserToSite status=SUCCESS method=WEB_Login_Site.OpenBrowserToSite()[pri:0, instance:automations_WEB.WEB_Login_Site@130a0f66] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Log_Case_Status -->
+        <test-method signature="ClickLoginOptionButton()[pri:1, instance:automations_WEB.WEB_Login_Site@130a0f66]" started-at="2022-08-16T17:59:49 SGT" name="ClickLoginOptionButton" finished-at="2022-08-16T17:59:50 SGT" depends-on-methods="automations_WEB.WEB_Login_Site.OpenBrowserToSite" duration-ms="1136" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- ClickLoginOptionButton -->
+        <test-method is-config="true" signature="Log_Case_Status(org.testng.ITestResult)[pri:0, instance:automations_WEB.WEB_Login_Site@130a0f66]" started-at="2022-08-16T17:59:50 SGT" name="Log_Case_Status" finished-at="2022-08-16T17:59:50 SGT" duration-ms="1" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=ClickLoginOptionButton status=SUCCESS method=WEB_Login_Site.ClickLoginOptionButton()[pri:1, instance:automations_WEB.WEB_Login_Site@130a0f66] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Log_Case_Status -->
+        <test-method signature="EnterLoginData()[pri:1, instance:automations_WEB.WEB_Login_Site@130a0f66]" started-at="2022-08-16T17:59:50 SGT" name="EnterLoginData" finished-at="2022-08-16T17:59:53 SGT" depends-on-methods="automations_WEB.WEB_Login_Site.ClickLoginOptionButton" duration-ms="3429" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- EnterLoginData -->
+        <test-method is-config="true" signature="Log_Case_Status(org.testng.ITestResult)[pri:0, instance:automations_WEB.WEB_Login_Site@130a0f66]" started-at="2022-08-16T17:59:53 SGT" name="Log_Case_Status" finished-at="2022-08-16T17:59:53 SGT" duration-ms="1" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=EnterLoginData status=SUCCESS method=WEB_Login_Site.EnterLoginData()[pri:1, instance:automations_WEB.WEB_Login_Site@130a0f66] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Log_Case_Status -->
+        <test-method is-config="true" signature="ShutDown()[pri:0, instance:automations_WEB.WEB_Login_Site@130a0f66]" started-at="2022-08-16T17:59:53 SGT" name="ShutDown" finished-at="2022-08-16T17:59:56 SGT" duration-ms="2336" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- ShutDown -->
+      </class> <!-- automations_WEB.WEB_Login_Site -->
+    </test> <!-- Automation-For-Web-QC -->
+  </suite> <!-- Suite -->
+</testng-results>
