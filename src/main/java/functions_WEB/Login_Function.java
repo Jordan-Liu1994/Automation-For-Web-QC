@@ -35,9 +35,7 @@ public class Login_Function {
 		}
 	}
 
-	String userID = "qctester0101";
-
-	public void SetUserID() throws FailedLoginException {
+	public void SetUserID(String userID) throws FailedLoginException {
 		WebElement setUserID = base_Driver.getDriver().findElement(By.id("username"));
 		String setUserID_Text = setUserID.getAttribute("placeholder");
 		String fail = "UserID failed";
@@ -53,9 +51,7 @@ public class Login_Function {
 		}
 	}
 
-	String password = "test123";
-
-	public void SetPassword() throws FailedLoginException {
+	public void SetPassword(String password) throws FailedLoginException {
 		WebElement setPassword = base_Driver.getDriver().findElement(By.id("password"));
 		String setPassword_Text = setPassword.getAttribute("placeholder");
 		String fail = "Password failed";
@@ -92,9 +88,7 @@ public class Login_Function {
 		}
 	}
 
-	String captcha = "123456";
-
-	public void SetCaptcha() throws FailedLoginException {
+	public void SetCaptcha(String captcha) throws FailedLoginException {
 		WebElement setCaptcha = base_Driver.getDriver().findElement(By.id("captcha_code"));
 		WebElement captchaRandom = base_Driver.getDriver().findElement(By.xpath("//div[@class='captcha_hover']"));
 		String setCaptcha_Text = setCaptcha.getAttribute("placeholder");
@@ -129,7 +123,7 @@ public class Login_Function {
 		}
 	}
 
-	public void ClickLoginButton() throws FailedLoginException {
+	public void ClickLoginButton(String userID) throws FailedLoginException {
 		WebElement clickLoginButton = base_Driver.getDriver().findElement(By.id("login_popup_btn"));
 		String clickLoginButton_Text = clickLoginButton.getText();
 		String fail = "Login button failed";

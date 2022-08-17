@@ -5,10 +5,14 @@ import java.util.concurrent.TimeUnit;
 import javax.security.auth.login.FailedLoginException;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
+import org.testng.SkipException;
 
 import utilities.Base_Driver;
 import utilities.Create_Report;
+import utilities.Generate_Random_Numbers;
 
 public class Register_Function {
 
@@ -35,17 +39,15 @@ public class Register_Function {
 		}
 	}
 
-	String userID = "qctester0101";
+	public void SetNewUserID(String userID) throws FailedLoginException {
+		WebElement setNewUserID = base_Driver.getDriver().findElement(By.id("r_username"));
+		String setNewUserID_Text = setNewUserID.getAttribute("placeholder");
+		String fail = "New userID failed";
 
-	public void SetUserID() throws FailedLoginException {
-		WebElement setUserID = base_Driver.getDriver().findElement(By.id("username"));
-		String setUserID_Text = setUserID.getAttribute("placeholder");
-		String fail = "UserID failed";
-
-		if (setUserID.isDisplayed()) {
-			setUserID.clear();
-			setUserID.sendKeys(userID);
-			create_Report.getExtentTest().info(userID + " is entered in " + setUserID_Text + " field");
+		if (setNewUserID.isDisplayed()) {
+			setNewUserID.clear();
+			setNewUserID.sendKeys(userID);
+			create_Report.getExtentTest().info(userID + " is entered in " + setNewUserID_Text + " field");
 			System.out.println(userID);
 		} else {
 			create_Report.getExtentTest().fail(fail);
@@ -53,17 +55,15 @@ public class Register_Function {
 		}
 	}
 
-	String password = "test123";
-
-	public void SetPassword() throws FailedLoginException {
-		WebElement setPassword = base_Driver.getDriver().findElement(By.id("password"));
-		String setPassword_Text = setPassword.getAttribute("placeholder");
+	public void SetNewPassword(String password) throws FailedLoginException {
+		WebElement setNewPassword = base_Driver.getDriver().findElement(By.id("r_password"));
+		String setNewPassword_Text = setNewPassword.getAttribute("placeholder");
 		String fail = "Password failed";
 
-		if (setPassword.isDisplayed()) {
-			setPassword.clear();
-			setPassword.sendKeys(password);
-			create_Report.getExtentTest().info(password + " is entered in " + setPassword_Text + " field");
+		if (setNewPassword.isDisplayed()) {
+			setNewPassword.clear();
+			setNewPassword.sendKeys(password);
+			create_Report.getExtentTest().info(password + " is entered in " + setNewPassword_Text + " field");
 			System.out.println(password);
 		} else {
 			create_Report.getExtentTest().fail(fail);
@@ -72,7 +72,7 @@ public class Register_Function {
 	}
 
 	public void ClickPasswordEyeIcon() throws InterruptedException, FailedLoginException {
-		WebElement clickPasswordEyeIcon = base_Driver.getDriver().findElement(By.xpath("(//div[@class='ico ico-eye_close'])[1]"));
+		WebElement clickPasswordEyeIcon = base_Driver.getDriver().findElement(By.xpath("//div[@class='toggle_password']//div[@class='ico ico-eye_close']"));
 		String eye_Icon = "Clicked on password eye icon";
 		String fail = "Clicked on password eye icon FAILED";
 
@@ -81,7 +81,7 @@ public class Register_Function {
 			create_Report.getExtentTest().info(eye_Icon);
 			Thread.sleep(500);
 
-			WebElement login_Option_Password_Eye_Icon_Opened = base_Driver.getDriver().findElement(By.xpath("(//div[@class='ico ico-eye_open'])[1]"));
+			WebElement login_Option_Password_Eye_Icon_Opened = base_Driver.getDriver().findElement(By.xpath("//div[@class='ico ico-eye_open']"));
 			if (login_Option_Password_Eye_Icon_Opened.isEnabled()) {
 				login_Option_Password_Eye_Icon_Opened.click();
 				create_Report.getExtentTest().info(eye_Icon + " again");
@@ -92,11 +92,9 @@ public class Register_Function {
 		}
 	}
 
-	String captcha = "123456";
-
-	public void SetCaptcha() throws FailedLoginException {
-		WebElement setCaptcha = base_Driver.getDriver().findElement(By.id("captcha_code"));
-		WebElement captchaRandom = base_Driver.getDriver().findElement(By.xpath("//div[@class='captcha_hover']"));
+	public void SetCaptcha(String captcha) throws FailedLoginException {
+		WebElement setCaptcha = base_Driver.getDriver().findElement(By.id("ipt_code3"));
+		WebElement captchaRandom = base_Driver.getDriver().findElement(By.xpath("//div[@class='d-flex']//div[@class='captcha_hover']"));
 		String setCaptcha_Text = setCaptcha.getAttribute("placeholder");
 		String fail = "Captcha failed";
 
@@ -115,33 +113,68 @@ public class Register_Function {
 		}
 	}
 
-	public void ClickRememberMeButton() throws FailedLoginException {
-		WebElement clickRememberMeButton = base_Driver.getDriver().findElement(By.xpath("(//div[contains(text(),'保持登录')])[1]"));
-		String clickRememberMeButton_Text = clickRememberMeButton.getText();
-		String fail = "Remember me button failed";
+	public void SetReferralOptional(String referral) throws FailedLoginException {
+		WebElement setReferralOptional = base_Driver.getDriver().findElement(By.id("referral_code"));
+		String setReferralOptional_Text = setReferralOptional.getAttribute("placeholder");
+		String fail = "Set Referral Optional failed";
 
-		if (!clickRememberMeButton.isSelected()) {
-			clickRememberMeButton.click();
-			create_Report.getExtentTest().info("Clicked " + clickRememberMeButton_Text);
+		if (!setReferralOptional.isSelected()) {
+			setReferralOptional.clear();
+			setReferralOptional.sendKeys(referral);
+			create_Report.getExtentTest().info(referral + " is entered in " + setReferralOptional_Text + " field");
+			setReferralOptional.clear();
+			create_Report.getExtentTest().info(referral + " is removed from " + setReferralOptional_Text + " field");
 		} else {
 			create_Report.getExtentTest().fail(fail);
 			throw new FailedLoginException(fail);
 		}
 	}
 
-	public void ClickLoginButton() throws FailedLoginException {
-		WebElement clickLoginButton = base_Driver.getDriver().findElement(By.id("login_popup_btn"));
-		String clickLoginButton_Text = clickLoginButton.getText();
-		String fail = "Login button failed";
+	public void ClickRegisterButton(String userID) throws FailedLoginException {
+		WebElement clickRegisterButton = base_Driver.getDriver().findElement(By.id("register_btn"));
+		String clickRegisterButton_Text = clickRegisterButton.getText();
+		String fail = "Register button failed";
 
-		if (clickLoginButton.isEnabled()) {
-			clickLoginButton.click();
-			create_Report.getExtentTest().info(clickLoginButton_Text + " is enabled & clicked");
+		if (clickRegisterButton.isEnabled()) {
+			clickRegisterButton.click();
+			create_Report.getExtentTest().info(clickRegisterButton_Text + " is enabled & clicked");
 
 			base_Driver.getDriver().manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
 			WebElement userIDName = base_Driver.getDriver().findElement(By.xpath("(//a[contains(text(),'" + userID + "')])[1]"));
 			if (userIDName.isDisplayed()) {
-				create_Report.getExtentTest().info("Log in success");
+				create_Report.getExtentTest().info("Register in success");
+			}
+		} else {
+			create_Report.getExtentTest().fail(fail);
+			throw new FailedLoginException(fail);
+		}
+	}
+
+	public void SetDateOfBirth(String year, String day) throws FailedLoginException, InterruptedException {
+		WebElement setDateOfBirth = base_Driver.getDriver().findElement(By.id("r_dob"));
+		String clickRegisterButton_Text = setDateOfBirth.getAttribute("placeholder");
+		String fail = "Set date of birth failed";
+
+		if (setDateOfBirth.isDisplayed()) {
+			setDateOfBirth.click();
+
+			Thread.sleep(500);
+			WebElement yearSelection = base_Driver.getDriver().findElement(By.xpath("//div[@class='drp-calendar left single']//select[@class='yearselect']"));
+			Select selectYear = new Select(yearSelection);
+			selectYear.selectByVisibleText(year);
+
+			WebElement daySelection = base_Driver.getDriver().findElement(By.xpath("(//td[contains(text(),'" + day + "')])[1]"));
+			daySelection.click();
+
+			Thread.sleep(500);
+			try {
+				WebElement setDateOfBirth_Error = base_Driver.getDriver().findElement(By.xpath("//div[@class='error_msg error_dob']"));
+				if (setDateOfBirth_Error.isDisplayed()) {
+					create_Report.getExtentTest().info(clickRegisterButton_Text + " able to set");
+				}
+			} catch (NoSuchElementException e) {
+				create_Report.getExtentTest().info("Set date of birth is skipping");
+				throw new SkipException("Set date of birth is skipping");
 			}
 		} else {
 			create_Report.getExtentTest().fail(fail);

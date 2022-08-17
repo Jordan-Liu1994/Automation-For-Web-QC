@@ -3,9 +3,9 @@
 <suite name="Suite">
 	<test thread-count="5" name="Automation-For-Web-QC">
 		<classes>
-			<!-- <class name="automations_WEB.WEB_Open_Site"></class> -->
-			<!-- <class name="automations_WEB.WEB_Login_Site"></class> -->
-			<!-- <class name="automations_WEB.WEB_Logout_Site"></class> -->
+			<class name="automations_WEB.WEB_Open_Site"></class>
+			<class name="automations_WEB.WEB_Login_Site"></class>
+			<class name="automations_WEB.WEB_Logout_Site"></class>
 			<class name="automations_WEB.WEB_Register_Site"></class>
 		</classes>
 	</test> <!-- Automation-For-Web-QC -->

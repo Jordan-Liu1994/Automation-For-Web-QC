@@ -12,6 +12,7 @@ import functions_WEB.Register_Function;
 import functions_WEB.Verify_Site;
 import utilities.Base_Driver;
 import utilities.Create_Report;
+import utilities.Generate_Random_Numbers;
 import utilities.Result_Listener;
 
 public class WEB_Register_Site {
@@ -21,12 +22,21 @@ public class WEB_Register_Site {
 	static String driver_Path = "chromedriver.exe";
 	static String name_Of_Report = "WEB_Register_Site";
 	static String browser_Name = "Chrome";
+	static String password = "test123";
+	static String captcha = "123456";
+	static String referral = "ref123";
+	static String year = "1994";
+	static String day = "2";
 
 	Base_Driver base_Driver = Base_Driver.getInstance();
 	Create_Report create_Report = Create_Report.getInstance();
 	Result_Listener result_Listener = Result_Listener.getInstance();
 	Verify_Site verifySite = Verify_Site.getInstance();
+	Generate_Random_Numbers generateRandomNumbers = Generate_Random_Numbers.getInstance();
 	Register_Function function = Register_Function.getInstance();
+	
+	int randomNumbers = generateRandomNumbers.generateRandomNumbers();
+	String userID = "qctester" + randomNumbers;
 	
 	@BeforeClass
 	public void StartUp() {
@@ -55,6 +65,16 @@ public class WEB_Register_Site {
 	public void EnterRegisterData() throws InterruptedException, FailedLoginException {
 		create_Report.createTest("EnterRegisterData");
 		Thread.sleep(500);
+		function.SetNewUserID(userID);
+		Thread.sleep(500);
+		function.SetNewPassword(password);
+		function.ClickPasswordEyeIcon();
+		Thread.sleep(500);
+		function.SetReferralOptional(referral);
+		Thread.sleep(500);
+		function.SetCaptcha(captcha);
+		Thread.sleep(500);
+		function.SetDateOfBirth(year, day);
 	}
 
 	@AfterMethod

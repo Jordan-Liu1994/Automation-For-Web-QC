@@ -20,6 +20,9 @@ public class WEB_Login_Site {
 	static String driver_Path = "chromedriver.exe";
 	static String name_Of_Report = "WEB_Login_Site";
 	static String browser_Name = "Chrome";
+	static String userID = "qctester0101";
+	static String password = "test123";
+	static String captcha = "123456";
 
 	Base_Driver base_Driver = Base_Driver.getInstance();
 	Create_Report create_Report = Create_Report.getInstance();
@@ -54,16 +57,16 @@ public class WEB_Login_Site {
 	public void EnterLoginData() throws InterruptedException, FailedLoginException {
 		create_Report.createTest("EnterLoginData");
 		Thread.sleep(500);
-		function.SetUserID();
+		function.SetUserID(userID);
 		Thread.sleep(500);
-		function.SetPassword();
+		function.SetPassword(password);
 		function.ClickPasswordEyeIcon();
 		Thread.sleep(500);
-		function.SetCaptcha();
+		function.SetCaptcha(captcha);
 		Thread.sleep(500);
 		function.ClickRememberMeButton();
 		Thread.sleep(500);
-		function.ClickLoginButton();
+		function.ClickLoginButton(userID);
 	}
 
 	@AfterMethod
