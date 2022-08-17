@@ -19,7 +19,7 @@ public class Take_Screen_Shot {
 	private String user_Dir = System.getProperty("user.dir");
 	private String screen_Shot_Path = user_Dir + ".\\src\\main\\resources\\screenshots\\";
 
-	Base_Driver base_Driver = Base_Driver.get_Instance();
+	Base_Driver base_Driver = Base_Driver.getInstance();
 
 	public void getTakeScreenShot(String fileName) {
 		File screenShot = ((TakesScreenshot) base_Driver.getDriver()).getScreenshotAs(OutputType.FILE);

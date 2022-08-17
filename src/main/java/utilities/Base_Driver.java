@@ -7,7 +7,7 @@ public class Base_Driver {
 
 	private static Base_Driver base_Driver = new Base_Driver();
 
-	public static Base_Driver get_Instance() {
+	public static Base_Driver getInstance() {
 		return base_Driver;
 	}
 	

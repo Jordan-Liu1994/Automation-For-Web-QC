@@ -8,24 +8,25 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import functions_WEB.Login_Function;
+import functions_WEB.Register_Function;
 import functions_WEB.Verify_Site;
 import utilities.Base_Driver;
 import utilities.Create_Report;
 import utilities.Result_Listener;
 
-public class WEB_Login_Site {
+public class WEB_Register_Site {
 
 	static String site_Url = "https://wl003.the777888.com/";
 	static String driver_Type = "webdriver.chrome.driver";
 	static String driver_Path = "chromedriver.exe";
-	static String name_Of_Report = "WEB_Login_Site";
+	static String name_Of_Report = "WEB_Register_Site";
 	static String browser_Name = "Chrome";
 
 	Base_Driver base_Driver = Base_Driver.getInstance();
 	Create_Report create_Report = Create_Report.getInstance();
 	Result_Listener result_Listener = Result_Listener.getInstance();
 	Verify_Site verifySite = Verify_Site.getInstance();
-	Login_Function function = Login_Function.getInstance();
+	Register_Function function = Register_Function.getInstance();
 	
 	@BeforeClass
 	public void StartUp() {
@@ -44,26 +45,16 @@ public class WEB_Login_Site {
 	}
 
 	@Test(priority = 1, dependsOnMethods = "OpenBrowserToSite")
-	public void ClickLoginOptionButton() throws InterruptedException, FailedLoginException {
-		create_Report.createTest("ClickLoginOptionButton");
+	public void ClickRegisterOptionButton() throws InterruptedException, FailedLoginException {
+		create_Report.createTest("ClickRegisterOptionButton");
 		Thread.sleep(500);
-		function.ClickLoginOptionButton();
+		function.ClickRegisterOptionButton();
 	}
 	
-	@Test(priority = 2, dependsOnMethods = "ClickLoginOptionButton")
-	public void EnterLoginData() throws InterruptedException, FailedLoginException {
-		create_Report.createTest("EnterLoginData");
+	@Test(priority = 2, dependsOnMethods = "ClickRegisterOptionButton")
+	public void EnterRegisterData() throws InterruptedException, FailedLoginException {
+		create_Report.createTest("EnterRegisterData");
 		Thread.sleep(500);
-		function.SetUserID();
-		Thread.sleep(500);
-		function.SetPassword();
-		function.ClickPasswordEyeIcon();
-		Thread.sleep(500);
-		function.SetCaptcha();
-		Thread.sleep(500);
-		function.ClickRememberMeButton();
-		Thread.sleep(500);
-		function.ClickLoginButton();
 	}
 
 	@AfterMethod

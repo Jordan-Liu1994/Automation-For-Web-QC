@@ -8,17 +8,18 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import functions_WEB.Login_Function;
+import functions_WEB.Logout_Function;
 import functions_WEB.Verify_Site;
 import utilities.Base_Driver;
 import utilities.Create_Report;
 import utilities.Result_Listener;
 
-public class WEB_Login_Site {
+public class WEB_Logout_Site {
 
 	static String site_Url = "https://wl003.the777888.com/";
 	static String driver_Type = "webdriver.chrome.driver";
 	static String driver_Path = "chromedriver.exe";
-	static String name_Of_Report = "WEB_Login_Site";
+	static String name_Of_Report = "WEB_Logout_Site";
 	static String browser_Name = "Chrome";
 
 	Base_Driver base_Driver = Base_Driver.getInstance();
@@ -26,6 +27,7 @@ public class WEB_Login_Site {
 	Result_Listener result_Listener = Result_Listener.getInstance();
 	Verify_Site verifySite = Verify_Site.getInstance();
 	Login_Function function = Login_Function.getInstance();
+	Logout_Function function2 = Logout_Function.getInstance();
 	
 	@BeforeClass
 	public void StartUp() {
@@ -64,6 +66,13 @@ public class WEB_Login_Site {
 		function.ClickRememberMeButton();
 		Thread.sleep(500);
 		function.ClickLoginButton();
+	}
+	
+	@Test(priority = 3, dependsOnMethods = "EnterLoginData")
+	public void Logout() throws InterruptedException, FailedLoginException {
+		create_Report.createTest("Logout");
+		Thread.sleep(500);
+		function2.ClickLogoutButton();
 	}
 
 	@AfterMethod
