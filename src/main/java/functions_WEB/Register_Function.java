@@ -12,7 +12,6 @@ import org.testng.SkipException;
 
 import utilities.Base_Driver;
 import utilities.Create_Report;
-import utilities.Generate_Random_Numbers;
 
 public class Register_Function {
 

@@ -3,16 +3,20 @@
 <suite name="Failed suite [Suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Automation-For-Web-QC(failed)">
     <classes>
-      <class name="automations_WEB.WEB_Register_Site">
+      <class name="automations_WEB.WEB_Offline_Deposit_Site">
         <methods>
-          <include name="StartUp"/>
-          <include name="EnterRegisterData"/>
-          <include name="OpenBrowserToSite"/>
-          <include name="ClickRegisterOptionButton"/>
-          <include name="Log_Case_Status"/>
           <include name="ShutDown"/>
+          <include name="OpenBrowserToSite"/>
+          <include name="ClickLoginOptionButton"/>
+          <include name="CancelOfflineDepositRequest"/>
+          <include name="Log_Case_Status"/>
+          <include name="ToDepositPage"/>
+          <include name="StartUp"/>
+          <include name="EnterLoginData"/>
+          <include name="ConfirmOfflineDepositPaid"/>
+          <include name="FillInOfflineDepositPageData"/>
         </methods>
-      </class> <!-- automations_WEB.WEB_Register_Site -->
+      </class> <!-- automations_WEB.WEB_Offline_Deposit_Site -->
     </classes>
   </test> <!-- Automation-For-Web-QC(failed) -->
 </suite> <!-- Failed suite [Suite] -->

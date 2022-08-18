@@ -1,7 +1,5 @@
 package functions_WEB;
 
-import java.util.concurrent.TimeUnit;
-
 import javax.security.auth.login.FailedLoginException;
 
 import org.openqa.selenium.By;
@@ -23,9 +21,7 @@ public class Logout_Function {
 	Base_Driver base_Driver = Base_Driver.getInstance();
 	Create_Report create_Report = Create_Report.getInstance();
 
-	String userID = "qctester0101";
-
-	public void ClickLogoutButton() throws FailedLoginException, InterruptedException {
+	public void ClickLogoutButton(String userID) throws FailedLoginException, InterruptedException {
 		WebElement userIDName = base_Driver.getDriver().findElement(By.xpath("(//a[contains(text(),'" + userID + "')])[1]"));
 		Actions builder = new Actions(base_Driver.getDriver());
 		Action act = builder.moveToElement(userIDName).build();

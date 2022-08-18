@@ -75,6 +75,8 @@ public class WEB_Register_Site {
 		function.SetCaptcha(captcha);
 		Thread.sleep(500);
 		function.SetDateOfBirth(year, day);
+		Thread.sleep(500);
+		function.ClickRegisterButton(userID);
 	}
 
 	@AfterMethod
