@@ -10,34 +10,34 @@ import org.openqa.selenium.TakesScreenshot;
 
 public class Take_Screen_Shot {
 
-	private static Take_Screen_Shot take_Screen_Shot = new Take_Screen_Shot();
+	private static Take_Screen_Shot takeScreenShot = new Take_Screen_Shot();
 
 	public static Take_Screen_Shot getInstance() {
-		return take_Screen_Shot;
+		return takeScreenShot;
 	}
 
-	private String user_Dir = System.getProperty("user.dir");
-	private String screen_Shot_Path = user_Dir + ".\\src\\main\\resources\\screenshots\\";
+	private String userDir = System.getProperty("user.dir");
+	private String screenShotPath = userDir + ".\\src\\main\\resources\\screenshots\\";
 
-	Base_Driver base_Driver = Base_Driver.getInstance();
+	Base_Driver baseDriver = Base_Driver.getInstance();
 
 	public void getTakeScreenShot(String fileName) {
-		File screenShot = ((TakesScreenshot) base_Driver.getDriver()).getScreenshotAs(OutputType.FILE);
+		File screenShot = ((TakesScreenshot) baseDriver.getDriver()).getScreenshotAs(OutputType.FILE);
 		try {
-			FileUtils.copyFile(screenShot, new File(screen_Shot_Path + fileName + " " + timestamp() + ".png"));
+			FileUtils.copyFile(screenShot, new File(screenShotPath + fileName + " " + timestamp() + ".png"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
 
-	private String date_Format = "dd-MM-yy (HH.mm.ss)";
+	private String dateFormat = "dd-MM-yy (HH.mm.ss)";
 
 	public String timestamp() {
-		return new SimpleDateFormat(date_Format).format(new Date());
+		return new SimpleDateFormat(dateFormat).format(new Date());
 	}
 
 	public String screenShotPathExtent() {
-		String screen_Shot_Path_Extent = screen_Shot_Path;
-		return screen_Shot_Path;
+		String screenShotPathExtent = screenShotPath;
+		return screenShotPath;
 	}
 }

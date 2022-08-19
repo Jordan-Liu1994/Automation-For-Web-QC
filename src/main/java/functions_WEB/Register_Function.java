@@ -21,79 +21,80 @@ public class Register_Function {
 		return function;
 	}
 
-	Base_Driver base_Driver = Base_Driver.getInstance();
-	Create_Report create_Report = Create_Report.getInstance();
+	Base_Driver baseDriver = Base_Driver.getInstance();
+	Create_Report createReport = Create_Report.getInstance();
 
-	public void ClickRegisterOptionButton() throws FailedLoginException {
-		WebElement registerOptionButton = base_Driver.getDriver().findElement(By.id("header_register"));
-		String registerOptionButton_Text = registerOptionButton.getText();
-		String fail = "Login option button failed";
+	public void selectRegisterOption() throws FailedLoginException {
+		WebElement selectRegisterOption = baseDriver.getDriver().findElement(By.id("header_register"));
+		String selectRegisterOption_Text = selectRegisterOption.getText();
+		String fail = "Register option failed";
 
-		if (registerOptionButton.isEnabled()) {
-			registerOptionButton.click();
-			create_Report.getExtentTest().info(registerOptionButton_Text + " is enabled & clicked");
+		if (selectRegisterOption.isEnabled()) {
+			selectRegisterOption.click();
+			createReport.getExtentTest().info("Clickec " + selectRegisterOption_Text);
 		} else {
-			create_Report.getExtentTest().fail(fail);
+			createReport.getExtentTest().fail(fail);
 			throw new FailedLoginException(fail);
 		}
 	}
 
-	public void SetNewUserID(String userID) throws FailedLoginException {
-		WebElement setNewUserID = base_Driver.getDriver().findElement(By.id("r_username"));
+	public void setNewUserID(String userID) throws FailedLoginException {
+		WebElement setNewUserID = baseDriver.getDriver().findElement(By.id("r_username"));
 		String setNewUserID_Text = setNewUserID.getAttribute("placeholder");
 		String fail = "New userID failed";
 
 		if (setNewUserID.isDisplayed()) {
 			setNewUserID.clear();
 			setNewUserID.sendKeys(userID);
-			create_Report.getExtentTest().info(userID + " is entered in " + setNewUserID_Text + " field");
-			System.out.println(userID);
+			createReport.getExtentTest().info(userID + " is keyed in " + setNewUserID_Text);
 		} else {
-			create_Report.getExtentTest().fail(fail);
-			throw new FailedLoginException(fail);
+			createReport.getExtentTest().fail(fail);
 		}
 	}
 
-	public void SetNewPassword(String password) throws FailedLoginException {
-		WebElement setNewPassword = base_Driver.getDriver().findElement(By.id("r_password"));
+	public void setNewPassword(String password) throws FailedLoginException {
+		WebElement setNewPassword = baseDriver.getDriver().findElement(By.id("r_password"));
 		String setNewPassword_Text = setNewPassword.getAttribute("placeholder");
 		String fail = "Password failed";
 
 		if (setNewPassword.isDisplayed()) {
 			setNewPassword.clear();
 			setNewPassword.sendKeys(password);
-			create_Report.getExtentTest().info(password + " is entered in " + setNewPassword_Text + " field");
-			System.out.println(password);
+			createReport.getExtentTest().info(password + " is keyed in " + setNewPassword_Text);
 		} else {
-			create_Report.getExtentTest().fail(fail);
+			createReport.getExtentTest().fail(fail);
 			throw new FailedLoginException(fail);
 		}
 	}
 
-	public void ClickPasswordEyeIcon() throws InterruptedException, FailedLoginException {
-		WebElement clickPasswordEyeIcon = base_Driver.getDriver().findElement(By.xpath("//div[@class='toggle_password']//div[@class='ico ico-eye_close']"));
-		String eye_Icon = "Clicked on password eye icon";
-		String fail = "Clicked on password eye icon FAILED";
+	private String eyeIconStatus;
 
-		if (!clickPasswordEyeIcon.isSelected()) {
-			clickPasswordEyeIcon.click();
-			create_Report.getExtentTest().info(eye_Icon);
-			Thread.sleep(500);
+	public void selectPasswordEyeIcon() throws InterruptedException, FailedLoginException {
+		eyeIconStatus = "ico ico-eye_close";
+		WebElement eyeIconClosed = baseDriver.getDriver().findElement(By.xpath("//div[@class='toggle_password']//div[@class='" + eyeIconStatus + "']"));
+		String eye_Icon = "Clicked eye icon";
+		String fail = "Eye icon failed";
 
-			WebElement login_Option_Password_Eye_Icon_Opened = base_Driver.getDriver().findElement(By.xpath("//div[@class='ico ico-eye_open']"));
-			if (login_Option_Password_Eye_Icon_Opened.isEnabled()) {
-				login_Option_Password_Eye_Icon_Opened.click();
-				create_Report.getExtentTest().info(eye_Icon + " again");
-			}
+		if (!eyeIconClosed.isSelected()) {
+			eyeIconClosed.click();
+			createReport.getExtentTest().info(eye_Icon);
+			eyeIconStatus = "ico ico-eye_open";
+			Thread.sleep(250);
 		} else {
-			create_Report.getExtentTest().fail(fail);
-			throw new FailedLoginException(fail);
+			createReport.getExtentTest().fail(fail);
+		}
+		WebElement eyeIconOpened = baseDriver.getDriver().findElement(By.xpath("//div[@class='" + eyeIconStatus + "']"));
+		if (eyeIconOpened.isEnabled()) {
+			eyeIconOpened.click();
+			createReport.getExtentTest().info(eye_Icon);
+		} else {
+			createReport.getExtentTest().fail(fail);
 		}
 	}
 
-	public void SetCaptcha(String captcha) throws FailedLoginException {
-		WebElement setCaptcha = base_Driver.getDriver().findElement(By.id("ipt_code3"));
-		WebElement captchaRandom = base_Driver.getDriver().findElement(By.xpath("//div[@class='d-flex']//div[@class='captcha_hover']"));
+	public void setCaptcha(String captcha) throws FailedLoginException {
+		WebElement setCaptcha = baseDriver.getDriver().findElement(By.id("ipt_code3"));
+		WebElement captchaRandom = baseDriver.getDriver().findElement(By.xpath("//div[@class='d-flex']//div[@class='captcha_hover']"));
 		String setCaptcha_Text = setCaptcha.getAttribute("placeholder");
 		String fail = "Captcha failed";
 
@@ -103,80 +104,74 @@ public class Register_Function {
 			if (setCaptcha.isDisplayed()) {
 				setCaptcha.clear();
 				setCaptcha.sendKeys(captcha);
-				create_Report.getExtentTest().info(captcha + " is entered in " + setCaptcha_Text + " field");
-				System.out.println(captcha);
+				createReport.getExtentTest().info(captcha + " is keyed in " + setCaptcha_Text);
 			} else {
-				create_Report.getExtentTest().fail(fail);
-				throw new FailedLoginException(fail);
+				createReport.getExtentTest().fail(fail);
 			}
 		}
 	}
 
-	public void SetReferralOptional(String referral) throws FailedLoginException {
-		WebElement setReferralOptional = base_Driver.getDriver().findElement(By.id("referral_code"));
+	public void setReferralOptional(String referral) throws FailedLoginException {
+		WebElement setReferralOptional = baseDriver.getDriver().findElement(By.id("referral_code"));
 		String setReferralOptional_Text = setReferralOptional.getAttribute("placeholder");
 		String fail = "Set Referral Optional failed";
 
 		if (!setReferralOptional.isSelected()) {
 			setReferralOptional.clear();
 			setReferralOptional.sendKeys(referral);
-			create_Report.getExtentTest().info(referral + " is entered in " + setReferralOptional_Text + " field");
+			createReport.getExtentTest().info(referral + " is keyed in " + setReferralOptional_Text);
 			setReferralOptional.clear();
-			create_Report.getExtentTest().info(referral + " is removed from " + setReferralOptional_Text + " field");
+			createReport.getExtentTest().info(referral + " is removed in " + setReferralOptional_Text);
 		} else {
-			create_Report.getExtentTest().fail(fail);
-			throw new FailedLoginException(fail);
+			createReport.getExtentTest().fail(fail);
 		}
 	}
 
-	public void ClickRegisterButton(String userID) throws FailedLoginException {
-		WebElement clickRegisterButton = base_Driver.getDriver().findElement(By.id("register_btn"));
-		String clickRegisterButton_Text = clickRegisterButton.getText();
+	public void setDateOfBirth(String year, String day) throws FailedLoginException, InterruptedException {
+		try {
+			WebElement setDateOfBirth = baseDriver.getDriver().findElement(By.id("r_dob"));
+			String clickRegisterButton_Text = setDateOfBirth.getAttribute("placeholder");
+			String fail = "Set date of birth failed";
+			if (setDateOfBirth.isDisplayed()) {
+				setDateOfBirth.click();
+				baseDriver.getDriver().manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
+				WebElement yearSelection = baseDriver.getDriver().findElement(By.xpath("//div[@class='drp-calendar left single']//select[@class='yearselect']"));
+				Select selectYear = new Select(yearSelection);
+				selectYear.selectByVisibleText(year);
+
+				WebElement daySelection = baseDriver.getDriver().findElement(By.xpath("(//td[contains(text(),'" + day + "')])[1]"));
+				daySelection.click();
+			} else {
+				createReport.getExtentTest().fail(fail);
+			}
+		} catch (NoSuchElementException e) {
+			e.printStackTrace();
+			throw new SkipException("Set date of birth not required");
+		}
+	}
+
+	public void selectRegisterButton() throws FailedLoginException {
+		WebElement selectRegisterButton = baseDriver.getDriver().findElement(By.id("register_btn"));
+		String selectRegisterButton_Text = selectRegisterButton.getText();
 		String fail = "Register button failed";
 
-		if (clickRegisterButton.isEnabled()) {
-			clickRegisterButton.click();
-			create_Report.getExtentTest().info(clickRegisterButton_Text + " is enabled & clicked");
-
-			base_Driver.getDriver().manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
-			WebElement userIDName = base_Driver.getDriver().findElement(By.xpath("(//a[contains(text(),'" + userID + "')])[1]"));
-			if (userIDName.isDisplayed()) {
-				create_Report.getExtentTest().info("Register in success");
-			}
+		if (selectRegisterButton.isEnabled()) {
+			selectRegisterButton.click();
+			createReport.getExtentTest().info("Clicked = " + selectRegisterButton_Text);
 		} else {
-			create_Report.getExtentTest().fail(fail);
+			createReport.getExtentTest().fail(fail);
 			throw new FailedLoginException(fail);
 		}
 	}
 
-	public void SetDateOfBirth(String year, String day) throws FailedLoginException, InterruptedException {
-		WebElement setDateOfBirth = base_Driver.getDriver().findElement(By.id("r_dob"));
-		String clickRegisterButton_Text = setDateOfBirth.getAttribute("placeholder");
-		String fail = "Set date of birth failed";
-
-		if (setDateOfBirth.isDisplayed()) {
-			setDateOfBirth.click();
-
-			Thread.sleep(500);
-			WebElement yearSelection = base_Driver.getDriver().findElement(By.xpath("//div[@class='drp-calendar left single']//select[@class='yearselect']"));
-			Select selectYear = new Select(yearSelection);
-			selectYear.selectByVisibleText(year);
-
-			WebElement daySelection = base_Driver.getDriver().findElement(By.xpath("(//td[contains(text(),'" + day + "')])[1]"));
-			daySelection.click();
-
-			Thread.sleep(500);
-			try {
-				WebElement setDateOfBirth_Error = base_Driver.getDriver().findElement(By.xpath("//div[@class='error_msg error_dob']"));
-				if (setDateOfBirth_Error.isDisplayed()) {
-					create_Report.getExtentTest().info(clickRegisterButton_Text + " able to set");
-				}
-			} catch (NoSuchElementException e) {
-				create_Report.getExtentTest().info("Set date of birth is skipping");
-				throw new SkipException("Set date of birth is skipping");
-			}
+	public void verifyRegisterUserID(String userID) throws FailedLoginException {
+		baseDriver.getDriver().manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
+		String fail = "Verify register " + userID + " failed";
+		WebElement userIDName = baseDriver.getDriver().findElement(By.xpath("(//a[contains(text(),'" + userID + "')])[1]"));
+		if (userIDName.isDisplayed()) {
+			createReport.getExtentTest().info("Register account " + userID + " success");
 		} else {
-			create_Report.getExtentTest().fail(fail);
+			createReport.getExtentTest().fail(fail);
 			throw new FailedLoginException(fail);
 		}
 	}

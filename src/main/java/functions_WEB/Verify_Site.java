@@ -15,15 +15,17 @@ public class Verify_Site {
 
 	Base_Driver base_Driver = Base_Driver.getInstance();
 	Create_Report create_Report = Create_Report.getInstance();
-	private String verifySiteFail = "Verify site failed";
+	
+	private String fail = "Verify site failed";
+	
 	public void VerifySite(String siteUrl) throws FailedLoginException {
 		String verifySite = base_Driver.getDriver().getCurrentUrl();
 		if (verifySite.contains(siteUrl)) {
-			create_Report.getExtentTest().info(" Site url = " + verifySite);
+			create_Report.getExtentTest().info(" Site = " + verifySite);
 			System.out.println(verifySite);
 		} else {
-			create_Report.getExtentTest().fail(verifySiteFail);
-			throw new FailedLoginException(verifySiteFail);
+			create_Report.getExtentTest().fail(fail);
+//			throw new FailedLoginException(fail);
 		}
 	}
 }

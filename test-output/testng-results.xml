@@ -2,125 +2,125 @@
 <testng-results ignored="0" total="7" passed="7" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2022-08-18T18:01:23 SGT" name="Suite" finished-at="2022-08-18T18:01:46 SGT" duration-ms="22308">
+  <suite started-at="2022-08-19T17:24:07 SGT" name="Default suite" finished-at="2022-08-19T17:24:31 SGT" duration-ms="23432">
     <groups>
     </groups>
-    <test started-at="2022-08-18T18:01:23 SGT" name="Automation-For-Web-QC" finished-at="2022-08-18T18:01:46 SGT" duration-ms="22308">
-      <class name="automations_WEB.WEB_Offline_Deposit_Site">
-        <test-method is-config="true" signature="StartUp()[pri:0, instance:automations_WEB.WEB_Offline_Deposit_Site@777c9dc9]" started-at="2022-08-18T18:01:23 SGT" name="StartUp" finished-at="2022-08-18T18:01:24 SGT" duration-ms="415" status="PASS">
+    <test started-at="2022-08-19T17:24:07 SGT" name="Default test" finished-at="2022-08-19T17:24:31 SGT" duration-ms="23432">
+      <class name="automations_WEB.FE_Offline_Deposit_Site">
+        <test-method is-config="true" signature="StartUp()[pri:0, instance:automations_WEB.FE_Offline_Deposit_Site@2392212b]" started-at="2022-08-19T17:24:07 SGT" name="StartUp" finished-at="2022-08-19T17:24:08 SGT" duration-ms="710" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- StartUp -->
-        <test-method signature="OpenBrowserToSite()[pri:0, instance:automations_WEB.WEB_Offline_Deposit_Site@777c9dc9]" started-at="2022-08-18T18:01:24 SGT" name="OpenBrowserToSite" finished-at="2022-08-18T18:01:27 SGT" duration-ms="3429" status="PASS">
+        <test-method signature="openBrowserToSite()[pri:0, instance:automations_WEB.FE_Offline_Deposit_Site@2392212b]" started-at="2022-08-19T17:24:08 SGT" name="openBrowserToSite" finished-at="2022-08-19T17:24:13 SGT" duration-ms="5125" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- OpenBrowserToSite -->
-        <test-method is-config="true" signature="Log_Case_Status(org.testng.ITestResult)[pri:0, instance:automations_WEB.WEB_Offline_Deposit_Site@777c9dc9]" started-at="2022-08-18T18:01:27 SGT" name="Log_Case_Status" finished-at="2022-08-18T18:01:27 SGT" duration-ms="2" status="PASS">
+        </test-method> <!-- openBrowserToSite -->
+        <test-method is-config="true" signature="Log_Case_Status(org.testng.ITestResult)[pri:0, instance:automations_WEB.FE_Offline_Deposit_Site@2392212b]" started-at="2022-08-19T17:24:13 SGT" name="Log_Case_Status" finished-at="2022-08-19T17:24:13 SGT" duration-ms="9" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=OpenBrowserToSite status=SUCCESS method=WEB_Offline_Deposit_Site.OpenBrowserToSite()[pri:0, instance:automations_WEB.WEB_Offline_Deposit_Site@777c9dc9] output={null}]]]>
+                <![CDATA[[TestResult name=openBrowserToSite status=SUCCESS method=FE_Offline_Deposit_Site.openBrowserToSite()[pri:0, instance:automations_WEB.FE_Offline_Deposit_Site@2392212b] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- Log_Case_Status -->
-        <test-method signature="ClickLoginOptionButton()[pri:1, instance:automations_WEB.WEB_Offline_Deposit_Site@777c9dc9]" started-at="2022-08-18T18:01:27 SGT" name="ClickLoginOptionButton" finished-at="2022-08-18T18:01:28 SGT" depends-on-methods="automations_WEB.WEB_Offline_Deposit_Site.OpenBrowserToSite" duration-ms="601" status="PASS">
+        <test-method signature="selectLoginOption()[pri:1, instance:automations_WEB.FE_Offline_Deposit_Site@2392212b]" started-at="2022-08-19T17:24:13 SGT" name="selectLoginOption" finished-at="2022-08-19T17:24:13 SGT" depends-on-methods="automations_WEB.FE_Offline_Deposit_Site.openBrowserToSite" duration-ms="119" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- ClickLoginOptionButton -->
-        <test-method is-config="true" signature="Log_Case_Status(org.testng.ITestResult)[pri:0, instance:automations_WEB.WEB_Offline_Deposit_Site@777c9dc9]" started-at="2022-08-18T18:01:28 SGT" name="Log_Case_Status" finished-at="2022-08-18T18:01:28 SGT" duration-ms="0" status="PASS">
+        </test-method> <!-- selectLoginOption -->
+        <test-method is-config="true" signature="Log_Case_Status(org.testng.ITestResult)[pri:0, instance:automations_WEB.FE_Offline_Deposit_Site@2392212b]" started-at="2022-08-19T17:24:13 SGT" name="Log_Case_Status" finished-at="2022-08-19T17:24:13 SGT" duration-ms="1" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=ClickLoginOptionButton status=SUCCESS method=WEB_Offline_Deposit_Site.ClickLoginOptionButton()[pri:1, instance:automations_WEB.WEB_Offline_Deposit_Site@777c9dc9] output={null}]]]>
+                <![CDATA[[TestResult name=selectLoginOption status=SUCCESS method=FE_Offline_Deposit_Site.selectLoginOption()[pri:1, instance:automations_WEB.FE_Offline_Deposit_Site@2392212b] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- Log_Case_Status -->
-        <test-method signature="EnterLoginData()[pri:2, instance:automations_WEB.WEB_Offline_Deposit_Site@777c9dc9]" started-at="2022-08-18T18:01:28 SGT" name="EnterLoginData" finished-at="2022-08-18T18:01:32 SGT" depends-on-methods="automations_WEB.WEB_Offline_Deposit_Site.ClickLoginOptionButton" duration-ms="4498" status="PASS">
+        <test-method signature="fillInLoginDataAndLogin()[pri:2, instance:automations_WEB.FE_Offline_Deposit_Site@2392212b]" started-at="2022-08-19T17:24:13 SGT" name="fillInLoginDataAndLogin" finished-at="2022-08-19T17:24:17 SGT" depends-on-methods="automations_WEB.FE_Offline_Deposit_Site.selectLoginOption" duration-ms="3355" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- EnterLoginData -->
-        <test-method is-config="true" signature="Log_Case_Status(org.testng.ITestResult)[pri:0, instance:automations_WEB.WEB_Offline_Deposit_Site@777c9dc9]" started-at="2022-08-18T18:01:32 SGT" name="Log_Case_Status" finished-at="2022-08-18T18:01:32 SGT" duration-ms="0" status="PASS">
+        </test-method> <!-- fillInLoginDataAndLogin -->
+        <test-method is-config="true" signature="Log_Case_Status(org.testng.ITestResult)[pri:0, instance:automations_WEB.FE_Offline_Deposit_Site@2392212b]" started-at="2022-08-19T17:24:17 SGT" name="Log_Case_Status" finished-at="2022-08-19T17:24:17 SGT" duration-ms="0" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=EnterLoginData status=SUCCESS method=WEB_Offline_Deposit_Site.EnterLoginData()[pri:2, instance:automations_WEB.WEB_Offline_Deposit_Site@777c9dc9] output={null}]]]>
+                <![CDATA[[TestResult name=fillInLoginDataAndLogin status=SUCCESS method=FE_Offline_Deposit_Site.fillInLoginDataAndLogin()[pri:2, instance:automations_WEB.FE_Offline_Deposit_Site@2392212b] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- Log_Case_Status -->
-        <test-method signature="ToDepositPage()[pri:3, instance:automations_WEB.WEB_Offline_Deposit_Site@777c9dc9]" started-at="2022-08-18T18:01:32 SGT" name="ToDepositPage" finished-at="2022-08-18T18:01:34 SGT" depends-on-methods="automations_WEB.WEB_Offline_Deposit_Site.EnterLoginData" duration-ms="1785" status="PASS">
+        <test-method signature="toDepositPage()[pri:3, instance:automations_WEB.FE_Offline_Deposit_Site@2392212b]" started-at="2022-08-19T17:24:17 SGT" name="toDepositPage" finished-at="2022-08-19T17:24:20 SGT" depends-on-methods="automations_WEB.FE_Offline_Deposit_Site.fillInLoginDataAndLogin" duration-ms="3564" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- ToDepositPage -->
-        <test-method is-config="true" signature="Log_Case_Status(org.testng.ITestResult)[pri:0, instance:automations_WEB.WEB_Offline_Deposit_Site@777c9dc9]" started-at="2022-08-18T18:01:34 SGT" name="Log_Case_Status" finished-at="2022-08-18T18:01:34 SGT" duration-ms="1" status="PASS">
+        </test-method> <!-- toDepositPage -->
+        <test-method is-config="true" signature="Log_Case_Status(org.testng.ITestResult)[pri:0, instance:automations_WEB.FE_Offline_Deposit_Site@2392212b]" started-at="2022-08-19T17:24:20 SGT" name="Log_Case_Status" finished-at="2022-08-19T17:24:20 SGT" duration-ms="0" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=ToDepositPage status=SUCCESS method=WEB_Offline_Deposit_Site.ToDepositPage()[pri:3, instance:automations_WEB.WEB_Offline_Deposit_Site@777c9dc9] output={null}]]]>
+                <![CDATA[[TestResult name=toDepositPage status=SUCCESS method=FE_Offline_Deposit_Site.toDepositPage()[pri:3, instance:automations_WEB.FE_Offline_Deposit_Site@2392212b] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- Log_Case_Status -->
-        <test-method signature="FillInOfflineDepositPageData()[pri:4, instance:automations_WEB.WEB_Offline_Deposit_Site@777c9dc9]" started-at="2022-08-18T18:01:34 SGT" name="FillInOfflineDepositPageData" finished-at="2022-08-18T18:01:38 SGT" depends-on-methods="automations_WEB.WEB_Offline_Deposit_Site.ToDepositPage" duration-ms="4296" status="PASS">
+        <test-method signature="fillInOfflineDepositPageData()[pri:4, instance:automations_WEB.FE_Offline_Deposit_Site@2392212b]" started-at="2022-08-19T17:24:20 SGT" name="fillInOfflineDepositPageData" finished-at="2022-08-19T17:24:23 SGT" depends-on-methods="automations_WEB.FE_Offline_Deposit_Site.toDepositPage" duration-ms="3199" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- FillInOfflineDepositPageData -->
-        <test-method is-config="true" signature="Log_Case_Status(org.testng.ITestResult)[pri:0, instance:automations_WEB.WEB_Offline_Deposit_Site@777c9dc9]" started-at="2022-08-18T18:01:38 SGT" name="Log_Case_Status" finished-at="2022-08-18T18:01:38 SGT" duration-ms="0" status="PASS">
+        </test-method> <!-- fillInOfflineDepositPageData -->
+        <test-method is-config="true" signature="Log_Case_Status(org.testng.ITestResult)[pri:0, instance:automations_WEB.FE_Offline_Deposit_Site@2392212b]" started-at="2022-08-19T17:24:23 SGT" name="Log_Case_Status" finished-at="2022-08-19T17:24:23 SGT" duration-ms="1" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=FillInOfflineDepositPageData status=SUCCESS method=WEB_Offline_Deposit_Site.FillInOfflineDepositPageData()[pri:4, instance:automations_WEB.WEB_Offline_Deposit_Site@777c9dc9] output={null}]]]>
+                <![CDATA[[TestResult name=fillInOfflineDepositPageData status=SUCCESS method=FE_Offline_Deposit_Site.fillInOfflineDepositPageData()[pri:4, instance:automations_WEB.FE_Offline_Deposit_Site@2392212b] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- Log_Case_Status -->
-        <test-method signature="ConfirmOfflineDepositPaid()[pri:5, instance:automations_WEB.WEB_Offline_Deposit_Site@777c9dc9]" started-at="2022-08-18T18:01:38 SGT" name="ConfirmOfflineDepositPaid" finished-at="2022-08-18T18:01:40 SGT" depends-on-methods="automations_WEB.WEB_Offline_Deposit_Site.FillInOfflineDepositPageData" duration-ms="1972" status="PASS">
+        <test-method signature="confirmOfflineDepositPaid()[pri:5, instance:automations_WEB.FE_Offline_Deposit_Site@2392212b]" started-at="2022-08-19T17:24:23 SGT" name="confirmOfflineDepositPaid" finished-at="2022-08-19T17:24:26 SGT" depends-on-methods="automations_WEB.FE_Offline_Deposit_Site.fillInOfflineDepositPageData" duration-ms="2500" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- ConfirmOfflineDepositPaid -->
-        <test-method is-config="true" signature="Log_Case_Status(org.testng.ITestResult)[pri:0, instance:automations_WEB.WEB_Offline_Deposit_Site@777c9dc9]" started-at="2022-08-18T18:01:40 SGT" name="Log_Case_Status" finished-at="2022-08-18T18:01:40 SGT" duration-ms="0" status="PASS">
+        </test-method> <!-- confirmOfflineDepositPaid -->
+        <test-method is-config="true" signature="Log_Case_Status(org.testng.ITestResult)[pri:0, instance:automations_WEB.FE_Offline_Deposit_Site@2392212b]" started-at="2022-08-19T17:24:26 SGT" name="Log_Case_Status" finished-at="2022-08-19T17:24:26 SGT" duration-ms="0" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=ConfirmOfflineDepositPaid status=SUCCESS method=WEB_Offline_Deposit_Site.ConfirmOfflineDepositPaid()[pri:5, instance:automations_WEB.WEB_Offline_Deposit_Site@777c9dc9] output={null}]]]>
+                <![CDATA[[TestResult name=confirmOfflineDepositPaid status=SUCCESS method=FE_Offline_Deposit_Site.confirmOfflineDepositPaid()[pri:5, instance:automations_WEB.FE_Offline_Deposit_Site@2392212b] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- Log_Case_Status -->
-        <test-method signature="CancelOfflineDepositRequest()[pri:6, instance:automations_WEB.WEB_Offline_Deposit_Site@777c9dc9]" started-at="2022-08-18T18:01:40 SGT" name="CancelOfflineDepositRequest" finished-at="2022-08-18T18:01:43 SGT" depends-on-methods="automations_WEB.WEB_Offline_Deposit_Site.ConfirmOfflineDepositPaid" duration-ms="2551" status="PASS">
+        <test-method signature="cancelOfflineDepositRequest()[pri:6, instance:automations_WEB.FE_Offline_Deposit_Site@2392212b]" started-at="2022-08-19T17:24:26 SGT" name="cancelOfflineDepositRequest" finished-at="2022-08-19T17:24:28 SGT" depends-on-methods="automations_WEB.FE_Offline_Deposit_Site.confirmOfflineDepositPaid" duration-ms="1863" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- CancelOfflineDepositRequest -->
-        <test-method is-config="true" signature="Log_Case_Status(org.testng.ITestResult)[pri:0, instance:automations_WEB.WEB_Offline_Deposit_Site@777c9dc9]" started-at="2022-08-18T18:01:43 SGT" name="Log_Case_Status" finished-at="2022-08-18T18:01:43 SGT" duration-ms="0" status="PASS">
+        </test-method> <!-- cancelOfflineDepositRequest -->
+        <test-method is-config="true" signature="Log_Case_Status(org.testng.ITestResult)[pri:0, instance:automations_WEB.FE_Offline_Deposit_Site@2392212b]" started-at="2022-08-19T17:24:28 SGT" name="Log_Case_Status" finished-at="2022-08-19T17:24:28 SGT" duration-ms="1" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=CancelOfflineDepositRequest status=SUCCESS method=WEB_Offline_Deposit_Site.CancelOfflineDepositRequest()[pri:6, instance:automations_WEB.WEB_Offline_Deposit_Site@777c9dc9] output={null}]]]>
+                <![CDATA[[TestResult name=cancelOfflineDepositRequest status=SUCCESS method=FE_Offline_Deposit_Site.cancelOfflineDepositRequest()[pri:6, instance:automations_WEB.FE_Offline_Deposit_Site@2392212b] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- Log_Case_Status -->
-        <test-method is-config="true" signature="ShutDown()[pri:0, instance:automations_WEB.WEB_Offline_Deposit_Site@777c9dc9]" started-at="2022-08-18T18:01:43 SGT" name="ShutDown" finished-at="2022-08-18T18:01:46 SGT" duration-ms="2685" status="PASS">
+        <test-method is-config="true" signature="ShutDown()[pri:0, instance:automations_WEB.FE_Offline_Deposit_Site@2392212b]" started-at="2022-08-19T17:24:28 SGT" name="ShutDown" finished-at="2022-08-19T17:24:31 SGT" duration-ms="2885" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- ShutDown -->
-      </class> <!-- automations_WEB.WEB_Offline_Deposit_Site -->
-    </test> <!-- Automation-For-Web-QC -->
-  </suite> <!-- Suite -->
+      </class> <!-- automations_WEB.FE_Offline_Deposit_Site -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
 </testng-results>

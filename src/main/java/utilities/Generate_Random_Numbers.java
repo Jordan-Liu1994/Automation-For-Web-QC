@@ -10,11 +10,11 @@ public class Generate_Random_Numbers {
 		return generateRandomNumbers;
 	}
 
-	private int setNumber = 500000;
+	private int setNumber;
 	
 	public int generateRandomNumbers() {
 		Random random = new Random();
-		int setNumber = 500000;
+		setNumber = 500000;
 		int int_random = random.nextInt(setNumber);
 		return int_random;
 	}

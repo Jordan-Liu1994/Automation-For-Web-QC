@@ -3,16 +3,18 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="automations_WEB.WEB_Login_Site">
+      <class name="automations_WEB.FE_Offline_Deposit_Site">
         <methods>
-          <include name="EnterLoginData"/>
-          <include name="ClickLoginOptionButton"/>
-          <include name="ShutDown"/>
-          <include name="Log_Case_Status"/>
-          <include name="OpenBrowserToSite"/>
+          <include name="openBrowserToSite"/>
+          <include name="fillInLoginDataAndLogin"/>
           <include name="StartUp"/>
+          <include name="toDepositPage"/>
+          <include name="Log_Case_Status"/>
+          <include name="selectLoginOption"/>
+          <include name="fillInOfflineDepositPageData"/>
+          <include name="ShutDown"/>
         </methods>
-      </class> <!-- automations_WEB.WEB_Login_Site -->
+      </class> <!-- automations_WEB.FE_Offline_Deposit_Site -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

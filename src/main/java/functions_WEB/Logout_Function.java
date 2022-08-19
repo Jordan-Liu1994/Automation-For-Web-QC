@@ -1,5 +1,7 @@
 package functions_WEB;
 
+import java.util.concurrent.TimeUnit;
+
 import javax.security.auth.login.FailedLoginException;
 
 import org.openqa.selenium.By;
@@ -18,26 +20,34 @@ public class Logout_Function {
 		return function;
 	}
 
-	Base_Driver base_Driver = Base_Driver.getInstance();
-	Create_Report create_Report = Create_Report.getInstance();
+	Base_Driver baseDriver = Base_Driver.getInstance();
+	Create_Report createReport = Create_Report.getInstance();
 
-	public void ClickLogoutButton(String userID) throws FailedLoginException, InterruptedException {
-		WebElement userIDName = base_Driver.getDriver().findElement(By.xpath("(//a[contains(text(),'" + userID + "')])[1]"));
-		Actions builder = new Actions(base_Driver.getDriver());
-		Action act = builder.moveToElement(userIDName).build();
-		act.perform();
-		Thread.sleep(500);
-		
-		WebElement logoutButton = base_Driver.getDriver().findElement(By.xpath("//button[contains(text(),'登出')]"));
+	public void selectLogoutButton(String userID) throws FailedLoginException, InterruptedException {
+		WebElement userIDName = baseDriver.getDriver().findElement(By.xpath("(//a[contains(text(),'" + userID + "')])[1]"));
+		String fail = "Hover " + userID + " failed";
+		String fail2 = "Logout failed";
+
+		if (userIDName.isDisplayed()) {
+			Actions builder = new Actions(baseDriver.getDriver());
+			Action act = builder.moveToElement(userIDName).build();
+			act.perform();
+			createReport.getExtentTest().info("Hovered over " + userID);
+		} else {
+			createReport.getExtentTest().fail(fail);
+			throw new FailedLoginException(fail);
+		}
+
+		baseDriver.getDriver().manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
+		WebElement logoutButton = baseDriver.getDriver().findElement(By.xpath("//button[contains(text(),'登出')]"));
 		String logoutButton_Text = logoutButton.getText();
-		String fail = "Logout button failed";
 
 		if (logoutButton.isEnabled()) {
 			logoutButton.click();
-			create_Report.getExtentTest().info(logoutButton_Text + " is enabled & clicked");
+			createReport.getExtentTest().info("Clicked " + logoutButton_Text);
 		} else {
-			create_Report.getExtentTest().fail(fail);
-			throw new FailedLoginException(fail);
+			createReport.getExtentTest().fail(fail2);
+			throw new FailedLoginException(fail2);
 		}
 	}
 }

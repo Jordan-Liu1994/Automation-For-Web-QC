@@ -6,8 +6,10 @@
 			<!-- <class name="automations_WEB.WEB_Open_Site"></class>
 			<class name="automations_WEB.WEB_Login_Site"></class>
 			<class name="automations_WEB.WEB_Logout_Site"></class> 
-			<class name="automations_WEB.WEB_Register_Site"></class> -->
+			<class name="automations_WEB.WEB_Register_Site"></class>
 			<class name="automations_WEB.WEB_Offline_Deposit_Site"></class>
+			<class name="automations_WEB_BO.WEB_Login_BO"></class> -->
+			<class name="automations_WEB_BO.WEB_Offline_Deposit_Approve_BO"></class>
 		</classes>
 	</test> <!-- Automation-For-Web-QC -->
 </suite> <!-- Suite -->
