@@ -3,14 +3,15 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="automations_WEB.FE_Open_Site">
+      <class name="automations_WEB.FE_Login_Site">
         <methods>
+          <include name="closeAnnouncement"/>
+          <include name="shutDown"/>
           <include name="logCaseStatus"/>
           <include name="startUp"/>
-          <include name="shutDown"/>
-          <include name="closeAnnouncement"/>
+          <include name="openBrowserToSite"/>
         </methods>
-      </class> <!-- automations_WEB.FE_Open_Site -->
+      </class> <!-- automations_WEB.FE_Login_Site -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

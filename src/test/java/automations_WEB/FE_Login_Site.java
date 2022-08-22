@@ -7,6 +7,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
+import functions_WEB.Announcement_Function;
 import functions_WEB.Login_Function;
 import functions_WEB.Verify_Site;
 import utilities.BaseDriver;
@@ -25,6 +26,7 @@ public class FE_Login_Site extends VariablesStorage {
 	Verify_Site verifySite = Verify_Site.getInstance();
 	TakeScreenShot takeScreenShot = TakeScreenShot.getInstance();
 
+	Announcement_Function function2 = Announcement_Function.getInstance();
 	Login_Function function = Login_Function.getInstance();
 
 	@BeforeClass
@@ -39,6 +41,12 @@ public class FE_Login_Site extends VariablesStorage {
 		baseDriver.startDriver(siteUrlFE());
 	}
 
+	@Test(priority = 1, dependsOnMethods = "openBrowserToSite")
+	public void closeAnnouncement() throws InterruptedException, FailedLoginException {
+		createReport.createTest("closeAnnouncement");
+		function2.selectDoNotShowAgainTodayCheckBox();
+	}
+	
 	@Test(priority = 1, dependsOnMethods = "openBrowserToSite")
 	public void selectLoginOption() throws InterruptedException, FailedLoginException {
 		createReport.createTest("selectLoginOption");

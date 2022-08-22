@@ -50,12 +50,6 @@ public class FE_Open_Site extends VariablesStorage {
 		createReport.createTest("closeAnnouncement");
 		function2.selectDoNotShowAgainTodayCheckBox();
 	}
-
-	@Test(priority = 1, dependsOnMethods = "openBrowserToSite")
-	public void selectLoginOption() throws InterruptedException, FailedLoginException {
-		createReport.createTest("selectLoginOption");
-		function.selectLoginOption();
-	}
 	
 	@AfterMethod
 	public void logCaseStatus(ITestResult result) {
