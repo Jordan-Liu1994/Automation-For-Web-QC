@@ -1,126 +1,105 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="7" passed="7" failed="0" skipped="0">
+<testng-results ignored="0" total="3" passed="2" failed="0" skipped="1">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2022-08-19T17:24:07 SGT" name="Default suite" finished-at="2022-08-19T17:24:31 SGT" duration-ms="23432">
+  <suite started-at="2022-08-22T18:01:40 SGT" name="Default suite" finished-at="2022-08-22T18:01:54 SGT" duration-ms="14615">
     <groups>
     </groups>
-    <test started-at="2022-08-19T17:24:07 SGT" name="Default test" finished-at="2022-08-19T17:24:31 SGT" duration-ms="23432">
-      <class name="automations_WEB.FE_Offline_Deposit_Site">
-        <test-method is-config="true" signature="StartUp()[pri:0, instance:automations_WEB.FE_Offline_Deposit_Site@2392212b]" started-at="2022-08-19T17:24:07 SGT" name="StartUp" finished-at="2022-08-19T17:24:08 SGT" duration-ms="710" status="PASS">
+    <test started-at="2022-08-22T18:01:40 SGT" name="Default test" finished-at="2022-08-22T18:01:54 SGT" duration-ms="14615">
+      <class name="automations_WEB.FE_Open_Site">
+        <test-method is-config="true" signature="startUp()[pri:0, instance:automations_WEB.FE_Open_Site@4e4efc1b]" started-at="2022-08-22T18:01:40 SGT" name="startUp" finished-at="2022-08-22T18:01:40 SGT" duration-ms="700" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- StartUp -->
-        <test-method signature="openBrowserToSite()[pri:0, instance:automations_WEB.FE_Offline_Deposit_Site@2392212b]" started-at="2022-08-19T17:24:08 SGT" name="openBrowserToSite" finished-at="2022-08-19T17:24:13 SGT" duration-ms="5125" status="PASS">
+        </test-method> <!-- startUp -->
+        <test-method signature="openBrowserToSite()[pri:0, instance:automations_WEB.FE_Open_Site@4e4efc1b]" started-at="2022-08-22T18:01:40 SGT" name="openBrowserToSite" finished-at="2022-08-22T18:01:45 SGT" duration-ms="5125" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- openBrowserToSite -->
-        <test-method is-config="true" signature="Log_Case_Status(org.testng.ITestResult)[pri:0, instance:automations_WEB.FE_Offline_Deposit_Site@2392212b]" started-at="2022-08-19T17:24:13 SGT" name="Log_Case_Status" finished-at="2022-08-19T17:24:13 SGT" duration-ms="9" status="PASS">
+        <test-method is-config="true" signature="logCaseStatus(org.testng.ITestResult)[pri:0, instance:automations_WEB.FE_Open_Site@4e4efc1b]" started-at="2022-08-22T18:01:45 SGT" name="logCaseStatus" finished-at="2022-08-22T18:01:45 SGT" duration-ms="4" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=openBrowserToSite status=SUCCESS method=FE_Offline_Deposit_Site.openBrowserToSite()[pri:0, instance:automations_WEB.FE_Offline_Deposit_Site@2392212b] output={null}]]]>
+                <![CDATA[[TestResult name=openBrowserToSite status=SUCCESS method=FE_Open_Site.openBrowserToSite()[pri:0, instance:automations_WEB.FE_Open_Site@4e4efc1b] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- Log_Case_Status -->
-        <test-method signature="selectLoginOption()[pri:1, instance:automations_WEB.FE_Offline_Deposit_Site@2392212b]" started-at="2022-08-19T17:24:13 SGT" name="selectLoginOption" finished-at="2022-08-19T17:24:13 SGT" depends-on-methods="automations_WEB.FE_Offline_Deposit_Site.openBrowserToSite" duration-ms="119" status="PASS">
+        </test-method> <!-- logCaseStatus -->
+        <test-method signature="closeAnnouncement()[pri:1, instance:automations_WEB.FE_Open_Site@4e4efc1b]" started-at="2022-08-22T18:01:45 SGT" name="closeAnnouncement" finished-at="2022-08-22T18:01:50 SGT" duration-ms="4619" status="SKIP">
+          <exception class="org.testng.SkipException">
+            <message>
+              <![CDATA[Announcement Skipped]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[org.testng.SkipException: Announcement Skipped
+at functions_WEB.Announcement_Function.selectDoNotShowAgainTodayCheckBox(Announcement_Function.java:47)
+at automations_WEB.FE_Open_Site.closeAnnouncement(FE_Open_Site.java:51)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
+at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:598)
+at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:173)
+at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
+at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:824)
+at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:146)
+at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+at org.testng.TestRunner.privateRun(TestRunner.java:794)
+at org.testng.TestRunner.run(TestRunner.java:596)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:377)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:371)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:332)
+at org.testng.SuiteRunner.run(SuiteRunner.java:276)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1212)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1134)
+at org.testng.TestNG.runSuites(TestNG.java:1063)
+at org.testng.TestNG.run(TestNG.java:1031)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+]]>
+            </full-stacktrace>
+          </exception> <!-- org.testng.SkipException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- closeAnnouncement -->
+        <test-method is-config="true" signature="logCaseStatus(org.testng.ITestResult)[pri:0, instance:automations_WEB.FE_Open_Site@4e4efc1b]" started-at="2022-08-22T18:01:50 SGT" name="logCaseStatus" finished-at="2022-08-22T18:01:50 SGT" duration-ms="0" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=closeAnnouncement status=SKIP method=FE_Open_Site.closeAnnouncement()[pri:1, instance:automations_WEB.FE_Open_Site@4e4efc1b] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- logCaseStatus -->
+        <test-method signature="selectLoginOption()[pri:1, instance:automations_WEB.FE_Open_Site@4e4efc1b]" started-at="2022-08-22T18:01:50 SGT" name="selectLoginOption" finished-at="2022-08-22T18:01:50 SGT" depends-on-methods="automations_WEB.FE_Open_Site.openBrowserToSite" duration-ms="69" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- selectLoginOption -->
-        <test-method is-config="true" signature="Log_Case_Status(org.testng.ITestResult)[pri:0, instance:automations_WEB.FE_Offline_Deposit_Site@2392212b]" started-at="2022-08-19T17:24:13 SGT" name="Log_Case_Status" finished-at="2022-08-19T17:24:13 SGT" duration-ms="1" status="PASS">
+        <test-method is-config="true" signature="logCaseStatus(org.testng.ITestResult)[pri:0, instance:automations_WEB.FE_Open_Site@4e4efc1b]" started-at="2022-08-22T18:01:50 SGT" name="logCaseStatus" finished-at="2022-08-22T18:01:50 SGT" duration-ms="1" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=selectLoginOption status=SUCCESS method=FE_Offline_Deposit_Site.selectLoginOption()[pri:1, instance:automations_WEB.FE_Offline_Deposit_Site@2392212b] output={null}]]]>
+                <![CDATA[[TestResult name=selectLoginOption status=SUCCESS method=FE_Open_Site.selectLoginOption()[pri:1, instance:automations_WEB.FE_Open_Site@4e4efc1b] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- Log_Case_Status -->
-        <test-method signature="fillInLoginDataAndLogin()[pri:2, instance:automations_WEB.FE_Offline_Deposit_Site@2392212b]" started-at="2022-08-19T17:24:13 SGT" name="fillInLoginDataAndLogin" finished-at="2022-08-19T17:24:17 SGT" depends-on-methods="automations_WEB.FE_Offline_Deposit_Site.selectLoginOption" duration-ms="3355" status="PASS">
+        </test-method> <!-- logCaseStatus -->
+        <test-method is-config="true" signature="shutDown()[pri:0, instance:automations_WEB.FE_Open_Site@4e4efc1b]" started-at="2022-08-22T18:01:50 SGT" name="shutDown" finished-at="2022-08-22T18:01:54 SGT" duration-ms="3999" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- fillInLoginDataAndLogin -->
-        <test-method is-config="true" signature="Log_Case_Status(org.testng.ITestResult)[pri:0, instance:automations_WEB.FE_Offline_Deposit_Site@2392212b]" started-at="2022-08-19T17:24:17 SGT" name="Log_Case_Status" finished-at="2022-08-19T17:24:17 SGT" duration-ms="0" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[TestResult name=fillInLoginDataAndLogin status=SUCCESS method=FE_Offline_Deposit_Site.fillInLoginDataAndLogin()[pri:2, instance:automations_WEB.FE_Offline_Deposit_Site@2392212b] output={null}]]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- Log_Case_Status -->
-        <test-method signature="toDepositPage()[pri:3, instance:automations_WEB.FE_Offline_Deposit_Site@2392212b]" started-at="2022-08-19T17:24:17 SGT" name="toDepositPage" finished-at="2022-08-19T17:24:20 SGT" depends-on-methods="automations_WEB.FE_Offline_Deposit_Site.fillInLoginDataAndLogin" duration-ms="3564" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- toDepositPage -->
-        <test-method is-config="true" signature="Log_Case_Status(org.testng.ITestResult)[pri:0, instance:automations_WEB.FE_Offline_Deposit_Site@2392212b]" started-at="2022-08-19T17:24:20 SGT" name="Log_Case_Status" finished-at="2022-08-19T17:24:20 SGT" duration-ms="0" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[TestResult name=toDepositPage status=SUCCESS method=FE_Offline_Deposit_Site.toDepositPage()[pri:3, instance:automations_WEB.FE_Offline_Deposit_Site@2392212b] output={null}]]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- Log_Case_Status -->
-        <test-method signature="fillInOfflineDepositPageData()[pri:4, instance:automations_WEB.FE_Offline_Deposit_Site@2392212b]" started-at="2022-08-19T17:24:20 SGT" name="fillInOfflineDepositPageData" finished-at="2022-08-19T17:24:23 SGT" depends-on-methods="automations_WEB.FE_Offline_Deposit_Site.toDepositPage" duration-ms="3199" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- fillInOfflineDepositPageData -->
-        <test-method is-config="true" signature="Log_Case_Status(org.testng.ITestResult)[pri:0, instance:automations_WEB.FE_Offline_Deposit_Site@2392212b]" started-at="2022-08-19T17:24:23 SGT" name="Log_Case_Status" finished-at="2022-08-19T17:24:23 SGT" duration-ms="1" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[TestResult name=fillInOfflineDepositPageData status=SUCCESS method=FE_Offline_Deposit_Site.fillInOfflineDepositPageData()[pri:4, instance:automations_WEB.FE_Offline_Deposit_Site@2392212b] output={null}]]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- Log_Case_Status -->
-        <test-method signature="confirmOfflineDepositPaid()[pri:5, instance:automations_WEB.FE_Offline_Deposit_Site@2392212b]" started-at="2022-08-19T17:24:23 SGT" name="confirmOfflineDepositPaid" finished-at="2022-08-19T17:24:26 SGT" depends-on-methods="automations_WEB.FE_Offline_Deposit_Site.fillInOfflineDepositPageData" duration-ms="2500" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- confirmOfflineDepositPaid -->
-        <test-method is-config="true" signature="Log_Case_Status(org.testng.ITestResult)[pri:0, instance:automations_WEB.FE_Offline_Deposit_Site@2392212b]" started-at="2022-08-19T17:24:26 SGT" name="Log_Case_Status" finished-at="2022-08-19T17:24:26 SGT" duration-ms="0" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[TestResult name=confirmOfflineDepositPaid status=SUCCESS method=FE_Offline_Deposit_Site.confirmOfflineDepositPaid()[pri:5, instance:automations_WEB.FE_Offline_Deposit_Site@2392212b] output={null}]]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- Log_Case_Status -->
-        <test-method signature="cancelOfflineDepositRequest()[pri:6, instance:automations_WEB.FE_Offline_Deposit_Site@2392212b]" started-at="2022-08-19T17:24:26 SGT" name="cancelOfflineDepositRequest" finished-at="2022-08-19T17:24:28 SGT" depends-on-methods="automations_WEB.FE_Offline_Deposit_Site.confirmOfflineDepositPaid" duration-ms="1863" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- cancelOfflineDepositRequest -->
-        <test-method is-config="true" signature="Log_Case_Status(org.testng.ITestResult)[pri:0, instance:automations_WEB.FE_Offline_Deposit_Site@2392212b]" started-at="2022-08-19T17:24:28 SGT" name="Log_Case_Status" finished-at="2022-08-19T17:24:28 SGT" duration-ms="1" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[TestResult name=cancelOfflineDepositRequest status=SUCCESS method=FE_Offline_Deposit_Site.cancelOfflineDepositRequest()[pri:6, instance:automations_WEB.FE_Offline_Deposit_Site@2392212b] output={null}]]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- Log_Case_Status -->
-        <test-method is-config="true" signature="ShutDown()[pri:0, instance:automations_WEB.FE_Offline_Deposit_Site@2392212b]" started-at="2022-08-19T17:24:28 SGT" name="ShutDown" finished-at="2022-08-19T17:24:31 SGT" duration-ms="2885" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- ShutDown -->
-      </class> <!-- automations_WEB.FE_Offline_Deposit_Site -->
+        </test-method> <!-- shutDown -->
+      </class> <!-- automations_WEB.FE_Open_Site -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

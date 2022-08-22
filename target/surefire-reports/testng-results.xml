@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="11" passed="11" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2022-08-22T17:01:49 SGT" name="Suite" finished-at="2022-08-22T17:02:27 SGT" duration-ms="38606">
+    <groups>
+    </groups>
+    <test started-at="2022-08-22T17:01:49 SGT" name="Automation-For-Web-QC" finished-at="2022-08-22T17:02:27 SGT" duration-ms="38606">
+      <class name="automations_WEB.FE_Logout_Site">
+        <test-method is-config="true" signature="startUp()[pri:0, instance:automations_WEB.FE_Logout_Site@1622f1b]" started-at="2022-08-22T17:02:04 SGT" name="startUp" finished-at="2022-08-22T17:02:04 SGT" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- startUp -->
+        <test-method signature="openBrowserToSite()[pri:0, instance:automations_WEB.FE_Logout_Site@1622f1b]" started-at="2022-08-22T17:02:04 SGT" name="openBrowserToSite" finished-at="2022-08-22T17:02:07 SGT" duration-ms="2778" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- openBrowserToSite -->
+        <test-method is-config="true" signature="logCaseStatus(org.testng.ITestResult)[pri:0, instance:automations_WEB.FE_Logout_Site@1622f1b]" started-at="2022-08-22T17:02:07 SGT" name="logCaseStatus" finished-at="2022-08-22T17:02:07 SGT" duration-ms="0" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=openBrowserToSite status=SUCCESS method=FE_Logout_Site.openBrowserToSite()[pri:0, instance:automations_WEB.FE_Logout_Site@1622f1b] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- logCaseStatus -->
+        <test-method signature="selectLoginOption()[pri:1, instance:automations_WEB.FE_Logout_Site@1622f1b]" started-at="2022-08-22T17:02:07 SGT" name="selectLoginOption" finished-at="2022-08-22T17:02:07 SGT" depends-on-methods="automations_WEB.FE_Logout_Site.openBrowserToSite" duration-ms="79" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- selectLoginOption -->
+        <test-method is-config="true" signature="logCaseStatus(org.testng.ITestResult)[pri:0, instance:automations_WEB.FE_Logout_Site@1622f1b]" started-at="2022-08-22T17:02:07 SGT" name="logCaseStatus" finished-at="2022-08-22T17:02:07 SGT" duration-ms="0" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=selectLoginOption status=SUCCESS method=FE_Logout_Site.selectLoginOption()[pri:1, instance:automations_WEB.FE_Logout_Site@1622f1b] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- logCaseStatus -->
+        <test-method signature="fillInLoginDataAndLogin()[pri:2, instance:automations_WEB.FE_Logout_Site@1622f1b]" started-at="2022-08-22T17:02:07 SGT" name="fillInLoginDataAndLogin" finished-at="2022-08-22T17:02:10 SGT" depends-on-methods="automations_WEB.FE_Logout_Site.selectLoginOption" duration-ms="3708" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- fillInLoginDataAndLogin -->
+        <test-method is-config="true" signature="logCaseStatus(org.testng.ITestResult)[pri:0, instance:automations_WEB.FE_Logout_Site@1622f1b]" started-at="2022-08-22T17:02:10 SGT" name="logCaseStatus" finished-at="2022-08-22T17:02:10 SGT" duration-ms="1" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=fillInLoginDataAndLogin status=SUCCESS method=FE_Logout_Site.fillInLoginDataAndLogin()[pri:2, instance:automations_WEB.FE_Logout_Site@1622f1b] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- logCaseStatus -->
+        <test-method signature="logout()[pri:3, instance:automations_WEB.FE_Logout_Site@1622f1b]" started-at="2022-08-22T17:02:10 SGT" name="logout" finished-at="2022-08-22T17:02:14 SGT" depends-on-methods="automations_WEB.FE_Logout_Site.fillInLoginDataAndLogin" duration-ms="3225" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- logout -->
+        <test-method is-config="true" signature="logCaseStatus(org.testng.ITestResult)[pri:0, instance:automations_WEB.FE_Logout_Site@1622f1b]" started-at="2022-08-22T17:02:14 SGT" name="logCaseStatus" finished-at="2022-08-22T17:02:14 SGT" duration-ms="1" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=logout status=SUCCESS method=FE_Logout_Site.logout()[pri:3, instance:automations_WEB.FE_Logout_Site@1622f1b] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- logCaseStatus -->
+        <test-method is-config="true" signature="shutDown()[pri:0, instance:automations_WEB.FE_Logout_Site@1622f1b]" started-at="2022-08-22T17:02:14 SGT" name="shutDown" finished-at="2022-08-22T17:02:15 SGT" duration-ms="1280" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- shutDown -->
+      </class> <!-- automations_WEB.FE_Logout_Site -->
+      <class name="automations_WEB.FE_Open_Site">
+        <test-method is-config="true" signature="startUp()[pri:0, instance:automations_WEB.FE_Open_Site@48e4374]" started-at="2022-08-22T17:01:49 SGT" name="startUp" finished-at="2022-08-22T17:01:49 SGT" duration-ms="181" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- startUp -->
+        <test-method signature="openBrowserToSite()[pri:0, instance:automations_WEB.FE_Open_Site@48e4374]" started-at="2022-08-22T17:01:49 SGT" name="openBrowserToSite" finished-at="2022-08-22T17:01:54 SGT" duration-ms="4815" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- openBrowserToSite -->
+        <test-method is-config="true" signature="logCaseStatus(org.testng.ITestResult)[pri:0, instance:automations_WEB.FE_Open_Site@48e4374]" started-at="2022-08-22T17:01:54 SGT" name="logCaseStatus" finished-at="2022-08-22T17:01:54 SGT" duration-ms="2" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=openBrowserToSite status=SUCCESS method=FE_Open_Site.openBrowserToSite()[pri:0, instance:automations_WEB.FE_Open_Site@48e4374] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- logCaseStatus -->
+        <test-method is-config="true" signature="shutDown()[pri:0, instance:automations_WEB.FE_Open_Site@48e4374]" started-at="2022-08-22T17:01:54 SGT" name="shutDown" finished-at="2022-08-22T17:01:54 SGT" duration-ms="466" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- shutDown -->
+      </class> <!-- automations_WEB.FE_Open_Site -->
+      <class name="automations_WEB.FE_Register_Site">
+        <test-method is-config="true" signature="startUp()[pri:0, instance:automations_WEB.FE_Register_Site@6e4784bc]" started-at="2022-08-22T17:02:15 SGT" name="startUp" finished-at="2022-08-22T17:02:15 SGT" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- startUp -->
+        <test-method signature="openBrowserToSite()[pri:0, instance:automations_WEB.FE_Register_Site@6e4784bc]" started-at="2022-08-22T17:02:15 SGT" name="openBrowserToSite" finished-at="2022-08-22T17:02:18 SGT" duration-ms="2785" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- openBrowserToSite -->
+        <test-method is-config="true" signature="Log_Case_Status(org.testng.ITestResult)[pri:0, instance:automations_WEB.FE_Register_Site@6e4784bc]" started-at="2022-08-22T17:02:18 SGT" name="Log_Case_Status" finished-at="2022-08-22T17:02:18 SGT" duration-ms="1" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=openBrowserToSite status=SUCCESS method=FE_Register_Site.openBrowserToSite()[pri:0, instance:automations_WEB.FE_Register_Site@6e4784bc] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Log_Case_Status -->
+        <test-method signature="selectRegisterOptionButton()[pri:1, instance:automations_WEB.FE_Register_Site@6e4784bc]" started-at="2022-08-22T17:02:18 SGT" name="selectRegisterOptionButton" finished-at="2022-08-22T17:02:18 SGT" depends-on-methods="automations_WEB.FE_Register_Site.openBrowserToSite" duration-ms="79" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- selectRegisterOptionButton -->
+        <test-method is-config="true" signature="Log_Case_Status(org.testng.ITestResult)[pri:0, instance:automations_WEB.FE_Register_Site@6e4784bc]" started-at="2022-08-22T17:02:18 SGT" name="Log_Case_Status" finished-at="2022-08-22T17:02:18 SGT" duration-ms="1" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=selectRegisterOptionButton status=SUCCESS method=FE_Register_Site.selectRegisterOptionButton()[pri:1, instance:automations_WEB.FE_Register_Site@6e4784bc] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Log_Case_Status -->
+        <test-method signature="fillInRegisterData()[pri:2, instance:automations_WEB.FE_Register_Site@6e4784bc]" started-at="2022-08-22T17:02:18 SGT" name="fillInRegisterData" finished-at="2022-08-22T17:02:26 SGT" depends-on-methods="automations_WEB.FE_Register_Site.selectRegisterOptionButton" duration-ms="8290" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- fillInRegisterData -->
+        <test-method is-config="true" signature="Log_Case_Status(org.testng.ITestResult)[pri:0, instance:automations_WEB.FE_Register_Site@6e4784bc]" started-at="2022-08-22T17:02:26 SGT" name="Log_Case_Status" finished-at="2022-08-22T17:02:26 SGT" duration-ms="1" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=fillInRegisterData status=SUCCESS method=FE_Register_Site.fillInRegisterData()[pri:2, instance:automations_WEB.FE_Register_Site@6e4784bc] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Log_Case_Status -->
+        <test-method is-config="true" signature="ShutDown()[pri:0, instance:automations_WEB.FE_Register_Site@6e4784bc]" started-at="2022-08-22T17:02:26 SGT" name="ShutDown" finished-at="2022-08-22T17:02:27 SGT" duration-ms="1303" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- ShutDown -->
+      </class> <!-- automations_WEB.FE_Register_Site -->
+      <class name="automations_WEB.FE_Login_Site">
+        <test-method is-config="true" signature="startUp()[pri:0, instance:automations_WEB.FE_Login_Site@703580bf]" started-at="2022-08-22T17:01:54 SGT" name="startUp" finished-at="2022-08-22T17:01:54 SGT" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- startUp -->
+        <test-method signature="openBrowserToSite()[pri:0, instance:automations_WEB.FE_Login_Site@703580bf]" started-at="2022-08-22T17:01:54 SGT" name="openBrowserToSite" finished-at="2022-08-22T17:01:57 SGT" duration-ms="2608" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- openBrowserToSite -->
+        <test-method is-config="true" signature="logCaseStatus(org.testng.ITestResult)[pri:0, instance:automations_WEB.FE_Login_Site@703580bf]" started-at="2022-08-22T17:01:57 SGT" name="logCaseStatus" finished-at="2022-08-22T17:01:57 SGT" duration-ms="0" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=openBrowserToSite status=SUCCESS method=FE_Login_Site.openBrowserToSite()[pri:0, instance:automations_WEB.FE_Login_Site@703580bf] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- logCaseStatus -->
+        <test-method signature="selectLoginOption()[pri:1, instance:automations_WEB.FE_Login_Site@703580bf]" started-at="2022-08-22T17:01:57 SGT" name="selectLoginOption" finished-at="2022-08-22T17:01:57 SGT" depends-on-methods="automations_WEB.FE_Login_Site.openBrowserToSite" duration-ms="83" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- selectLoginOption -->
+        <test-method is-config="true" signature="logCaseStatus(org.testng.ITestResult)[pri:0, instance:automations_WEB.FE_Login_Site@703580bf]" started-at="2022-08-22T17:01:57 SGT" name="logCaseStatus" finished-at="2022-08-22T17:01:57 SGT" duration-ms="1" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=selectLoginOption status=SUCCESS method=FE_Login_Site.selectLoginOption()[pri:1, instance:automations_WEB.FE_Login_Site@703580bf] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- logCaseStatus -->
+        <test-method signature="fillInLoginDataAndLogin()[pri:2, instance:automations_WEB.FE_Login_Site@703580bf]" started-at="2022-08-22T17:01:57 SGT" name="fillInLoginDataAndLogin" finished-at="2022-08-22T17:02:03 SGT" depends-on-methods="automations_WEB.FE_Login_Site.selectLoginOption" duration-ms="5540" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- fillInLoginDataAndLogin -->
+        <test-method is-config="true" signature="logCaseStatus(org.testng.ITestResult)[pri:0, instance:automations_WEB.FE_Login_Site@703580bf]" started-at="2022-08-22T17:02:03 SGT" name="logCaseStatus" finished-at="2022-08-22T17:02:03 SGT" duration-ms="0" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=fillInLoginDataAndLogin status=SUCCESS method=FE_Login_Site.fillInLoginDataAndLogin()[pri:2, instance:automations_WEB.FE_Login_Site@703580bf] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- logCaseStatus -->
+        <test-method is-config="true" signature="shutDown()[pri:0, instance:automations_WEB.FE_Login_Site@703580bf]" started-at="2022-08-22T17:02:03 SGT" name="shutDown" finished-at="2022-08-22T17:02:04 SGT" duration-ms="1324" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- shutDown -->
+      </class> <!-- automations_WEB.FE_Login_Site -->
+    </test> <!-- Automation-For-Web-QC -->
+  </suite> <!-- Suite -->
+</testng-results>
