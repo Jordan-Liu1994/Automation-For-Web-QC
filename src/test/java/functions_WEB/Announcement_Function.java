@@ -27,21 +27,24 @@ public class Announcement_Function {
 		String skip = "Announcement Skipped";
 
 		while (number <= 5) {
+			Boolean breakLoop = true;
 			try {
 				WebElement selectDoNotShowAgainTodayCheckBox = baseDriver.getDriver().findElement(By.xpath("(//span[contains(text(),'今日不再显示')])[" + number + "]"));
 				if (selectDoNotShowAgainTodayCheckBox.isDisplayed()) {
 					String selectDoNotShowAgainTodayCheckBox_Text = selectDoNotShowAgainTodayCheckBox.getText();
 					selectDoNotShowAgainTodayCheckBox.click();
 					createReport.getExtentTest().info("Clicked " + selectDoNotShowAgainTodayCheckBox_Text);
-				}
 
-				WebElement closeButton = baseDriver.getDriver().findElement(By.xpath("(//button[@aria-label='Close'])[" + number + "]"));
-				if (closeButton.isDisplayed()) {
-					closeButton.click();
-					Thread.sleep(1000);
-					number++;
-				}
-				
+					WebElement closeButton = baseDriver.getDriver().findElement(By.xpath("(//button[@aria-label='Close'])[" + number + "]"));
+					if (closeButton.isDisplayed()) {
+						closeButton.click();
+						Thread.sleep(1000);
+						number++;
+					}else {
+						breakLoop = false;
+					}
+				} 
+
 			} catch (NoSuchElementException e) {
 				createReport.getExtentTest().info(skip);
 				throw new SkipException(skip);

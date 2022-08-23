@@ -191,6 +191,11 @@ public class Offline_Deposit_Function {
 			throw new FailedLoginException(fail);
 		}
 	}
+	
+	public WebElement dataToCompare() {
+		WebElement dataToCompare = baseDriver.getDriver().findElement(By.xpath("(//div[@class='details'])[5]"));
+		return dataToCompare;
+	}
 
 	public void confirmOfflineDepositPaid() throws FailedLoginException, InterruptedException {
 		baseDriver.getDriver().manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
@@ -208,8 +213,7 @@ public class Offline_Deposit_Function {
 	}
 
 	public void cancelOfflineDepositRequest() throws FailedLoginException, InterruptedException {
-		baseDriver.getDriver().manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
-//		WebElement cancelOfflineDepositRequest = baseDriver.getDriver().findElement(By.xpath("(//a[@id='cancelPending'])[1]"));
+		Thread.sleep(1000);
 		WebElement cancelOfflineDepositRequest = baseDriver.getDriver().findElement(By.id("cancelPending"));
 		String cancelOfflineDepositRequest_Text = cancelOfflineDepositRequest.getText();
 		String fail = "Cancel offline deposit request failed";
@@ -222,7 +226,7 @@ public class Offline_Deposit_Function {
 			throw new FailedLoginException(fail);
 		}
 
-		baseDriver.getDriver().manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
+		Thread.sleep(1000);
 		WebElement confirmCancelOfflineDepositRequest = baseDriver.getDriver().findElement(By.xpath("//button[contains(text(),'确定')]"));
 		String confirmCancelOfflineDepositRequest_Text = confirmCancelOfflineDepositRequest.getText();
 
@@ -234,28 +238,13 @@ public class Offline_Deposit_Function {
 			throw new FailedLoginException(fail);
 		}
 
-		baseDriver.getDriver().manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
+		Thread.sleep(1000);
 		WebElement cancelOfflineDepositRequestSuccess = baseDriver.getDriver().findElement(By.xpath("//div[@class='msg_show'][contains(text(),'取消成功')]"));
 		String cancelOfflineDepositRequestSuccess_Text = cancelOfflineDepositRequestSuccess.getText();
 
 		if (cancelOfflineDepositRequestSuccess.isDisplayed()) {
 			createReport.getExtentTest().info(cancelOfflineDepositRequestSuccess_Text + " offline deposit is successful");
 			baseDriver.getDriver().navigate().refresh();
-		} else {
-			createReport.getExtentTest().fail(fail);
-			throw new FailedLoginException(fail);
-		}
-	}
-
-	public void VerifyActualOfflineDepositAmount() throws FailedLoginException, InterruptedException {
-		WebElement confirmOfflineDepositPaid = baseDriver.getDriver().findElement(By.id("confirmPending"));
-		String confirmOfflineDepositPaid_Text = confirmOfflineDepositPaid.getText();
-		String fail = "Confirm offline deposit paid failed";
-
-		if (confirmOfflineDepositPaid.isEnabled()) {
-			confirmOfflineDepositPaid.click();
-			createReport.getExtentTest().info(confirmOfflineDepositPaid_Text + " is clicked");
-			baseDriver.getDriver().manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
 		} else {
 			createReport.getExtentTest().fail(fail);
 			throw new FailedLoginException(fail);

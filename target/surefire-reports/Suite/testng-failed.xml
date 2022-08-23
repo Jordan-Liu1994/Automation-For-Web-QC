@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite parallel="tests" name="Failed suite [Suite]" guice-stage="DEVELOPMENT" verbose="0">
+  <test thread-count="5" parallel="tests" name="Automation-For-Web-QC Login-Logout(failed)" verbose="0">
+    <groups>
+      <run>
+        <exclude name="Register_test"/>
+      </run>
+    </groups>
+    <classes>
+      <class name="automations_WEB_Authentication.FE_LoginLogout">
+        <methods>
+          <include name="shutDown"/>
+          <include name="closeAnnouncement"/>
+          <include name="logCaseStatus"/>
+          <include name="startUp"/>
+        </methods>
+      </class> <!-- automations_WEB_Authentication.FE_LoginLogout -->
+    </classes>
+  </test> <!-- Automation-For-Web-QC Login-Logout(failed) -->
+</suite> <!-- Failed suite [Suite] -->

@@ -38,7 +38,7 @@ public class Logout_Function {
 			throw new FailedLoginException(fail);
 		}
 
-		baseDriver.getDriver().manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
+		Thread.sleep(1000);
 		WebElement logoutButton = baseDriver.getDriver().findElement(By.xpath("//button[contains(text(),'登出')]"));
 		String logoutButton_Text = logoutButton.getText();
 

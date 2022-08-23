@@ -99,4 +99,25 @@ public class VariablesStorage {
 	public int depositAmount() {
 		return depositAmount;
 	}
+	
+	private String siteUrlBO = "https://wl003-bo.the777888.com/";
+	private String userIDBO = "jordan";
+	private String passwordBO = "test123";
+	private String otpBO = "123456";
+	
+	public String siteUrlBO() {
+		return siteUrlBO;
+	}
+	
+	public String userIDBO() {
+		return userIDBO;
+	}
+	
+	public String passwordBO() {
+		return passwordBO;
+	}
+	
+	public String otpBO() {
+		return otpBO;
+	}
 }

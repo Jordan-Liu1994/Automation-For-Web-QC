@@ -25,7 +25,6 @@ public class Verify_Site {
 			System.out.println(verifySite);
 		} else {
 			create_Report.getExtentTest().fail(fail);
-//			throw new FailedLoginException(fail);
 		}
 	}
 }

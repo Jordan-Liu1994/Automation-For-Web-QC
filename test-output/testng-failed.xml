@@ -1,17 +1,60 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
-  <test thread-count="5" name="Default test(failed)">
+<suite name="Failed suite [Suite]" guice-stage="DEVELOPMENT">
+  <test thread-count="5" name="Automation-For-Web-QC Login-Logout-Register(failed)">
+    <groups>
+      <run>
+        <exclude name="Register_test"/>
+        <exclude name="Open_Site"/>
+        <exclude name="Login"/>
+      </run>
+    </groups>
     <classes>
-      <class name="automations_WEB.FE_Login_Site">
+      <class name="automations_WEB_Authentication.FE_LoginLogout">
         <methods>
-          <include name="closeAnnouncement"/>
           <include name="shutDown"/>
+          <include name="closeAnnouncement"/>
+          <include name="logout"/>
           <include name="logCaseStatus"/>
+          <include name="shutDownAll"/>
           <include name="startUp"/>
-          <include name="openBrowserToSite"/>
         </methods>
-      </class> <!-- automations_WEB.FE_Login_Site -->
+      </class> <!-- automations_WEB_Authentication.FE_LoginLogout -->
     </classes>
-  </test> <!-- Default test(failed) -->
-</suite> <!-- Failed suite [Default suite] -->
+  </test> <!-- Automation-For-Web-QC Login-Logout-Register(failed) -->
+  <test thread-count="5" name="Automation-For-Web-QC Deposit(failed)">
+    <groups>
+      <run>
+        <exclude name="Authentication"/>
+        <exclude name="Logout"/>
+      </run>
+    </groups>
+    <classes>
+      <class name="automation_WEB_Deposit.BO_OfflineDeposit">
+        <methods>
+          <include name="Log_Case_Status"/>
+          <include name="ShutDown"/>
+          <include name="offlineDepositVerification"/>
+        </methods>
+      </class> <!-- automation_WEB_Deposit.BO_OfflineDeposit -->
+      <class name="automations_WEB_Authentication.FE_LoginLogout">
+        <methods>
+          <include name="closeAnnouncementAfterLogin"/>
+          <include name="shutDown"/>
+          <include name="closeAnnouncement"/>
+          <include name="logCaseStatus"/>
+          <include name="shutDownAll"/>
+          <include name="startUp"/>
+        </methods>
+      </class> <!-- automations_WEB_Authentication.FE_LoginLogout -->
+      <class name="automation_WEB_Deposit.FE_OfflineDeposit">
+        <methods>
+          <include name="offlineDepositMethods"/>
+          <include name="Log_Case_Status"/>
+          <include name="confirmOfflineDepositPaid"/>
+          <include name="ShutDown"/>
+        </methods>
+      </class> <!-- automation_WEB_Deposit.FE_OfflineDeposit -->
+    </classes>
+  </test> <!-- Automation-For-Web-QC Deposit(failed) -->
+</suite> <!-- Failed suite [Suite] -->

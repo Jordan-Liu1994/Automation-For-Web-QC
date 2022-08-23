@@ -1,12 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite name="Suite" parallel="tests" thread-count="2">
-	<test name="Automation-For-Web-QC">
+<suite name="Suite" thread-count="5">
+	<test name="Automation-For-Web-QC Login-Logout-Register">
+		<groups>
+			<run>
+				<exclude name="Register_test" />
+				<exclude name="Open_Site" />
+				<exclude name="Login" />
+			</run>
+		</groups>
 		<classes>
-			<class name="automations_WEB.FE_Open_Site"></class>
-			<class name="automations_WEB.FE_Login_Site"></class>
-			<class name="automations_WEB.FE_Logout_Site"></class>
-			<class name="automations_WEB.FE_Register_Site"></class>
+			<class name="automations_WEB_Authentication.FE_LoginLogout"></class>
+			<class name="automations_WEB_Authentication.FE_Register"></class>
 		</classes>
-	</test> <!-- Automation-For-Web-QC -->
-</suite> <!-- Suite -->
+	</test>
+	<test name="Automation-For-Web-QC Deposit">
+		<groups>
+			<run>
+				<exclude name="Authentication" />
+				<exclude name="Logout" />
+			</run>
+		</groups>
+		<classes>
+			<class name="automations_WEB_Authentication.FE_LoginLogout"></class>
+			<class name="automation_WEB_Deposit.FE_OfflineDeposit"></class>
+			<class name="automation_WEB_Deposit.BO_OfflineDeposit"></class>
+		</classes>
+	</test>
+</suite>

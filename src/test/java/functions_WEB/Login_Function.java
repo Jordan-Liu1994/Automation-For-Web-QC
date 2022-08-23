@@ -138,7 +138,7 @@ public class Login_Function {
 		}
 	}
 
-	public void verifyLogIn(String userID) throws FailedLoginException {
+	public void verifyLogIn(String userID) throws FailedLoginException, InterruptedException {
 		baseDriver.getDriver().manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
 		WebElement userIDName = baseDriver.getDriver().findElement(By.xpath("(//a[contains(text(),'" + userID + "')])[1]"));
 		String fail = "Login to wrong account user failed";

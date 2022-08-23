@@ -1,9 +1,10 @@
-package automations_WEB;
+package automations_WEB_Authentication;
 
 import javax.security.auth.login.FailedLoginException;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -17,39 +18,28 @@ import utilities.ResultListener;
 import utilities.TakeScreenShot;
 import utilities.VariablesStorage;
 
-public class FE_Register_Site extends VariablesStorage {
+public class FE_Register extends VariablesStorage {
 
-	static String name_Of_Report = "FE_Register_Site";
+	static String name_Of_Report = "FE_Register";
 
 	BaseDriver baseDriver = BaseDriver.getInstance();
 	CreateReport createReport = CreateReport.getInstance();
 	ResultListener resultListener = ResultListener.getInstance();
 	Verify_Site verifySite = Verify_Site.getInstance();
 	TakeScreenShot takeScreenShot = TakeScreenShot.getInstance();
-	
+
 	Register_Function function = Register_Function.getInstance();
 
-	@BeforeClass
-	public void startUp() {
+	@Test(priority = 4, groups = { "Register_test" })
+	public void startNext() {
 		createReport.generateReport(name_Of_Report);
-		baseDriver.setDriverProperty(driverType(), driverPath());
 	}
 
-	@Test(priority = 0)
-	public void openBrowserToSite() throws InterruptedException, FailedLoginException {
-		createReport.createTest("openBrowserToSite");
-		baseDriver.startDriver(siteUrlFE());
-	}
-
-	@Test(priority = 1, dependsOnMethods = "openBrowserToSite")
-	public void selectRegisterOptionButton() throws InterruptedException, FailedLoginException {
-		createReport.createTest("selectRegisterOptionButton");
+	@Test(priority = 5, groups = { "Register_test" })
+	public void register() throws InterruptedException, FailedLoginException {
+		createReport.createTest("register");
+		
 		function.selectRegisterOption();
-	}
-
-	@Test(priority = 2, dependsOnMethods = "selectRegisterOptionButton")
-	public void fillInRegisterData() throws InterruptedException, FailedLoginException {
-		createReport.createTest("fillInRegisterData");
 		Thread.sleep(500);
 		function.setNewUserID(userIDRegister());
 		function.setNewPassword(password());
@@ -62,8 +52,9 @@ public class FE_Register_Site extends VariablesStorage {
 		function.selectRegisterButton();
 		function.verifyRegisterUserID(userIDRegister());
 		Thread.sleep(1000);
-		takeScreenShot.getTakeScreenShotPass("fillInRegisterData");
-		createReport.getExtentTest().addScreenCaptureFromPath(takeScreenShot.screenShotPathExtent() + "fillInRegisterData" + " " + takeScreenShot.timestamp() + "-passed.png", "fillInRegisterData");
+		takeScreenShot.getTakeScreenShotPass("register");
+		
+		createReport.getExtentTest().addScreenCaptureFromPath(takeScreenShot.screenShotPathExtent() + "register" + "-passed.png", "register");
 	}
 
 	@AfterMethod

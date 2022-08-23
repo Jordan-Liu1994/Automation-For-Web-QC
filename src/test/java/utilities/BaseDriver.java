@@ -1,7 +1,13 @@
 package utilities;
 
+import java.net.MalformedURLException;
+import java.net.URL;
+
+import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 
 public class BaseDriver {
 
@@ -22,8 +28,20 @@ public class BaseDriver {
 	public void setDriverProperty(String driverType, String path) {
 		System.setProperty(driverType, driverPath + path);
 	}
-
-	public void startDriver(String siteUrl) throws InterruptedException {
+	
+	private URL url;
+	
+	public void startDriverRemote(String siteUrl) throws InterruptedException, MalformedURLException {
+		DesiredCapabilities capab = DesiredCapabilities.chrome();
+		capab.setBrowserName("chrome");
+		capab.setPlatform(Platform.WINDOWS);
+		url = new URL("http://localhost:4444/wd/hub");
+		driver = new RemoteWebDriver(url, capab);
+		driver.manage().window().maximize();
+		driver.get(siteUrl);
+	}
+	
+	public void startDriver(String siteUrl) throws InterruptedException, MalformedURLException {
 		driver = new ChromeDriver();
 		driver.manage().window().maximize();
 		driver.get(siteUrl);
