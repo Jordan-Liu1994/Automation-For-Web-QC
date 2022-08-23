@@ -1,22 +1,19 @@
-D:\Eclipse WorkSpace\Automation-For-Web-QC\src\test\java\functions_WEB\Logout_Function.java
-D:\Eclipse WorkSpace\Automation-For-Web-QC\src\test\java\functions_WEB\Offline_Deposit_Function.java
-D:\Eclipse WorkSpace\Automation-For-Web-QC\src\test\java\testings\Singleton_Variables_Access.java
-D:\Eclipse WorkSpace\Automation-For-Web-QC\src\test\java\testings\Generate_Numbers_With_Random.java
-D:\Eclipse WorkSpace\Automation-For-Web-QC\src\test\java\testings\Test_Value_Between_A_Range.java
-D:\Eclipse WorkSpace\Automation-For-Web-QC\src\test\java\utilities\TakeScreenShot.java
-D:\Eclipse WorkSpace\Automation-For-Web-QC\src\test\java\testings\Print_User_Directory.java
-D:\Eclipse WorkSpace\Automation-For-Web-QC\src\test\java\functions_WEB\Verify_Site.java
-D:\Eclipse WorkSpace\Automation-For-Web-QC\src\test\java\functions_WEB\Announcement_Function.java
-D:\Eclipse WorkSpace\Automation-For-Web-QC\src\test\java\functions_WEB\Login_Function.java
-D:\Eclipse WorkSpace\Automation-For-Web-QC\src\test\java\Automation_WEB_Deposit\FE_Offline_Deposit_Site.java
-D:\Eclipse WorkSpace\Automation-For-Web-QC\src\test\java\testings\Base_Driver.java
-D:\Eclipse WorkSpace\Automation-For-Web-QC\src\test\java\utilities\BaseDriver.java
-D:\Eclipse WorkSpace\Automation-For-Web-QC\src\test\java\utilities\CreateReport.java
-D:\Eclipse WorkSpace\Automation-For-Web-QC\src\test\java\utilities\GenerateRandomNumbers.java
-D:\Eclipse WorkSpace\Automation-For-Web-QC\src\test\java\functions_WEB\Register_Function.java
-D:\Eclipse WorkSpace\Automation-For-Web-QC\src\test\java\utilities\VariablesStorage.java
-D:\Eclipse WorkSpace\Automation-For-Web-QC\src\test\java\testings\Generate_Numbers_With_Math.java
-D:\Eclipse WorkSpace\Automation-For-Web-QC\src\test\java\automations_WEB_Authentication\FE_LoginLogout.java
-D:\Eclipse WorkSpace\Automation-For-Web-QC\src\test\java\utilities\ResultListener.java
-D:\Eclipse WorkSpace\Automation-For-Web-QC\src\test\java\automations_WEB_Authentication\FE_Register.java
-D:\Eclipse WorkSpace\Automation-For-Web-QC\src\test\java\testings\Singleton_Variables.java
+C:\Eclipse-Workspace\Automation-For-Web-QC\src\test\java\functions_WEB_FE\Login_Function.java
+C:\Eclipse-Workspace\Automation-For-Web-QC\src\test\java\utilities\ResultListener.java
+C:\Eclipse-Workspace\Automation-For-Web-QC\src\test\java\utilities\GenerateRandomNumbers.java
+C:\Eclipse-Workspace\Automation-For-Web-QC\src\test\java\utilities\CreateReport.java
+C:\Eclipse-Workspace\Automation-For-Web-QC\src\test\java\functions_WEB_FE\Verify_Site.java
+C:\Eclipse-Workspace\Automation-For-Web-QC\src\test\java\utilities\BaseDriver.java
+C:\Eclipse-Workspace\Automation-For-Web-QC\src\test\java\automation_WEB_Deposit\BO_OfflineDeposit.java
+C:\Eclipse-Workspace\Automation-For-Web-QC\src\test\java\automations_WEB_Authentication\FE_Register.java
+C:\Eclipse-Workspace\Automation-For-Web-QC\src\test\java\utilities\TakeScreenShot.java
+C:\Eclipse-Workspace\Automation-For-Web-QC\src\test\java\functions_WEB_BO\Login_BO_Function.java
+C:\Eclipse-Workspace\Automation-For-Web-QC\src\test\java\functions_WEB_FE\Announcement_Function.java
+C:\Eclipse-Workspace\Automation-For-Web-QC\src\test\java\utilities\VariablesStorage.java
+C:\Eclipse-Workspace\Automation-For-Web-QC\src\test\java\automations_WEB_Authentication\FE_Logout.java
+C:\Eclipse-Workspace\Automation-For-Web-QC\src\test\java\automations_WEB_Authentication\FE_Login.java
+C:\Eclipse-Workspace\Automation-For-Web-QC\src\test\java\functions_WEB_FE\Logout_Function.java
+C:\Eclipse-Workspace\Automation-For-Web-QC\src\test\java\functions_WEB_BO\Offline_Deposit_Verify_BO_Function.java
+C:\Eclipse-Workspace\Automation-For-Web-QC\src\test\java\functions_WEB_FE\Offline_Deposit_Function.java
+C:\Eclipse-Workspace\Automation-For-Web-QC\src\test\java\automation_WEB_Deposit\FE_OfflineDeposit.java
+C:\Eclipse-Workspace\Automation-For-Web-QC\src\test\java\functions_WEB_FE\Register_Function.java

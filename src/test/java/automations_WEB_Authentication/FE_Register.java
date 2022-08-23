@@ -1,19 +1,19 @@
 package automations_WEB_Authentication;
 
+import java.net.MalformedURLException;
+
 import javax.security.auth.login.FailedLoginException;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
-import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-import functions_WEB.Login_Function;
-import functions_WEB.Register_Function;
-import functions_WEB.Verify_Site;
+import functions_WEB_FE.Announcement_Function;
+import functions_WEB_FE.Register_Function;
+import functions_WEB_FE.Verify_Site;
 import utilities.BaseDriver;
 import utilities.CreateReport;
-import utilities.GenerateRandomNumbers;
 import utilities.ResultListener;
 import utilities.TakeScreenShot;
 import utilities.VariablesStorage;
@@ -27,34 +27,53 @@ public class FE_Register extends VariablesStorage {
 	ResultListener resultListener = ResultListener.getInstance();
 	Verify_Site verifySite = Verify_Site.getInstance();
 	TakeScreenShot takeScreenShot = TakeScreenShot.getInstance();
+	Register_Function function1 = Register_Function.getInstance();
+	Announcement_Function function2 = Announcement_Function.getInstance();
 
-	Register_Function function = Register_Function.getInstance();
+//	= = = = = = = = = = = = = = = = = = = = 
 
-	@Test(priority = 4, groups = { "Register_test" })
-	public void startNext() {
+//	USE BELOW BEFORECLASS IF YOU WANT TO TEST REGISTER ONLY!!
+
+//	@BeforeClass
+//	public void startUp() throws MalformedURLException, InterruptedException {
+//		baseDriver.setDriverProperty(driverType(), driverPath());
+//		baseDriver.startDriver();
+//		baseDriver.getDriver().get(siteUrlFE());
+//	}
+
+//	= = = = = = = = = = = = = = = = = = = = 
+
+	@Test(priority = 5, groups = { "Register" })
+	public void register() throws InterruptedException, FailedLoginException {
 		createReport.generateReport(name_Of_Report);
+		createReport.createTest("register");
+
+		Thread.sleep(500);
+		function1.selectRegisterOption();
+		Thread.sleep(500);
+		function1.setNewUserID(userIDRegister());
+		function1.setNewPassword(password());
+		function1.selectPasswordEyeIcon();
+		function1.setReferralOptional(referral());
+		function1.setCaptcha(captcha());
+		Thread.sleep(500);
+		function1.setDateOfBirth(year(), day());
+		Thread.sleep(500);
+		function1.selectRegisterButton();
+		Thread.sleep(1000);
+		function1.verifyRegisterUserID(userIDRegister());
+
+		takeScreenShot.getTakeScreenShotPass("register");
+		createReport.getExtentTest().addScreenCaptureFromPath(takeScreenShot.screenShotPathExtent() + "register" + "-passed.png", "register");
 	}
 
-	@Test(priority = 5, groups = { "Register_test" })
-	public void register() throws InterruptedException, FailedLoginException {
-		createReport.createTest("register");
-		
-		function.selectRegisterOption();
-		Thread.sleep(500);
-		function.setNewUserID(userIDRegister());
-		function.setNewPassword(password());
-		function.selectPasswordEyeIcon();
-		function.setReferralOptional(referral());
-		function.setCaptcha(captcha());
-		Thread.sleep(500);
-		function.setDateOfBirth(year(), day());
-		Thread.sleep(500);
-		function.selectRegisterButton();
-		function.verifyRegisterUserID(userIDRegister());
-		Thread.sleep(1000);
-		takeScreenShot.getTakeScreenShotPass("register");
-		
-		createReport.getExtentTest().addScreenCaptureFromPath(takeScreenShot.screenShotPathExtent() + "register" + "-passed.png", "register");
+//	= = = = = = = = = = = = = = = = = = = = 
+
+	@Test(dependsOnMethods = "register")
+	public void closeAnnouncement() throws InterruptedException, FailedLoginException {
+		createReport.createTest("closeAnnouncement");
+
+		function2.doNotShowAgainTodayRadioButton();
 	}
 
 	@AfterMethod
@@ -65,7 +84,6 @@ public class FE_Register extends VariablesStorage {
 	@AfterClass
 	public void ShutDown() throws InterruptedException {
 		createReport.flushTest();
-		Thread.sleep(1000);
-		baseDriver.stopDriver();
+		Thread.sleep(500);
 	}
 }

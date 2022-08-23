@@ -9,10 +9,10 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
 
-import functions_WEB.Login_BO_Function;
-import functions_WEB.Offline_Deposit_Function;
-import functions_WEB.Offline_Deposit_Verify_BO_Function;
-import functions_WEB.Verify_Site;
+import functions_WEB_BO.Login_BO_Function;
+import functions_WEB_BO.Offline_Deposit_Verify_BO_Function;
+import functions_WEB_FE.Offline_Deposit_Function;
+import functions_WEB_FE.Verify_Site;
 import utilities.BaseDriver;
 import utilities.CreateReport;
 import utilities.ResultListener;
@@ -44,7 +44,7 @@ public class BO_OfflineDeposit extends VariablesStorage {
 		createReport.generateReport(nameOfReport);
 		createReport.createTest("toBOPage");
 		baseDriver.getDriver().navigate().to(siteUrlBO());
-		verifySite.VerifySite(siteUrlBO());
+		verifySite.verifySite(siteUrlBO());
 		Thread.sleep(500);
 		function.setUserID(userIDBO());
 		function.setPassword(passwordBO());

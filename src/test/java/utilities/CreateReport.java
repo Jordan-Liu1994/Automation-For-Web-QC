@@ -18,6 +18,8 @@ public class CreateReport extends VariablesStorage{
 		return createReport;
 	}
 
+//	= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
+
 	public void generateReport(String nameOfReport) {
 		extentReport = new ExtentReports();
 		sparkReport = new ExtentSparkReporter(pathOfReport + nameOfReport + "-report.html");
@@ -27,18 +29,26 @@ public class CreateReport extends VariablesStorage{
 		extentReport.setSystemInfo("Java version", javaVersion());
 		extentReport.setSystemInfo("User", userName());
 	}
-	
+
+//	= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
+
 	public void createTest(String testName) {
 		extentTest = extentReport.createTest(testName);
 	}
+
+//	= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
 
 	public void flushTest() {
 		extentReport.flush();
 	}
 
+//	= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
+
 	public ExtentReports getExtentReport() {
 		return extentReport;
 	}
+
+//	= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
 
 	public ExtentTest getExtentTest() {
 		return extentTest;

@@ -17,40 +17,56 @@ public class BaseDriver {
 		return baseDriver;
 	}
 	
-	private String driverPath = ".\\src\\test\\resources\\drivers\\";
-
+//	= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
+	
 	private WebDriver driver;
 
 	public WebDriver getDriver() {
 		return driver;
 	}
 
+//	= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
+	
+	private String driverPath = ".\\src\\test\\resources\\drivers\\";
+	
 	public void setDriverProperty(String driverType, String path) {
 		System.setProperty(driverType, driverPath + path);
 	}
 	
+//	= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
+	
 	private URL url;
 	
-	public void startDriverRemote(String siteUrl) throws InterruptedException, MalformedURLException {
+	public void startDriverRemote() throws InterruptedException, MalformedURLException {
 		DesiredCapabilities capab = DesiredCapabilities.chrome();
 		capab.setBrowserName("chrome");
 		capab.setPlatform(Platform.WINDOWS);
 		url = new URL("http://localhost:4444/wd/hub");
 		driver = new RemoteWebDriver(url, capab);
 		driver.manage().window().maximize();
-		driver.get(siteUrl);
 	}
 	
-	public void startDriver(String siteUrl) throws InterruptedException, MalformedURLException {
+//	= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
+	
+	public void startDriver() throws InterruptedException, MalformedURLException {
 		driver = new ChromeDriver();
 		driver.manage().window().maximize();
+	}
+	
+//	= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
+	
+	public void getURL(String siteUrl) throws InterruptedException {
 		driver.get(siteUrl);
 	}
 
+//	= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
+	
 	public void closeBrowser() throws InterruptedException {
 		driver.close();
 	}
 	
+//	= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
+
 	public void stopDriver() throws InterruptedException {
 		driver.quit();
 	}

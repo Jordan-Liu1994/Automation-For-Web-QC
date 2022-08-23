@@ -10,9 +10,9 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 
-import functions_WEB.Login_Function;
-import functions_WEB.Offline_Deposit_Function;
-import functions_WEB.Verify_Site;
+import functions_WEB_FE.Login_Function;
+import functions_WEB_FE.Offline_Deposit_Function;
+import functions_WEB_FE.Verify_Site;
 import utilities.BaseDriver;
 import utilities.CreateReport;
 import utilities.ResultListener;

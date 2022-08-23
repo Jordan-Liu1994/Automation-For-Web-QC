@@ -3,14 +3,16 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="automation_WEB_Deposit.BO_OfflineDeposit">
+      <class name="automations_WEB_Authentication.FE_Login">
         <methods>
+          <include name="closeAnnouncementAfterLogin"/>
+          <include name="shutDown"/>
+          <include name="closeAnnouncement"/>
+          <include name="shutDownAll"/>
           <include name="startUp"/>
-          <include name="Log_Case_Status"/>
-          <include name="ShutDown"/>
-          <include name="offlineDepositVerification"/>
+          <include name="logCaseStatus"/>
         </methods>
-      </class> <!-- automation_WEB_Deposit.BO_OfflineDeposit -->
+      </class> <!-- automations_WEB_Authentication.FE_Login -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

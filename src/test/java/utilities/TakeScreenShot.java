@@ -16,6 +16,8 @@ public class TakeScreenShot {
 		return takeScreenShot;
 	}
 
+//	= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
+
 	private String userDir = System.getProperty("user.dir");
 	private String screenShotPath = userDir + ".\\src\\test\\resources\\screenshots\\";
 
@@ -31,21 +33,26 @@ public class TakeScreenShot {
 		}
 	}
 
+//	= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
+
 	public void getTakeScreenShotFail(String fileName) {
 		File screenShot = ((TakesScreenshot) baseDriver.getDriver()).getScreenshotAs(OutputType.FILE);
 		try {
-//			FileUtils.copyFile(screenShot, new File(screenShotPath + fileName + " " + timestamp() + "-failed.png"));
 			FileUtils.copyFile(screenShot, new File(screenShotPath + fileName + "-failed.png"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
 
+//	= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
+
 	private String dateFormat = "dd-MM-yy (HH.mm.ss)";
 
 	public String timestamp() {
 		return new SimpleDateFormat(dateFormat).format(new Date());
 	}
+
+//	= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
 
 	public String screenShotPathExtent() {
 		String screenShotPathExtent = screenShotPath;

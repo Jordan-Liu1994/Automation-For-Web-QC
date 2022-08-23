@@ -10,6 +10,8 @@ public class ResultListener {
 		return resultListener;
 	}
 
+//	= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
+
 	private String resultOfCaseStatus;
 
 	CreateReport createReport = CreateReport.getInstance();
@@ -28,6 +30,8 @@ public class ResultListener {
 			createReport.getExtentTest().addScreenCaptureFromPath(takeScreenShot.screenShotPathExtent() + resultOfCaseStatus + " " + takeScreenShot.timestamp() + "-failed.png", resultOfCaseStatus);
 		}
 	}
+
+//	= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
 
 	public String resultOfCaseStatusExtent() {
 		return resultOfCaseStatus;
