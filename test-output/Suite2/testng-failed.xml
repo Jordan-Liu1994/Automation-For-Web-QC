@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [Suite2]" guice-stage="DEVELOPMENT">
+  <test thread-count="5" name="Offline_Deposit(failed)">
+    <groups>
+      <run>
+        <exclude name="Offline_Deposit_Cancel"/>
+      </run>
+    </groups>
+    <classes>
+      <class name="automation_WEB_Deposit.BO_OfflineDeposit">
+        <methods>
+          <include name="Log_Case_Status"/>
+          <include name="ShutDown"/>
+          <include name="offlineDepositVerification"/>
+        </methods>
+      </class> <!-- automation_WEB_Deposit.BO_OfflineDeposit -->
+      <class name="automation_WEB_Deposit.FE_OfflineDeposit">
+        <methods>
+          <include name="closeAnnouncement"/>
+          <include name="shutDown"/>
+          <include name="setReport"/>
+          <include name="logCaseStatus"/>
+          <include name="toSite"/>
+        </methods>
+      </class> <!-- automation_WEB_Deposit.FE_OfflineDeposit -->
+    </classes>
+  </test> <!-- Offline_Deposit(failed) -->
+</suite> <!-- Failed suite [Suite2] -->

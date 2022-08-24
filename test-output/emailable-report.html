@@ -8,32 +8,49 @@
 <body>
 <table>
 <tr><th>Test</th><th># Passed</th><th># Skipped</th><th># Retried</th><th># Failed</th><th>Time (ms)</th><th>Included Groups</th><th>Excluded Groups</th></tr>
-<tr><th colspan="8">Suite</th></tr>
-<tr><td><a href="#t0">Automation-For-Web-QC Login-Logout</a></td><td class="num">3</td><td class="num attn">2</td><td class="num">0</td><td class="num">0</td><td class="num">13,894</td><td></td><td></td></tr>
-<tr class="stripe"><td><a href="#t1">Automation-For-Web-QC Register</a></td><td class="num">1</td><td class="num attn">1</td><td class="num">0</td><td class="num">0</td><td class="num">24,667</td><td></td><td></td></tr>
-<tr><th>Total</th><th class="num">4</th><th class="num attn">3</th><th class="num">0</th><th class="num">0</th><th class="num">38,561</th><th colspan="2"></th></tr>
+<tr><th colspan="8">Default suite</th></tr>
+<tr><td><a href="#t0">Default test</a></td><td class="num">7</td><td class="num attn">1</td><td class="num">0</td><td class="num">0</td><td class="num">34,319</td><td></td><td></td></tr>
 </table>
-<table id='summary'><thead><tr><th>Class</th><th>Method</th><th>Start</th><th>Time (ms)</th></tr></thead><tbody><tr><th colspan="4">Suite</th></tr></tbody><tbody id="t0"><tr><th colspan="4">Automation-For-Web-QC Login-Logout &#8212; skipped</th></tr><tr class="skippedeven"><td rowspan="2">automations_WEB_Authentication.FE_Login</td><td><a href="#m0">closeAnnouncement</a></td><td rowspan="1">1661268012509</td><td rowspan="1">18</td></tr><tr class="skippedeven"><td><a href="#m1">closeAnnouncementAfterLogin</a></td><td rowspan="1">1661268018489</td><td rowspan="1">7</td></tr><tr><th colspan="4">Automation-For-Web-QC Login-Logout &#8212; passed</th></tr><tr class="passedeven"><td rowspan="2">automations_WEB_Authentication.FE_Login</td><td><a href="#m2">login</a></td><td rowspan="1">1661268012528</td><td rowspan="1">5960</td></tr><tr class="passedeven"><td><a href="#m3">toSite</a></td><td rowspan="1">1661268009524</td><td rowspan="1">2981</td></tr><tr class="passedodd"><td rowspan="1">automations_WEB_Authentication.FE_Logout</td><td><a href="#m4">logout</a></td><td rowspan="1">1661268019168</td><td rowspan="1">3698</td></tr></tbody>
-<tbody id="t1"><tr><th colspan="4">Automation-For-Web-QC Register &#8212; skipped</th></tr><tr class="skippedeven"><td rowspan="1">automations_WEB_Authentication.FE_Register</td><td><a href="#m5">closeAnnouncement</a></td><td rowspan="1">1661268032486</td><td rowspan="1">15052</td></tr><tr><th colspan="4">Automation-For-Web-QC Register &#8212; passed</th></tr><tr class="passedeven"><td rowspan="1">automations_WEB_Authentication.FE_Register</td><td><a href="#m6">register</a></td><td rowspan="1">1661268023416</td><td rowspan="1">9069</td></tr></tbody>
+<table id='summary'><thead><tr><th>Class</th><th>Method</th><th>Start</th><th>Time (ms)</th></tr></thead><tbody><tr><th colspan="4">Default suite</th></tr></tbody><tbody id="t0"><tr><th colspan="4">Default test &#8212; skipped</th></tr><tr class="skippedeven"><td rowspan="1">automation_WEB_Deposit.FE_OfflineDeposit</td><td><a href="#m0">closeAnnouncement</a></td><td rowspan="1">1661334967831</td><td rowspan="1">36</td></tr><tr><th colspan="4">Default test &#8212; passed</th></tr><tr class="passedeven"><td rowspan="7">automation_WEB_Deposit.FE_OfflineDeposit</td><td><a href="#m1">cancelOfflineDepositRequest</a></td><td rowspan="1">1661334984619</td><td rowspan="1">4236</td></tr><tr class="passedeven"><td><a href="#m2">confirmOfflineDepositPaid</a></td><td rowspan="1">1661334983321</td><td rowspan="1">1295</td></tr><tr class="passedeven"><td><a href="#m3">depositPage</a></td><td rowspan="1">1661334977236</td><td rowspan="1">1301</td></tr><tr class="passedeven"><td><a href="#m4">login</a></td><td rowspan="1">1661334967869</td><td rowspan="1">9365</td></tr><tr class="passedeven"><td><a href="#m5">loginBOPage</a></td><td rowspan="1">1661334988858</td><td rowspan="1">4285</td></tr><tr class="passedeven"><td><a href="#m6">offlineDepositMethods</a></td><td rowspan="1">1661334978539</td><td rowspan="1">4778</td></tr><tr class="passedeven"><td><a href="#m7">toSite</a></td><td rowspan="1">1661334962034</td><td rowspan="1">5784</td></tr></tbody>
 </table>
-<h2>Automation-For-Web-QC Login-Logout</h2><h3 id="m0">automations_WEB_Authentication.FE_Login#closeAnnouncement</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">org.testng.SkipException: Announcement Skipped
+<h2>Default test</h2><h3 id="m0">automation_WEB_Deposit.FE_OfflineDeposit#closeAnnouncement</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">org.testng.SkipException: Announcement Skipped
 	at functions_WEB_FE.Announcement_Function.doNotShowAgainTodayRadioButton(Announcement_Function.java:54)
-	at automations_WEB_Authentication.FE_Login.closeAnnouncement(FE_Login.java:64)
+	at automation_WEB_Deposit.FE_OfflineDeposit.closeAnnouncement(FE_OfflineDeposit.java:70)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
+	at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:598)
+	at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:173)
+	at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
+	at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:824)
+	at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:146)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-... Removed 27 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
-<h3 id="m1">automations_WEB_Authentication.FE_Login#closeAnnouncementAfterLogin</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">org.testng.SkipException: Announcement Skipped
-	at functions_WEB_FE.Announcement_Function.doNotShowAgainTodayRadioButton(Announcement_Function.java:54)
-	at automations_WEB_Authentication.FE_Login.closeAnnouncementAfterLogin(FE_Login.java:95)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-... Removed 27 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
-<h3 id="m2">automations_WEB_Authentication.FE_Login#login</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
-<h3 id="m3">automations_WEB_Authentication.FE_Login#toSite</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
-<h3 id="m4">automations_WEB_Authentication.FE_Logout#logout</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
-<h2>Automation-For-Web-QC Register</h2><h3 id="m5">automations_WEB_Authentication.FE_Register#closeAnnouncement</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">org.testng.SkipException: Announcement Skipped
-	at functions_WEB_FE.Announcement_Function.doNotShowAgainTodayRadioButton(Announcement_Function.java:54)
-	at automations_WEB_Authentication.FE_Register.closeAnnouncement(FE_Register.java:76)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-... Removed 27 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
-<h3 id="m6">automations_WEB_Authentication.FE_Register#register</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+	at org.testng.TestRunner.privateRun(TestRunner.java:794)
+	at org.testng.TestRunner.run(TestRunner.java:596)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:377)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:371)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:332)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:276)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1212)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1134)
+	at org.testng.TestNG.runSuites(TestNG.java:1063)
+	at org.testng.TestNG.run(TestNG.java:1031)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m1">automation_WEB_Deposit.FE_OfflineDeposit#cancelOfflineDepositRequest</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m2">automation_WEB_Deposit.FE_OfflineDeposit#confirmOfflineDepositPaid</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m3">automation_WEB_Deposit.FE_OfflineDeposit#depositPage</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m4">automation_WEB_Deposit.FE_OfflineDeposit#login</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m5">automation_WEB_Deposit.FE_OfflineDeposit#loginBOPage</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m6">automation_WEB_Deposit.FE_OfflineDeposit#offlineDepositMethods</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m7">automation_WEB_Deposit.FE_OfflineDeposit#toSite</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
 </body>
 </html>

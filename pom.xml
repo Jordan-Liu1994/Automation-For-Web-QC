@@ -14,7 +14,7 @@
 					<configuration>
 						<suiteXmlFiles>
 							<suiteXmlFile>
-                            ${basedir}\testng.xml
+                            ${basedir}\testng_Authentication.xml
                         </suiteXmlFile>
 						</suiteXmlFiles>
 						<argLine>-Dfile.encoding=UTF-8</argLine>

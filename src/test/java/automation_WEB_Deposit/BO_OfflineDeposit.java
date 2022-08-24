@@ -6,6 +6,7 @@ import javax.security.auth.login.FailedLoginException;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
 
@@ -33,17 +34,20 @@ public class BO_OfflineDeposit extends VariablesStorage {
 	Offline_Deposit_Function function2 = Offline_Deposit_Function.getInstance();
 	Offline_Deposit_Verify_BO_Function function3 = Offline_Deposit_Verify_BO_Function.getInstance();
 
-//	@BeforeSuite
-//	public void startUp() throws InterruptedException, MalformedURLException {
+//	@BeforeClass(groups = "Offline_Deposit")
+//	public void setReport() throws InterruptedException, MalformedURLException {
 //		baseDriver.setDriverProperty(driverType(), driverPath());
-//		baseDriver.startDriver(siteUrlBO());
+//		baseDriver.startDriver();
+//		createReport.generateReport(nameOfReport);
 //	}
 
-	@Test(priority = 10, groups = { "BO_Offline_Deposit" })
+//	= = = = = = = = = = = = = = = = = = = = 
+	
+	@Test(priority = 7, groups = { "BO_Login" })
 	public void loginBOPage() throws InterruptedException, FailedLoginException {
 		createReport.generateReport(nameOfReport);
 		createReport.createTest("toBOPage");
-		baseDriver.getDriver().navigate().to(siteUrlBO());
+		baseDriver.getDriver().get(siteUrlBO());
 		verifySite.verifySite(siteUrlBO());
 		Thread.sleep(500);
 		function.setUserID(userIDBO());
@@ -51,12 +55,11 @@ public class BO_OfflineDeposit extends VariablesStorage {
 		function.setCaptcha(otpBO());
 		function.selectLoginButton();
 		function.verifyLogIn(userIDBO());
-		takeScreenShot.getTakeScreenShotPass("loginBOPage");
-
-		createReport.getExtentTest().addScreenCaptureFromPath(takeScreenShot.screenShotPathExtent() + "loginBOPage" + "-passed.png", "loginBOPage");
 	}
 
-	@Test(priority = 11, groups = { "BO_Offline_Deposit" })
+//	= = = = = = = = = = = = = = = = = = = = 
+	
+	@Test(priority = 8, groups = { "BO_Offline_Deposit" })
 	public void offlineDepositVerification() throws InterruptedException, FailedLoginException {
 		createReport.createTest("offlineDepositVerification");
 		function3.selectOfflineDepositVerification();
@@ -65,6 +68,8 @@ public class BO_OfflineDeposit extends VariablesStorage {
 		Thread.sleep(1000);
 		function3.filterUserAccount(userID());
 		Thread.sleep(500);
+		function2.compareActualReceivedAmount();
+		function2.compareDepositID();
 		function3.verifyDepositID();
 		Thread.sleep(500);
 //		function2.setDepositoryName(depositoryName());

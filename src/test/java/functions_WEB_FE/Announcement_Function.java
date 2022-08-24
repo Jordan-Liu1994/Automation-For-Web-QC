@@ -7,6 +7,8 @@ import javax.security.auth.login.FailedLoginException;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.SkipException;
 
 import utilities.BaseDriver;
@@ -20,7 +22,7 @@ public class Announcement_Function {
 		return function;
 	}
 
-//	= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
+//	= = = = = = = = = = = = = = = = = = = = 
 
 	BaseDriver baseDriver = BaseDriver.getInstance();
 	CreateReport createReport = CreateReport.getInstance();
@@ -30,29 +32,26 @@ public class Announcement_Function {
 	public void doNotShowAgainTodayRadioButton() throws FailedLoginException, InterruptedException {
 		String skip = "Announcement Skipped";
 
-		while (number <= 5) {
-			Boolean setTrue = true;
-			try {
+		try {
+			for (int number = 1; number <= 5; number++) {
+				WebDriverWait wait = new WebDriverWait(baseDriver.getDriver(), 10);
 				WebElement doNotShowAgainTodayRadioButton = baseDriver.getDriver().findElement(By.xpath("(//span[contains(text(),'今日不再显示')])[" + number + "]"));
+				wait.until(ExpectedConditions.visibilityOf(doNotShowAgainTodayRadioButton));
 				if (doNotShowAgainTodayRadioButton.isDisplayed()) {
 					String doNotShowAgainTodayRadioButton_Text = doNotShowAgainTodayRadioButton.getText();
 					doNotShowAgainTodayRadioButton.click();
 					createReport.getExtentTest().info("Clicked " + doNotShowAgainTodayRadioButton_Text);
-
-					WebElement closeButton = baseDriver.getDriver().findElement(By.xpath("(//button[@aria-label='Close'])[" + number + "]"));
-					if (closeButton.isDisplayed()) {
-						closeButton.click();
-						Thread.sleep(1000);
-						number++;
-					} else {
-						setTrue = false;
-					}
 				}
 
-			} catch (NoSuchElementException e) {
-				createReport.getExtentTest().info(skip);
-				throw new SkipException(skip);
+				WebElement closeButton = baseDriver.getDriver().findElement(By.xpath("(//button[@aria-label='Close'])[" + number + "]"));
+				if (closeButton.isDisplayed()) {
+					closeButton.click();
+					Thread.sleep(1000);
+				}
 			}
+		} catch (NoSuchElementException e) {
+			createReport.getExtentTest().info(skip);
+			throw new SkipException(skip);
 		}
 	}
 }

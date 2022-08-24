@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="SuiteMaster">
+	<!-- <groups>
+		<run>
+			<exclude name="Authentication" />
+		</run>
+	</groups> -->
+	<suite-files>
+		<suite-file path="testng_Authentication.xml"></suite-file>
+	</suite-files>
+	<suite-files>
+		<suite-file path="testng_OfflineDeposit.xml"></suite-file>
+	</suite-files>
+</suite> <!-- Suite -->

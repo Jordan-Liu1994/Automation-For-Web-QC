@@ -52,4 +52,34 @@ public class Logout_Function {
 			throw new FailedLoginException(fail2);
 		}
 	}
+	
+//	= = = = = = = = = = = = = = = = = = = = 
+	
+	public void selectLogoutButtonAfterRegister() throws FailedLoginException, InterruptedException {
+		WebElement walletIcon = baseDriver.getDriver().findElement(By.xpath("(//img)[4]"));
+		String fail = "Hover over wallet icon failed";
+		String fail2 = "Logout failed";
+
+		if (walletIcon.isDisplayed()) {
+			Actions builder = new Actions(baseDriver.getDriver());
+			Action act = builder.moveToElement(walletIcon).build();
+			act.perform();
+			createReport.getExtentTest().info("Hovered over wallet icon");
+		} else {
+			createReport.getExtentTest().fail(fail);
+			throw new FailedLoginException(fail);
+		}
+
+		Thread.sleep(1000);
+		WebElement logoutButton = baseDriver.getDriver().findElement(By.xpath("//button[contains(text(),'登出')]"));
+		String logoutButton_Text = logoutButton.getText();
+
+		if (logoutButton.isEnabled()) {
+			logoutButton.click();
+			createReport.getExtentTest().info("Clicked " + logoutButton_Text);
+		} else {
+			createReport.getExtentTest().fail(fail2);
+			throw new FailedLoginException(fail2);
+		}
+	}
 }

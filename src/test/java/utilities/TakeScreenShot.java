@@ -26,7 +26,6 @@ public class TakeScreenShot {
 	public void getTakeScreenShotPass(String fileName) {
 		File screenShot = ((TakesScreenshot) baseDriver.getDriver()).getScreenshotAs(OutputType.FILE);
 		try {
-//			FileUtils.copyFile(screenShot, new File(screenShotPath + fileName + " " + timestamp() + "-passed.png"));
 			FileUtils.copyFile(screenShot, new File(screenShotPath + fileName + "-passed.png"));
 		} catch (IOException e) {
 			e.printStackTrace();

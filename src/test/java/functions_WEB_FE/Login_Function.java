@@ -25,7 +25,9 @@ public class Login_Function {
 	CreateReport createReport = CreateReport.getInstance();
 
 	public void selectLoginOption() throws FailedLoginException {
+		WebDriverWait wait = new WebDriverWait(baseDriver.getDriver(), 10);
 		WebElement selectLoginOption = baseDriver.getDriver().findElement(By.id("header_login"));
+		wait.until(ExpectedConditions.visibilityOf(selectLoginOption));
 		String selectLoginOption_Text = selectLoginOption.getText();
 		String fail = "Login option failed";
 
@@ -54,7 +56,7 @@ public class Login_Function {
 		}
 	}
 
-//	= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
+//	= = = = = = = = = = = = = = = = = = = = 
 
 	public void setPassword(String password) throws FailedLoginException {
 		WebElement setPassword = baseDriver.getDriver().findElement(By.id("password"));
@@ -70,7 +72,7 @@ public class Login_Function {
 		}
 	}
 
-//	= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
+//	= = = = = = = = = = = = = = = = = = = = 
 
 	private String eyeIconStatus;
 
@@ -156,7 +158,7 @@ public class Login_Function {
 //	= = = = = = = = = = = = = = = = = = = = 
 
 	public void verifyLogIn(String userID) throws FailedLoginException, InterruptedException {
-		WebDriverWait wait = new WebDriverWait(baseDriver.getDriver(),10);
+		WebDriverWait wait = new WebDriverWait(baseDriver.getDriver(), 10);
 		WebElement userIDName = baseDriver.getDriver().findElement(By.xpath("(//a[contains(text(),'" + userID + "')])[1]"));
 		wait.until(ExpectedConditions.visibilityOf(userIDName));
 		String fail = "Login to wrong account user failed";

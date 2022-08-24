@@ -11,6 +11,9 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.SkipException;
 
 import utilities.BaseDriver;
 import utilities.CreateReport;
@@ -22,6 +25,8 @@ public class Offline_Deposit_Function {
 	public static Offline_Deposit_Function getInstance() {
 		return function;
 	}
+
+//	= = = = = = = = = = = = = = = = = = = = 
 
 	BaseDriver baseDriver = BaseDriver.getInstance();
 	CreateReport createReport = CreateReport.getInstance();
@@ -39,6 +44,8 @@ public class Offline_Deposit_Function {
 		}
 	}
 
+//	= = = = = = = = = = = = = = = = = = = = 
+
 	public void selectDepositOption() throws FailedLoginException, InterruptedException {
 		WebElement depositOption = baseDriver.getDriver().findElement(By.xpath("//div[@class='header_bottom_after_popup_wallet_action']//div[1]//div[3]"));
 		String depositOption_Text = depositOption.getText();
@@ -54,6 +61,8 @@ public class Offline_Deposit_Function {
 			throw new FailedLoginException(fail);
 		}
 	}
+
+//	= = = = = = = = = = = = = = = = = = = = 
 
 	public void depositOptionFromToolBar() throws FailedLoginException, InterruptedException {
 		baseDriver.getDriver().manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
@@ -76,6 +85,8 @@ public class Offline_Deposit_Function {
 		}
 	}
 
+//	= = = = = = = = = = = = = = = = = = = = 
+
 	public void selectOfflineDepositOption(String offlineDepositName) throws FailedLoginException, InterruptedException {
 		baseDriver.getDriver().manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
 		WebElement offlineDepositOption = baseDriver.getDriver().findElement(By.xpath("//div[@class='title'][contains(text(),'" + offlineDepositName + "')]"));
@@ -90,6 +101,8 @@ public class Offline_Deposit_Function {
 			throw new FailedLoginException(fail);
 		}
 	}
+
+//	= = = = = = = = = = = = = = = = = = = = 
 
 	public void selectAnyDepositOption(String depositOption) throws FailedLoginException, InterruptedException {
 		baseDriver.getDriver().manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
@@ -113,6 +126,8 @@ public class Offline_Deposit_Function {
 		}
 	}
 
+//	= = = = = = = = = = = = = = = = = = = = 
+
 	public void setDepositAmount(int depositAmount) throws FailedLoginException, InterruptedException {
 		WebElement setDepositAmount = baseDriver.getDriver().findElement(By.id("deposit_amount"));
 		String setDepositAmount_Text = setDepositAmount.getAttribute("placeholder");
@@ -126,6 +141,8 @@ public class Offline_Deposit_Function {
 			createReport.getExtentTest().fail(fail);
 		}
 	}
+
+//	= = = = = = = = = = = = = = = = = = = = 
 
 	public void setDepositoryName(String depositoryName) throws FailedLoginException, InterruptedException {
 		WebElement setDepositoryName = baseDriver.getDriver().findElement(By.id("real_name"));
@@ -141,6 +158,8 @@ public class Offline_Deposit_Function {
 		}
 	}
 
+//	= = = = = = = = = = = = = = = = = = = = 
+
 	public void checkRememberDepositoryName() throws FailedLoginException, InterruptedException {
 		WebElement rememberDepositoryName = baseDriver.getDriver().findElement(By.xpath("//div[contains(text(),'记住我的汇款人姓名')]"));
 		String rememberDepositoryName_Text = rememberDepositoryName.getText();
@@ -153,6 +172,29 @@ public class Offline_Deposit_Function {
 			createReport.getExtentTest().fail(fail);
 		}
 	}
+
+//	= = = = = = = = = = = = = = = = = = = = 
+
+	public void joinPromoOrNotRadioButton() throws FailedLoginException, InterruptedException {
+		WebElement joinPromoOrNotRadioButton = baseDriver.getDriver().findElement(By.xpath("//div[@id='radio_txt']"));
+		String joinPromoOrNotRadioButton_Text = joinPromoOrNotRadioButton.getText();
+		String fail = "Select join promo or not radio button failed";
+		String skip = "Select join promo or not radio button TURNED OFF IN BO";
+
+		try {
+			if (joinPromoOrNotRadioButton.isDisplayed()) {
+				joinPromoOrNotRadioButton.click();
+				createReport.getExtentTest().info("Clicked & uncheck " + joinPromoOrNotRadioButton_Text);
+			} else {
+				createReport.getExtentTest().fail(fail);
+			}
+		} catch (NoSuchElementException e) {
+			createReport.getExtentTest().info(skip);
+			throw new SkipException(skip);
+		}
+	}
+
+//	= = = = = = = = = = = = = = = = = = = = 
 
 	public void checkActualReceivedAmount(int depositAmountToCheck) throws FailedLoginException, InterruptedException {
 		WebElement actualReceivedAmount = baseDriver.getDriver().findElement(By.id("actual_amount"));
@@ -172,11 +214,19 @@ public class Offline_Deposit_Function {
 					createReport.getExtentTest().info("Amount is between " + finalDeductMax + " - " + finalDeductMin);
 				} else {
 					createReport.getExtentTest().fail(fail);
-					throw new FailedLoginException(fail);
 				}
 			}
 		}
 	}
+	
+	public String compareActualReceivedAmount() {
+		WebElement actualReceivedAmount = baseDriver.getDriver().findElement(By.id("actual_amount"));
+		String actualReceivedAmount_Text = actualReceivedAmount.getText();
+		System.out.println("Amount received = " + actualReceivedAmount_Text);
+		return actualReceivedAmount_Text;
+	}
+
+//	= = = = = = = = = = = = = = = = = = = = 
 
 	public void submitOfflineDepositRequest() throws FailedLoginException, InterruptedException {
 		WebElement submitOfflineDepositRequest = baseDriver.getDriver().findElement(By.id("payment"));
@@ -191,11 +241,17 @@ public class Offline_Deposit_Function {
 			throw new FailedLoginException(fail);
 		}
 	}
-	
-	public WebElement dataToCompare() {
-		WebElement dataToCompare = baseDriver.getDriver().findElement(By.xpath("(//div[@class='details'])[5]"));
-		return dataToCompare;
+
+//	= = = = = = = = = = = = = = = = = = = = 
+
+	public String compareDepositID() {
+		WebElement dataToCompare = baseDriver.getDriver().findElement(By.xpath("//div[@class='deposit_finish_details hide_receipt']//div[@class='details']"));
+		String dataToCompare_Text = dataToCompare.getText();
+		System.out.println("Deposit ID = " + dataToCompare_Text);
+		return dataToCompare_Text;
 	}
+
+//	= = = = = = = = = = = = = = = = = = = = 
 
 	public void confirmOfflineDepositPaid() throws FailedLoginException, InterruptedException {
 		baseDriver.getDriver().manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
@@ -211,6 +267,8 @@ public class Offline_Deposit_Function {
 			throw new FailedLoginException(fail);
 		}
 	}
+
+//	= = = = = = = = = = = = = = = = = = = = 
 
 	public void cancelOfflineDepositRequest() throws FailedLoginException, InterruptedException {
 		Thread.sleep(1000);

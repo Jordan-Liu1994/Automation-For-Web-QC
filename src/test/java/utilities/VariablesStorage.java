@@ -41,12 +41,12 @@ public class VariablesStorage {
 		return userName;
 	}
 
-	static String userID = "qctester400870";
-	static String password = "test123";
-	static String captcha = "123456";
-	static String referral = "ref123";
-	static String year = "1994";
-	static String day = "2";
+	private String userID = "qctester400870";
+	private String password = "test123";
+	private String captcha = "123456";
+	private String referral = "ref123";
+	private String year = "1994";
+	private String day = "2";
 
 	public String userID() {
 		return userID;
@@ -71,7 +71,7 @@ public class VariablesStorage {
 	public String day() {
 		return day;
 	}
-
+	
 	int randomNumbers = generateRandomNumbers.generateRandomNumbers();
 	String userIDRegister = "qctester" + randomNumbers;
 

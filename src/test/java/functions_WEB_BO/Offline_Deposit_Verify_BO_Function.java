@@ -41,6 +41,8 @@ public class Offline_Deposit_Verify_BO_Function {
 		}
 	}
 
+//	= = = = = = = = = = = = = = = = = = = = 
+
 	public void offlineDepositVerificationSubModule() throws FailedLoginException {
 		WebElement offlineDepositVerificationSubModule = baseDriver.getDriver().findElement(By.xpath("//a[contains(text(),'公司入款审核')]"));
 		String offlineDepositVerificationSubModule_Text = offlineDepositVerificationSubModule.getText();
@@ -53,6 +55,8 @@ public class Offline_Deposit_Verify_BO_Function {
 			createReport.getExtentTest().fail(fail);
 		}
 	}
+
+//	= = = = = = = = = = = = = = = = = = = = 
 
 	public void filterUserAccount(String userID) throws FailedLoginException, InterruptedException {
 		WebElement filterUserAccount = baseDriver.getDriver().findElement(By.xpath("//input[@placeholder='帐号']"));
@@ -81,6 +85,8 @@ public class Offline_Deposit_Verify_BO_Function {
 		}
 	}
 
+//	= = = = = = = = = = = = = = = = = = = = 
+
 	public void verifyDepositID() throws FailedLoginException {
 		WebElement verifyDepositID_Dropdown = baseDriver.getDriver().findElement(By.xpath("(//i[@class='fa fa-chevron-down'])[1]"));
 		String fail = "Verify deposit ID failed";
@@ -91,14 +97,16 @@ public class Offline_Deposit_Verify_BO_Function {
 		} else {
 			createReport.getExtentTest().fail(fail);
 		}
-		System.out.println(function2.dataToCompare().getText());
-		WebElement verifyDepositID = baseDriver.getDriver().findElement(By.xpath("//td[normalize-space()='"+ function2.dataToCompare().getText() +"']"));
+		
+		WebElement verifyDepositID = baseDriver.getDriver().findElement(By.xpath("//td[normalize-space()='"+ function2.compareDepositID() +"']"));
 		if (verifyDepositID.isDisplayed()) {
-			createReport.getExtentTest().info("Deposit ID = " + function2.dataToCompare());
+			createReport.getExtentTest().info("Deposit ID = " + function2.compareDepositID());
 		} else {
 			createReport.getExtentTest().fail(fail);
 		}
 	}
+
+//	= = = = = = = = = = = = = = = = = = = = 
 
 	public void verifyLogIn(String userID) throws FailedLoginException, InterruptedException {
 		Thread.sleep(1500);

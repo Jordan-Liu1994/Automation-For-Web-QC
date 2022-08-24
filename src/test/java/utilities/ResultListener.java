@@ -27,7 +27,7 @@ public class ResultListener {
 		} else if (result.getStatus() == ITestResult.FAILURE) {
 			takeScreenShot.getTakeScreenShotFail(resultOfCaseStatus);
 			createReport.getExtentTest().fail("Step = " + resultOfCaseStatus + " is failed!");
-			createReport.getExtentTest().addScreenCaptureFromPath(takeScreenShot.screenShotPathExtent() + resultOfCaseStatus + " " + takeScreenShot.timestamp() + "-failed.png", resultOfCaseStatus);
+			createReport.getExtentTest().addScreenCaptureFromPath(takeScreenShot.screenShotPathExtent() + resultOfCaseStatus + "-failed.png", resultOfCaseStatus);
 		}
 	}
 

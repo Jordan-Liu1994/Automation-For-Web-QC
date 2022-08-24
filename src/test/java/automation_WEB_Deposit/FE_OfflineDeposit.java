@@ -1,16 +1,25 @@
 package automation_WEB_Deposit;
 
+import java.net.MalformedURLException;
+
 import javax.security.auth.login.FailedLoginException;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.WebDriver.Window;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
-import org.testng.annotations.Ignore;
+import org.testng.annotations.AfterSuite;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
+import functions_WEB_BO.Login_BO_Function;
+import functions_WEB_BO.Offline_Deposit_Verify_BO_Function;
+import functions_WEB_FE.Announcement_Function;
 import functions_WEB_FE.Login_Function;
+import functions_WEB_FE.Logout_Function;
 import functions_WEB_FE.Offline_Deposit_Function;
 import functions_WEB_FE.Verify_Site;
 import utilities.BaseDriver;
@@ -21,77 +30,165 @@ import utilities.VariablesStorage;
 
 public class FE_OfflineDeposit extends VariablesStorage {
 
-	static String nameOfReport = "FE_Offline_Deposit_Site";
-	
+	private static String nameOfReport = "FE_OfflineDeposit";
+
 	BaseDriver baseDriver = BaseDriver.getInstance();
 	CreateReport createReport = CreateReport.getInstance();
-	ResultListener result_Listener = ResultListener.getInstance();
-	Verify_Site verifySite = Verify_Site.getInstance();
+	ResultListener resultListener = ResultListener.getInstance();
 	TakeScreenShot takeScreenShot = TakeScreenShot.getInstance();
-	
-	Login_Function function = Login_Function.getInstance();
-	Offline_Deposit_Function function2 = Offline_Deposit_Function.getInstance();
-	
-	@Test(priority = 6, groups = { "Offline_Deposit" })
-	public void depositPage() throws InterruptedException, FailedLoginException {
-		createReport.generateReport(nameOfReport);
-		createReport.createTest("toDepositPage");
-		Thread.sleep(500);
-		function2.hoverUserID(userID());
-		function2.selectDepositOption();
-		function2.depositOptionFromToolBar();
-		Thread.sleep(500);
-		takeScreenShot.getTakeScreenShotPass("toDepositPage");
+	Verify_Site verifySite = Verify_Site.getInstance();
+	Announcement_Function functionAnnouncement = Announcement_Function.getInstance();
+	Login_Function functionLoginFE = Login_Function.getInstance();
+	Offline_Deposit_Function functionOfflineDeposit = Offline_Deposit_Function.getInstance();
+	Login_BO_Function functionBOLogin = Login_BO_Function.getInstance();
+	Offline_Deposit_Verify_BO_Function functionOfflineDepositVerify = Offline_Deposit_Verify_BO_Function.getInstance();
 
-		createReport.getExtentTest().addScreenCaptureFromPath(takeScreenShot.screenShotPathExtent() + "toDepositPage" + "-passed.png", "toDepositPage");
+//	= = = = = = = = = = = = = = = = = = = = 
+
+	@BeforeClass(groups = "Offline_Deposit")
+	public void setReport() throws InterruptedException, MalformedURLException {
+		baseDriver.setDriverProperty(driverType(), driverPath());
+		baseDriver.startDriver();
+		createReport.generateReport(nameOfReport);
 	}
-	
-	@Test(priority = 7, groups = { "Offline_Deposit" })
+
+//	= = = = = = = = = = = = = = = = = = = = 
+
+	@Test(priority = 0)
+	public void toSite() throws InterruptedException, FailedLoginException {
+		createReport.createTest("openBrowserToSite");
+
+		baseDriver.getURL(siteUrlFE());
+		System.out.println(baseDriver.getDriver().getWindowHandle());
+		Thread.sleep(3000);
+	}
+
+//	= = = = = = = = = = = = = = = = = = = = 
+
+	@Test(dependsOnMethods = "toSite", priority = 1)
+	public void closeAnnouncement() throws InterruptedException, FailedLoginException {
+		createReport.createTest("closeAnnouncement");
+
+		functionAnnouncement.doNotShowAgainTodayRadioButton();
+	}
+
+//	= = = = = = = = = = = = = = = = = = = = 
+
+	@Test(dependsOnMethods = "toSite", priority = 2)
+	public void login() throws InterruptedException, FailedLoginException {
+		createReport.createTest("login");
+
+		Thread.sleep(500);
+		functionLoginFE.selectLoginOption();
+		Thread.sleep(1000);
+		functionLoginFE.setUserID(userID());
+		functionLoginFE.setPassword(password());
+		Thread.sleep(500);
+		functionLoginFE.setCaptcha(captcha());
+		Thread.sleep(500);
+		functionLoginFE.selectLoginButton();
+		Thread.sleep(1000);
+		functionLoginFE.verifyLogIn(userID());
+		Thread.sleep(1000);
+	}
+
+//	= = = = = = = = = = = = = = = = = = = = 
+
+	@Test(dependsOnMethods = "login", groups = "Offline_Deposit", priority = 3)
+	public void depositPage() throws InterruptedException, FailedLoginException {
+		createReport.createTest("toDepositPage");
+
+		Thread.sleep(500);
+//		function2.hoverUserID(userID());
+//		function2.selectDepositOption();
+		functionOfflineDeposit.depositOptionFromToolBar();
+		Thread.sleep(500);
+	}
+
+//	= = = = = = = = = = = = = = = = = = = = 
+
+	@Test(dependsOnMethods = "depositPage", groups = "Offline_Deposit", priority = 4)
 	public void offlineDepositMethods() throws InterruptedException, FailedLoginException {
 		createReport.createTest("offlineDepositMethods");
-		function2.selectOfflineDepositOption(offlineDepositName());
-		Thread.sleep(1000);
-		function2.selectAnyDepositOption(depositOption());
-		function2.setDepositAmount(depositAmount());
-		function2.setDepositoryName(depositoryName());
-		function2.checkRememberDepositoryName();
-		function2.checkActualReceivedAmount(depositAmount());
-		function2.submitOfflineDepositRequest();
-		function2.dataToCompare();
-		takeScreenShot.getTakeScreenShotPass("offlineDepositMethods");
 
-		createReport.getExtentTest().addScreenCaptureFromPath(takeScreenShot.screenShotPathExtent() + "offlineDepositMethods" + "-passed.png", "offlineDepositMethods");
+		functionOfflineDeposit.selectOfflineDepositOption(offlineDepositName());
+		Thread.sleep(1000);
+		functionOfflineDeposit.selectAnyDepositOption(depositOption());
+		functionOfflineDeposit.setDepositAmount(depositAmount());
+		functionOfflineDeposit.setDepositoryName(depositoryName());
+		functionOfflineDeposit.checkRememberDepositoryName();
+		Thread.sleep(1000);
+		functionOfflineDeposit.joinPromoOrNotRadioButton();
+		functionOfflineDeposit.checkActualReceivedAmount(depositAmount());
+		functionOfflineDeposit.compareActualReceivedAmount();
+		functionOfflineDeposit.submitOfflineDepositRequest();
+		functionOfflineDeposit.compareDepositID();
 	}
-	
-	@Test(priority = 8, groups = { "Offline_Deposit" })
+
+//	= = = = = = = = = = = = = = = = = = = = 
+
+	@Test(dependsOnMethods = "offlineDepositMethods", groups = "Offline_Deposit", priority = 5)
 	public void confirmOfflineDepositPaid() throws InterruptedException, FailedLoginException {
 		createReport.createTest("confirmOfflineDepositPaid");
-		function2.confirmOfflineDepositPaid();
-		Thread.sleep(1000);
-		takeScreenShot.getTakeScreenShotPass("confirmOfflineDepositPaid");
 
+		functionOfflineDeposit.confirmOfflineDepositPaid();
+		Thread.sleep(1000);
+
+		takeScreenShot.getTakeScreenShotPass("confirmOfflineDepositPaid");
 		createReport.getExtentTest().addScreenCaptureFromPath(takeScreenShot.screenShotPathExtent() + "confirmOfflineDepositPaid" + "-passed.png", "confirmOfflineDepositPaid");
 	}
 
-	@Ignore
-	@Test(priority = 9, groups = { "Offline_Deposit_Cancel" })
+//	= = = = = = = = = = = = = = = = = = = = 
+
+	@Test(dependsOnMethods = "confirmOfflineDepositPaid", groups = { "Offline_Deposit_Cancel" }, priority = 6)
 	public void cancelOfflineDepositRequest() throws InterruptedException, FailedLoginException {
 		createReport.createTest("cancelOfflineDepositRequest");
-		function2.cancelOfflineDepositRequest();
-		Thread.sleep(1000);
-		takeScreenShot.getTakeScreenShotPass("cancelOfflineDepositRequest");
 
-		createReport.getExtentTest().addScreenCaptureFromPath(takeScreenShot.screenShotPathExtent() + "cancelOfflineDepositRequest" + "-passed.png", "cancelOfflineDepositRequest");
+		functionOfflineDeposit.cancelOfflineDepositRequest();
+		Thread.sleep(1000);
 	}
-	
+
+//	= = = = = = = = = = = = = = = = = = = = 
+
+	@Test(dependsOnMethods = "confirmOfflineDepositPaid", priority = 7, groups = { "BO_Login" })
+	public void loginBOPage() throws InterruptedException, FailedLoginException {
+		createReport.createTest("loginBOPage");
+		baseDriver.getDriver().get(siteUrlBO());
+		verifySite.verifySite(siteUrlBO());
+		Thread.sleep(500);
+		functionBOLogin.setUserID(userIDBO());
+		functionBOLogin.setPassword(passwordBO());
+		functionBOLogin.setCaptcha(otpBO());
+		functionBOLogin.selectLoginButton();
+		functionBOLogin.verifyLogIn(userIDBO());
+	}
+
+//	= = = = = = = = = = = = = = = = = = = = 
+
+	@Test(dependsOnMethods = "loginBOPage", priority = 8, groups = { "BO_Offline_Deposit" })
+	public void offlineDepositVerification() throws InterruptedException, FailedLoginException {
+		createReport.createTest("offlineDepositVerification");
+		functionOfflineDepositVerify.selectOfflineDepositVerification();
+		Thread.sleep(500);
+		functionOfflineDepositVerify.offlineDepositVerificationSubModule();
+		Thread.sleep(1000);
+		functionOfflineDepositVerify.filterUserAccount(userID());
+		Thread.sleep(500);
+		functionOfflineDeposit.compareActualReceivedAmount();
+		functionOfflineDeposit.submitOfflineDepositRequest();
+	}
+
+//	= = = = = = = = = = = = = = = = = = = = 
+
 	@AfterMethod
-	public void Log_Case_Status(ITestResult result) {
-		result_Listener.caseLogging(result);
+	public void logCaseStatus(ITestResult result) {
+		resultListener.caseLogging(result);
 	}
 
 	@AfterClass
-	public void ShutDown() throws InterruptedException {
+	public void shutDown() throws InterruptedException {
 		createReport.flushTest();
-		Thread.sleep(2000);
+		Thread.sleep(500);
+		baseDriver.stopDriver();
 	}
 }
