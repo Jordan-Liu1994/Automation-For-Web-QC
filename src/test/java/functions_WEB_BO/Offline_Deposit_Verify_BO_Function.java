@@ -9,6 +9,8 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import functions_WEB_FE.Offline_Deposit_Function;
 import utilities.BaseDriver;
@@ -24,10 +26,12 @@ public class Offline_Deposit_Verify_BO_Function {
 
 	BaseDriver baseDriver = BaseDriver.getInstance();
 	CreateReport createReport = CreateReport.getInstance();
-	Offline_Deposit_Function function2 = Offline_Deposit_Function.getInstance();
+	Offline_Deposit_Function offlineDepositFunction = Offline_Deposit_Function.getInstance();
 
 	public void selectOfflineDepositVerification() throws FailedLoginException, InterruptedException {
-		WebElement hoverFinanceManagementModule = baseDriver.getDriver().findElement(By.xpath("//body/div/div/div/nav/div/div[1]/ul[1]/li[4]/a[1]"));
+		WebDriverWait wait = new WebDriverWait(baseDriver.getDriver(), 10);
+		WebElement hoverFinanceManagementModule = baseDriver.getDriver().findElement(By.xpath("(//a[@class='new_tab'])[28]"));
+		wait.until(ExpectedConditions.visibilityOf(hoverFinanceManagementModule));
 		String hoverFinanceManagementModule_Text = hoverFinanceManagementModule.getText();
 		String fail = "Select offline deposit verification failed";
 
@@ -88,7 +92,7 @@ public class Offline_Deposit_Verify_BO_Function {
 //	= = = = = = = = = = = = = = = = = = = = 
 
 	public void verifyDepositID() throws FailedLoginException {
-		WebElement verifyDepositID_Dropdown = baseDriver.getDriver().findElement(By.xpath("(//i[@class='fa fa-chevron-down'])[1]"));
+		WebElement verifyDepositID_Dropdown = baseDriver.getDriver().findElement(By.xpath("//tbody/tr[1]/td[14]/i[1]"));
 		String fail = "Verify deposit ID failed";
 
 		if (verifyDepositID_Dropdown.isDisplayed()) {
@@ -97,12 +101,54 @@ public class Offline_Deposit_Verify_BO_Function {
 		} else {
 			createReport.getExtentTest().fail(fail);
 		}
-		
-		WebElement verifyDepositID = baseDriver.getDriver().findElement(By.xpath("//td[normalize-space()='"+ function2.compareDepositID() +"']"));
+
+		WebElement verifyDepositID = baseDriver.getDriver().findElement(By.xpath("//td[normalize-space()='" + offlineDepositFunction.storedDepositID() + "']"));
 		if (verifyDepositID.isDisplayed()) {
-			createReport.getExtentTest().info("Deposit ID = " + function2.compareDepositID());
+			createReport.getExtentTest().info("Deposit ID = " + offlineDepositFunction.storedDepositID());
 		} else {
 			createReport.getExtentTest().fail(fail);
+		}
+	}
+
+//	= = = = = = = = = = = = = = = = = = = = 
+
+	public void rejectOfflineDepositAfterVerified() throws FailedLoginException {
+		WebElement rejectOfflineDepositAfterVerified_Lock = baseDriver.getDriver().findElement(By.xpath("//button[@title='解锁']"));
+		String fail = "Reject offline deposit after verified failed";
+
+		if (rejectOfflineDepositAfterVerified_Lock.isEnabled()) {
+			rejectOfflineDepositAfterVerified_Lock.click();
+			createReport.getExtentTest().info("Clicked unlocked offline deposit");
+		} else {
+			createReport.getExtentTest().fail(fail);
+		}
+
+		WebElement rejectOfflineDepositAfterVerified_Reject = baseDriver.getDriver().findElement(By.xpath("//button[@title='拒绝']"));
+		if (rejectOfflineDepositAfterVerified_Reject.isEnabled()) {
+			rejectOfflineDepositAfterVerified_Reject.click();
+			createReport.getExtentTest().info("Clicked reject button");
+		} else {
+			createReport.getExtentTest().fail(fail);
+		}
+
+		WebDriverWait wait = new WebDriverWait(baseDriver.getDriver(), 10);
+		WebElement rejectOfflineDepositAfterVerified_Confirm = baseDriver.getDriver().findElement(By.xpath("//button[contains(text(),'是')]"));
+		wait.until(ExpectedConditions.visibilityOf(rejectOfflineDepositAfterVerified_Confirm));
+		if (rejectOfflineDepositAfterVerified_Confirm.isEnabled()) {
+			rejectOfflineDepositAfterVerified_Confirm.click();
+			createReport.getExtentTest().info("Clicked confirm reject button");
+		} else {
+			createReport.getExtentTest().fail(fail);
+		}
+
+		WebElement confirmMessage = baseDriver.getDriver().findElement(By.id("alert_title"));
+		wait.until(ExpectedConditions.visibilityOf(confirmMessage));
+
+		if (confirmMessage.isDisplayed()) {
+			createReport.getExtentTest().info("Offline deposit confirmed to be rejected");
+		} else {
+			createReport.getExtentTest().fail(fail);
+			throw new FailedLoginException(fail);
 		}
 	}
 

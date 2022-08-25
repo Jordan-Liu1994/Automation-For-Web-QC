@@ -1,43 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="8" passed="7" failed="0" skipped="1">
+<testng-results ignored="0" total="5" passed="4" failed="0" skipped="1">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2022-08-24T17:55:59 SGT" name="Default suite" finished-at="2022-08-24T17:56:34 SGT" duration-ms="34319">
+  <suite started-at="2022-08-25T18:09:27 SGT" name="Default suite" finished-at="2022-08-25T18:10:04 SGT" duration-ms="37170">
     <groups>
-      <group name="Offline_Deposit_Cancel">
-        <method signature="FE_OfflineDeposit.cancelOfflineDepositRequest()[pri:6, instance:automation_WEB_Deposit.FE_OfflineDeposit@1095f122]" name="cancelOfflineDepositRequest" class="automation_WEB_Deposit.FE_OfflineDeposit"/>
-      </group> <!-- Offline_Deposit_Cancel -->
-      <group name="Offline_Deposit">
-        <method signature="FE_OfflineDeposit.depositPage()[pri:3, instance:automation_WEB_Deposit.FE_OfflineDeposit@1095f122]" name="depositPage" class="automation_WEB_Deposit.FE_OfflineDeposit"/>
-        <method signature="FE_OfflineDeposit.offlineDepositMethods()[pri:4, instance:automation_WEB_Deposit.FE_OfflineDeposit@1095f122]" name="offlineDepositMethods" class="automation_WEB_Deposit.FE_OfflineDeposit"/>
-        <method signature="FE_OfflineDeposit.confirmOfflineDepositPaid()[pri:5, instance:automation_WEB_Deposit.FE_OfflineDeposit@1095f122]" name="confirmOfflineDepositPaid" class="automation_WEB_Deposit.FE_OfflineDeposit"/>
-      </group> <!-- Offline_Deposit -->
-      <group name="BO_Login">
-        <method signature="FE_OfflineDeposit.loginBOPage()[pri:7, instance:automation_WEB_Deposit.FE_OfflineDeposit@1095f122]" name="loginBOPage" class="automation_WEB_Deposit.FE_OfflineDeposit"/>
-      </group> <!-- BO_Login -->
+      <group name="Withdraw">
+        <method signature="FE_Withdraw.withdrawPage()[pri:3, instance:automation_WEB_Withdraw.FE_Withdraw@58c540cf]" name="withdrawPage" class="automation_WEB_Withdraw.FE_Withdraw"/>
+        <method signature="FE_Withdraw.withdrawMethods()[pri:4, instance:automation_WEB_Withdraw.FE_Withdraw@58c540cf]" name="withdrawMethods" class="automation_WEB_Withdraw.FE_Withdraw"/>
+      </group> <!-- Withdraw -->
     </groups>
-    <test started-at="2022-08-24T17:55:59 SGT" name="Default test" finished-at="2022-08-24T17:56:34 SGT" duration-ms="34319">
-      <class name="automation_WEB_Deposit.FE_OfflineDeposit">
-        <test-method is-config="true" signature="setReport()[pri:0, instance:automation_WEB_Deposit.FE_OfflineDeposit@1095f122]" started-at="2022-08-24T17:55:59 SGT" name="setReport" finished-at="2022-08-24T17:56:02 SGT" duration-ms="2129" status="PASS">
+    <test started-at="2022-08-25T18:09:27 SGT" name="Default test" finished-at="2022-08-25T18:10:04 SGT" duration-ms="37170">
+      <class name="automation_WEB_Withdraw.FE_Withdraw">
+        <test-method is-config="true" signature="setReport()[pri:0, instance:automation_WEB_Withdraw.FE_Withdraw@58c540cf]" started-at="2022-08-25T18:09:27 SGT" name="setReport" finished-at="2022-08-25T18:09:31 SGT" duration-ms="3373" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setReport -->
-        <test-method signature="toSite()[pri:0, instance:automation_WEB_Deposit.FE_OfflineDeposit@1095f122]" started-at="2022-08-24T17:56:02 SGT" name="toSite" finished-at="2022-08-24T17:56:07 SGT" duration-ms="5784" status="PASS">
+        <test-method signature="toSite()[pri:0, instance:automation_WEB_Withdraw.FE_Withdraw@58c540cf]" started-at="2022-08-25T18:09:31 SGT" name="toSite" finished-at="2022-08-25T18:09:35 SGT" duration-ms="4593" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- toSite -->
-        <test-method is-config="true" signature="logCaseStatus(org.testng.ITestResult)[pri:0, instance:automation_WEB_Deposit.FE_OfflineDeposit@1095f122]" started-at="2022-08-24T17:56:07 SGT" name="logCaseStatus" finished-at="2022-08-24T17:56:07 SGT" duration-ms="7" status="PASS">
+        <test-method is-config="true" signature="logCaseStatus(org.testng.ITestResult)[pri:0, instance:automation_WEB_Withdraw.FE_Withdraw@58c540cf]" started-at="2022-08-25T18:09:35 SGT" name="logCaseStatus" finished-at="2022-08-25T18:09:35 SGT" duration-ms="16" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=toSite status=SUCCESS method=FE_OfflineDeposit.toSite()[pri:0, instance:automation_WEB_Deposit.FE_OfflineDeposit@1095f122] output={null}]]]>
+                <![CDATA[[TestResult name=toSite status=SUCCESS method=FE_Withdraw.toSite()[pri:0, instance:automation_WEB_Withdraw.FE_Withdraw@58c540cf] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- logCaseStatus -->
-        <test-method signature="closeAnnouncement()[pri:1, instance:automation_WEB_Deposit.FE_OfflineDeposit@1095f122]" started-at="2022-08-24T17:56:07 SGT" name="closeAnnouncement" finished-at="2022-08-24T17:56:07 SGT" depends-on-methods="automation_WEB_Deposit.FE_OfflineDeposit.toSite" duration-ms="36" status="SKIP">
+        <test-method signature="closeAnnouncement()[pri:1, instance:automation_WEB_Withdraw.FE_Withdraw@58c540cf]" started-at="2022-08-25T18:09:35 SGT" name="closeAnnouncement" finished-at="2022-08-25T18:09:35 SGT" depends-on-methods="automation_WEB_Withdraw.FE_Withdraw.toSite" duration-ms="69" status="SKIP">
           <exception class="org.testng.SkipException">
             <message>
               <![CDATA[Announcement Skipped]]>
@@ -45,7 +38,7 @@
             <full-stacktrace>
               <![CDATA[org.testng.SkipException: Announcement Skipped
 at functions_WEB_FE.Announcement_Function.doNotShowAgainTodayRadioButton(Announcement_Function.java:54)
-at automation_WEB_Deposit.FE_OfflineDeposit.closeAnnouncement(FE_OfflineDeposit.java:70)
+at automation_WEB_Withdraw.FE_Withdraw.closeAnnouncement(FE_Withdraw.java:78)
 at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
 at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -80,112 +73,67 @@ at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
           <reporter-output>
           </reporter-output>
         </test-method> <!-- closeAnnouncement -->
-        <test-method is-config="true" signature="logCaseStatus(org.testng.ITestResult)[pri:0, instance:automation_WEB_Deposit.FE_OfflineDeposit@1095f122]" started-at="2022-08-24T17:56:07 SGT" name="logCaseStatus" finished-at="2022-08-24T17:56:07 SGT" duration-ms="1" status="PASS">
+        <test-method is-config="true" signature="logCaseStatus(org.testng.ITestResult)[pri:0, instance:automation_WEB_Withdraw.FE_Withdraw@58c540cf]" started-at="2022-08-25T18:09:35 SGT" name="logCaseStatus" finished-at="2022-08-25T18:09:35 SGT" duration-ms="1" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=closeAnnouncement status=SKIP method=FE_OfflineDeposit.closeAnnouncement()[pri:1, instance:automation_WEB_Deposit.FE_OfflineDeposit@1095f122] output={null}]]]>
+                <![CDATA[[TestResult name=closeAnnouncement status=SKIP method=FE_Withdraw.closeAnnouncement()[pri:1, instance:automation_WEB_Withdraw.FE_Withdraw@58c540cf] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- logCaseStatus -->
-        <test-method signature="login()[pri:2, instance:automation_WEB_Deposit.FE_OfflineDeposit@1095f122]" started-at="2022-08-24T17:56:07 SGT" name="login" finished-at="2022-08-24T17:56:17 SGT" depends-on-methods="automation_WEB_Deposit.FE_OfflineDeposit.toSite" duration-ms="9365" status="PASS">
+        <test-method signature="login()[pri:2, instance:automation_WEB_Withdraw.FE_Withdraw@58c540cf]" started-at="2022-08-25T18:09:35 SGT" name="login" finished-at="2022-08-25T18:09:42 SGT" depends-on-methods="automation_WEB_Withdraw.FE_Withdraw.toSite" duration-ms="6251" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- login -->
-        <test-method is-config="true" signature="logCaseStatus(org.testng.ITestResult)[pri:0, instance:automation_WEB_Deposit.FE_OfflineDeposit@1095f122]" started-at="2022-08-24T17:56:17 SGT" name="logCaseStatus" finished-at="2022-08-24T17:56:17 SGT" duration-ms="0" status="PASS">
+        <test-method is-config="true" signature="logCaseStatus(org.testng.ITestResult)[pri:0, instance:automation_WEB_Withdraw.FE_Withdraw@58c540cf]" started-at="2022-08-25T18:09:42 SGT" name="logCaseStatus" finished-at="2022-08-25T18:09:42 SGT" duration-ms="1" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=login status=SUCCESS method=FE_OfflineDeposit.login()[pri:2, instance:automation_WEB_Deposit.FE_OfflineDeposit@1095f122] output={null}]]]>
+                <![CDATA[[TestResult name=login status=SUCCESS method=FE_Withdraw.login()[pri:2, instance:automation_WEB_Withdraw.FE_Withdraw@58c540cf] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- logCaseStatus -->
-        <test-method signature="depositPage()[pri:3, instance:automation_WEB_Deposit.FE_OfflineDeposit@1095f122]" started-at="2022-08-24T17:56:17 SGT" name="depositPage" finished-at="2022-08-24T17:56:18 SGT" depends-on-methods="automation_WEB_Deposit.FE_OfflineDeposit.login" duration-ms="1301" status="PASS">
+        <test-method signature="withdrawPage()[pri:3, instance:automation_WEB_Withdraw.FE_Withdraw@58c540cf]" started-at="2022-08-25T18:09:42 SGT" name="withdrawPage" finished-at="2022-08-25T18:09:43 SGT" depends-on-methods="automation_WEB_Withdraw.FE_Withdraw.login" duration-ms="1369" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- depositPage -->
-        <test-method is-config="true" signature="logCaseStatus(org.testng.ITestResult)[pri:0, instance:automation_WEB_Deposit.FE_OfflineDeposit@1095f122]" started-at="2022-08-24T17:56:18 SGT" name="logCaseStatus" finished-at="2022-08-24T17:56:18 SGT" duration-ms="1" status="PASS">
+        </test-method> <!-- withdrawPage -->
+        <test-method is-config="true" signature="logCaseStatus(org.testng.ITestResult)[pri:0, instance:automation_WEB_Withdraw.FE_Withdraw@58c540cf]" started-at="2022-08-25T18:09:43 SGT" name="logCaseStatus" finished-at="2022-08-25T18:09:43 SGT" duration-ms="0" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=depositPage status=SUCCESS method=FE_OfflineDeposit.depositPage()[pri:3, instance:automation_WEB_Deposit.FE_OfflineDeposit@1095f122] output={null}]]]>
+                <![CDATA[[TestResult name=withdrawPage status=SUCCESS method=FE_Withdraw.withdrawPage()[pri:3, instance:automation_WEB_Withdraw.FE_Withdraw@58c540cf] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- logCaseStatus -->
-        <test-method signature="offlineDepositMethods()[pri:4, instance:automation_WEB_Deposit.FE_OfflineDeposit@1095f122]" started-at="2022-08-24T17:56:18 SGT" name="offlineDepositMethods" finished-at="2022-08-24T17:56:23 SGT" depends-on-methods="automation_WEB_Deposit.FE_OfflineDeposit.depositPage" duration-ms="4778" status="PASS">
+        <test-method signature="withdrawMethods()[pri:4, instance:automation_WEB_Withdraw.FE_Withdraw@58c540cf]" started-at="2022-08-25T18:09:43 SGT" name="withdrawMethods" finished-at="2022-08-25T18:10:03 SGT" depends-on-methods="automation_WEB_Withdraw.FE_Withdraw.withdrawPage" duration-ms="19911" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- offlineDepositMethods -->
-        <test-method is-config="true" signature="logCaseStatus(org.testng.ITestResult)[pri:0, instance:automation_WEB_Deposit.FE_OfflineDeposit@1095f122]" started-at="2022-08-24T17:56:23 SGT" name="logCaseStatus" finished-at="2022-08-24T17:56:23 SGT" duration-ms="1" status="PASS">
+        </test-method> <!-- withdrawMethods -->
+        <test-method is-config="true" signature="logCaseStatus(org.testng.ITestResult)[pri:0, instance:automation_WEB_Withdraw.FE_Withdraw@58c540cf]" started-at="2022-08-25T18:10:03 SGT" name="logCaseStatus" finished-at="2022-08-25T18:10:03 SGT" duration-ms="1" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=offlineDepositMethods status=SUCCESS method=FE_OfflineDeposit.offlineDepositMethods()[pri:4, instance:automation_WEB_Deposit.FE_OfflineDeposit@1095f122] output={null}]]]>
+                <![CDATA[[TestResult name=withdrawMethods status=SUCCESS method=FE_Withdraw.withdrawMethods()[pri:4, instance:automation_WEB_Withdraw.FE_Withdraw@58c540cf] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- logCaseStatus -->
-        <test-method signature="confirmOfflineDepositPaid()[pri:5, instance:automation_WEB_Deposit.FE_OfflineDeposit@1095f122]" started-at="2022-08-24T17:56:23 SGT" name="confirmOfflineDepositPaid" finished-at="2022-08-24T17:56:24 SGT" depends-on-methods="automation_WEB_Deposit.FE_OfflineDeposit.offlineDepositMethods" duration-ms="1295" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- confirmOfflineDepositPaid -->
-        <test-method is-config="true" signature="logCaseStatus(org.testng.ITestResult)[pri:0, instance:automation_WEB_Deposit.FE_OfflineDeposit@1095f122]" started-at="2022-08-24T17:56:24 SGT" name="logCaseStatus" finished-at="2022-08-24T17:56:24 SGT" duration-ms="1" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[TestResult name=confirmOfflineDepositPaid status=SUCCESS method=FE_OfflineDeposit.confirmOfflineDepositPaid()[pri:5, instance:automation_WEB_Deposit.FE_OfflineDeposit@1095f122] output={null}]]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- logCaseStatus -->
-        <test-method signature="cancelOfflineDepositRequest()[pri:6, instance:automation_WEB_Deposit.FE_OfflineDeposit@1095f122]" started-at="2022-08-24T17:56:24 SGT" name="cancelOfflineDepositRequest" finished-at="2022-08-24T17:56:28 SGT" depends-on-methods="automation_WEB_Deposit.FE_OfflineDeposit.confirmOfflineDepositPaid" duration-ms="4236" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- cancelOfflineDepositRequest -->
-        <test-method is-config="true" signature="logCaseStatus(org.testng.ITestResult)[pri:0, instance:automation_WEB_Deposit.FE_OfflineDeposit@1095f122]" started-at="2022-08-24T17:56:28 SGT" name="logCaseStatus" finished-at="2022-08-24T17:56:28 SGT" duration-ms="0" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[TestResult name=cancelOfflineDepositRequest status=SUCCESS method=FE_OfflineDeposit.cancelOfflineDepositRequest()[pri:6, instance:automation_WEB_Deposit.FE_OfflineDeposit@1095f122] output={null}]]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- logCaseStatus -->
-        <test-method signature="loginBOPage()[pri:7, instance:automation_WEB_Deposit.FE_OfflineDeposit@1095f122]" started-at="2022-08-24T17:56:28 SGT" name="loginBOPage" finished-at="2022-08-24T17:56:33 SGT" depends-on-methods="automation_WEB_Deposit.FE_OfflineDeposit.confirmOfflineDepositPaid" duration-ms="4285" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- loginBOPage -->
-        <test-method is-config="true" signature="logCaseStatus(org.testng.ITestResult)[pri:0, instance:automation_WEB_Deposit.FE_OfflineDeposit@1095f122]" started-at="2022-08-24T17:56:33 SGT" name="logCaseStatus" finished-at="2022-08-24T17:56:33 SGT" duration-ms="0" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[TestResult name=loginBOPage status=SUCCESS method=FE_OfflineDeposit.loginBOPage()[pri:7, instance:automation_WEB_Deposit.FE_OfflineDeposit@1095f122] output={null}]]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- logCaseStatus -->
-        <test-method is-config="true" signature="shutDown()[pri:0, instance:automation_WEB_Deposit.FE_OfflineDeposit@1095f122]" started-at="2022-08-24T17:56:33 SGT" name="shutDown" finished-at="2022-08-24T17:56:34 SGT" duration-ms="1025" status="PASS">
+        <test-method is-config="true" signature="shutDown()[pri:0, instance:automation_WEB_Withdraw.FE_Withdraw@58c540cf]" started-at="2022-08-25T18:10:03 SGT" name="shutDown" finished-at="2022-08-25T18:10:04 SGT" duration-ms="1456" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- shutDown -->
-      </class> <!-- automation_WEB_Deposit.FE_OfflineDeposit -->
+      </class> <!-- automation_WEB_Withdraw.FE_Withdraw -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

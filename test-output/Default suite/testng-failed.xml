@@ -3,15 +3,15 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="automation_WEB_Deposit.FE_OfflineDeposit">
+      <class name="automation_WEB_Withdraw.FE_Withdraw">
         <methods>
-          <include name="closeAnnouncement"/>
-          <include name="shutDown"/>
-          <include name="setReport"/>
           <include name="logCaseStatus"/>
           <include name="toSite"/>
+          <include name="closeAnnouncement"/>
+          <include name="setReport"/>
+          <include name="shutDown"/>
         </methods>
-      </class> <!-- automation_WEB_Deposit.FE_OfflineDeposit -->
+      </class> <!-- automation_WEB_Withdraw.FE_Withdraw -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

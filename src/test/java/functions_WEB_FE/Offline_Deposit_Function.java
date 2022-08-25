@@ -219,10 +219,18 @@ public class Offline_Deposit_Function {
 		}
 	}
 	
+//	= = = = = = = = = = = = = = = = = = = = 
+
+	String actualReceivedAmount_Text;
+	
 	public String compareActualReceivedAmount() {
 		WebElement actualReceivedAmount = baseDriver.getDriver().findElement(By.id("actual_amount"));
-		String actualReceivedAmount_Text = actualReceivedAmount.getText();
+		actualReceivedAmount_Text = actualReceivedAmount.getText();
 		System.out.println("Amount received = " + actualReceivedAmount_Text);
+		return actualReceivedAmount_Text;
+	}
+	
+	public String storedActualReceivedAmount() {
 		return actualReceivedAmount_Text;
 	}
 
@@ -244,13 +252,19 @@ public class Offline_Deposit_Function {
 
 //	= = = = = = = = = = = = = = = = = = = = 
 
+	String dataToCompare_Text;
+	
 	public String compareDepositID() {
 		WebElement dataToCompare = baseDriver.getDriver().findElement(By.xpath("//div[@class='deposit_finish_details hide_receipt']//div[@class='details']"));
-		String dataToCompare_Text = dataToCompare.getText();
+		dataToCompare_Text = dataToCompare.getText();
 		System.out.println("Deposit ID = " + dataToCompare_Text);
 		return dataToCompare_Text;
 	}
 
+	public String storedDepositID() {
+		return dataToCompare_Text;
+	}
+	
 //	= = = = = = = = = = = = = = = = = = = = 
 
 	public void confirmOfflineDepositPaid() throws FailedLoginException, InterruptedException {

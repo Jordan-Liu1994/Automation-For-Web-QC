@@ -13,11 +13,13 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 
 import functions_WEB_BO.Login_BO_Function;
 import functions_WEB_BO.Offline_Deposit_Verify_BO_Function;
 import functions_WEB_FE.Announcement_Function;
+import functions_WEB_FE.Deposit_WalletHistory_Function;
 import functions_WEB_FE.Login_Function;
 import functions_WEB_FE.Logout_Function;
 import functions_WEB_FE.Offline_Deposit_Function;
@@ -42,6 +44,7 @@ public class FE_OfflineDeposit extends VariablesStorage {
 	Offline_Deposit_Function functionOfflineDeposit = Offline_Deposit_Function.getInstance();
 	Login_BO_Function functionBOLogin = Login_BO_Function.getInstance();
 	Offline_Deposit_Verify_BO_Function functionOfflineDepositVerify = Offline_Deposit_Verify_BO_Function.getInstance();
+	Deposit_WalletHistory_Function functionDepositWalletHistory = Deposit_WalletHistory_Function.getInstance();
 
 //	= = = = = = = = = = = = = = = = = = = = 
 
@@ -106,7 +109,7 @@ public class FE_OfflineDeposit extends VariablesStorage {
 	}
 
 //	= = = = = = = = = = = = = = = = = = = = 
-
+	
 	@Test(dependsOnMethods = "depositPage", groups = "Offline_Deposit", priority = 4)
 	public void offlineDepositMethods() throws InterruptedException, FailedLoginException {
 		createReport.createTest("offlineDepositMethods");
@@ -126,7 +129,6 @@ public class FE_OfflineDeposit extends VariablesStorage {
 	}
 
 //	= = = = = = = = = = = = = = = = = = = = 
-
 	@Test(dependsOnMethods = "offlineDepositMethods", groups = "Offline_Deposit", priority = 5)
 	public void confirmOfflineDepositPaid() throws InterruptedException, FailedLoginException {
 		createReport.createTest("confirmOfflineDepositPaid");
@@ -135,7 +137,7 @@ public class FE_OfflineDeposit extends VariablesStorage {
 		Thread.sleep(1000);
 
 		takeScreenShot.getTakeScreenShotPass("confirmOfflineDepositPaid");
-		createReport.getExtentTest().addScreenCaptureFromPath(takeScreenShot.screenShotPathExtent() + "confirmOfflineDepositPaid" + "-passed.png", "confirmOfflineDepositPaid");
+		createReport.getExtentTest().addScreenCaptureFromPath(takeScreenShot.screenShotPathExtent() + "confirmOfflineDepositPaid" + "-passed.png");
 	}
 
 //	= = = = = = = = = = = = = = = = = = = = 
@@ -161,6 +163,7 @@ public class FE_OfflineDeposit extends VariablesStorage {
 		functionBOLogin.setCaptcha(otpBO());
 		functionBOLogin.selectLoginButton();
 		functionBOLogin.verifyLogIn(userIDBO());
+		Thread.sleep(1000);
 	}
 
 //	= = = = = = = = = = = = = = = = = = = = 
@@ -169,13 +172,33 @@ public class FE_OfflineDeposit extends VariablesStorage {
 	public void offlineDepositVerification() throws InterruptedException, FailedLoginException {
 		createReport.createTest("offlineDepositVerification");
 		functionOfflineDepositVerify.selectOfflineDepositVerification();
-		Thread.sleep(500);
+		Thread.sleep(1000);
 		functionOfflineDepositVerify.offlineDepositVerificationSubModule();
 		Thread.sleep(1000);
 		functionOfflineDepositVerify.filterUserAccount(userID());
 		Thread.sleep(500);
-		functionOfflineDeposit.compareActualReceivedAmount();
-		functionOfflineDeposit.submitOfflineDepositRequest();
+		functionOfflineDepositVerify.verifyDepositID();
+		Thread.sleep(1000);
+		
+		takeScreenShot.getTakeScreenShotPass("offlineDepositVerification");
+		createReport.getExtentTest().addScreenCaptureFromPath(takeScreenShot.screenShotPathExtent() + "offlineDepositVerification" + "-passed.png");
+		
+		functionOfflineDepositVerify.rejectOfflineDepositAfterVerified();
+	}
+
+//	= = = = = = = = = = = = = = = = = = = = 
+	
+	@Test(dependsOnMethods = "offlineDepositVerification", priority = 9, groups = { "BO_Offline_Deposit" })
+	public void offlineDepositVerificationFEWalletHistory() throws InterruptedException, FailedLoginException {
+		createReport.createTest("offlineDepositVerificationFEWalletHistory");
+		baseDriver.getURL(siteUrlFE());
+		functionDepositWalletHistory.selectWalletHistoryButton(userID());
+		Thread.sleep(1000);
+		functionDepositWalletHistory.selectFundsDetails();
+		Thread.sleep(2000);
+		
+		takeScreenShot.getTakeScreenShotPass("offlineDepositVerificationFEWalletHistory");
+		createReport.getExtentTest().addScreenCaptureFromPath(takeScreenShot.screenShotPathExtent() + "offlineDepositVerificationFEWalletHistory" + "-passed.png");
 	}
 
 //	= = = = = = = = = = = = = = = = = = = = 

@@ -78,6 +78,12 @@ public class VariablesStorage {
 	public String userIDRegister() {
 		return userIDRegister;
 	}
+	
+	String phoneNumber = "13131" + randomNumbers;
+	
+	public String phoneNumber() {
+		return phoneNumber;
+	}
 
 	static String offlineDepositName = "公司入款";
 	static String depositOption = "线下入款";
@@ -119,5 +125,11 @@ public class VariablesStorage {
 	
 	public String otpBO() {
 		return otpBO;
+	}
+	
+	private String pinNumber = "1234";
+	
+	public String pinNumber() {
+		return pinNumber;
 	}
 }

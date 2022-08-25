@@ -8,13 +8,6 @@
       </run>
     </groups>
     <classes>
-      <class name="automation_WEB_Deposit.BO_OfflineDeposit">
-        <methods>
-          <include name="Log_Case_Status"/>
-          <include name="ShutDown"/>
-          <include name="offlineDepositVerification"/>
-        </methods>
-      </class> <!-- automation_WEB_Deposit.BO_OfflineDeposit -->
       <class name="automation_WEB_Deposit.FE_OfflineDeposit">
         <methods>
           <include name="closeAnnouncement"/>
