@@ -6,9 +6,9 @@
 			<run>
 				<!-- <exclude name="Authentication" /> -->
 				<!-- <exclude name="Announcement" /> -->
-				<exclude name="Login" />
+				<!-- <exclude name="Login" /> -->
 				<exclude name="Logout" />
-				<!-- <exclude name="Register" /> -->
+				<exclude name="Register" />
 			</run>
 		</groups>
 		<classes>

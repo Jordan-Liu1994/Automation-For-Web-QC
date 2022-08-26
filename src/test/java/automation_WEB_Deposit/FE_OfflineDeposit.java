@@ -23,7 +23,6 @@ import functions_WEB_FE.Deposit_WalletHistory_Function;
 import functions_WEB_FE.LoginFE;
 import functions_WEB_FE.LogoutFE;
 import functions_WEB_FE.Offline_Deposit_Function;
-import functions_WEB_FE.Verify_Site;
 import utilities.BaseDriver;
 import utilities.CreateReport;
 import utilities.ResultListener;
@@ -38,7 +37,6 @@ public class FE_OfflineDeposit extends VariablesStorage {
 	CreateReport createReport = CreateReport.getInstance();
 	ResultListener resultListener = ResultListener.getInstance();
 	TakeScreenShot takeScreenShot = TakeScreenShot.getInstance();
-	Verify_Site verifySite = Verify_Site.getInstance();
 	Announcement functionAnnouncement = Announcement.getInstance();
 	LoginFE functionLoginFE = LoginFE.getInstance();
 	Offline_Deposit_Function functionOfflineDeposit = Offline_Deposit_Function.getInstance();
@@ -156,7 +154,6 @@ public class FE_OfflineDeposit extends VariablesStorage {
 	public void loginBOPage() throws InterruptedException, FailedLoginException {
 		createReport.createTest("loginBOPage");
 		baseDriver.getDriver().get(siteUrlBO());
-		verifySite.verifySite(siteUrlBO());
 		Thread.sleep(500);
 		functionBOLogin.setUserID(userIDBO());
 		functionBOLogin.setPassword(passwordAll());

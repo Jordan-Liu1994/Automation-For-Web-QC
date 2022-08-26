@@ -102,15 +102,6 @@ public class FrontEndAuthentication extends VariablesStorage {
 	}
 
 //	= = = = = = = = = = = = = = = = = = = = 
-//
-//	@Test(dependsOnMethods = "register", groups = "Register", priority = 5)
-//	public void logoutAfterRegister() throws InterruptedException, FailedLoginException {
-//		createReport.createTest("logoutAfterRegister");
-//
-//		Thread.sleep(500);
-//		function3.selectLogoutButtonAfterRegister();
-//		Thread.sleep(1000);
-//	}
 
 	@AfterMethod
 	public void logCaseStatus(ITestResult result) {

@@ -2,70 +2,70 @@
 <testng-results ignored="2" total="5" passed="3" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2022-08-26T17:53:16 SGT" name="Suite" finished-at="2022-08-26T17:53:32 SGT" duration-ms="15264">
+  <suite started-at="2022-08-26T18:02:27 SGT" name="Suite" finished-at="2022-08-26T18:02:40 SGT" duration-ms="13161">
     <groups>
       <group name="Announcement">
-        <method signature="FrontEndAuthentication.closeAnnouncement()[pri:1, instance:webAuthentication.FrontEndAuthentication@1cf2fed4]" name="closeAnnouncement" class="webAuthentication.FrontEndAuthentication"/>
+        <method signature="FrontEndAuthentication.closeAnnouncement()[pri:1, instance:webAuthentication.FrontEndAuthentication@72c927f1]" name="closeAnnouncement" class="webAuthentication.FrontEndAuthentication"/>
       </group> <!-- Announcement -->
-      <group name="Register">
-        <method signature="FrontEndAuthentication.register()[pri:4, instance:webAuthentication.FrontEndAuthentication@1cf2fed4]" name="register" class="webAuthentication.FrontEndAuthentication"/>
-      </group> <!-- Register -->
       <group name="Authentication">
-        <method signature="FrontEndAuthentication.toSite()[pri:0, instance:webAuthentication.FrontEndAuthentication@1cf2fed4]" name="toSite" class="webAuthentication.FrontEndAuthentication"/>
+        <method signature="FrontEndAuthentication.toSite()[pri:0, instance:webAuthentication.FrontEndAuthentication@72c927f1]" name="toSite" class="webAuthentication.FrontEndAuthentication"/>
       </group> <!-- Authentication -->
+      <group name="Login">
+        <method signature="FrontEndAuthentication.login()[pri:2, instance:webAuthentication.FrontEndAuthentication@72c927f1]" name="login" class="webAuthentication.FrontEndAuthentication"/>
+      </group> <!-- Login -->
     </groups>
-    <test started-at="2022-08-26T17:53:16 SGT" name="Authentication Test" finished-at="2022-08-26T17:53:32 SGT" duration-ms="15264">
+    <test started-at="2022-08-26T18:02:27 SGT" name="Authentication Test" finished-at="2022-08-26T18:02:40 SGT" duration-ms="13161">
       <class name="webAuthentication.FrontEndAuthentication">
-        <test-method is-config="true" signature="setReport()[pri:0, instance:webAuthentication.FrontEndAuthentication@1cf2fed4]" started-at="2022-08-26T17:53:16 SGT" name="setReport" finished-at="2022-08-26T17:53:19 SGT" duration-ms="2224" status="PASS">
+        <test-method is-config="true" signature="setReport()[pri:0, instance:webAuthentication.FrontEndAuthentication@72c927f1]" started-at="2022-08-26T18:02:27 SGT" name="setReport" finished-at="2022-08-26T18:02:29 SGT" duration-ms="1981" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setReport -->
-        <test-method signature="toSite()[pri:0, instance:webAuthentication.FrontEndAuthentication@1cf2fed4]" started-at="2022-08-26T17:53:19 SGT" name="toSite" finished-at="2022-08-26T17:53:21 SGT" duration-ms="2166" status="PASS">
+        <test-method signature="toSite()[pri:0, instance:webAuthentication.FrontEndAuthentication@72c927f1]" started-at="2022-08-26T18:02:29 SGT" name="toSite" finished-at="2022-08-26T18:02:31 SGT" duration-ms="2325" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- toSite -->
-        <test-method is-config="true" signature="logCaseStatus(org.testng.ITestResult)[pri:0, instance:webAuthentication.FrontEndAuthentication@1cf2fed4]" started-at="2022-08-26T17:53:21 SGT" name="logCaseStatus" finished-at="2022-08-26T17:53:21 SGT" duration-ms="12" status="PASS">
+        <test-method is-config="true" signature="logCaseStatus(org.testng.ITestResult)[pri:0, instance:webAuthentication.FrontEndAuthentication@72c927f1]" started-at="2022-08-26T18:02:31 SGT" name="logCaseStatus" finished-at="2022-08-26T18:02:31 SGT" duration-ms="14" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=toSite status=SUCCESS method=FrontEndAuthentication.toSite()[pri:0, instance:webAuthentication.FrontEndAuthentication@1cf2fed4] output={null}]]]>
+                <![CDATA[[TestResult name=toSite status=SUCCESS method=FrontEndAuthentication.toSite()[pri:0, instance:webAuthentication.FrontEndAuthentication@72c927f1] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- logCaseStatus -->
-        <test-method signature="closeAnnouncement()[pri:1, instance:webAuthentication.FrontEndAuthentication@1cf2fed4]" started-at="2022-08-26T17:53:21 SGT" name="closeAnnouncement" finished-at="2022-08-26T17:53:23 SGT" duration-ms="2265" status="PASS">
+        <test-method signature="closeAnnouncement()[pri:1, instance:webAuthentication.FrontEndAuthentication@72c927f1]" started-at="2022-08-26T18:02:31 SGT" name="closeAnnouncement" finished-at="2022-08-26T18:02:34 SGT" duration-ms="3383" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- closeAnnouncement -->
-        <test-method is-config="true" signature="logCaseStatus(org.testng.ITestResult)[pri:0, instance:webAuthentication.FrontEndAuthentication@1cf2fed4]" started-at="2022-08-26T17:53:23 SGT" name="logCaseStatus" finished-at="2022-08-26T17:53:23 SGT" duration-ms="1" status="PASS">
+        <test-method is-config="true" signature="logCaseStatus(org.testng.ITestResult)[pri:0, instance:webAuthentication.FrontEndAuthentication@72c927f1]" started-at="2022-08-26T18:02:34 SGT" name="logCaseStatus" finished-at="2022-08-26T18:02:34 SGT" duration-ms="2" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=closeAnnouncement status=SUCCESS method=FrontEndAuthentication.closeAnnouncement()[pri:1, instance:webAuthentication.FrontEndAuthentication@1cf2fed4] output={null}]]]>
+                <![CDATA[[TestResult name=closeAnnouncement status=SUCCESS method=FrontEndAuthentication.closeAnnouncement()[pri:1, instance:webAuthentication.FrontEndAuthentication@72c927f1] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- logCaseStatus -->
-        <test-method signature="register()[pri:4, instance:webAuthentication.FrontEndAuthentication@1cf2fed4]" started-at="2022-08-26T17:53:23 SGT" name="register" finished-at="2022-08-26T17:53:30 SGT" duration-ms="6546" status="PASS">
+        <test-method signature="login()[pri:2, instance:webAuthentication.FrontEndAuthentication@72c927f1]" started-at="2022-08-26T18:02:34 SGT" name="login" finished-at="2022-08-26T18:02:38 SGT" duration-ms="3629" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- register -->
-        <test-method is-config="true" signature="logCaseStatus(org.testng.ITestResult)[pri:0, instance:webAuthentication.FrontEndAuthentication@1cf2fed4]" started-at="2022-08-26T17:53:30 SGT" name="logCaseStatus" finished-at="2022-08-26T17:53:30 SGT" duration-ms="0" status="PASS">
+        </test-method> <!-- login -->
+        <test-method is-config="true" signature="logCaseStatus(org.testng.ITestResult)[pri:0, instance:webAuthentication.FrontEndAuthentication@72c927f1]" started-at="2022-08-26T18:02:38 SGT" name="logCaseStatus" finished-at="2022-08-26T18:02:38 SGT" duration-ms="0" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=register status=SUCCESS method=FrontEndAuthentication.register()[pri:4, instance:webAuthentication.FrontEndAuthentication@1cf2fed4] output={null}]]]>
+                <![CDATA[[TestResult name=login status=SUCCESS method=FrontEndAuthentication.login()[pri:2, instance:webAuthentication.FrontEndAuthentication@72c927f1] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- logCaseStatus -->
-        <test-method is-config="true" signature="endReport()[pri:0, instance:webAuthentication.FrontEndAuthentication@1cf2fed4]" started-at="2022-08-26T17:53:30 SGT" name="endReport" finished-at="2022-08-26T17:53:32 SGT" duration-ms="1977" status="PASS">
+        <test-method is-config="true" signature="endReport()[pri:0, instance:webAuthentication.FrontEndAuthentication@72c927f1]" started-at="2022-08-26T18:02:38 SGT" name="endReport" finished-at="2022-08-26T18:02:40 SGT" duration-ms="1751" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- endReport -->
