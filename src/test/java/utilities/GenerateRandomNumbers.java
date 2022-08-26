@@ -4,20 +4,20 @@ import java.util.Random;
 
 public class GenerateRandomNumbers {
 
-	private static GenerateRandomNumbers generateRandomNumbers = new GenerateRandomNumbers();
+	private static GenerateRandomNumbers gRN = new GenerateRandomNumbers();
 
 	public static GenerateRandomNumbers getInstance() {
-		return generateRandomNumbers;
+		return gRN;
 	}
 
 //	= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
 
-	private int setNumber;
+	private int setNum;
 	
 	public int generateRandomNumbers() {
-		Random random = new Random();
-		setNumber = 500000;
-		int int_random = random.nextInt(setNumber);
-		return int_random;
+		Random r = new Random();
+		setNum = 500000;
+		int int_R = r.nextInt(setNum);
+		return int_R;
 	}
 }

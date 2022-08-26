@@ -18,10 +18,10 @@ import org.testng.annotations.Test;
 
 import functions_WEB_BO.Login_BO_Function;
 import functions_WEB_BO.Offline_Deposit_Verify_BO_Function;
-import functions_WEB_FE.Announcement_Function;
+import functions_WEB_FE.Announcement;
 import functions_WEB_FE.Deposit_WalletHistory_Function;
-import functions_WEB_FE.Login_Function;
-import functions_WEB_FE.Logout_Function;
+import functions_WEB_FE.LoginFE;
+import functions_WEB_FE.LogoutFE;
 import functions_WEB_FE.Offline_Deposit_Function;
 import functions_WEB_FE.Verify_Site;
 import functions_WEB_FE.Withdraw_AddBankCard_Function;
@@ -43,15 +43,15 @@ public class FE_Withdraw extends VariablesStorage {
 	TakeScreenShot takeScreenShot = TakeScreenShot.getInstance();
 	Verify_Site verifySite = Verify_Site.getInstance();
 	
-	Announcement_Function functionAnnouncement = Announcement_Function.getInstance();
-	Login_Function functionLoginFE = Login_Function.getInstance();
+	Announcement functionAnnouncement = Announcement.getInstance();
+	LoginFE functionLoginFE = LoginFE.getInstance();
 	Withdraw_Function functionWithdraw = Withdraw_Function.getInstance();
 	Withdraw_AddPin_Function functionWithdrawAddPin = Withdraw_AddPin_Function.getInstance();
 	Withdraw_AddBankCard_Function functionWithdrawAddBankCard = Withdraw_AddBankCard_Function.getInstance();
 
 //	= = = = = = = = = = = = = = = = = = = = 
 
-	@BeforeClass(groups = "Offline_Deposit")
+	@BeforeClass(groups = "Withdraw")
 	public void setReport() throws InterruptedException, MalformedURLException {
 		baseDriver.setDriverProperty(driverType(), driverPath());
 		baseDriver.startDriver();
@@ -75,7 +75,7 @@ public class FE_Withdraw extends VariablesStorage {
 	public void closeAnnouncement() throws InterruptedException, FailedLoginException {
 		createReport.createTest("closeAnnouncement");
 
-		functionAnnouncement.doNotShowAgainTodayRadioButton();
+		functionAnnouncement.closeAnnouncement();
 	}
 
 //	= = = = = = = = = = = = = = = = = = = = 
@@ -85,22 +85,22 @@ public class FE_Withdraw extends VariablesStorage {
 		createReport.createTest("login");
 
 		Thread.sleep(500);
-		functionLoginFE.selectLoginOption();
+		functionLoginFE.loginOptionButton();
 		Thread.sleep(1000);
-		functionLoginFE.setUserID(userID());
-		functionLoginFE.setPassword(password());
+		functionLoginFE.setUserID(userIDFE());
+		functionLoginFE.setPassword(passwordAll());
 		Thread.sleep(500);
-		functionLoginFE.setCaptcha(captcha());
+		functionLoginFE.setCaptcha(captchaOtpAll());
 		Thread.sleep(500);
 		functionLoginFE.selectLoginButton();
 		Thread.sleep(1000);
-		functionLoginFE.verifyLogIn(userID());
+		functionLoginFE.verifyLogIn(userIDFE());
 		Thread.sleep(1000);
 	}
 
 //	= = = = = = = = = = = = = = = = = = = = 
 
-	@Test(dependsOnMethods = "login", groups = "Withdraw", priority = 3)
+	@Test(dependsOnMethods = "login", groups = "Withdraw_page", priority = 3)
 	public void withdrawPage() throws InterruptedException, FailedLoginException {
 		createReport.createTest("toWithdrawPage");
 
@@ -111,7 +111,7 @@ public class FE_Withdraw extends VariablesStorage {
 
 //	= = = = = = = = = = = = = = = = = = = = 
 
-	@Test(dependsOnMethods = "withdrawPage", groups = "Withdraw", priority = 4)
+	@Test(dependsOnMethods = "withdrawPage", groups = "Withdraw_page", priority = 4)
 	public void withdrawMethods() throws InterruptedException, FailedLoginException {
 		createReport.createTest("offlineDepositMethods");
 
@@ -125,11 +125,15 @@ public class FE_Withdraw extends VariablesStorage {
 		Thread.sleep(500);
 		functionWithdrawAddBankCard.fillInBankCardDetails(depositoryName(), phoneNumber());
 		Thread.sleep(1000);
-		functionWithdrawAddBankCard.generateOTPButton(captcha());
+		functionWithdrawAddBankCard.generateOTPButton(captchaOtpAll());
 		Thread.sleep(1000);
 		functionWithdrawAddBankCard.withdrawBankVendorOption();
 		Thread.sleep(1000);
 		functionWithdrawAddBankCard.filterBankVendorOption("X");
+		Thread.sleep(1000);
+		functionWithdrawAddBankCard.inputBankAccountNumber(bankAccountNumber());
+		Thread.sleep(1000);
+		functionWithdrawAddBankCard.confirmAddBankCardButton();
 //		ONLY ONCE ADD BANK CARD
 		
 //		ONLY ONCE ADD PIN
@@ -138,7 +142,7 @@ public class FE_Withdraw extends VariablesStorage {
 //		ONLY ONCE ADD PIN
 		
 		Thread.sleep(1000);
-		functionWithdraw.fillInPinNumber(pinNumber());
+		functionWithdraw.fillInPinNumber(withdrawPinNum());
 	}
 
 //	= = = = = = = = = = = = = = = = = = = = 

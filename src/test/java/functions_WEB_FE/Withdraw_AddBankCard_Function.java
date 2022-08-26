@@ -145,7 +145,7 @@ public class Withdraw_AddBankCard_Function {
 			throw new FailedLoginException(fail);
 		}
 	}
-	
+
 //	= = = = = = = = = = = = = = = = = = = = 
 
 	public void filterBankVendorOption(String bankVendorOption) throws FailedLoginException, InterruptedException {
@@ -153,7 +153,7 @@ public class Withdraw_AddBankCard_Function {
 		WebElement filterBankVendorOption = baseDriver.getDriver().findElement(By.xpath("//div[@class='bank_alpha_container']"));
 		Boolean filterBankVendorOptionValue = false;
 		String fail = "withdrawBankVendorOption failed";
-		
+
 		List<WebElement> filterBankVendorOption_Tag = filterBankVendorOption.findElements(By.className("bank_alpha_btn"));
 		for (WebElement filterBankVendorOption_Lists : filterBankVendorOption_Tag) {
 			String filterBankVendorOption_Text = filterBankVendorOption_Lists.getText();
@@ -168,10 +168,9 @@ public class Withdraw_AddBankCard_Function {
 			createReport.getExtentTest().fail(fail);
 			throw new FailedLoginException(fail);
 		}
-		
-		WebDriverWait wait = new WebDriverWait(baseDriver.getDriver(), 10);
+
+		Thread.sleep(3000);
 		WebElement BankVendorOption_X = baseDriver.getDriver().findElement(By.xpath("//div[contains(text(),'厦门国际银行')]"));
-		wait.until(ExpectedConditions.elementToBeClickable(BankVendorOption_X));
 		if (BankVendorOption_X.isDisplayed()) {
 			BankVendorOption_X.click();
 			createReport.getExtentTest().info("Clicked 厦门国际银行");
@@ -180,10 +179,10 @@ public class Withdraw_AddBankCard_Function {
 			createReport.getExtentTest().fail(fail);
 			throw new FailedLoginException(fail);
 		}
-		
+
 		WebElement selectProvinceOption = baseDriver.getDriver().findElement(By.id("input_province_name"));
 		String selectProvinceOption_Text = selectProvinceOption.getAttribute("placeholder");
-		
+
 		if (selectProvinceOption.isDisplayed()) {
 			selectProvinceOption.click();
 			createReport.getExtentTest().info("Clicked " + selectProvinceOption_Text);
@@ -192,7 +191,7 @@ public class Withdraw_AddBankCard_Function {
 			createReport.getExtentTest().fail(fail);
 			throw new FailedLoginException(fail);
 		}
-		
+
 		WebElement selectProvinceOption_1st = baseDriver.getDriver().findElement(By.xpath("//div[contains(text(),'河北省')]"));
 		String selectProvinceOption_1st_Text = selectProvinceOption_1st.getText();
 		if (selectProvinceOption_1st.isDisplayed()) {
@@ -203,7 +202,7 @@ public class Withdraw_AddBankCard_Function {
 			createReport.getExtentTest().fail(fail);
 			throw new FailedLoginException(fail);
 		}
-		
+
 		WebElement selectCityOption_1st = baseDriver.getDriver().findElement(By.xpath("//div[@data-city='安国市']"));
 		String selectCityOption_1st_Text = selectCityOption_1st.getText();
 		if (selectCityOption_1st.isDisplayed()) {
@@ -214,7 +213,7 @@ public class Withdraw_AddBankCard_Function {
 			createReport.getExtentTest().fail(fail);
 			throw new FailedLoginException(fail);
 		}
-		
+
 		WebElement selectCityProvinceOptionConfirm = baseDriver.getDriver().findElement(By.xpath("//div[contains(text(),'确定')]"));
 		String selectCityProvinceOptionConfirm_Text = selectCityProvinceOptionConfirm.getText();
 		if (selectCityProvinceOptionConfirm.isDisplayed()) {
@@ -225,7 +224,7 @@ public class Withdraw_AddBankCard_Function {
 			createReport.getExtentTest().fail(fail);
 			throw new FailedLoginException(fail);
 		}
-		
+
 		WebElement confirmBankSelection = baseDriver.getDriver().findElement(By.xpath("//button[contains(text(),'确定')]"));
 		String confirmBankSelection_Text = confirmBankSelection.getText();
 		if (confirmBankSelection.isDisplayed()) {
@@ -236,23 +235,43 @@ public class Withdraw_AddBankCard_Function {
 			createReport.getExtentTest().fail(fail);
 			throw new FailedLoginException(fail);
 		}
-		
-//		WebElement selectProvinceOption_Container = baseDriver.getDriver().findElement(By.xpath("//div[@class='province_list']"));
-//		Boolean selectProvinceOptionValue = false;
-//		
-//		List<WebElement> selectProvinceOption_Container_Tag = selectProvinceOption_Container.findElements(By.className("name_item province_name_item"));
-//		for (WebElement selectProvinceOption_Container_Lists : selectProvinceOption_Container_Tag) {
-//			String selectProvinceOption_Container_Text = selectProvinceOption_Container_Lists.getText();
-//			System.out.println(selectProvinceOption_Container_Text);
-//			if (selectProvinceOption_Container_Text.equalsIgnoreCase("山西省")) {
-//				selectProvinceOption_Container_Lists.click();
-//				createReport.getExtentTest().info("Clicked 山西省");
-//				filterBankVendorOptionValue = true;
-//			}
-//		}
-//		if (!selectProvinceOptionValue) {
-//			createReport.getExtentTest().fail(fail);
-//			throw new FailedLoginException(fail);
-//		}
+	}
+
+//		= = = = = = = = = = = = = = = = = = = = 
+
+	public void inputBankAccountNumber(String bankAccountNumber) throws FailedLoginException, InterruptedException {
+		WebDriverWait wait = new WebDriverWait(baseDriver.getDriver(), 10);
+		WebElement inputBankAccountNumber = baseDriver.getDriver().findElement(By.id("account_number"));
+		wait.until(ExpectedConditions.elementToBeClickable(inputBankAccountNumber));
+		String inputBankAccountNumber_Text = inputBankAccountNumber.getAttribute("placeholder");
+		String fail = "inputBankAccountNumber failed";
+
+		if (inputBankAccountNumber.isDisplayed()) {
+			inputBankAccountNumber.click();
+			inputBankAccountNumber.clear();
+			inputBankAccountNumber.sendKeys(bankAccountNumber);
+			createReport.getExtentTest().info(bankAccountNumber + " keyed in " + inputBankAccountNumber_Text);
+			Thread.sleep(1000);
+		} else {
+			createReport.getExtentTest().fail(fail);
+		}
+	}
+
+//	= = = = = = = = = = = = = = = = = = = = 
+	
+	public void confirmAddBankCardButton() throws FailedLoginException, InterruptedException {
+		WebDriverWait wait = new WebDriverWait(baseDriver.getDriver(), 10);
+		WebElement confirmAddBankCardButton = baseDriver.getDriver().findElement(By.xpath("//button[contains(text(),'添加银行卡')]"));
+		wait.until(ExpectedConditions.elementToBeClickable(confirmAddBankCardButton));
+		String confirmAddBankCardButton_Text = confirmAddBankCardButton.getText();
+		String fail = "confirmAddBankCardButton failed";
+
+		if (confirmAddBankCardButton.isDisplayed()) {
+			confirmAddBankCardButton.click();
+			createReport.getExtentTest().info("Clicked " + confirmAddBankCardButton_Text);
+			Thread.sleep(1000);
+		} else {
+			createReport.getExtentTest().fail(fail);
+		}
 	}
 }

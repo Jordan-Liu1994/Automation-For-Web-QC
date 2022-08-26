@@ -1,13 +1,34 @@
 package utilities;
 
 public class VariablesStorage {
+		
+	static String siteUrlFE = "https://wl003.the777888.com/";
+	static String driverType = "webdriver.chrome.driver";
+	static String driverPath = "chromedriver.exe";
+	static String browserName = "Chrome";
+	static String platformName = "Windows";
+	static String javaVersion = "JDK 17";
+	static String automationAuthor = "Jordan";
+	static String userIDFE = "qctester001";
+	static String passwordAll = "test123";
+	static String captchaOtpAll = "123456";
+	static String year = "1994";
+	static String day = "2";
+	static String offlineDepositName = "公司入款";
+	static String depositOptionName = "线下入款";
+	static int depositAmount = 123;
+	static String depositoryName = "测试员";
+	static String siteUrlBO = "https://wl003-bo.the777888.com/";
+	static String userIDBO = "jordan";
+	static String withdrawPinNum = "1234";
+	static String step = "STEP = ";
+	static String passSS = "-passed.png";
+	static String failSS = "-failed.png";
 
-	private String siteUrlFE = "https://wl003.the777888.com/";
-	private String driverType = "webdriver.chrome.driver";
-	private String driverPath = "chromedriver.exe";
-	private String browserName = "Chrome";
+	GenerateRandomNumbers gRN = GenerateRandomNumbers.getInstance();
+	int randomNum = gRN.generateRandomNumbers();
 
-	GenerateRandomNumbers generateRandomNumbers = GenerateRandomNumbers.getInstance();
+	private String rData;
 
 	public String siteUrlFE() {
 		return siteUrlFE;
@@ -25,10 +46,6 @@ public class VariablesStorage {
 		return browserName;
 	}
 
-	private String platformName = "Windows";
-	private String javaVersion = "JDK 17";
-	private String userName = "Jordan";
-
 	public String platformName() {
 		return platformName;
 	}
@@ -37,31 +54,20 @@ public class VariablesStorage {
 		return javaVersion;
 	}
 
-	public String userName() {
-		return userName;
+	public String automationAuthor() {
+		return automationAuthor;
 	}
 
-	private String userID = "qctester400870";
-	private String password = "test123";
-	private String captcha = "123456";
-	private String referral = "ref123";
-	private String year = "1994";
-	private String day = "2";
-
-	public String userID() {
-		return userID;
+	public String userIDFE() {
+		return userIDFE;
 	}
 
-	public String password() {
-		return password;
+	public String passwordAll() {
+		return passwordAll;
 	}
 
-	public String captcha() {
-		return captcha;
-	}
-
-	public String referral() {
-		return referral;
+	public String captchaOtpAll() {
+		return captchaOtpAll;
 	}
 
 	public String year() {
@@ -71,31 +77,28 @@ public class VariablesStorage {
 	public String day() {
 		return day;
 	}
-	
-	int randomNumbers = generateRandomNumbers.generateRandomNumbers();
-	String userIDRegister = "qctester" + randomNumbers;
 
 	public String userIDRegister() {
-		return userIDRegister;
-	}
-	
-	String phoneNumber = "13131" + randomNumbers;
-	
-	public String phoneNumber() {
-		return phoneNumber;
+		rData = "qctester" + randomNum;
+		return rData;
 	}
 
-	static String offlineDepositName = "公司入款";
-	static String depositOption = "线下入款";
-	static int depositAmount = 123;
-	static String depositoryName = "测试员";
+	public String phoneNumber() {
+		rData = "13131" + randomNum;
+		return rData;
+	}
+
+	public String bankAccountNumber() {
+		rData = "123450000" + randomNum;
+		return rData;
+	}
 
 	public String offlineDepositName() {
 		return offlineDepositName;
 	}
 
-	public String depositOption() {
-		return depositOption;
+	public String depositOptionName() {
+		return depositOptionName;
 	}
 
 	public String depositoryName() {
@@ -105,31 +108,28 @@ public class VariablesStorage {
 	public int depositAmount() {
 		return depositAmount;
 	}
-	
-	private String siteUrlBO = "https://wl003-bo.the777888.com/";
-	private String userIDBO = "jordan";
-	private String passwordBO = "test123";
-	private String otpBO = "123456";
-	
+
 	public String siteUrlBO() {
 		return siteUrlBO;
 	}
-	
+
 	public String userIDBO() {
 		return userIDBO;
 	}
-	
-	public String passwordBO() {
-		return passwordBO;
+
+	public String withdrawPinNum() {
+		return withdrawPinNum;
 	}
-	
-	public String otpBO() {
-		return otpBO;
+
+	public String step() {
+		return step;
 	}
-	
-	private String pinNumber = "1234";
-	
-	public String pinNumber() {
-		return pinNumber;
+
+	public String passSS() {
+		return passSS;
+	}
+
+	public String failSS() {
+		return failSS;
 	}
 }

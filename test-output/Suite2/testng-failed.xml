@@ -2,21 +2,16 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite name="Failed suite [Suite2]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Offline_Deposit(failed)">
-    <groups>
-      <run>
-        <exclude name="Offline_Deposit_Cancel"/>
-      </run>
-    </groups>
     <classes>
-      <class name="automation_WEB_Deposit.FE_OfflineDeposit">
+      <class name="automation_WEB_Withdraw.FE_Withdraw">
         <methods>
-          <include name="closeAnnouncement"/>
-          <include name="shutDown"/>
-          <include name="setReport"/>
           <include name="logCaseStatus"/>
           <include name="toSite"/>
+          <include name="closeAnnouncement"/>
+          <include name="setReport"/>
+          <include name="shutDown"/>
         </methods>
-      </class> <!-- automation_WEB_Deposit.FE_OfflineDeposit -->
+      </class> <!-- automation_WEB_Withdraw.FE_Withdraw -->
     </classes>
   </test> <!-- Offline_Deposit(failed) -->
 </suite> <!-- Failed suite [Suite2] -->

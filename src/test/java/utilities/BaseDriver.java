@@ -15,10 +15,10 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 
 public class BaseDriver {
 
-	private static BaseDriver baseDriver = new BaseDriver();
+	private static BaseDriver bDriver = new BaseDriver();
 
 	public static BaseDriver getInstance() {
-		return baseDriver;
+		return bDriver;
 	}
 
 //	= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
@@ -39,17 +39,17 @@ public class BaseDriver {
 
 //	= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
 
-	private URL url;
-
-	public void startDriverRemote() throws InterruptedException, MalformedURLException {
-		DesiredCapabilities capab = DesiredCapabilities.chrome();
-		capab.setBrowserName("chrome");
-		capab.setPlatform(Platform.WINDOWS);
-		url = new URL("http://localhost:4444/wd/hub");
-		driver = new RemoteWebDriver(url, capab);
-		driver.manage().window().maximize();
-		driver.manage().deleteAllCookies();
-	}
+//	private URL url;
+//
+//	public void startDriverRemote() throws InterruptedException, MalformedURLException {
+//		DesiredCapabilities capab = DesiredCapabilities.chrome();
+//		capab.setBrowserName("chrome");
+//		capab.setPlatform(Platform.WINDOWS);
+//		url = new URL("http://localhost:4444/wd/hub");
+//		driver = new RemoteWebDriver(url, capab);
+//		driver.manage().window().maximize();
+//		driver.manage().deleteAllCookies();
+//	}
 
 //	= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
 

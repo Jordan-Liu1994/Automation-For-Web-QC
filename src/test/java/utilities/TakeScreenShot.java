@@ -8,25 +8,26 @@ import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 
-public class TakeScreenShot {
+public class TakeScreenShot extends VariablesStorage {
 
-	private static TakeScreenShot takeScreenShot = new TakeScreenShot();
+	private static TakeScreenShot takeSS = new TakeScreenShot();
 
 	public static TakeScreenShot getInstance() {
-		return takeScreenShot;
+		return takeSS;
 	}
 
 //	= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
+
+	BaseDriver bDriver = BaseDriver.getInstance();
 
 	private String userDir = System.getProperty("user.dir");
-	private String screenShotPath = userDir + ".\\src\\test\\resources\\screenshots\\";
+	private String pathOfSS = userDir + ".\\src\\test\\resources\\screenshots\\";
+	private String screenShotPathExtent;
 
-	BaseDriver baseDriver = BaseDriver.getInstance();
-
-	public void getTakeScreenShotPass(String fileName) {
-		File screenShot = ((TakesScreenshot) baseDriver.getDriver()).getScreenshotAs(OutputType.FILE);
+	public void getPassScreenShot(String fileName) {
+		File screenShot = ((TakesScreenshot) bDriver.getDriver()).getScreenshotAs(OutputType.FILE);
 		try {
-			FileUtils.copyFile(screenShot, new File(screenShotPath + fileName + "-passed.png"));
+			FileUtils.copyFile(screenShot, new File(pathOfSS + fileName + passSS()));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -34,27 +35,19 @@ public class TakeScreenShot {
 
 //	= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
 
-	public void getTakeScreenShotFail(String fileName) {
-		File screenShot = ((TakesScreenshot) baseDriver.getDriver()).getScreenshotAs(OutputType.FILE);
+	public void getFailScreenShot(String fileName) {
+		File screenShot = ((TakesScreenshot) bDriver.getDriver()).getScreenshotAs(OutputType.FILE);
 		try {
-			FileUtils.copyFile(screenShot, new File(screenShotPath + fileName + "-failed.png"));
+			FileUtils.copyFile(screenShot, new File(pathOfSS + fileName + failSS()));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-	}
-
-//	= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
-
-	private String dateFormat = "dd-MM-yy (HH.mm.ss)";
-
-	public String timestamp() {
-		return new SimpleDateFormat(dateFormat).format(new Date());
 	}
 
 //	= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
 
 	public String screenShotPathExtent() {
-		String screenShotPathExtent = screenShotPath;
-		return screenShotPath;
+		screenShotPathExtent = pathOfSS;
+		return pathOfSS;
 	}
 }

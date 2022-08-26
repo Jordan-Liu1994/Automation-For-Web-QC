@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite name="Failed suite [Suite]" guice-stage="DEVELOPMENT">
-  <test thread-count="5" name="Test(failed)">
+  <test thread-count="5" name="Authentication Test(failed)">
     <groups>
       <run>
-        <exclude name="Offline_Deposit_Cancel"/>
+        <exclude name="Login"/>
+        <exclude name="Logout"/>
       </run>
     </groups>
     <classes>
-      <class name="automation_WEB_Deposit.FE_OfflineDeposit">
+      <class name="webAuthentication.FrontEndAuthentication">
         <methods>
           <include name="closeAnnouncement"/>
-          <include name="shutDown"/>
           <include name="setReport"/>
+          <include name="endReport"/>
           <include name="logCaseStatus"/>
-          <include name="toSite"/>
         </methods>
-      </class> <!-- automation_WEB_Deposit.FE_OfflineDeposit -->
+      </class> <!-- webAuthentication.FrontEndAuthentication -->
     </classes>
-  </test> <!-- Test(failed) -->
+  </test> <!-- Authentication Test(failed) -->
 </suite> <!-- Failed suite [Suite] -->

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [Authentication Suite]" guice-stage="DEVELOPMENT">
+  <test thread-count="5" name="Authentication Test(failed)">
+    <groups>
+      <run>
+        <include name="Announcement"/>
+        <include name="Register"/>
+        <exclude name="Login"/>
+        <exclude name="Logout"/>
+      </run>
+    </groups>
+    <classes>
+      <class name="webAuthentication.FrontEndAuthentication">
+        <methods>
+          <include name="closeAnnouncement"/>
+          <include name="register"/>
+        </methods>
+      </class> <!-- webAuthentication.FrontEndAuthentication -->
+    </classes>
+  </test> <!-- Authentication Test(failed) -->
+</suite> <!-- Failed suite [Authentication Suite] -->
