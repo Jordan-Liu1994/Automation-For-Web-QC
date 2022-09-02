@@ -2,10 +2,13 @@ package utilities;
 
 public class VariablesStorage {
 		
-	static String siteUrlFE = "https://wl003.the777888.com/";
+	static String siteUrlFEPreLive = "https://pr3l1v3.com/";
 	static String driverType = "webdriver.chrome.driver";
+	static String firefoxDriverType = "webdriver.gecko.driver";
 	static String driverPath = "chromedriver.exe";
+	static String firefoxDriverPath = "geckodriver.exe";
 	static String browserName = "Chrome";
+	static String firefoxBrowserName = "Firefox";
 	static String platformName = "Windows";
 	static String javaVersion = "JDK 17";
 	static String automationAuthor = "Jordan";
@@ -14,36 +17,55 @@ public class VariablesStorage {
 	static String captchaOtpAll = "123456";
 	static String year = "1994";
 	static String day = "2";
-	static String offlineDepositName = "公司入款";
-	static String depositOptionName = "线下入款";
+	static String languageSelection = "简体中文";
+	
+	static String depositOptionName = "Bank Transfer";
+//	static String depositOptionName = "erc";
+//	static String depositOptionName = "trc";
+	
 	static int depositAmount = 123;
 	static String depositoryName = "测试员";
-	static String siteUrlBO = "https://wl003-bo.the777888.com/";
-	static String userIDBO = "jordan";
+	static String siteUrlBO = "https://backoffice.pr3l1v3.com/";
+	static String userIDBO = "automation001";
 	static String withdrawPinNum = "1234";
 	static String step = "STEP = ";
 	static String passSS = "-passed.png";
 	static String failSS = "-failed.png";
 
+	static String financeModule = "财务管理";
+	static String financeSubModule = "公司入款审核";
+	
 	GenerateRandomNumbers gRN = GenerateRandomNumbers.getInstance();
 	int randomNum = gRN.generateRandomNumbers();
 
 	private String rData;
-
-	public String siteUrlFE() {
-		return siteUrlFE;
+	
+	public String siteUrlFEPreLive() {
+		return siteUrlFEPreLive;
 	}
 
 	public String driverType() {
 		return driverType;
 	}
+	
+	public String firefoxDriverType() {
+		return firefoxDriverType;
+	}
 
 	public String driverPath() {
 		return driverPath;
 	}
+	
+	public String firefoxDriverPath() {
+		return firefoxDriverPath;
+	}
 
 	public String browserName() {
 		return browserName;
+	}
+	
+	public String firefoxBrowserName() {
+		return firefoxBrowserName;
 	}
 
 	public String platformName() {
@@ -77,6 +99,10 @@ public class VariablesStorage {
 	public String day() {
 		return day;
 	}
+	
+	public String languageSelection() {
+		return languageSelection;
+	}
 
 	public String userIDRegister() {
 		rData = "qctester" + randomNum;
@@ -91,10 +117,6 @@ public class VariablesStorage {
 	public String bankAccountNumber() {
 		rData = "123450000" + randomNum;
 		return rData;
-	}
-
-	public String offlineDepositName() {
-		return offlineDepositName;
 	}
 
 	public String depositOptionName() {
@@ -131,5 +153,13 @@ public class VariablesStorage {
 
 	public String failSS() {
 		return failSS;
+	}
+	
+	public String financeModule() {
+		return financeModule;
+	}
+	
+	public String financeSubModule() {
+		return financeSubModule;
 	}
 }

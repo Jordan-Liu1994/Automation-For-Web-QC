@@ -10,6 +10,7 @@ import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
@@ -33,7 +34,11 @@ public class BaseDriver {
 
 	private String driverPath = ".\\src\\test\\resources\\drivers\\";
 
-	public void setDriverProperty(String driverType, String path) {
+	public void setChromeDriverProperty(String driverType, String path) {
+		System.setProperty(driverType, driverPath + path);
+	}
+	
+	public void setFirefoxDriverProperty(String driverType, String path) {
 		System.setProperty(driverType, driverPath + path);
 	}
 
@@ -53,8 +58,14 @@ public class BaseDriver {
 
 //	= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
 
-	public void startDriver() throws InterruptedException, MalformedURLException {
+	public void startChromeDriver() throws InterruptedException, MalformedURLException {
 		driver = new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.manage().deleteAllCookies();
+	}
+	
+	public void startFirefoxDriver() throws InterruptedException, MalformedURLException {
+		driver = new FirefoxDriver();
 		driver.manage().window().maximize();
 		driver.manage().deleteAllCookies();
 	}

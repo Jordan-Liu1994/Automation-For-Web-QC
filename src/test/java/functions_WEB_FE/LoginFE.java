@@ -29,11 +29,12 @@ public class LoginFE {
 	private static String keyIn = " keyed in ";
 
 	public void loginOptionButton() throws FailedLoginException {
+		String fail = "loginOptionButton failed";
+
 		wait = new WebDriverWait(bDriver.getDriver(), 10);
 		WebElement loginOptionButton = bDriver.getDriver().findElement(By.id("header_login"));
 		wait.until(ExpectedConditions.elementToBeClickable(loginOptionButton));
 		String loginOptionButtonText = loginOptionButton.getText();
-		String fail = "loginOptionButton failed";
 
 		if (loginOptionButton.isEnabled()) {
 			loginOptionButton.click();
@@ -47,11 +48,12 @@ public class LoginFE {
 //	= = = = = = = = = = = = = = = = = = = = 
 
 	public void setUserID(String userID) throws FailedLoginException {
+		String fail = "setUserID failed";
+
 		wait = new WebDriverWait(bDriver.getDriver(), 10);
 		WebElement setUserID = bDriver.getDriver().findElement(By.id("username"));
 		wait.until(ExpectedConditions.visibilityOf(setUserID));
 		String setUserIDText = setUserID.getAttribute(attr);
-		String fail = "setUserID failed";
 
 		if (setUserID.isDisplayed()) {
 			setUserID.clear();
@@ -65,9 +67,10 @@ public class LoginFE {
 //	= = = = = = = = = = = = = = = = = = = = 
 
 	public void setPassword(String password) throws FailedLoginException {
+		String fail = "setPassword failed";
+
 		WebElement setPassword = bDriver.getDriver().findElement(By.id("password"));
 		String setPasswordText = setPassword.getAttribute("placeholder");
-		String fail = "setPassword failed";
 
 		if (setPassword.isDisplayed()) {
 			setPassword.clear();
@@ -81,9 +84,10 @@ public class LoginFE {
 //	= = = = = = = = = = = = = = = = = = = = 
 
 	public void setCaptcha(String captcha) throws FailedLoginException {
+		String fail = "Captcha failed";
+
 		WebElement setCaptcha = bDriver.getDriver().findElement(By.id("captcha_code"));
 		String setCaptcha_Text = setCaptcha.getAttribute("placeholder");
-		String fail = "Captcha failed";
 
 		if (setCaptcha.isDisplayed()) {
 			setCaptcha.clear();
@@ -97,11 +101,12 @@ public class LoginFE {
 //	= = = = = = = = = = = = = = = = = = = = 
 
 	public void selectLoginButton() throws FailedLoginException {
+		String fail = "selectLoginButton failed";
+
 		wait = new WebDriverWait(bDriver.getDriver(), 10);
 		WebElement selectLoginButton = bDriver.getDriver().findElement(By.id("login_popup_btn"));
 		wait.until(ExpectedConditions.elementToBeClickable(selectLoginButton));
 		String selectLoginButtonText = selectLoginButton.getText();
-		String fail = "selectLoginButton failed";
 
 		if (selectLoginButton.isEnabled()) {
 			selectLoginButton.click();
@@ -115,11 +120,12 @@ public class LoginFE {
 //	= = = = = = = = = = = = = = = = = = = = 
 
 	public void verifyLogIn(String userID) throws FailedLoginException, InterruptedException {
+		String fail = "verifyLogIn failed";
+
 		bDriver.getDriver().manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		wait = new WebDriverWait(bDriver.getDriver(), 10);
 		WebElement userIDName = bDriver.getDriver().findElement(By.xpath("(//a[contains(text(),'" + userID + "')])[1]"));
 		wait.until(ExpectedConditions.visibilityOf(userIDName));
-		String fail = "verifyLogIn failed";
 
 		if (userIDName.isDisplayed()) {
 			cR.getExtentTest().info("Account " + userID + " verified");

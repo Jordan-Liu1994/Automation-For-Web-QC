@@ -108,14 +108,16 @@ public class RegisterFE {
 
 //	= = = = = = = = = = = = = = = = = = = = 
 
+//	depends on CLIENT
+
 	public void setDOB(String year, String day) throws FailedLoginException, InterruptedException {
 		String fail = "setDateOfBirth failed";
-		String skip = "Skipped";
+		String skip = "Skipped setDateOfBirth";
 		Boolean dayListValue = false;
 
 		try {
 			WebElement setDateOfBirth = bDriver.getDriver().findElement(By.id("r_dob"));
-			String setDateOfBirthText = setDateOfBirth.getAttribute("placeholder");
+			String setDateOfBirthText = setDateOfBirth.getAttribute(attr);
 
 			if (setDateOfBirth.isDisplayed()) {
 				setDateOfBirth.click();
@@ -156,6 +158,31 @@ public class RegisterFE {
 
 //	= = = = = = = = = = = = = = = = = = = = 
 
+//	depends on CLIENT
+
+	public void setPhoneNumber(String phoneNumber) throws FailedLoginException, InterruptedException {
+		String fail = "setPhoneNumber failed";
+		String skip = "Skipped setPhoneNumber";
+		Boolean dayListValue = false;
+
+		try {
+			WebElement setPhoneNumber = bDriver.getDriver().findElement(By.id("r_mobile_number"));
+			String setPhoneNumberText = setPhoneNumber.getAttribute(attr);
+
+			if (setPhoneNumber.isDisplayed()) {
+				setPhoneNumber.clear();
+				setPhoneNumber.sendKeys(phoneNumber);
+				cR.getExtentTest().info(phoneNumber + keyIn + setPhoneNumberText);
+			} else {
+				cR.getExtentTest().fail(fail);
+			}
+		} catch (NoSuchElementException e) {
+			cR.getExtentTest().skip(skip);
+		}
+	}
+
+//	= = = = = = = = = = = = = = = = = = = = 
+
 	public void selectRegisterButton() throws FailedLoginException {
 		WebElement selectRegisterButton = bDriver.getDriver().findElement(By.id("register_btn"));
 		String selectRegisterButtonText = selectRegisterButton.getText();
@@ -164,6 +191,7 @@ public class RegisterFE {
 		if (selectRegisterButton.isEnabled()) {
 			selectRegisterButton.click();
 			cR.getExtentTest().info("Clicked = " + selectRegisterButtonText);
+			bDriver.getDriver().manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
 		} else {
 			cR.getExtentTest().fail(fail);
 			throw new FailedLoginException(fail);
@@ -173,7 +201,7 @@ public class RegisterFE {
 //	= = = = = = = = = = = = = = = = = = = = 
 
 	public void verifyRegister(String userID) throws FailedLoginException, InterruptedException {
-		bDriver.getDriver().manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		bDriver.getDriver().manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		wait = new WebDriverWait(bDriver.getDriver(), 10);
 		WebElement userIDName = bDriver.getDriver().findElement(By.xpath("(//a[contains(text(),'" + userID + "')])[1]"));
 		wait.until(ExpectedConditions.visibilityOf(userIDName));

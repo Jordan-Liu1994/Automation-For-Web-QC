@@ -43,11 +43,12 @@ public class LogoutFE {
 		}
 
 		wait = new WebDriverWait(bDriver.getDriver(), 10);
-		WebElement logoutButton = bDriver.getDriver().findElement(By.xpath("//button[contains(text(),'登出')]"));
+		WebElement logoutButton = bDriver.getDriver().findElement(By.xpath("//button[@class='btn btn_nav_logout']"));
 		wait.until(ExpectedConditions.elementToBeClickable(logoutButton));
 		wait.until(ExpectedConditions.visibilityOf(logoutButton));
 		String logoutButtonText = logoutButton.getText();
 
+		Thread.sleep(250);
 		if (logoutButton.isEnabled()) {
 			logoutButton.click();
 			cR.getExtentTest().info("Clicked " + logoutButtonText);
@@ -70,36 +71,6 @@ public class LogoutFE {
 		} else {
 			cR.getExtentTest().fail(fail);
 			throw new FailedLoginException(fail);
-		}
-	}
-	
-//	= = = = = = = = = = = = = = = = = = = = 
-	
-	public void selectLogoutButtonAfterRegister() throws FailedLoginException, InterruptedException {
-		WebElement walletIcon = bDriver.getDriver().findElement(By.xpath("(//img)[4]"));
-		String fail = "Hover over wallet icon failed";
-		String fail2 = "Logout failed";
-
-		if (walletIcon.isDisplayed()) {
-			Actions builder = new Actions(bDriver.getDriver());
-			Action act = builder.moveToElement(walletIcon).build();
-			act.perform();
-			cR.getExtentTest().info("Hovered over wallet icon");
-		} else {
-			cR.getExtentTest().fail(fail);
-			throw new FailedLoginException(fail);
-		}
-
-		Thread.sleep(1000);
-		WebElement logoutButton = bDriver.getDriver().findElement(By.xpath("//button[contains(text(),'登出')]"));
-		String logoutButton_Text = logoutButton.getText();
-
-		if (logoutButton.isEnabled()) {
-			logoutButton.click();
-			cR.getExtentTest().info("Clicked " + logoutButton_Text);
-		} else {
-			cR.getExtentTest().fail(fail2);
-			throw new FailedLoginException(fail2);
 		}
 	}
 }

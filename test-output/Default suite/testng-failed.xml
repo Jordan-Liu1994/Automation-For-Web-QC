@@ -3,15 +3,14 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="webAuthentication.FrontEndAuthentication">
+      <class name="webOfflineDeposit.FE_OfflineDeposit">
         <methods>
-          <include name="closeAnnouncement"/>
-          <include name="setReport"/>
-          <include name="endReport"/>
-          <include name="register"/>
+          <include name="confirmOfflineDepositPaid"/>
           <include name="logCaseStatus"/>
+          <include name="shutDown"/>
+          <include name="setReport"/>
         </methods>
-      </class> <!-- webAuthentication.FrontEndAuthentication -->
+      </class> <!-- webOfflineDeposit.FE_OfflineDeposit -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

@@ -4,17 +4,19 @@
   <test thread-count="5" name="Authentication Test(failed)">
     <groups>
       <run>
-        <exclude name="Login"/>
-        <exclude name="Logout"/>
+        <exclude name="Register"/>
       </run>
     </groups>
     <classes>
       <class name="webAuthentication.FrontEndAuthentication">
         <methods>
           <include name="closeAnnouncement"/>
+          <include name="login"/>
           <include name="setReport"/>
           <include name="endReport"/>
+          <include name="logout"/>
           <include name="logCaseStatus"/>
+          <include name="toSite"/>
         </methods>
       </class> <!-- webAuthentication.FrontEndAuthentication -->
     </classes>

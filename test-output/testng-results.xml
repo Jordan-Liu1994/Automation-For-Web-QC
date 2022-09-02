@@ -1,75 +1,273 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="2" total="5" passed="3" failed="0" skipped="0">
+<testng-results ignored="2" total="15" passed="13" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2022-08-26T18:02:27 SGT" name="Suite" finished-at="2022-08-26T18:02:40 SGT" duration-ms="13161">
+  <suite started-at="2022-09-02T14:49:42 SGT" name="SuiteMaster" finished-at="2022-09-02T14:49:42 SGT" duration-ms="0">
+    <groups>
+    </groups>
+  </suite> <!-- SuiteMaster -->
+  <suite started-at="2022-09-02T14:48:53 SGT" name="Suite1" finished-at="2022-09-02T14:49:08 SGT" duration-ms="14569">
     <groups>
       <group name="Announcement">
-        <method signature="FrontEndAuthentication.closeAnnouncement()[pri:1, instance:webAuthentication.FrontEndAuthentication@72c927f1]" name="closeAnnouncement" class="webAuthentication.FrontEndAuthentication"/>
+        <method signature="FrontEndAuthentication.closeAnnouncement()[pri:1, instance:webAuthentication.FrontEndAuthentication@71809907]" name="closeAnnouncement" class="webAuthentication.FrontEndAuthentication"/>
       </group> <!-- Announcement -->
       <group name="Authentication">
-        <method signature="FrontEndAuthentication.toSite()[pri:0, instance:webAuthentication.FrontEndAuthentication@72c927f1]" name="toSite" class="webAuthentication.FrontEndAuthentication"/>
+        <method signature="FrontEndAuthentication.toSite()[pri:0, instance:webAuthentication.FrontEndAuthentication@71809907]" name="toSite" class="webAuthentication.FrontEndAuthentication"/>
       </group> <!-- Authentication -->
+      <group name="Logout">
+        <method signature="FrontEndAuthentication.logout()[pri:3, instance:webAuthentication.FrontEndAuthentication@71809907]" name="logout" class="webAuthentication.FrontEndAuthentication"/>
+      </group> <!-- Logout -->
       <group name="Login">
-        <method signature="FrontEndAuthentication.login()[pri:2, instance:webAuthentication.FrontEndAuthentication@72c927f1]" name="login" class="webAuthentication.FrontEndAuthentication"/>
+        <method signature="FrontEndAuthentication.login()[pri:2, instance:webAuthentication.FrontEndAuthentication@71809907]" name="login" class="webAuthentication.FrontEndAuthentication"/>
+        <method signature="FrontEndAuthentication.logout()[pri:3, instance:webAuthentication.FrontEndAuthentication@71809907]" name="logout" class="webAuthentication.FrontEndAuthentication"/>
       </group> <!-- Login -->
     </groups>
-    <test started-at="2022-08-26T18:02:27 SGT" name="Authentication Test" finished-at="2022-08-26T18:02:40 SGT" duration-ms="13161">
+    <test started-at="2022-09-02T14:48:53 SGT" name="Authentication Test" finished-at="2022-09-02T14:49:08 SGT" duration-ms="14569">
       <class name="webAuthentication.FrontEndAuthentication">
-        <test-method is-config="true" signature="setReport()[pri:0, instance:webAuthentication.FrontEndAuthentication@72c927f1]" started-at="2022-08-26T18:02:27 SGT" name="setReport" finished-at="2022-08-26T18:02:29 SGT" duration-ms="1981" status="PASS">
+        <test-method is-config="true" signature="setReport()[pri:0, instance:webAuthentication.FrontEndAuthentication@71809907]" started-at="2022-09-02T14:48:53 SGT" name="setReport" finished-at="2022-09-02T14:48:54 SGT" duration-ms="1015" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setReport -->
-        <test-method signature="toSite()[pri:0, instance:webAuthentication.FrontEndAuthentication@72c927f1]" started-at="2022-08-26T18:02:29 SGT" name="toSite" finished-at="2022-08-26T18:02:31 SGT" duration-ms="2325" status="PASS">
+        <test-method signature="toSite()[pri:0, instance:webAuthentication.FrontEndAuthentication@71809907]" started-at="2022-09-02T14:48:54 SGT" name="toSite" finished-at="2022-09-02T14:48:56 SGT" duration-ms="1858" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- toSite -->
-        <test-method is-config="true" signature="logCaseStatus(org.testng.ITestResult)[pri:0, instance:webAuthentication.FrontEndAuthentication@72c927f1]" started-at="2022-08-26T18:02:31 SGT" name="logCaseStatus" finished-at="2022-08-26T18:02:31 SGT" duration-ms="14" status="PASS">
+        <test-method is-config="true" signature="logCaseStatus(org.testng.ITestResult)[pri:0, instance:webAuthentication.FrontEndAuthentication@71809907]" started-at="2022-09-02T14:48:56 SGT" name="logCaseStatus" finished-at="2022-09-02T14:48:56 SGT" duration-ms="3" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=toSite status=SUCCESS method=FrontEndAuthentication.toSite()[pri:0, instance:webAuthentication.FrontEndAuthentication@72c927f1] output={null}]]]>
+                <![CDATA[[TestResult name=toSite status=SUCCESS method=FrontEndAuthentication.toSite()[pri:0, instance:webAuthentication.FrontEndAuthentication@71809907] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- logCaseStatus -->
-        <test-method signature="closeAnnouncement()[pri:1, instance:webAuthentication.FrontEndAuthentication@72c927f1]" started-at="2022-08-26T18:02:31 SGT" name="closeAnnouncement" finished-at="2022-08-26T18:02:34 SGT" duration-ms="3383" status="PASS">
+        <test-method signature="closeAnnouncement()[pri:1, instance:webAuthentication.FrontEndAuthentication@71809907]" started-at="2022-09-02T14:48:56 SGT" name="closeAnnouncement" finished-at="2022-09-02T14:48:59 SGT" duration-ms="3031" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- closeAnnouncement -->
-        <test-method is-config="true" signature="logCaseStatus(org.testng.ITestResult)[pri:0, instance:webAuthentication.FrontEndAuthentication@72c927f1]" started-at="2022-08-26T18:02:34 SGT" name="logCaseStatus" finished-at="2022-08-26T18:02:34 SGT" duration-ms="2" status="PASS">
+        <test-method is-config="true" signature="logCaseStatus(org.testng.ITestResult)[pri:0, instance:webAuthentication.FrontEndAuthentication@71809907]" started-at="2022-09-02T14:48:59 SGT" name="logCaseStatus" finished-at="2022-09-02T14:48:59 SGT" duration-ms="0" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=closeAnnouncement status=SUCCESS method=FrontEndAuthentication.closeAnnouncement()[pri:1, instance:webAuthentication.FrontEndAuthentication@72c927f1] output={null}]]]>
+                <![CDATA[[TestResult name=closeAnnouncement status=SUCCESS method=FrontEndAuthentication.closeAnnouncement()[pri:1, instance:webAuthentication.FrontEndAuthentication@71809907] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- logCaseStatus -->
-        <test-method signature="login()[pri:2, instance:webAuthentication.FrontEndAuthentication@72c927f1]" started-at="2022-08-26T18:02:34 SGT" name="login" finished-at="2022-08-26T18:02:38 SGT" duration-ms="3629" status="PASS">
+        <test-method signature="login()[pri:2, instance:webAuthentication.FrontEndAuthentication@71809907]" started-at="2022-09-02T14:48:59 SGT" name="login" finished-at="2022-09-02T14:49:03 SGT" duration-ms="3853" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- login -->
-        <test-method is-config="true" signature="logCaseStatus(org.testng.ITestResult)[pri:0, instance:webAuthentication.FrontEndAuthentication@72c927f1]" started-at="2022-08-26T18:02:38 SGT" name="logCaseStatus" finished-at="2022-08-26T18:02:38 SGT" duration-ms="0" status="PASS">
+        <test-method is-config="true" signature="logCaseStatus(org.testng.ITestResult)[pri:0, instance:webAuthentication.FrontEndAuthentication@71809907]" started-at="2022-09-02T14:49:03 SGT" name="logCaseStatus" finished-at="2022-09-02T14:49:03 SGT" duration-ms="0" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=login status=SUCCESS method=FrontEndAuthentication.login()[pri:2, instance:webAuthentication.FrontEndAuthentication@72c927f1] output={null}]]]>
+                <![CDATA[[TestResult name=login status=SUCCESS method=FrontEndAuthentication.login()[pri:2, instance:webAuthentication.FrontEndAuthentication@71809907] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- logCaseStatus -->
-        <test-method is-config="true" signature="endReport()[pri:0, instance:webAuthentication.FrontEndAuthentication@72c927f1]" started-at="2022-08-26T18:02:38 SGT" name="endReport" finished-at="2022-08-26T18:02:40 SGT" duration-ms="1751" status="PASS">
+        <test-method signature="logout()[pri:3, instance:webAuthentication.FrontEndAuthentication@71809907]" started-at="2022-09-02T14:49:03 SGT" name="logout" finished-at="2022-09-02T14:49:06 SGT" duration-ms="2457" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- logout -->
+        <test-method is-config="true" signature="logCaseStatus(org.testng.ITestResult)[pri:0, instance:webAuthentication.FrontEndAuthentication@71809907]" started-at="2022-09-02T14:49:06 SGT" name="logCaseStatus" finished-at="2022-09-02T14:49:06 SGT" duration-ms="0" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=logout status=SUCCESS method=FrontEndAuthentication.logout()[pri:3, instance:webAuthentication.FrontEndAuthentication@71809907] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- logCaseStatus -->
+        <test-method is-config="true" signature="endReport()[pri:0, instance:webAuthentication.FrontEndAuthentication@71809907]" started-at="2022-09-02T14:49:06 SGT" name="endReport" finished-at="2022-09-02T14:49:08 SGT" duration-ms="2326" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- endReport -->
       </class> <!-- webAuthentication.FrontEndAuthentication -->
     </test> <!-- Authentication Test -->
-  </suite> <!-- Suite -->
+  </suite> <!-- Suite1 -->
+  <suite started-at="2022-09-02T14:49:08 SGT" name="Suite2" finished-at="2022-09-02T14:49:42 SGT" duration-ms="34327">
+    <groups>
+      <group name="BOLogin">
+        <method signature="FEOfflineDeposit.loginBOPage()[pri:8, instance:webOfflineDeposit.FEOfflineDeposit@223191a6]" name="loginBOPage" class="webOfflineDeposit.FEOfflineDeposit"/>
+        <method signature="FEOfflineDeposit.offlineDepositVerification()[pri:9, instance:webOfflineDeposit.FEOfflineDeposit@223191a6]" name="offlineDepositVerification" class="webOfflineDeposit.FEOfflineDeposit"/>
+      </group> <!-- BOLogin -->
+      <group name="Announcement">
+        <method signature="FEOfflineDeposit.closeAnnouncement()[pri:1, instance:webOfflineDeposit.FEOfflineDeposit@223191a6]" name="closeAnnouncement" class="webOfflineDeposit.FEOfflineDeposit"/>
+      </group> <!-- Announcement -->
+      <group name="Authentication">
+        <method signature="FEOfflineDeposit.toSite()[pri:0, instance:webOfflineDeposit.FEOfflineDeposit@223191a6]" name="toSite" class="webOfflineDeposit.FEOfflineDeposit"/>
+      </group> <!-- Authentication -->
+      <group name="VerifyOfflineDeposit">
+        <method signature="FEOfflineDeposit.verifyOfflineDepositID()[pri:7, instance:webOfflineDeposit.FEOfflineDeposit@223191a6]" name="verifyOfflineDepositID" class="webOfflineDeposit.FEOfflineDeposit"/>
+      </group> <!-- VerifyOfflineDeposit -->
+      <group name="OfflineDepositMethod">
+        <method signature="FEOfflineDeposit.confirmOfflineDepositPaid()[pri:5, instance:webOfflineDeposit.FEOfflineDeposit@223191a6]" name="confirmOfflineDepositPaid" class="webOfflineDeposit.FEOfflineDeposit"/>
+        <method signature="FEOfflineDeposit.offlineDepositMethods()[pri:4, instance:webOfflineDeposit.FEOfflineDeposit@223191a6]" name="offlineDepositMethods" class="webOfflineDeposit.FEOfflineDeposit"/>
+        <method signature="FEOfflineDeposit.toDepositPage()[pri:3, instance:webOfflineDeposit.FEOfflineDeposit@223191a6]" name="toDepositPage" class="webOfflineDeposit.FEOfflineDeposit"/>
+      </group> <!-- OfflineDepositMethod -->
+      <group name="Login">
+        <method signature="FEOfflineDeposit.login()[pri:2, instance:webOfflineDeposit.FEOfflineDeposit@223191a6]" name="login" class="webOfflineDeposit.FEOfflineDeposit"/>
+      </group> <!-- Login -->
+      <group name="BOOfflineDeposit">
+        <method signature="FEOfflineDeposit.offlineDepositVerification()[pri:9, instance:webOfflineDeposit.FEOfflineDeposit@223191a6]" name="offlineDepositVerification" class="webOfflineDeposit.FEOfflineDeposit"/>
+      </group> <!-- BOOfflineDeposit -->
+    </groups>
+    <test started-at="2022-09-02T14:49:08 SGT" name="Offline_Deposit" finished-at="2022-09-02T14:49:42 SGT" duration-ms="34327">
+      <class name="webOfflineDeposit.FEOfflineDeposit">
+        <test-method is-config="true" signature="setReport()[pri:0, instance:webOfflineDeposit.FEOfflineDeposit@223191a6]" started-at="2022-09-02T14:49:08 SGT" name="setReport" finished-at="2022-09-02T14:49:08 SGT" duration-ms="628" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setReport -->
+        <test-method signature="toSite()[pri:0, instance:webOfflineDeposit.FEOfflineDeposit@223191a6]" started-at="2022-09-02T14:49:08 SGT" name="toSite" finished-at="2022-09-02T14:49:10 SGT" duration-ms="1809" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- toSite -->
+        <test-method is-config="true" signature="logCaseStatus(org.testng.ITestResult)[pri:0, instance:webOfflineDeposit.FEOfflineDeposit@223191a6]" started-at="2022-09-02T14:49:10 SGT" name="logCaseStatus" finished-at="2022-09-02T14:49:10 SGT" duration-ms="0" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=toSite status=SUCCESS method=FEOfflineDeposit.toSite()[pri:0, instance:webOfflineDeposit.FEOfflineDeposit@223191a6] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- logCaseStatus -->
+        <test-method signature="closeAnnouncement()[pri:1, instance:webOfflineDeposit.FEOfflineDeposit@223191a6]" started-at="2022-09-02T14:49:10 SGT" name="closeAnnouncement" finished-at="2022-09-02T14:49:13 SGT" duration-ms="2974" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- closeAnnouncement -->
+        <test-method is-config="true" signature="logCaseStatus(org.testng.ITestResult)[pri:0, instance:webOfflineDeposit.FEOfflineDeposit@223191a6]" started-at="2022-09-02T14:49:13 SGT" name="logCaseStatus" finished-at="2022-09-02T14:49:13 SGT" duration-ms="1" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=closeAnnouncement status=SUCCESS method=FEOfflineDeposit.closeAnnouncement()[pri:1, instance:webOfflineDeposit.FEOfflineDeposit@223191a6] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- logCaseStatus -->
+        <test-method signature="login()[pri:2, instance:webOfflineDeposit.FEOfflineDeposit@223191a6]" started-at="2022-09-02T14:49:13 SGT" name="login" finished-at="2022-09-02T14:49:14 SGT" duration-ms="1163" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- login -->
+        <test-method is-config="true" signature="logCaseStatus(org.testng.ITestResult)[pri:0, instance:webOfflineDeposit.FEOfflineDeposit@223191a6]" started-at="2022-09-02T14:49:14 SGT" name="logCaseStatus" finished-at="2022-09-02T14:49:14 SGT" duration-ms="1" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=login status=SUCCESS method=FEOfflineDeposit.login()[pri:2, instance:webOfflineDeposit.FEOfflineDeposit@223191a6] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- logCaseStatus -->
+        <test-method signature="toDepositPage()[pri:3, instance:webOfflineDeposit.FEOfflineDeposit@223191a6]" started-at="2022-09-02T14:49:14 SGT" name="toDepositPage" finished-at="2022-09-02T14:49:17 SGT" duration-ms="2527" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- toDepositPage -->
+        <test-method is-config="true" signature="logCaseStatus(org.testng.ITestResult)[pri:0, instance:webOfflineDeposit.FEOfflineDeposit@223191a6]" started-at="2022-09-02T14:49:17 SGT" name="logCaseStatus" finished-at="2022-09-02T14:49:17 SGT" duration-ms="0" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=toDepositPage status=SUCCESS method=FEOfflineDeposit.toDepositPage()[pri:3, instance:webOfflineDeposit.FEOfflineDeposit@223191a6] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- logCaseStatus -->
+        <test-method signature="offlineDepositMethods()[pri:4, instance:webOfflineDeposit.FEOfflineDeposit@223191a6]" started-at="2022-09-02T14:49:17 SGT" name="offlineDepositMethods" finished-at="2022-09-02T14:49:20 SGT" duration-ms="3293" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- offlineDepositMethods -->
+        <test-method is-config="true" signature="logCaseStatus(org.testng.ITestResult)[pri:0, instance:webOfflineDeposit.FEOfflineDeposit@223191a6]" started-at="2022-09-02T14:49:20 SGT" name="logCaseStatus" finished-at="2022-09-02T14:49:20 SGT" duration-ms="0" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=offlineDepositMethods status=SUCCESS method=FEOfflineDeposit.offlineDepositMethods()[pri:4, instance:webOfflineDeposit.FEOfflineDeposit@223191a6] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- logCaseStatus -->
+        <test-method signature="confirmOfflineDepositPaid()[pri:5, instance:webOfflineDeposit.FEOfflineDeposit@223191a6]" started-at="2022-09-02T14:49:20 SGT" name="confirmOfflineDepositPaid" finished-at="2022-09-02T14:49:24 SGT" duration-ms="3608" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- confirmOfflineDepositPaid -->
+        <test-method is-config="true" signature="logCaseStatus(org.testng.ITestResult)[pri:0, instance:webOfflineDeposit.FEOfflineDeposit@223191a6]" started-at="2022-09-02T14:49:24 SGT" name="logCaseStatus" finished-at="2022-09-02T14:49:24 SGT" duration-ms="0" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=confirmOfflineDepositPaid status=SUCCESS method=FEOfflineDeposit.confirmOfflineDepositPaid()[pri:5, instance:webOfflineDeposit.FEOfflineDeposit@223191a6] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- logCaseStatus -->
+        <test-method signature="verifyOfflineDepositID()[pri:7, instance:webOfflineDeposit.FEOfflineDeposit@223191a6]" started-at="2022-09-02T14:49:24 SGT" name="verifyOfflineDepositID" finished-at="2022-09-02T14:49:29 SGT" duration-ms="5539" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyOfflineDepositID -->
+        <test-method is-config="true" signature="logCaseStatus(org.testng.ITestResult)[pri:0, instance:webOfflineDeposit.FEOfflineDeposit@223191a6]" started-at="2022-09-02T14:49:29 SGT" name="logCaseStatus" finished-at="2022-09-02T14:49:29 SGT" duration-ms="0" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=verifyOfflineDepositID status=SUCCESS method=FEOfflineDeposit.verifyOfflineDepositID()[pri:7, instance:webOfflineDeposit.FEOfflineDeposit@223191a6] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- logCaseStatus -->
+        <test-method signature="loginBOPage()[pri:8, instance:webOfflineDeposit.FEOfflineDeposit@223191a6]" started-at="2022-09-02T14:49:29 SGT" name="loginBOPage" finished-at="2022-09-02T14:49:32 SGT" duration-ms="2700" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- loginBOPage -->
+        <test-method is-config="true" signature="logCaseStatus(org.testng.ITestResult)[pri:0, instance:webOfflineDeposit.FEOfflineDeposit@223191a6]" started-at="2022-09-02T14:49:32 SGT" name="logCaseStatus" finished-at="2022-09-02T14:49:32 SGT" duration-ms="0" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=loginBOPage status=SUCCESS method=FEOfflineDeposit.loginBOPage()[pri:8, instance:webOfflineDeposit.FEOfflineDeposit@223191a6] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- logCaseStatus -->
+        <test-method signature="offlineDepositVerification()[pri:9, instance:webOfflineDeposit.FEOfflineDeposit@223191a6]" started-at="2022-09-02T14:49:32 SGT" name="offlineDepositVerification" finished-at="2022-09-02T14:49:40 SGT" duration-ms="7899" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- offlineDepositVerification -->
+        <test-method is-config="true" signature="logCaseStatus(org.testng.ITestResult)[pri:0, instance:webOfflineDeposit.FEOfflineDeposit@223191a6]" started-at="2022-09-02T14:49:40 SGT" name="logCaseStatus" finished-at="2022-09-02T14:49:40 SGT" duration-ms="1" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=offlineDepositVerification status=SUCCESS method=FEOfflineDeposit.offlineDepositVerification()[pri:9, instance:webOfflineDeposit.FEOfflineDeposit@223191a6] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- logCaseStatus -->
+        <test-method is-config="true" signature="shutDown()[pri:0, instance:webOfflineDeposit.FEOfflineDeposit@223191a6]" started-at="2022-09-02T14:49:40 SGT" name="shutDown" finished-at="2022-09-02T14:49:42 SGT" duration-ms="2177" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- shutDown -->
+      </class> <!-- webOfflineDeposit.FEOfflineDeposit -->
+    </test> <!-- Offline_Deposit -->
+  </suite> <!-- Suite2 -->
 </testng-results>

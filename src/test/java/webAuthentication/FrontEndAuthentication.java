@@ -1,7 +1,6 @@
 package webAuthentication;
 
 import java.net.MalformedURLException;
-import java.util.concurrent.TimeUnit;
 
 import javax.security.auth.login.FailedLoginException;
 
@@ -12,6 +11,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import functions_WEB_FE.Announcement;
+import functions_WEB_FE.LanguageSelectionFE;
 import functions_WEB_FE.LoginFE;
 import functions_WEB_FE.LogoutFE;
 import functions_WEB_FE.RegisterFE;
@@ -31,6 +31,7 @@ public class FrontEndAuthentication extends VariablesStorage {
 	TakeScreenShot takeSS = TakeScreenShot.getInstance();
 
 	Announcement aF = Announcement.getInstance();
+	LanguageSelectionFE languageSF = LanguageSelectionFE.getInstance();
 	LoginFE loginF = LoginFE.getInstance();
 	LogoutFE logoutF = LogoutFE.getInstance();
 	RegisterFE registerF = RegisterFE.getInstance();
@@ -39,8 +40,12 @@ public class FrontEndAuthentication extends VariablesStorage {
 
 	@BeforeClass(groups = "Authentication")
 	public void setReport() throws InterruptedException, MalformedURLException {
-		bDriver.setDriverProperty(driverType(), driverPath());
-		bDriver.startDriver();
+		bDriver.setChromeDriverProperty(driverType(), driverPath());
+		bDriver.startChromeDriver();
+//		depends on REQUIREMENT --->
+//		bDriver.setFirefoxDriverProperty(firefoxDriverType(), firefoxDriverPath());
+//		bDriver.startFirefoxDriver();
+		
 		cR.generateReport(nameOfReport);
 	}
 
@@ -48,9 +53,8 @@ public class FrontEndAuthentication extends VariablesStorage {
 
 	@Test(priority = 0, groups = "Authentication")
 	public void toSite() throws InterruptedException, FailedLoginException {
-		cR.createTest("openBrowserToSite");
-		bDriver.getURL(siteUrlFE());
-		bDriver.getDriver().navigate().refresh();
+		cR.createTest("openBrowserToSite");		
+		bDriver.getURL(siteUrlFEPreLive());
 	}
 
 //	= = = = = = = = = = = = = = = = = = = = 
@@ -59,6 +63,10 @@ public class FrontEndAuthentication extends VariablesStorage {
 	public void closeAnnouncement() throws InterruptedException, FailedLoginException {
 		cR.createTest("closeAnnouncement");
 		aF.closeAnnouncement();
+		aF.closeAnnouncementOverview();
+//		depends on REQUIREMENT --->
+//		languageSF.languageSelectionButton();
+//		languageSF.selectSpecificLanguage(languageSelection());
 	}
 
 //	= = = = = = = = = = = = = = = = = = = = 
@@ -93,10 +101,14 @@ public class FrontEndAuthentication extends VariablesStorage {
 		registerF.registerOptionButton();
 		registerF.setNewUserID(userIDRegister());
 		registerF.setNewPassword(passwordAll());
+//		depends on CLIENT
 		registerF.setDOB(year(), day());
+		registerF.setPhoneNumber(phoneNumber());
+//		depends on CLIENT
 		registerF.setCaptcha(captchaOtpAll());
 		registerF.selectRegisterButton();
 		registerF.verifyRegister(userIDRegister());
+		logoutF.selectLogoutButton(userIDRegister());
 		takeSS.getPassScreenShot("register");
 		cR.getExtentTest().addScreenCaptureFromPath(takeSS.screenShotPathExtent() + "register" + "-passed.png");
 	}
@@ -113,5 +125,6 @@ public class FrontEndAuthentication extends VariablesStorage {
 		cR.flushTest();
 		Thread.sleep(1000);
 		bDriver.stopDriver();
+		Thread.sleep(1000);
 	}
 }

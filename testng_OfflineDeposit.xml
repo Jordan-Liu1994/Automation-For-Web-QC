@@ -4,12 +4,14 @@
 	<test thread-count="5" name="Offline_Deposit">
 		<groups>
 			<run>
-				<!-- <exclude name="Offline_Deposit" /> -->
-				<exclude name="Offline_Deposit_Cancel" />
+				<!-- <exclude name="OfflineDeposit" /> -->
+				<!-- <exclude name="OfflineDepositMethod" /> -->
+				<exclude name="OfflineDepositMethodCancel" />
+				<!-- <exclude name="BOLogin" /> -->
 			</run>
 		</groups>
 		<classes>
-			<class name="automation_WEB_Deposit.FE_OfflineDeposit" />
+			<class name="webOfflineDeposit.FEOfflineDeposit" />
 		</classes>
 	</test> <!-- Test -->
 </suite> <!-- Suite -->
