@@ -1,4 +1,4 @@
-package webAuthentication;
+package webProfile;
 
 import java.net.MalformedURLException;
 
@@ -14,6 +14,8 @@ import functions_WEB_FE.Announcement;
 import functions_WEB_FE.LanguageSelectionFE;
 import functions_WEB_FE.LoginFE;
 import functions_WEB_FE.LogoutFE;
+import functions_WEB_FE.OfflineDepositFE;
+import functions_WEB_FE.ProfileFE;
 import functions_WEB_FE.RegisterFE;
 import utilities.BaseDriver;
 import utilities.CreateReport;
@@ -21,9 +23,9 @@ import utilities.ResultListener;
 import utilities.TakeScreenShot;
 import utilities.VariablesStorage;
 
-public class FrontEndAuthentication extends VariablesStorage {
+public class FrontEndAddBankCard extends VariablesStorage {
 
-	private static String nameOfReport = "FrontEndAuthentication";
+	private static String nameOfReport = "FrontEndAddBankCard";
 
 	BaseDriver bDriver = BaseDriver.getInstance();
 	CreateReport cR = CreateReport.getInstance();
@@ -33,19 +35,14 @@ public class FrontEndAuthentication extends VariablesStorage {
 	Announcement aF = Announcement.getInstance();
 	LanguageSelectionFE languageSF = LanguageSelectionFE.getInstance();
 	LoginFE loginF = LoginFE.getInstance();
-	LogoutFE logoutF = LogoutFE.getInstance();
-	RegisterFE registerF = RegisterFE.getInstance();
-
+	ProfileFE profileF = ProfileFE.getInstance();
+	
 //	= = = = = = = = = = = = = = = = = = = = 
 
 	@BeforeClass(groups = "Authentication")
 	public void setReport() throws InterruptedException, MalformedURLException {
 		bDriver.setChromeDriverProperty(driverType(), driverPath());
-		bDriver.startChromeDriver();
-//		depends on REQUIREMENT --->
-//		bDriver.setFirefoxDriverProperty(firefoxDriverType(), firefoxDriverPath());
-//		bDriver.startFirefoxDriver();
-		
+		bDriver.startChromeDriver();	
 		cR.generateReport(nameOfReport);
 	}
 
@@ -84,33 +81,16 @@ public class FrontEndAuthentication extends VariablesStorage {
 		cR.getExtentTest().addScreenCaptureFromPath(takeSS.screenShotPathExtent() + "login" + "-passed.png");
 	}
 
-	@Test(groups = { "Login", "Logout" }, priority = 3)
-	public void logout() throws InterruptedException, FailedLoginException {
-		cR.createTest("logout");
-		logoutF.selectLogoutButton(userIDFE());
-		logoutF.verifyLogout();
-		takeSS.getPassScreenShot("logout");
-		cR.getExtentTest().addScreenCaptureFromPath(takeSS.screenShotPathExtent() + "logout" + "-passed.png");
-	}
-
-//	= = = = = = = = = = = = = = = = = = = = 
-
-	@Test(groups = "Register", priority = 4)
-	public void register() throws InterruptedException, FailedLoginException {
-		cR.createTest("register");
-		registerF.registerOptionButton();
-		registerF.setNewUserID(userIDRegister());
-		registerF.setNewPassword(passwordAll());
-//		depends on CLIENT
-		registerF.setDOB(year(), day());
-		registerF.setPhoneNumber(phoneNumber());
-//		depends on CLIENT
-		registerF.setCaptcha(captchaOtpAll());
-		registerF.selectRegisterButton();
-		registerF.verifyRegister(userIDRegister());
-		logoutF.selectLogoutButton(userIDRegister());
-		takeSS.getPassScreenShot("register");
-		cR.getExtentTest().addScreenCaptureFromPath(takeSS.screenShotPathExtent() + "register" + "-passed.png");
+	@Test(groups = { "profilePage", "profilePage" }, priority = 3)
+	public void profilePage() throws InterruptedException, FailedLoginException {
+		cR.createTest("profilePage");
+		profileF.hoverUserID(userIDFE());
+		profileF.selectProfile();
+		profileF.selectAddBankCard();
+		profileF.bankCardOption();
+		profileF.bankOption(depositoryName());
+		takeSS.getPassScreenShot("profilePage");
+		cR.getExtentTest().addScreenCaptureFromPath(takeSS.screenShotPathExtent() + "profilePage" + "-passed.png");
 	}
 
 //	= = = = = = = = = = = = = = = = = = = = 

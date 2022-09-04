@@ -3,14 +3,14 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="webOfflineDeposit.FE_OfflineDeposit">
+      <class name="webProfile.FrontEndAddBankCard">
         <methods>
-          <include name="confirmOfflineDepositPaid"/>
           <include name="logCaseStatus"/>
-          <include name="shutDown"/>
           <include name="setReport"/>
+          <include name="profilePage"/>
+          <include name="endReport"/>
         </methods>
-      </class> <!-- webOfflineDeposit.FE_OfflineDeposit -->
+      </class> <!-- webProfile.FrontEndAddBankCard -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

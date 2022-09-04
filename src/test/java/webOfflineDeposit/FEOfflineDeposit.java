@@ -23,7 +23,7 @@ import utilities.VariablesStorage;
 
 public class FEOfflineDeposit extends VariablesStorage {
 
-	private static String nameOfReport = "FE_OfflineDeposit";
+	private static String nameOfReport = "FEOfflineDeposit";
 
 	BaseDriver bDriver = BaseDriver.getInstance();
 	CreateReport cR = CreateReport.getInstance();
