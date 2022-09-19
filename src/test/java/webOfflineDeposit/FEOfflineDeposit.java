@@ -8,6 +8,7 @@ import org.testng.ITestResult;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import functions_WEB_BO.LoginBO;
@@ -25,149 +26,134 @@ public class FEOfflineDeposit extends VariablesStorage {
 
 	private static String nameOfReport = "FEOfflineDeposit";
 
-	BaseDriver bDriver = BaseDriver.getInstance();
-	CreateReport cR = CreateReport.getInstance();
-	ResultListener rListener = ResultListener.getInstance();
-	TakeScreenShot takeSS = TakeScreenShot.getInstance();
+	CreateReport cR = new CreateReport();
+	ResultListener rL = new ResultListener();
+	TakeScreenShot takeSS = new TakeScreenShot();
 
-	Announcement aF = Announcement.getInstance();
-	LoginFE loginF = LoginFE.getInstance();
+	Announcement aF = new Announcement();
+	LoginFE lFE = new LoginFE();
+	OfflineDepositFE oDFE = new OfflineDepositFE();
 
-	OfflineDepositFE offlineD = OfflineDepositFE.getInstance();
-	LoginBO loginBOF = LoginBO.getInstance();
-	OfflineDepositVerifyBO offlineDVBOF = OfflineDepositVerifyBO.getInstance();
+	LoginBO lBO = new LoginBO();
+	OfflineDepositVerifyBO oDVBOF = new OfflineDepositVerifyBO();
 
-//	= = = = = = = = = = = = = = = = = = = = 
-
-	@BeforeClass(groups = "OfflineDeposit")
-	public void setReport() throws InterruptedException, MalformedURLException {
-		bDriver.setChromeDriverProperty(driverType(), driverPath());
+	@BeforeClass(groups = "Start")
+	@Parameters({ "platformName", "browserName", "javaVersion", "automationAuthor" })
+	public void setReport(String platformName, String browserName, String javaVersion, String automationAuthor) throws InterruptedException, MalformedURLException {
+		bDriver.setChromeDriverProperty(driverTypeChrome, driverPathChrome);
 		bDriver.startChromeDriver();
-		cR.generateReport(nameOfReport);
+		cR.generateReport(nameOfReport, platformName, browserName, javaVersion, automationAuthor);
 	}
 
-//	= = = = = = = = = = = = = = = = = = = = 
-
-	@Test(priority = 0, groups = "Authentication")
-	public void toSite() throws InterruptedException, FailedLoginException {
-		cR.createTest("openBrowserToSite");
-		bDriver.getURL(siteUrlFEPreLive());
+	@Test(priority = 0, groups = "goToSite")
+	@Parameters({ "url" })
+	public void goToSite(String url) {
+		cR.createTest("goToSite");
+		bDriver.getURL(url);
 	}
 
-//	= = = = = = = = = = = = = = = = = = = = 
-
-	@Test(priority = 1, groups = "Announcement")
-	public void closeAnnouncement() throws InterruptedException, FailedLoginException {
-		cR.createTest("closeAnnouncement");
+	@Test(priority = 1, groups = "announcement")
+	public void announcement() throws InterruptedException, FailedLoginException {
+		cR.createTest("announcement");
 		aF.closeAnnouncement();
 		aF.closeAnnouncementOverview();
 	}
 
-//	= = = = = = = = = = = = = = = = = = = = 
-
-	@Test(groups = "Login", priority = 2)
-	public void login() throws InterruptedException, FailedLoginException {
+	@Test(priority = 2, groups = { "login" })
+	@Parameters({ "userIDFE" })
+	public void login(String userIDFE) throws FailedLoginException, InterruptedException {
 		cR.createTest("login");
-		loginF.loginOptionButton();
-		loginF.setUserID(userIDFE());
-		loginF.setPassword(passwordAll());
-		loginF.setCaptcha(captchaOtpAll());
-		loginF.selectLoginButton();
+		lFE.loginOptionButton();
+		lFE.setUserID(userIDFE);
+		lFE.setPassword(passwordFE);
+		lFE.setCaptcha(captchaFE);
+		lFE.selectLoginButton();
+		lFE.verifyLogIn(userIDFE);
 	}
 
-//	= = = = = = = = = = = = = = = = = = = = 
-
-	@Test(groups = "OfflineDepositMethod", priority = 3)
-	public void toDepositPage() throws InterruptedException, FailedLoginException {
+	@Test(priority = 3, groups = "toDepositPage")
+	@Parameters({ "userIDFE" })
+	public void toDepositPage(String userIDFE) throws InterruptedException, FailedLoginException {
 		cR.createTest("toDepositPage");
-		offlineD.hoverUserID(userIDFE());
-		offlineD.selectDepositOptionFromDropdown();
+		oDFE.hoverUserID(userIDFE);
+		oDFE.selectDepositOptionFromDropdown();
 //		depends on CLIENT
-		offlineD.closeBeforeDepositInfoPopUp();
+		oDFE.closeBeforeDepositInfoPopUp();
 	}
 
-//	= = = = = = = = = = = = = = = = = = = = 
-
-	@Test(groups = "OfflineDepositMethod", priority = 4)
-	public void offlineDepositMethods() throws InterruptedException, FailedLoginException {
+	@Test(priority = 4, groups = "offlineDepositMethods")
+	@Parameters({ "depositOptionName", "depositAmount", "depositoryName", "falseJoinPromo" })
+	public void offlineDepositMethods(String depositOptionName, int depositAmount, String depositoryName, String falseJoinPromo) throws InterruptedException, FailedLoginException {
 		cR.createTest("offlineDepositMethods");
-		offlineD.selectOfflineDepositOption();
-		offlineD.selectSpecificOfflineDepositMethod(depositOptionName());
-		offlineD.setDepositAmount(depositAmount());
-		offlineD.setDepositoryName(depositoryName());
-		offlineD.joinPromoOrNotRadioButton();
-		offlineD.verifyActualReceivedAmountIfNoJoinPromo(depositAmount());
-		offlineD.submitOfflineDepositRequest();
+		oDFE.selectOfflineDepositOption();
+		oDFE.selectSpecificOfflineDepositMethod(depositOptionName);
+		oDFE.setDepositAmount(depositAmount);
+		oDFE.setDepositoryName(depositoryName);
+		oDFE.joinPromoOrNotRadioButton(falseJoinPromo);
+		oDFE.verifyActualReceivedAmountIfNoJoinPromo(depositAmount);
+		oDFE.submitOfflineDepositRequest();
 	}
-//	= = = = = = = = = = = = = = = = = = = = 
 
-	@Test(groups = "OfflineDepositMethod", priority = 5)
+	@Test(priority = 5, groups = { "offlineDepositMethods", "confirmOfflineDepositPaid" })
 	public void confirmOfflineDepositPaid() throws InterruptedException, FailedLoginException {
 		cR.createTest("confirmOfflineDepositPaid");
-		offlineD.confirmOfflineDepositPaid();
-		takeSS.getPassScreenShot("confirmOfflineDepositPaid");
-		cR.getExtentTest().addScreenCaptureFromPath(takeSS.screenShotPathExtent() + "confirmOfflineDepositPaid" + "-passed.png");
+		oDFE.confirmOfflineDepositPaid();
 	}
 
-//	= = = = = = = = = = = = = = = = = = = = 
-
-	@Test(groups = "OfflineDepositMethodCancel", priority = 6)
+	@Test(priority = 6, groups = "cancelOfflineDepositRequest")
 	public void cancelOfflineDepositRequest() throws InterruptedException, FailedLoginException {
 		cR.createTest("cancelOfflineDepositRequest");
-		offlineD.cancelOfflineDepositRequest();
+		oDFE.cancelOfflineDepositRequest();
 	}
 
-//	= = = = = = = = = = = = = = = = = = = = 
-
-	@Test(groups = "VerifyOfflineDeposit", priority = 7)
-	public void verifyOfflineDepositID() throws InterruptedException, FailedLoginException {
+	@Test(priority = 7, groups = "verifyOfflineDepositID")
+	@Parameters({ "userIDFE" })
+	public void verifyOfflineDepositID(String userIDFE) throws InterruptedException, FailedLoginException {
 		cR.createTest("verifyOfflineDepositID");
 		bDriver.getDriver().navigate().refresh();
-		offlineD.hoverUserID(userIDFE());
-		offlineD.selectWalletHistoryOptionFromDropdown();
-		offlineD.walletHistorySelectDeposit();
-		offlineD.verifyOfflineDepositID();
-		takeSS.getPassScreenShot("verifyOfflineDepositID");
-		cR.getExtentTest().addScreenCaptureFromPath(takeSS.screenShotPathExtent() + "verifyOfflineDepositID" + "-passed.png");
+		oDFE.hoverUserID(userIDFE);
+		oDFE.selectWalletHistoryOptionFromDropdown();
+		oDFE.walletHistorySelectDeposit();
+		oDFE.verifyOfflineDepositID();
 	}
 
-//	= = = = = = = = = = = = = = = = = = = = 
-	
-	@Test(priority = 8, groups = { "BOLogin" })
-	public void loginBOPage() throws InterruptedException, FailedLoginException {
+	@Test(priority = 8, groups = { "loginBOPage" })
+	@Parameters({ "BOUrl", "BOUserID" })
+	public void loginBOPage(String BOUrl, String BOUserID) throws InterruptedException, FailedLoginException {
 		cR.createTest("loginBOPage");
-		bDriver.getDriver().get(siteUrlBO());
-		loginBOF.setUserID(userIDBO());
-		loginBOF.setPassword(passwordAll());
-		loginBOF.setCaptcha(captchaOtpAll());
-		loginBOF.selectLoginButton();
-		loginBOF.verifyLogIn(userIDBO());
+		bDriver.getDriver().get(BOUrl);
+		lBO.setUserID(BOUserID);
+		lBO.setPassword(passwordFE);
+		lBO.setCaptcha(captchaFE);
+		lBO.selectLoginButton();
+		lBO.verifyLogIn(BOUserID);
 	}
 
-//	= = = = = = = = = = = = = = = = = = = = 
-
-	@Test(priority = 9, groups = { "BOOfflineDeposit", "BOLogin" })
-	public void offlineDepositVerification() throws InterruptedException, FailedLoginException {
+	@Test(priority = 9, groups = { "offlineDepositVerification" })
+	@Parameters({ "userIDFE" })
+	public void offlineDepositVerification(String userIDFE) throws InterruptedException, FailedLoginException {
 		cR.createTest("offlineDepositVerification");
-		offlineDVBOF.selectOfflineDepositVerification(financeModule());
-		offlineDVBOF.offlineDepositVerificationSubModule(financeSubModule());
-		offlineDVBOF.filterUserAccount(userIDFE());
-		offlineDVBOF.verifyDepositID();
-		offlineDVBOF.rejectOfflineDepositAfterVerified();
+		oDVBOF.selectOfflineDepositVerification(financeModule);
+		oDVBOF.offlineDepositVerificationSubModule(financeSubModule);
+		oDVBOF.filterUserAccount(userIDFE);
+		oDVBOF.verifyDepositID(oDFE.recordID());
 	}
-
-//	= = = = = = = = = = = = = = = = = = = = 
+	
+	@Test(priority = 10, groups = { "rejectOfflineDepositAfterVerification" })
+	public void rejectOfflineDepositAfterVerification(String userIDFE) throws InterruptedException, FailedLoginException {
+		cR.createTest("rejectOfflineDepositAfterVerification");
+		oDVBOF.rejectOfflineDepositAfterVerified(oDFE.recordID());
+	}
 
 	@AfterMethod
 	public void logCaseStatus(ITestResult result) {
-		rListener.caseLogging(result);
+		rL.logCaseStatus(result);
 	}
 
 	@AfterClass
 	public void shutDown() throws InterruptedException {
+		Thread.sleep(1000);
 		cR.flushTest();
-		Thread.sleep(1000);
 		bDriver.stopDriver();
-		Thread.sleep(1000);
 	}
 }

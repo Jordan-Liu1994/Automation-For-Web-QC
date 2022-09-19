@@ -11,28 +11,21 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import utilities.BaseDriver;
 import utilities.CreateReport;
+import utilities.VariablesStorage;
 
-public class LoginBO {
+public class LoginBO extends VariablesStorage {
 
-	private static LoginBO loginBOF = new LoginBO();
-
-	public static LoginBO getInstance() {
-		return loginBOF;
-	}
-
-	BaseDriver bDriver = BaseDriver.getInstance();
-	CreateReport cR = CreateReport.getInstance();
+	CreateReport cR = new CreateReport();
 	
 	WebDriverWait wait;
-	private static String attr = "placeholder";
-	private static String keyIn = " keyed in ";
-
+	String fail;
+	
 	public void setUserID(String userID) throws FailedLoginException, InterruptedException {
-		String fail = "setUserID failed";
+		fail = "setUserID failed";
 		
-		bDriver.getDriver().manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
+		bDriver.getDriver().manage().timeouts().pageLoadTimeout(15, TimeUnit.SECONDS);
 		Thread.sleep(500);
-		wait = new WebDriverWait(bDriver.getDriver(), 10);
+		wait = new WebDriverWait(bDriver.getDriver(), 15);
 		WebElement setUserID = bDriver.getDriver().findElement(By.id("userEmail"));
 		wait.until(ExpectedConditions.visibilityOf(setUserID));
 		String setUserIDText = setUserID.getAttribute("placeholder");
@@ -47,10 +40,10 @@ public class LoginBO {
 	}
 
 	public void setPassword(String password) throws FailedLoginException {
-		String fail = "setPassword failed";
+		fail = "setPassword failed";
 
 		WebElement setPassword = bDriver.getDriver().findElement(By.id("userPassword"));
-		String setPasswordText = setPassword.getAttribute(attr);
+		String setPasswordText = setPassword.getAttribute(attribute);
 
 		if (setPassword.isDisplayed()) {
 			setPassword.clear();
@@ -62,10 +55,10 @@ public class LoginBO {
 	}
 
 	public void setCaptcha(String captcha) throws FailedLoginException {
-		String fail = "setCaptcha failed";
+		fail = "setCaptcha failed";
 
 		WebElement setCaptcha = bDriver.getDriver().findElement(By.id("totp"));
-		String setCaptchaText = setCaptcha.getAttribute(attr);
+		String setCaptchaText = setCaptcha.getAttribute(attribute);
 
 		if (setCaptcha.isDisplayed()) {
 			setCaptcha.clear();
@@ -77,7 +70,7 @@ public class LoginBO {
 	}
 
 	public void selectLoginButton() throws FailedLoginException {
-		String fail = "selectLoginButton failed";
+		fail = "selectLoginButton failed";
 
 		WebElement selectLoginButton = bDriver.getDriver().findElement(By.tagName("button"));
 		String selectLoginButtonText = selectLoginButton.getText();
@@ -92,10 +85,10 @@ public class LoginBO {
 	}
 
 	public void verifyLogIn(String userID) throws FailedLoginException, InterruptedException {
-		String fail = "verifyLogIn failed";
+		fail = "verifyLogIn failed";
 
-		bDriver.getDriver().manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-		wait = new WebDriverWait(bDriver.getDriver(), 10);
+		bDriver.getDriver().manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
+		wait = new WebDriverWait(bDriver.getDriver(), 15);
 		WebElement userIDName = bDriver.getDriver().findElement(By.xpath("//a[normalize-space()='" + userID + "']"));
 		wait.until(ExpectedConditions.visibilityOf(userIDName));
 

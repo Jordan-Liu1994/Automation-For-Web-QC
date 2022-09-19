@@ -1,7 +1,5 @@
 package functions_WEB_FE;
 
-import java.util.concurrent.TimeUnit;
-
 import javax.security.auth.login.FailedLoginException;
 
 import org.openqa.selenium.By;
@@ -9,9 +7,6 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.SkipException;
-
-import utilities.BaseDriver;
 import utilities.CreateReport;
 import utilities.VariablesStorage;
 
@@ -26,9 +21,9 @@ public class Announcement extends VariablesStorage {
 
 	public void closeAnnouncement() throws FailedLoginException, InterruptedException {
 		WebDriverWait wait = new WebDriverWait(bDriver.getDriver(), 15);
-
 		try {
 			for (int number = 0; number <= 10; number++) {
+				wait = new WebDriverWait(bDriver.getDriver(), 15);
 				noShowAgainTodayButton = bDriver.getDriver().findElement(By.xpath("//label[@for='aip_" + number + "']//div//div//span"));
 				Thread.sleep(250);
 				wait.until(ExpectedConditions.visibilityOf(noShowAgainTodayButton));
@@ -57,6 +52,7 @@ public class Announcement extends VariablesStorage {
 		WebDriverWait wait = new WebDriverWait(bDriver.getDriver(), 15);
 
 		try {
+			wait = new WebDriverWait(bDriver.getDriver(), 15);
 			noShowAgainTodayButton = bDriver.getDriver().findElement(By.xpath("//label[@for='normal_announcement_radio']//div[@class='checkbox']//div//span"));
 			Thread.sleep(250);
 			wait.until(ExpectedConditions.visibilityOf(noShowAgainTodayButton));

@@ -30,11 +30,11 @@ public class RegisterFE extends VariablesStorage {
 	WebDriverWait wait;
 	String fail;
 	String skip;
-	
+
 	String registerUserIDFE;
 
 	public void registerOptionButton() throws FailedLoginException {
-		wait = new WebDriverWait(bDriver.getDriver(), 5);
+		wait = new WebDriverWait(bDriver.getDriver(), 15);
 		WebElement registerOptionButton = bDriver.getDriver().findElement(By.id("header_register"));
 		wait.until(ExpectedConditions.elementToBeClickable(registerOptionButton));
 
@@ -51,10 +51,10 @@ public class RegisterFE extends VariablesStorage {
 
 	public void setNewUserID() throws FailedLoginException {
 		bDriver.getDriver().manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
-		wait = new WebDriverWait(bDriver.getDriver(), 10);
+		wait = new WebDriverWait(bDriver.getDriver(), 15);
 		WebElement setNewUserID = bDriver.getDriver().findElement(By.xpath("//input[@id='r_username']"));
 		wait.until(ExpectedConditions.elementToBeClickable(setNewUserID));
-
+		
 		if (setNewUserID.isDisplayed()) {
 			String setNewUserIDText = setNewUserID.getAttribute(attribute);
 			registerUserIDFE = "qctester" + gRNumbers.generateRandomNumbers();
@@ -69,7 +69,7 @@ public class RegisterFE extends VariablesStorage {
 
 	public void setNewPassword(String password) throws FailedLoginException {
 		WebElement setNewPassword = bDriver.getDriver().findElement(By.id("r_password"));
-
+	
 		if (setNewPassword.isDisplayed()) {
 			String setNewPasswordText = setNewPassword.getAttribute(attribute);
 			setNewPassword.clear();
@@ -106,7 +106,7 @@ public class RegisterFE extends VariablesStorage {
 				setDateOfBirth.click();
 				cReport.getExtentTest().info("Clicked " + setDateOfBirthText);
 			}
-			wait = new WebDriverWait(bDriver.getDriver(), 10);
+			wait = new WebDriverWait(bDriver.getDriver(), 15);
 			WebElement yearSelect = bDriver.getDriver().findElement(By.xpath("(//select[@class='yearselect'])[1]"));
 			wait.until(ExpectedConditions.elementToBeClickable(yearSelect));
 			if (yearSelect.isDisplayed()) {
@@ -179,11 +179,11 @@ public class RegisterFE extends VariablesStorage {
 	}
 
 	public void verifyRegister() throws FailedLoginException, InterruptedException {
-		bDriver.getDriver().manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
+		bDriver.getDriver().manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		wait = new WebDriverWait(bDriver.getDriver(), 15);
 		WebElement userIDName = bDriver.getDriver().findElement(By.xpath("(//a[contains(text(),'" + registerUserIDFE + "')])[1]"));
 		wait.until(ExpectedConditions.visibilityOf(userIDName));
-
+		
 		if (userIDName.isDisplayed()) {
 			cReport.getExtentTest().info("Account " + registerUserIDFE + " verified");
 		} else {

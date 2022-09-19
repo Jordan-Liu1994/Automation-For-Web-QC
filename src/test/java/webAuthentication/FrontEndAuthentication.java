@@ -12,11 +12,9 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import functions_WEB_FE.Announcement;
-import functions_WEB_FE.LanguageSelectionFE;
 import functions_WEB_FE.LoginFE;
 import functions_WEB_FE.LogoutFE;
 import functions_WEB_FE.RegisterFE;
-import utilities.BaseDriver;
 import utilities.CreateReport;
 import utilities.ResultListener;
 import utilities.TakeScreenShot;
@@ -26,15 +24,11 @@ public class FrontEndAuthentication extends VariablesStorage {
 
 	private static String reportName = "FrontEndAuthentication";
 
-//	CreateReport cR = CreateReport.getInstance();
-//	ResultListener rListener = ResultListener.getInstance();
-//	TakeScreenShot takeSS = TakeScreenShot.getInstance();
 	TakeScreenShot takeSS = new TakeScreenShot();
 	CreateReport cReport = new CreateReport();
 	ResultListener rListener = new ResultListener();
 
 	Announcement announcementF = new Announcement();
-//	LanguageSelectionFE languageSF = LanguageSelectionFE.getInstance();
 	LoginFE loginF = new LoginFE();
 	LogoutFE logoutF = new LogoutFE();
 	RegisterFE registerF = new RegisterFE();
@@ -108,8 +102,8 @@ public class FrontEndAuthentication extends VariablesStorage {
 
 	@AfterClass
 	public void endReport() throws InterruptedException {
+		Thread.sleep(1000);
 		cReport.flushTest();
 		bDriver.stopDriver();
-		Thread.sleep(1000);
 	}
 }

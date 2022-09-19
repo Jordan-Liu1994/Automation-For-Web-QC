@@ -16,30 +16,22 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import functions_WEB_FE.OfflineDepositFE;
 import utilities.BaseDriver;
 import utilities.CreateReport;
+import utilities.VariablesStorage;
 
-public class OfflineDepositVerifyBO {
+public class OfflineDepositVerifyBO extends VariablesStorage {
 
-	private static OfflineDepositVerifyBO offlineDV = new OfflineDepositVerifyBO();
-
-	public static OfflineDepositVerifyBO getInstance() {
-		return offlineDV;
-	}
-
-	BaseDriver bDriver = BaseDriver.getInstance();
-	CreateReport cR = CreateReport.getInstance();
-	OfflineDepositFE offlineDF = OfflineDepositFE.getInstance();
+	CreateReport cR = new CreateReport();
 
 	WebDriverWait wait;
-	private static String attr = "placeholder";
-	private static String keyIn = " keyed in ";
+	String fail;
 
 	public void selectOfflineDepositVerification(String module) throws FailedLoginException, InterruptedException {
-		String fail = "selectOfflineDepositVerification failed";
+		fail = "selectOfflineDepositVerification failed";
 		Boolean selectOfflineDepositVerificationValue = false;
 
 		Thread.sleep(1000);
 		bDriver.getDriver().manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
-		wait = new WebDriverWait(bDriver.getDriver(), 10);
+		wait = new WebDriverWait(bDriver.getDriver(), 15);
 		WebElement listOfModules = bDriver.getDriver().findElement(By.xpath("//ul[@class='menu_list']"));
 		wait.until(ExpectedConditions.visibilityOf(listOfModules));
 
@@ -60,8 +52,6 @@ public class OfflineDepositVerifyBO {
 			throw new FailedLoginException(fail);
 		}
 	}
-
-//	= = = = = = = = = = = = = = = = = = = = 
 
 	public void offlineDepositVerificationSubModule(String subModule) throws FailedLoginException {
 		String fail = "offlineDepositVerificationSubModule failed";
@@ -87,15 +77,13 @@ public class OfflineDepositVerifyBO {
 		}
 	}
 
-//	= = = = = = = = = = = = = = = = = = = = 
-
 	public void filterUserAccount(String userID) throws FailedLoginException, InterruptedException {
-		String fail = "filterUserAccount failed";
+		fail = "filterUserAccount failed";
 
 		wait = new WebDriverWait(bDriver.getDriver(), 10);
 		WebElement filterUserAccount = bDriver.getDriver().findElement(By.xpath("//*[@id=\"filter_form\"]/div[1]/label/span/span[1]/span/ul/li/input"));
 		wait.until(ExpectedConditions.visibilityOf(filterUserAccount));
-		String filterUserAccountText = filterUserAccount.getAttribute(attr);
+		String filterUserAccountText = filterUserAccount.getAttribute(attribute);
 
 		if (filterUserAccount.isDisplayed()) {
 			filterUserAccount.clear();
@@ -119,13 +107,12 @@ public class OfflineDepositVerifyBO {
 		}
 	}
 
-//	= = = = = = = = = = = = = = = = = = = = 
+	public void verifyDepositID(String recordID) throws FailedLoginException, InterruptedException {
+		fail = "verifyDepositID failed";
 
-	public void verifyDepositID() throws FailedLoginException, InterruptedException {
-		String fail = "verifyDepositID failed";
-		
+		Thread.sleep(500);
 		wait = new WebDriverWait(bDriver.getDriver(), 10);
-		WebElement verifyDepositIDx = bDriver.getDriver().findElement(By.xpath("//td[normalize-space()='" + offlineDF.offlineDepositRecordID() + "']"));
+		WebElement verifyDepositIDx = bDriver.getDriver().findElement(By.xpath("//td[normalize-space()='" + recordID + "']"));
 		wait.until(ExpectedConditions.visibilityOf(verifyDepositIDx));
 		if (verifyDepositIDx.isDisplayed()) {
 			String verifyDepositIDxText = verifyDepositIDx.getText();
@@ -135,49 +122,53 @@ public class OfflineDepositVerifyBO {
 		}
 	}
 
-//	= = = = = = = = = = = = = = = = = = = = 
+	public void rejectOfflineDepositAfterVerified(String recordID) throws FailedLoginException, InterruptedException {
+		fail = "rejectOfflineDepositAfterVerified failed";
 
-	public void rejectOfflineDepositAfterVerified() throws FailedLoginException, InterruptedException {
-		String fail = "rejectOfflineDepositAfterVerified failed";
+		bDriver.getDriver().manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
+		WebElement allOfflineDepositRecords = bDriver.getDriver().findElement(By.xpath("//tbody"));
+		List<WebElement> allOfflineDepositRecordsTagNames = allOfflineDepositRecords.findElements(By.tagName("tr"));
+		for (WebElement allOfflineDepositRecordsLists : allOfflineDepositRecordsTagNames) {
+			bDriver.getDriver().manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
+			String allOfflineDepositRecordsListsText = allOfflineDepositRecordsLists.getText();
+			System.out.println(allOfflineDepositRecordsListsText);
+			if (allOfflineDepositRecordsListsText.contains(recordID)) {
+				System.out.println(recordID);
+				
+				Thread.sleep(10000);
+				WebElement rejectOfflineDepositAfterVerifiedLock = bDriver.getDriver().findElement(By.xpath("//button[@data-toggle='tooltip']//i"));
+				if (rejectOfflineDepositAfterVerifiedLock.isEnabled()) {
+					rejectOfflineDepositAfterVerifiedLock.click();
+					cR.getExtentTest().info("Clicked unlocked offline deposit");
 
-		Thread.sleep(1000);
-		WebElement rejectOfflineDepositAfterVerifiedLock = bDriver.getDriver().findElement(By.xpath("//button[@data-toggle='tooltip']"));
-		if (rejectOfflineDepositAfterVerifiedLock.isEnabled()) {
-			rejectOfflineDepositAfterVerifiedLock.click();
-			cR.getExtentTest().info("Clicked unlocked offline deposit");
-		} else {
-			cR.getExtentTest().fail(fail);
-		}
+					wait = new WebDriverWait(bDriver.getDriver(), 30);
+					WebElement rejectOfflineDepositAfterVerifiedReject = bDriver.getDriver().findElement(By.xpath("//button[@title='拒绝']"));
+					wait.until(ExpectedConditions.visibilityOf(rejectOfflineDepositAfterVerifiedReject));
+					wait.until(ExpectedConditions.elementToBeClickable(rejectOfflineDepositAfterVerifiedReject));
+					if (rejectOfflineDepositAfterVerifiedReject.isEnabled()) {
+						rejectOfflineDepositAfterVerifiedReject.click();
+						cR.getExtentTest().info("Clicked reject button");
 
-		wait = new WebDriverWait(bDriver.getDriver(), 30);
-		WebElement rejectOfflineDepositAfterVerifiedReject = bDriver.getDriver().findElement(By.xpath("//button[@title='拒绝']"));
-		wait.until(ExpectedConditions.visibilityOf(rejectOfflineDepositAfterVerifiedReject));
-		wait.until(ExpectedConditions.elementToBeClickable(rejectOfflineDepositAfterVerifiedReject));
-		if (rejectOfflineDepositAfterVerifiedReject.isEnabled()) {
-			rejectOfflineDepositAfterVerifiedReject.click();
-			cR.getExtentTest().info("Clicked reject button");
-		} else {
-			cR.getExtentTest().fail(fail);
-		}
+						WebElement rejectOfflineDepositAfterVerifiedConfirmReject = bDriver.getDriver().findElement(By.xpath("//body/div/div/div/div/div/div/button[1]"));
+						wait.until(ExpectedConditions.visibilityOf(rejectOfflineDepositAfterVerifiedConfirmReject));
+						wait.until(ExpectedConditions.elementToBeClickable(rejectOfflineDepositAfterVerifiedConfirmReject));
+						if (rejectOfflineDepositAfterVerifiedConfirmReject.isEnabled()) {
+							rejectOfflineDepositAfterVerifiedConfirmReject.click();
+							cR.getExtentTest().info("Clicked confirm reject button");
 
-		WebElement rejectOfflineDepositAfterVerifiedConfirmReject = bDriver.getDriver().findElement(By.xpath("//body/div/div/div/div/div/div/button[1]"));
-		wait.until(ExpectedConditions.visibilityOf(rejectOfflineDepositAfterVerifiedConfirmReject));
-		wait.until(ExpectedConditions.elementToBeClickable(rejectOfflineDepositAfterVerifiedConfirmReject));
-		if (rejectOfflineDepositAfterVerifiedConfirmReject.isEnabled()) {
-			rejectOfflineDepositAfterVerifiedConfirmReject.click();
-			cR.getExtentTest().info("Clicked confirm reject button");
-		} else {
-			cR.getExtentTest().fail(fail);
-		}
-
-		WebElement confirmMessage = bDriver.getDriver().findElement(By.id("alert_title"));
-		wait.until(ExpectedConditions.visibilityOf(confirmMessage));
-		if (confirmMessage.isDisplayed()) {
-			cR.getExtentTest().info("Offline deposit confirmed to be rejected");
-			Thread.sleep(1500);
-		} else {
-			cR.getExtentTest().fail(fail);
-			throw new FailedLoginException(fail);
+							WebElement confirmMessage = bDriver.getDriver().findElement(By.id("alert_title"));
+							wait.until(ExpectedConditions.visibilityOf(confirmMessage));
+							if (confirmMessage.isDisplayed()) {
+								cR.getExtentTest().info("Offline deposit confirmed to be rejected");
+								Thread.sleep(1500);
+							} else {
+								cR.getExtentTest().fail(fail);
+								throw new FailedLoginException(fail);
+							}
+						}
+					}
+				}
+			}
 		}
 	}
 }

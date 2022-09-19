@@ -11,27 +11,20 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import utilities.BaseDriver;
 import utilities.CreateReport;
+import utilities.VariablesStorage;
 
-public class LanguageSelectionFE {
-
-	private static LanguageSelectionFE languageSF = new LanguageSelectionFE();
-
-	public static LanguageSelectionFE getInstance() {
-		return languageSF;
-	}
-
-//	= = = = = = = = = = = = = = = = = = = = 
-
-	BaseDriver bDriver = BaseDriver.getInstance();
-	CreateReport cR = CreateReport.getInstance();
+public class LanguageSelectionFE extends VariablesStorage {
+	
+	CreateReport cR = new CreateReport();
 
 	WebDriverWait wait;
+	String fail;
 
 	public void languageSelectionButton() throws FailedLoginException {
-		wait = new WebDriverWait(bDriver.getDriver(), 10);
+		wait = new WebDriverWait(bDriver.getDriver(), 15);
 		WebElement languageSelectionButton = bDriver.getDriver().findElement(By.xpath("//span[@role='presentation']"));
 		wait.until(ExpectedConditions.elementToBeClickable(languageSelectionButton));
-		String fail = "languageSelectionButton failed";
+		fail = "languageSelectionButton failed";
 
 		if (languageSelectionButton.isDisplayed()) {
 			languageSelectionButton.click();
@@ -41,13 +34,11 @@ public class LanguageSelectionFE {
 		}
 	}
 
-//	= = = = = = = = = = = = = = = = = = = = 
-
 	public void selectSpecificLanguage(String language) throws FailedLoginException {
-		String fail = "selectSpecificLanguage failed";
+		fail = "selectSpecificLanguage failed";
 		Boolean selectSpecificLanguageValue = false;
 
-		wait = new WebDriverWait(bDriver.getDriver(), 10);
+		wait = new WebDriverWait(bDriver.getDriver(), 15);
 		WebElement selectSpecificLanguage = bDriver.getDriver().findElement(By.xpath("//ul[@role='listbox']"));
 		wait.until(ExpectedConditions.visibilityOf(selectSpecificLanguage));
 		wait.until(ExpectedConditions.elementToBeClickable(selectSpecificLanguage));

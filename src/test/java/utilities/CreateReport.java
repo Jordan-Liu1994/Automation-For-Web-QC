@@ -4,19 +4,14 @@ import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 
-public class CreateReport extends VariablesStorage {
+public class CreateReport {
 
-//	private static CreateReport cR = new CreateReport();
 	private static ExtentSparkReporter spReport;
 	private static ExtentReports exReport;
 	private static ExtentTest exTest;
 
 	private String userDir = System.getProperty("user.dir");
 	private String reportFolderPath = userDir + ".\\src\\test\\resources\\reports\\";
-
-//	public static CreateReport getInstance() {
-//		return cR;
-//	}
 
 	public void generateReport(String reportName, String platform, String browser, String javaVersion, String user) {
 		exReport = new ExtentReports();

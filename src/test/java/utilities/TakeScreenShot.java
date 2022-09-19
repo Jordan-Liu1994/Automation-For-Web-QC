@@ -18,51 +18,9 @@ public class TakeScreenShot extends VariablesStorage {
 		File SrcFile = scrShot.getScreenshotAs(OutputType.FILE);
 		File DestFile = new File(pathOfSS + fileWithPath);
 		FileUtils.copyFile(SrcFile, DestFile);
-
 	}
 
 	public String screenShotPathExtent() {
 		return pathOfSS;
 	}
-	
-//	private static TakeScreenShot takeSS = new TakeScreenShot();
-//
-//	public static TakeScreenShot getInstance() {
-//		return takeSS;
-//	}
-//
-////	= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
-//
-//	BaseDriver bDriver = BaseDriver.getInstance();
-//
-//	private String userDir = System.getProperty("user.dir");
-//	private String pathOfSS = userDir + ".\\src\\test\\resources\\screenshots\\";
-//	private String screenShotPathExtent;
-//
-//	public void getPassScreenShot(String fileName) {
-//		File screenShot = ((TakesScreenshot) bDriver.getDriver()).getScreenshotAs(OutputType.FILE);
-//		try {
-//			FileUtils.copyFile(screenShot, new File(pathOfSS + fileName + passSS()));
-//		} catch (IOException e) {
-//			e.printStackTrace();
-//		}
-//	}
-//
-////	= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
-//
-//	public void getFailScreenShot(String fileName) {
-//		File screenShot = ((TakesScreenshot) bDriver.getDriver()).getScreenshotAs(OutputType.FILE);
-//		try {
-//			FileUtils.copyFile(screenShot, new File(pathOfSS + fileName + failSS()));
-//		} catch (IOException e) {
-//			e.printStackTrace();
-//		}
-//	}
-//
-////	= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
-//
-//	public String screenShotPathExtent() {
-//		screenShotPathExtent = pathOfSS;
-//		return pathOfSS;
-//	}
 }

@@ -1,13 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite name="Suite2">
-	<test thread-count="5" name="Offline_Deposit">
+<suite name="Suite-AuthenticationTest">
+	<parameter name="url" value="https://pr3l1v3.com"></parameter>
+	<parameter name="platformName" value="Windows WEB"></parameter>
+	<parameter name="browserName" value="Chrome"></parameter>
+	<parameter name="javaVersion" value="JDK/JRE 17"></parameter>
+	<parameter name="automationAuthor" value="Jordan"></parameter>
+	<parameter name="userIDFE" value="qctester001"></parameter>
+	<parameter name="depositOptionName" value="Bank Transfer"></parameter>
+	<parameter name="depositAmount" value="123"></parameter>
+	<parameter name="depositoryName" value="测试员"></parameter>
+	<parameter name="falseJoinPromo" value="false"></parameter>
+
+	<parameter name="BOUrl" value="https://backoffice.pr3l1v3.com"></parameter>
+	<parameter name="BOUserID" value="automation001"></parameter>
+	<test thread-count="5" name="AuthenticationTest">
 		<groups>
 			<run>
-				<!-- <exclude name="OfflineDeposit" /> -->
-				<!-- <exclude name="OfflineDepositMethod" /> -->
-				<exclude name="OfflineDepositMethodCancel" />
-				<!-- <exclude name="BOLogin" /> -->
+				<!-- <exclude name="Start" />
+				<exclude name="goToSite" />
+				<exclude name="announcement" />
+				<exclude name="login" /> -->
+				<exclude name="toDepositPage" />
+				<exclude name="offlineDepositMethods" />
+				<!-- <exclude name="verifyOfflineDepositID" /> -->
+
+				<exclude name="cancelOfflineDepositRequest" />
+
+				<exclude name="loginBOPage" />
+				<exclude name="offlineDepositVerification" />
+				<exclude name="rejectOfflineDepositAfterVerification" />
 			</run>
 		</groups>
 		<classes>
