@@ -41,7 +41,6 @@ public class FrontEndAuthentication extends VariablesStorage {
 //		depends on REQUIREMENT --->
 //		bDriver.setFirefoxDriverProperty(firefoxDriverType(), firefoxDriverPath());
 //		bDriver.startFirefoxDriver();
-
 		cReport.generateReport(reportName, platform, browser, javaVersion, user);
 	}
 
@@ -57,9 +56,6 @@ public class FrontEndAuthentication extends VariablesStorage {
 		cReport.createTest("closeAnnouncement");
 		announcementF.closeAnnouncement();
 		announcementF.closeAnnouncementOverview();
-//		depends on REQUIREMENT --->
-//		languageSF.languageSelectionButton();
-//		languageSF.selectSpecificLanguage(languageSelection());
 	}
 
 	@Test(priority = 2, groups = { "login" })

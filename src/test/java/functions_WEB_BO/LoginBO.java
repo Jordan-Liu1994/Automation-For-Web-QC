@@ -9,33 +9,32 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import utilities.BaseDriver;
 import utilities.CreateReport;
 import utilities.VariablesStorage;
 
 public class LoginBO extends VariablesStorage {
 
-	CreateReport cR = new CreateReport();
+	CreateReport cReport = new CreateReport();
 	
 	WebDriverWait wait;
 	String fail;
 	
 	public void setUserID(String userID) throws FailedLoginException, InterruptedException {
-		fail = "setUserID failed";
 		
 		bDriver.getDriver().manage().timeouts().pageLoadTimeout(15, TimeUnit.SECONDS);
 		Thread.sleep(500);
 		wait = new WebDriverWait(bDriver.getDriver(), 15);
 		WebElement setUserID = bDriver.getDriver().findElement(By.id("userEmail"));
 		wait.until(ExpectedConditions.visibilityOf(setUserID));
-		String setUserIDText = setUserID.getAttribute("placeholder");
+		String setUserIDText = setUserID.getAttribute(attribute);
 
 		if (setUserID.isDisplayed()) {
 			setUserID.clear();
 			setUserID.sendKeys(userID);
-			cR.getExtentTest().info(userID + keyIn + setUserIDText);
+			cReport.getExtentTest().info(userID + keyIn + setUserIDText);
 		} else {
-			cR.getExtentTest().fail(fail);
+			fail = "setUserID failed";
+			cReport.getExtentTest().fail(fail);
 		}
 	}
 
@@ -48,9 +47,9 @@ public class LoginBO extends VariablesStorage {
 		if (setPassword.isDisplayed()) {
 			setPassword.clear();
 			setPassword.sendKeys(password);
-			cR.getExtentTest().info(password + keyIn + setPasswordText);
+			cReport.getExtentTest().info(password + keyIn + setPasswordText);
 		} else {
-			cR.getExtentTest().fail(fail);
+			cReport.getExtentTest().fail(fail);
 		}
 	}
 
@@ -63,9 +62,9 @@ public class LoginBO extends VariablesStorage {
 		if (setCaptcha.isDisplayed()) {
 			setCaptcha.clear();
 			setCaptcha.sendKeys(captcha);
-			cR.getExtentTest().info(captcha + keyIn + setCaptchaText);
+			cReport.getExtentTest().info(captcha + keyIn + setCaptchaText);
 		} else {
-			cR.getExtentTest().fail(fail);
+			cReport.getExtentTest().fail(fail);
 		}
 	}
 
@@ -77,9 +76,9 @@ public class LoginBO extends VariablesStorage {
 
 		if (selectLoginButton.isEnabled()) {
 			selectLoginButton.click();
-			cR.getExtentTest().info("Clicked " + selectLoginButtonText);
+			cReport.getExtentTest().info("Clicked " + selectLoginButtonText);
 		} else {
-			cR.getExtentTest().fail(fail);
+			cReport.getExtentTest().fail(fail);
 			throw new FailedLoginException(fail);
 		}
 	}
@@ -93,9 +92,9 @@ public class LoginBO extends VariablesStorage {
 		wait.until(ExpectedConditions.visibilityOf(userIDName));
 
 		if (userIDName.isDisplayed()) {
-			cR.getExtentTest().info("Log in account " + userID + " verified");
+			cReport.getExtentTest().info("Log in account " + userID + " verified");
 		} else {
-			cR.getExtentTest().fail(fail);
+			cReport.getExtentTest().fail(fail);
 			throw new FailedLoginException(fail);
 		}
 	}

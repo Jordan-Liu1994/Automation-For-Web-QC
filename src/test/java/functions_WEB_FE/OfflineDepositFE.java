@@ -22,15 +22,13 @@ import utilities.VariablesStorage;
 
 public class OfflineDepositFE extends VariablesStorage {
 
-	CreateReport cR = new CreateReport();
+	CreateReport cReport = new CreateReport();
 
 	WebDriverWait wait;
 	String fail;
 	String skip;
 
 	public void hoverUserID(String userID) throws FailedLoginException, InterruptedException {
-		fail = "hoverUserID failed";
-
 		bDriver.getDriver().manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
 		wait = new WebDriverWait(bDriver.getDriver(), 15);
 		WebElement userIDName = bDriver.getDriver().findElement(By.xpath("(//a[contains(text(),'" + userID + "')])[1]"));
@@ -42,36 +40,31 @@ public class OfflineDepositFE extends VariablesStorage {
 			act.perform();
 			Thread.sleep(500);
 		} else {
-			cR.getExtentTest().fail(fail);
+			fail = "hoverUserID failed";
+			cReport.getExtentTest().fail(fail);
 		}
 	}
 
 	public void selectDepositOptionFromDropdown() throws FailedLoginException, InterruptedException {
-		fail = "selectDepositOptionFromDropdown failed";
-
-		wait = new WebDriverWait(bDriver.getDriver(), 10);
+		wait = new WebDriverWait(bDriver.getDriver(), 15);
 		WebElement depositOptionFromDropdown = bDriver.getDriver().findElement(By.xpath("//div[@class='header_bottom_after_popup_wallet_action']//div[1]//div[3]"));
 		wait.until(ExpectedConditions.visibilityOf(depositOptionFromDropdown));
 		wait.until(ExpectedConditions.elementToBeClickable(depositOptionFromDropdown));
-		String depositOptionFromDropdownText = depositOptionFromDropdown.getText();
 
 		if (depositOptionFromDropdown.isDisplayed()) {
+			String depositOptionFromDropdownText = depositOptionFromDropdown.getText();
 			depositOptionFromDropdown.click();
-			cR.getExtentTest().info("Clicked " + depositOptionFromDropdownText);
+			cReport.getExtentTest().info("Clicked " + depositOptionFromDropdownText);
 		} else {
-			cR.getExtentTest().fail(fail);
+			fail = "selectDepositOptionFromDropdown failed";
+			cReport.getExtentTest().fail(fail);
 			throw new FailedLoginException(fail);
 		}
 	}
 
-//	depends on CLIENT
-
 	public void closeBeforeDepositInfoPopUp() throws FailedLoginException, InterruptedException {
-		fail = "closeBeforeDepositInfoPopUp failed";
-		skip = "Skipped closeBeforeDepositInfoPopUp";
-
 		try {
-			wait = new WebDriverWait(bDriver.getDriver(), 10);
+			wait = new WebDriverWait(bDriver.getDriver(), 15);
 			WebElement closeBeforeDepositInfoPopUp = bDriver.getDriver().findElement(By.xpath("//button[@class='btn_major']"));
 			wait.until(ExpectedConditions.visibilityOf(closeBeforeDepositInfoPopUp));
 			wait.until(ExpectedConditions.elementToBeClickable(closeBeforeDepositInfoPopUp));
@@ -79,95 +72,90 @@ public class OfflineDepositFE extends VariablesStorage {
 
 			if (closeBeforeDepositInfoPopUp.isDisplayed()) {
 				closeBeforeDepositInfoPopUp.click();
-				cR.getExtentTest().info("Clicked " + closeBeforeDepositInfoPopUpText);
+				cReport.getExtentTest().info("Clicked " + closeBeforeDepositInfoPopUpText);
 			} else {
-				cR.getExtentTest().fail(fail);
+				fail = "closeBeforeDepositInfoPopUp failed";
+				cReport.getExtentTest().fail(fail);
 				throw new FailedLoginException(fail);
 			}
 		} catch (NoSuchElementException e) {
-			cR.getExtentTest().skip(skip);
+			skip = "Skipped closeBeforeDepositInfoPopUp";
+			cReport.getExtentTest().skip(skip);
 		}
 	}
 
-	public void selectOfflineDepositOption() throws FailedLoginException, InterruptedException {
-		fail = "selectOfflineDepositOption failed";
-
+	public void selectOfflineDepositOption(String offlineDepositMethod) throws FailedLoginException, InterruptedException {
 		bDriver.getDriver().manage().timeouts().pageLoadTimeout(15, TimeUnit.SECONDS);
-		wait = new WebDriverWait(bDriver.getDriver(), 10);
-		WebElement offlineDepositOption = bDriver.getDriver().findElement(By.xpath("//div[@class='deposit_method_item active']//div[@class='title']"));
+		wait = new WebDriverWait(bDriver.getDriver(), 15);
+		WebElement offlineDepositOption = bDriver.getDriver().findElement(By.xpath("//div[@class='title'][contains(text(),'" + offlineDepositMethod + "')]"));
 		wait.until(ExpectedConditions.visibilityOf(offlineDepositOption));
 		wait.until(ExpectedConditions.elementToBeClickable(offlineDepositOption));
-		String offlineDepositOptionText = offlineDepositOption.getText();
 
 		if (offlineDepositOption.isDisplayed()) {
+			String offlineDepositOptionText = offlineDepositOption.getText();
 			offlineDepositOption.click();
-			cR.getExtentTest().info("Clicked " + offlineDepositOptionText);
+			cReport.getExtentTest().info("Clicked " + offlineDepositOptionText);
 			Thread.sleep(1000);
 		} else {
-			cR.getExtentTest().fail(fail);
-			throw new FailedLoginException(fail);
+			fail = "selectOfflineDepositOption failed";
+			cReport.getExtentTest().fail(fail);
 		}
 	}
 
-	public void selectSpecificOfflineDepositMethod(String depositOption) throws FailedLoginException, InterruptedException {
-		fail = "selectSpecificOfflineDepositMethod failed";
+	public void selectSpecificOfflineDepositMethod(String depositOptionType) throws FailedLoginException, InterruptedException {
 		Boolean specificOfflineDepositMethodValue = false;
 
 		bDriver.getDriver().manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
-		wait = new WebDriverWait(bDriver.getDriver(), 10);
+		wait = new WebDriverWait(bDriver.getDriver(), 15);
 		WebElement specificOfflineDepositMethod = bDriver.getDriver().findElement(By.xpath("//ul[@id='channel_items']"));
 		wait.until(ExpectedConditions.elementToBeClickable(specificOfflineDepositMethod));
 
 		List<WebElement> specificOfflineDepositMethodTagNames = specificOfflineDepositMethod.findElements(By.tagName("li"));
 		for (WebElement specificOfflineDepositMethodLists : specificOfflineDepositMethodTagNames) {
 			String specificOfflineDepositMethodListsText = specificOfflineDepositMethodLists.getText();
-			if (specificOfflineDepositMethodListsText.equalsIgnoreCase(depositOption)) {
+			if (specificOfflineDepositMethodListsText.equalsIgnoreCase(depositOptionType)) {
 				specificOfflineDepositMethodLists.click();
-				cR.getExtentTest().info("Clicked " + depositOption);
+				cReport.getExtentTest().info("Clicked " + depositOptionType);
 				specificOfflineDepositMethodValue = true;
 			}
 		}
 		if (!specificOfflineDepositMethodValue) {
-			cR.getExtentTest().fail(fail);
+			fail = "selectSpecificOfflineDepositMethod failed";
+			cReport.getExtentTest().fail(fail);
 			throw new FailedLoginException(fail);
 		}
 	}
 
 	public void setDepositAmount(int depositAmount) throws FailedLoginException, InterruptedException {
-		fail = "setDepositAmount failed";
-
 		bDriver.getDriver().manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
 		WebElement setDepositAmount = bDriver.getDriver().findElement(By.id("deposit_amount"));
-		String setDepositAmountText = setDepositAmount.getAttribute(attribute);
 
 		if (setDepositAmount.isDisplayed()) {
+			String setDepositAmountText = setDepositAmount.getAttribute(attribute);
 			setDepositAmount.clear();
 			setDepositAmount.sendKeys(String.valueOf(depositAmount));
-			cR.getExtentTest().info("Amount of " + depositAmount + keyIn + setDepositAmountText);
+			cReport.getExtentTest().info("Amount of " + depositAmount + keyIn + setDepositAmountText);
 		} else if (!setDepositAmount.isDisplayed()) {
-			WebElement setDepositAmountOptions = bDriver.getDriver().findElement(By.xpath("//div[@class='recommend_amount'][normalize-space()='" + depositAmount + "']"));
-			setDepositAmountOptions.click();
+			fail = "setDepositAmount failed";
+			cReport.getExtentTest().fail(fail);
 		}
 	}
 
 	public void setDepositoryName(String depositoryName) throws FailedLoginException, InterruptedException {
-		fail = "setDepositoryName failed";
-
 		WebElement setDepositoryName = bDriver.getDriver().findElement(By.id("real_name"));
-		String setDepositAmountText = setDepositoryName.getAttribute(attribute);
 
 		if (setDepositoryName.isDisplayed()) {
+			String setDepositAmountText = setDepositoryName.getAttribute(attribute);
 			setDepositoryName.clear();
 			setDepositoryName.sendKeys(depositoryName);
-			cR.getExtentTest().info(depositoryName + " is keyed in " + setDepositAmountText);
+			cReport.getExtentTest().info(depositoryName + " is keyed in " + setDepositAmountText);
 		} else {
-			cR.getExtentTest().fail(fail);
+			fail = "setDepositoryName failed";
+			cReport.getExtentTest().fail(fail);
 		}
 	}
 
 	public void joinPromoOrNotRadioButton(String falseJoinPromo) throws FailedLoginException, InterruptedException {
-		fail = "joinPromoOrNotRadioButton failed";
-		skip = "joinPromoOrNotRadioButton TURNED OFF IN BO";
 
 		try {
 			WebElement joinPromoRadioButton = bDriver.getDriver().findElement(By.xpath("//div[@id='radio_txt']"));
@@ -175,15 +163,17 @@ public class OfflineDepositFE extends VariablesStorage {
 			String joinPromoRadioButtonText = joinPromoRadioButton.getText();
 			String doNotJoinPromoRadioButtonText = doNotJoinPromoRadioButton.getText();
 			if (falseJoinPromo.equalsIgnoreCase("true")) {
-				cR.getExtentTest().info(joinPromoRadioButtonText + " is already selected");
-			} else if (falseJoinPromo.equalsIgnoreCase("false")){
+				cReport.getExtentTest().info(joinPromoRadioButtonText + " is already selected");
+			} else if (falseJoinPromo.equalsIgnoreCase("false")) {
 				doNotJoinPromoRadioButton.click();
-				cR.getExtentTest().info("Selected " + doNotJoinPromoRadioButtonText);
+				cReport.getExtentTest().info("Selected " + doNotJoinPromoRadioButtonText);
 			} else {
-				cR.getExtentTest().fail(fail);
+				fail = "joinPromoOrNotRadioButton failed";
+				cReport.getExtentTest().fail(fail);
 			}
 		} catch (NoSuchElementException e) {
-			cR.getExtentTest().info(skip);
+			skip = "joinPromoOrNotRadioButton TURNED OFF IN BO";
+			cReport.getExtentTest().info(skip);
 			throw new SkipException(skip);
 		}
 	}
@@ -191,10 +181,7 @@ public class OfflineDepositFE extends VariablesStorage {
 	String verifyActualReceivedAmountIfNoJoinPromoText;
 
 	public void verifyActualReceivedAmountIfNoJoinPromo(int depositAmountToCheck) throws FailedLoginException, InterruptedException {
-		fail = "verifyActualReceivedAmountIfNoJoinPromo failed";
-
 		WebElement verifyActualReceivedAmountIfNoJoinPromo = bDriver.getDriver().findElement(By.id("actual_amount"));
-		verifyActualReceivedAmountIfNoJoinPromoText = verifyActualReceivedAmountIfNoJoinPromo.getText();
 
 		double minDeduct = 0.01;
 		double maxDeduct = 0.10;
@@ -202,11 +189,13 @@ public class OfflineDepositFE extends VariablesStorage {
 		double finalMinDeduct = depositAmountToCheck - minDeduct;
 
 		if (verifyActualReceivedAmountIfNoJoinPromo.isDisplayed()) {
+			verifyActualReceivedAmountIfNoJoinPromoText = verifyActualReceivedAmountIfNoJoinPromo.getText();
 			if (finalMaxDeduct <= Integer.valueOf(depositAmountToCheck)) {
 				if (finalMinDeduct <= Integer.valueOf(depositAmountToCheck)) {
-					cR.getExtentTest().info("Actual received amount is " + verifyActualReceivedAmountIfNoJoinPromoText);
+					cReport.getExtentTest().info("Actual received amount is " + verifyActualReceivedAmountIfNoJoinPromoText);
 				} else {
-					cR.getExtentTest().fail(fail);
+					fail = "verifyActualReceivedAmountIfNoJoinPromo failed";
+					cReport.getExtentTest().fail(fail);
 				}
 			}
 		}
@@ -217,52 +206,49 @@ public class OfflineDepositFE extends VariablesStorage {
 	}
 
 	public void submitOfflineDepositRequest() throws FailedLoginException, InterruptedException {
-		fail = "submitOfflineDepositRequest failed";
-
 		WebElement submitOfflineDepositRequest = bDriver.getDriver().findElement(By.id("payment"));
-		String submitOfflineDepositRequestText = submitOfflineDepositRequest.getText();
 
 		if (submitOfflineDepositRequest.isEnabled()) {
+			String submitOfflineDepositRequestText = submitOfflineDepositRequest.getText();
 			submitOfflineDepositRequest.click();
-			cR.getExtentTest().info("Clicked " + submitOfflineDepositRequestText);
+			cReport.getExtentTest().info("Clicked " + submitOfflineDepositRequestText);
 		} else {
-			cR.getExtentTest().fail(fail);
+			fail = "submitOfflineDepositRequest failed";
+			cReport.getExtentTest().fail(fail);
 			throw new FailedLoginException(fail);
 		}
 	}
 
 	public void confirmOfflineDepositPaid() throws FailedLoginException, InterruptedException {
-		fail = "confirmOfflineDepositPaid failed";
-
 		try {
 			bDriver.getDriver().manage().timeouts().pageLoadTimeout(15, TimeUnit.SECONDS);
 			WebElement confirmOfflineDepositPaid = bDriver.getDriver().findElement(By.xpath("//button[@id='confirmPending']"));
-			String confirmOfflineDepositPaidText = confirmOfflineDepositPaid.getText();
 
 			if (confirmOfflineDepositPaid.isEnabled()) {
+				String confirmOfflineDepositPaidText = confirmOfflineDepositPaid.getText();
 				confirmOfflineDepositPaid.click();
-				cR.getExtentTest().info("Clicked " + confirmOfflineDepositPaidText);
+				cReport.getExtentTest().info("Clicked " + confirmOfflineDepositPaidText);
 				Thread.sleep(1500);
 			} else {
-				cR.getExtentTest().fail(fail);
+				fail = "confirmOfflineDepositPaid failed";
+				cReport.getExtentTest().fail(fail);
 				throw new FailedLoginException(fail);
 			}
 		} catch (StaleElementReferenceException e) {
-			cR.getExtentTest().warning("Stale element but skipped because succeed");
+			cReport.getExtentTest().warning("Stale element but skipped because succeed");
 		}
 	}
 
 	public void cancelOfflineDepositRequest() throws FailedLoginException, InterruptedException {
-		fail = "Cancel offline deposit request failed";
-
 		WebElement cancelOfflineDepositRequest = bDriver.getDriver().findElement(By.id("cancelPending"));
-		String cancelOfflineDepositRequestText = cancelOfflineDepositRequest.getText();
 
 		if (cancelOfflineDepositRequest.isEnabled()) {
+			String cancelOfflineDepositRequestText = cancelOfflineDepositRequest.getText();
 			cancelOfflineDepositRequest.click();
-			cR.getExtentTest().info("Clicked " + cancelOfflineDepositRequestText);
+			cReport.getExtentTest().info("Clicked " + cancelOfflineDepositRequestText);
 		} else {
-			cR.getExtentTest().fail(fail);
+			fail = "cancelOfflineDepositRequest failed";
+			cReport.getExtentTest().fail(fail);
 			throw new FailedLoginException(fail);
 		}
 
@@ -274,9 +260,9 @@ public class OfflineDepositFE extends VariablesStorage {
 
 		if (cancelOfflineDepositRequest.isEnabled()) {
 			confirmCancelOfflineDepositRequest.click();
-			cR.getExtentTest().info("Clicked " + confirmCancelOfflineDepositRequestText);
+			cReport.getExtentTest().info("Clicked " + confirmCancelOfflineDepositRequestText);
 		} else {
-			cR.getExtentTest().fail(fail);
+			cReport.getExtentTest().fail(fail);
 			throw new FailedLoginException(fail);
 		}
 
@@ -287,70 +273,67 @@ public class OfflineDepositFE extends VariablesStorage {
 		String cancelOfflineDepositRequestSuccessText = cancelOfflineDepositRequestSuccess.getText();
 
 		if (cancelOfflineDepositRequestSuccess.isDisplayed()) {
-			cR.getExtentTest().info(cancelOfflineDepositRequestSuccessText + " offline deposit is successfully rejected");
+			cReport.getExtentTest().info(cancelOfflineDepositRequestSuccessText + " offline deposit is successfully rejected");
 			bDriver.getDriver().navigate().refresh();
 		} else {
-			cR.getExtentTest().fail(fail);
+			cReport.getExtentTest().fail(fail);
 			throw new FailedLoginException(fail);
 		}
 	}
 
 	public void selectWalletHistoryOptionFromDropdown() throws FailedLoginException, InterruptedException {
-		fail = "selectWalletHistoryOptionFromDropdown failed";
-
 		wait = new WebDriverWait(bDriver.getDriver(), 15);
 		WebElement selectWalletHistoryOptionFromDropdown = bDriver.getDriver().findElement(By.xpath("(//a)[7]"));
 		wait.until(ExpectedConditions.visibilityOf(selectWalletHistoryOptionFromDropdown));
 		wait.until(ExpectedConditions.elementToBeClickable(selectWalletHistoryOptionFromDropdown));
-		String selectWalletHistoryOptionFromDropdownText = selectWalletHistoryOptionFromDropdown.getText();
 
 		if (selectWalletHistoryOptionFromDropdown.isDisplayed()) {
+			String selectWalletHistoryOptionFromDropdownText = selectWalletHistoryOptionFromDropdown.getText();
 			selectWalletHistoryOptionFromDropdown.click();
-			cR.getExtentTest().info("Clicked " + selectWalletHistoryOptionFromDropdownText);
+			cReport.getExtentTest().info("Clicked " + selectWalletHistoryOptionFromDropdownText);
 		} else {
-			cR.getExtentTest().fail(fail);
+			fail = "selectWalletHistoryOptionFromDropdown failed";
+			cReport.getExtentTest().fail(fail);
 			throw new FailedLoginException(fail);
 		}
 	}
 
 	public void walletHistorySelectDeposit() throws FailedLoginException, InterruptedException {
-		fail = "walletHistorySelectDeposit failed";
-
 		bDriver.getDriver().manage().timeouts().pageLoadTimeout(15, TimeUnit.SECONDS);
 		wait = new WebDriverWait(bDriver.getDriver(), 15);
 		WebElement walletHistorySelectDeposit = bDriver.getDriver().findElement(By.xpath("//div[@data-cta='wallet_deposit']"));
 		wait.until(ExpectedConditions.visibilityOf(walletHistorySelectDeposit));
 		wait.until(ExpectedConditions.elementToBeClickable(walletHistorySelectDeposit));
-		String walletHistorySelectDepositText = walletHistorySelectDeposit.getText();
 
 		if (walletHistorySelectDeposit.isDisplayed()) {
-			cR.getExtentTest().info("In " + walletHistorySelectDepositText);
+			String walletHistorySelectDepositText = walletHistorySelectDeposit.getText();
+			cReport.getExtentTest().info("In " + walletHistorySelectDepositText);
 			Thread.sleep(1500);
 		} else {
-			cR.getExtentTest().fail(fail);
+			fail = "walletHistorySelectDeposit failed";
+			cReport.getExtentTest().fail(fail);
 			throw new FailedLoginException(fail);
 		}
 	}
-		
-	String verifyOfflineDepositIDText;
-	
-	public void verifyOfflineDepositID() throws FailedLoginException, InterruptedException {
-		fail = "verifyOfflineDepositID failed";
 
+	String verifyOfflineDepositIDText;
+
+	public void verifyOfflineDepositID() throws FailedLoginException, InterruptedException {
 		bDriver.getDriver().manage().timeouts().pageLoadTimeout(15, TimeUnit.SECONDS);
 		wait = new WebDriverWait(bDriver.getDriver(), 15);
 		WebElement verifyOfflineDepositID = bDriver.getDriver().findElement(By.xpath("//*[@id=\"deposit_history_list\"]/tr[1]/td[2]/div[1]/div"));
 		wait.until(ExpectedConditions.visibilityOf(verifyOfflineDepositID));
-		verifyOfflineDepositIDText = verifyOfflineDepositID.getText();
 
 		if (verifyOfflineDepositID.isDisplayed()) {
-			cR.getExtentTest().info("Clicked " + verifyOfflineDepositIDText);
+			verifyOfflineDepositIDText = verifyOfflineDepositID.getText();
+			cReport.getExtentTest().info("Clicked " + verifyOfflineDepositIDText);
 			Thread.sleep(1500);
 		} else {
-			cR.getExtentTest().fail(fail);
+			fail = "verifyOfflineDepositID failed";
+			cReport.getExtentTest().fail(fail);
 		}
 	}
-	
+
 	public String recordID() throws FailedLoginException, InterruptedException {
 		System.out.println(verifyOfflineDepositIDText);
 		return verifyOfflineDepositIDText;

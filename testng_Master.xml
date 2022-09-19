@@ -11,7 +11,11 @@
 	<parameter name="url"
 		value="https://wltestmembersite.the777888.com"></parameter>
 
-	<suite-files>
+	<!-- <suite-files>
 		<suite-file path="testng_Authentication.xml"></suite-file>
+	</suite-files> -->
+	
+	<suite-files>
+		<suite-file path="testng_OfflineDeposit.xml"></suite-file>
 	</suite-files>
 </suite> <!-- Suite -->
