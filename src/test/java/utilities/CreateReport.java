@@ -6,51 +6,41 @@ import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 
 public class CreateReport extends VariablesStorage {
 
-	private static CreateReport cR = new CreateReport();
-	private static ExtentSparkReporter sR;
-	private static ExtentReports eR;
-	private static ExtentTest eT;
+//	private static CreateReport cR = new CreateReport();
+	private static ExtentSparkReporter spReport;
+	private static ExtentReports exReport;
+	private static ExtentTest exTest;
 
 	private String userDir = System.getProperty("user.dir");
-	private String pathOfReport = userDir + ".\\src\\test\\resources\\reports\\";
+	private String reportFolderPath = userDir + ".\\src\\test\\resources\\reports\\";
 
-	public static CreateReport getInstance() {
-		return cR;
+//	public static CreateReport getInstance() {
+//		return cR;
+//	}
+
+	public void generateReport(String reportName, String platform, String browser, String javaVersion, String user) {
+		exReport = new ExtentReports();
+		spReport = new ExtentSparkReporter(reportFolderPath + reportName + ".html");
+		exReport.attachReporter(spReport);
+		exReport.setSystemInfo("Platform", platform);
+		exReport.setSystemInfo("Browser", browser);
+		exReport.setSystemInfo("Java version", javaVersion);
+		exReport.setSystemInfo("User", user);
 	}
-
-//	= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
-
-	public void generateReport(String nameOfReport) {
-		eR = new ExtentReports();
-		sR = new ExtentSparkReporter(pathOfReport + nameOfReport + "-report.html");
-		eR.attachReporter(sR);
-		eR.setSystemInfo("Platform", platformName());
-		eR.setSystemInfo("Browser", browserName());
-		eR.setSystemInfo("Java version", javaVersion());
-		eR.setSystemInfo("User", automationAuthor());
-	}
-
-//	= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
 
 	public void createTest(String testName) {
-		eT = eR.createTest(testName);
+		exTest = exReport.createTest(testName);
 	}
-
-//	= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
 
 	public void flushTest() {
-		eR.flush();
+		exReport.flush();
 	}
-
-//	= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
 
 	public ExtentReports getExtentReport() {
-		return eR;
+		return exReport;
 	}
 
-//	= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
-
 	public ExtentTest getExtentTest() {
-		return eT;
+		return exTest;
 	}
 }

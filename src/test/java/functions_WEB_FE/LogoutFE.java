@@ -13,63 +13,54 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import utilities.BaseDriver;
 import utilities.CreateReport;
+import utilities.VariablesStorage;
 
-public class LogoutFE {
+public class LogoutFE extends VariablesStorage {
 
-	private static LogoutFE logoutF = new LogoutFE();
+	CreateReport cReport = new CreateReport();
 
-	public static LogoutFE getInstance() {
-		return logoutF;
-	}
-
-//	= = = = = = = = = = = = = = = = = = = = 
-
-	BaseDriver bDriver = BaseDriver.getInstance();
-	CreateReport cR = CreateReport.getInstance();
-	
 	WebDriverWait wait;
+	String fail;
+	String skip;
 
 	public void selectLogoutButton(String userID) throws FailedLoginException, InterruptedException {
 		WebElement userIDName = bDriver.getDriver().findElement(By.xpath("(//a[contains(text(),'" + userID + "')])[1]"));
-		String fail = "selectLogoutButton failed";
-
+		
 		if (userIDName.isDisplayed()) {
 			Actions builder = new Actions(bDriver.getDriver());
 			Action act = builder.moveToElement(userIDName).build();
 			act.perform();
-			cR.getExtentTest().info("Hovered over " + userID);
+			cReport.getExtentTest().info("Hovered over " + userID);
 		} else {
-			cR.getExtentTest().warning(fail);
+			fail = "selectLogoutButton failed";
+			cReport.getExtentTest().warning(fail);
 		}
 
-		wait = new WebDriverWait(bDriver.getDriver(), 10);
+		wait = new WebDriverWait(bDriver.getDriver(), 15);
 		WebElement logoutButton = bDriver.getDriver().findElement(By.xpath("//button[@class='btn btn_nav_logout']"));
 		wait.until(ExpectedConditions.elementToBeClickable(logoutButton));
 		wait.until(ExpectedConditions.visibilityOf(logoutButton));
-		String logoutButtonText = logoutButton.getText();
-
 		Thread.sleep(250);
 		if (logoutButton.isEnabled()) {
+			String logoutButtonText = logoutButton.getText();
 			logoutButton.click();
-			cR.getExtentTest().info("Clicked " + logoutButtonText);
+			cReport.getExtentTest().info("Clicked " + logoutButtonText);
 		} else {
-			cR.getExtentTest().fail(fail);
+			cReport.getExtentTest().fail(fail);
 			throw new FailedLoginException(fail);
 		}
 	}
-	
-//	= = = = = = = = = = = = = = = = = = = = 
 
 	public void verifyLogout() throws FailedLoginException, InterruptedException {
-		wait = new WebDriverWait(bDriver.getDriver(), 10);
+		wait = new WebDriverWait(bDriver.getDriver(), 15);
 		WebElement loginOptionButton = bDriver.getDriver().findElement(By.id("header_login"));
 		wait.until(ExpectedConditions.visibilityOf(loginOptionButton));
-		String fail = "verifyLogout failed";
 
 		if (loginOptionButton.isDisplayed()) {
-			cR.getExtentTest().info("Logout success");
+			cReport.getExtentTest().info("Logout success");
 		} else {
-			cR.getExtentTest().fail(fail);
+			fail = "verifyLogout failed";
+			cReport.getExtentTest().fail(fail);
 			throw new FailedLoginException(fail);
 		}
 	}

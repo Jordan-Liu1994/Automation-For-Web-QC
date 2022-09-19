@@ -15,24 +15,16 @@ import utilities.BaseDriver;
 import utilities.CreateReport;
 import utilities.VariablesStorage;
 
-public class Announcement {
+public class Announcement extends VariablesStorage {
 
-	private static Announcement aF = new Announcement();
-
-	public static Announcement getInstance() {
-		return aF;
-	}
-
-//	= = = = = = = = = = = = = = = = = = = = 
-
-	BaseDriver bDriver = BaseDriver.getInstance();
-	CreateReport cR = CreateReport.getInstance();
+	CreateReport cReport = new CreateReport();
+	
 	WebDriverWait wait;
+	String skip;
 	WebElement noShowAgainTodayButton;
 	WebElement closeAnnouncementButton;
 
 	public void closeAnnouncement() throws FailedLoginException, InterruptedException {
-		String skip = "Skipped";
 		WebDriverWait wait = new WebDriverWait(bDriver.getDriver(), 15);
 
 		try {
@@ -44,7 +36,7 @@ public class Announcement {
 				if (noShowAgainTodayButton.isDisplayed()) {
 					String buttonText = noShowAgainTodayButton.getText();
 					noShowAgainTodayButton.click();
-					cR.getExtentTest().info("Clicked " + buttonText);
+					cReport.getExtentTest().info("Clicked " + buttonText);
 				}
 				Thread.sleep(250);
 				closeAnnouncementButton = bDriver.getDriver().findElement(By.xpath("//div[@class='modal fade web_announcement_image_popout show']//button[@aria-label='Close']"));
@@ -52,18 +44,16 @@ public class Announcement {
 				wait.until(ExpectedConditions.elementToBeClickable(closeAnnouncementButton));
 				if (closeAnnouncementButton.isDisplayed()) {
 					closeAnnouncementButton.click();
-					cR.getExtentTest().info("Clicked closeAnnouncementButton");
+					cReport.getExtentTest().info("Clicked closeAnnouncementButton");
 				}
 			}
 		} catch (NoSuchElementException e) {
-			cR.getExtentTest().skip(skip);
+			skip = "Skipped";
+			cReport.getExtentTest().skip(skip);
 		}
 	}
 
-//	= = = = = = = = = = = = = = = = = = = = 
-
 	public void closeAnnouncementOverview() throws FailedLoginException, InterruptedException {
-		String skip = "Skipped";
 		WebDriverWait wait = new WebDriverWait(bDriver.getDriver(), 15);
 
 		try {
@@ -74,7 +64,7 @@ public class Announcement {
 			if (noShowAgainTodayButton.isDisplayed()) {
 				String buttonText = noShowAgainTodayButton.getText();
 				noShowAgainTodayButton.click();
-				cR.getExtentTest().info("Clicked " + buttonText);
+				cReport.getExtentTest().info("Clicked " + buttonText);
 			}
 			Thread.sleep(250);
 			closeAnnouncementButton = bDriver.getDriver().findElement(By.xpath("//div[@class='modal fade large wna_style show']//button[@aria-label='Close']"));
@@ -82,10 +72,11 @@ public class Announcement {
 			wait.until(ExpectedConditions.elementToBeClickable(closeAnnouncementButton));
 			if (closeAnnouncementButton.isDisplayed()) {
 				closeAnnouncementButton.click();
-				cR.getExtentTest().info("Clicked closeAnnouncementOverview");
+				cReport.getExtentTest().info("Clicked closeAnnouncementOverview");
 			}
 		} catch (NoSuchElementException e) {
-			cR.getExtentTest().skip(skip);
+			skip = "Skipped";
+			cReport.getExtentTest().skip(skip);
 		}
 	}
 }

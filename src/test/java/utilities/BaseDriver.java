@@ -16,33 +16,27 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 
 public class BaseDriver {
 
-	private static BaseDriver bDriver = new BaseDriver();
+//	private static BaseDriver bDriver = new BaseDriver();
+//
+//	public static BaseDriver getInstance() {
+//		return bDriver;
+//	}
 
-	public static BaseDriver getInstance() {
-		return bDriver;
-	}
-
-//	= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
-
-	private WebDriver driver;
+	static WebDriver driver;
 
 	public WebDriver getDriver() {
 		return driver;
 	}
 
-//	= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
+	private String driverFolderPath = ".\\src\\test\\resources\\drivers\\";
 
-	private String driverPath = ".\\src\\test\\resources\\drivers\\";
-
-	public void setChromeDriverProperty(String driverType, String path) {
-		System.setProperty(driverType, driverPath + path);
+	public void setChromeDriverProperty(String driverType, String driverPath) {
+		System.setProperty(driverType, driverFolderPath + driverPath);
 	}
 	
 	public void setFirefoxDriverProperty(String driverType, String path) {
-		System.setProperty(driverType, driverPath + path);
+		System.setProperty(driverType, driverFolderPath + path);
 	}
-
-//	= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
 
 //	private URL url;
 //
@@ -56,35 +50,31 @@ public class BaseDriver {
 //		driver.manage().deleteAllCookies();
 //	}
 
-//	= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
-
-	public void startChromeDriver() throws InterruptedException, MalformedURLException {
+	public void startChromeDriver() {
 		driver = new ChromeDriver();
 		driver.manage().window().maximize();
 		driver.manage().deleteAllCookies();
 	}
 	
-	public void startFirefoxDriver() throws InterruptedException, MalformedURLException {
+	public void startFirefoxDriver() {
 		driver = new FirefoxDriver();
 		driver.manage().window().maximize();
 		driver.manage().deleteAllCookies();
 	}
 
-//	= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
-
-	public void getURL(String siteUrl) throws InterruptedException {
-		driver.get(siteUrl);
+	public void doRefresh() {
+		driver.navigate().refresh();
+	}
+	
+	public void getURL(String url) {
+		driver.get(url);
 	}
 
-//	= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
-
-	public void closeBrowser() throws InterruptedException {
+	public void closeBrowser() {
 		driver.close();
 	}
 
-//	= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
-
-	public void stopDriver() throws InterruptedException {
+	public void stopDriver() {
 		driver.quit();
 	}
 }
