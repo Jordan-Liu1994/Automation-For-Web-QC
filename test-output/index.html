@@ -61,7 +61,7 @@
                 </li>
                 <li>
                   <a href="#" panel-name="group-Suite_AuthenticationTest" class="navigator-link ">
-                    <span>3 groups</span>
+                    <span>2 groups</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
@@ -93,7 +93,7 @@
               <div class="suite-section-content">
                 <ul>
                   <li>
-                    <span class="method-stats">6 methods,   6 passed</span>
+                    <span class="method-stats">5 methods,   5 passed</span>
                   </li>
                   <li>
                     <span class="method-list-title passed">Passed methods</span>
@@ -102,11 +102,6 @@
                       <a href="#" panel-name="suite-Suite_AuthenticationTest" class="show-methods passed suite-Suite_AuthenticationTest"> (show)</a> <!-- show-methods passed suite-Suite_AuthenticationTest -->
                     </span>
                     <div class="method-list-content passed suite-Suite_AuthenticationTest">
-                      <span>
-                        <img src="passed.png" width="3%"/>
-                        <a href="#" panel-name="suite-Suite_AuthenticationTest" title="webOfflineDeposit.FEOfflineDeposit" class="method navigator-link" hash-for-method="cancelOfflineDepositRequest">cancelOfflineDepositRequest</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
                       <span>
                         <img src="passed.png" width="3%"/>
                         <a href="#" panel-name="suite-Suite_AuthenticationTest" title="webOfflineDeposit.FEOfflineDeposit" class="method navigator-link" hash-for-method="closeAnnouncement">closeAnnouncement</a> <!-- method navigator-link -->
@@ -150,13 +145,6 @@
               <span class="class-name">webOfflineDeposit.FEOfflineDeposit</span>
             </div> <!-- main-panel-header rounded-window-top -->
             <div class="main-panel-content rounded-window-bottom">
-              <div class="method">
-                <div class="method-content">
-                  <a name="cancelOfflineDepositRequest">
-                  </a> <!-- cancelOfflineDepositRequest -->
-                  <span class="method-name">cancelOfflineDepositRequest</span>
-                </div> <!-- method-content -->
-              </div> <!-- method -->
               <div class="method">
                 <div class="method-content">
                   <a name="closeAnnouncement">
@@ -222,11 +210,6 @@
   &lt;parameter name=&quot;platform&quot; value=&quot;Web&quot;/&gt;
   &lt;parameter name=&quot;url&quot; value=&quot;https://wltestmembersite.the777888.com&quot;/&gt;
   &lt;test thread-count=&quot;5&quot; name=&quot;AuthenticationTest&quot;&gt;
-    &lt;groups&gt;
-      &lt;run&gt;
-        &lt;exclude name=&quot;confirmDeposit&quot;/&gt;
-      &lt;/run&gt;
-    &lt;/groups&gt;
     &lt;classes&gt;
       &lt;class name=&quot;webOfflineDeposit.FEOfflineDeposit&quot;/&gt;
     &lt;/classes&gt;
@@ -284,14 +267,6 @@
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <div class="test-group">
-              <span class="test-group-name">cancelDeposit</span>
-              <br/>
-              <div class="method-in-group">
-                <span class="method-in-group-name">cancelOfflineDepositRequest</span>
-                <br/>
-              </div> <!-- method-in-group -->
-            </div> <!-- test-group -->
-            <div class="test-group">
               <span class="test-group-name">deposit</span>
               <br/>
               <div class="method-in-group">
@@ -334,36 +309,32 @@ data.addColumn('number', 'Number');
 data.addColumn('string', 'Method');
 data.addColumn('string', 'Class');
 data.addColumn('number', 'Time (ms)');
-data.addRows(6);
+data.addRows(5);
 data.setCell(0, 0, 0)
 data.setCell(0, 1, 'login')
 data.setCell(0, 2, 'webOfflineDeposit.FEOfflineDeposit')
-data.setCell(0, 3, 3579);
+data.setCell(0, 3, 3360);
 data.setCell(1, 0, 1)
-data.setCell(1, 1, 'cancelOfflineDepositRequest')
+data.setCell(1, 1, 'offlineDepositMethods')
 data.setCell(1, 2, 'webOfflineDeposit.FEOfflineDeposit')
-data.setCell(1, 3, 2943);
+data.setCell(1, 3, 2238);
 data.setCell(2, 0, 2)
-data.setCell(2, 1, 'offlineDepositMethods')
+data.setCell(2, 1, 'toSite')
 data.setCell(2, 2, 'webOfflineDeposit.FEOfflineDeposit')
-data.setCell(2, 3, 2338);
+data.setCell(2, 3, 1648);
 data.setCell(3, 0, 3)
 data.setCell(3, 1, 'toDepositPage')
 data.setCell(3, 2, 'webOfflineDeposit.FEOfflineDeposit')
-data.setCell(3, 3, 1523);
+data.setCell(3, 3, 1528);
 data.setCell(4, 0, 4)
-data.setCell(4, 1, 'toSite')
+data.setCell(4, 1, 'closeAnnouncement')
 data.setCell(4, 2, 'webOfflineDeposit.FEOfflineDeposit')
-data.setCell(4, 3, 1238);
-data.setCell(5, 0, 5)
-data.setCell(5, 1, 'closeAnnouncement')
-data.setCell(5, 2, 'webOfflineDeposit.FEOfflineDeposit')
-data.setCell(5, 3, 50);
+data.setCell(4, 3, 46);
 window.suiteTableData['Suite_AuthenticationTest']= { tableData: data, tableDiv: 'times-div-Suite_AuthenticationTest'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 11 seconds</span>
+              <span class="suite-total-time">Total running time: 8 seconds</span>
               <div id="times-div-Suite_AuthenticationTest">
               </div> <!-- times-div-Suite_AuthenticationTest -->
             </div> <!-- times-div -->
@@ -410,16 +381,9 @@ return data;
         </div> <!-- panel -->
         <div panel-name="ignored-methods-Suite_AuthenticationTest" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">1 ignored method</span>
+            <span class="header-content">0 ignored methods</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
-            <div class="ignored-class-div">
-              <span class="ignored-class-name">webOfflineDeposit.FEOfflineDeposit</span>
-              <div class="ignored-methods-div">
-                <span class="ignored-method-name">confirmOfflineDepositPaid</span>
-                <br/>
-              </div> <!-- ignored-methods-div -->
-            </div> <!-- ignored-class-div -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
         <div panel-name="ignored-methods-SuiteMaster" class="panel">
@@ -442,55 +406,47 @@ return data;
               </div> <!-- configuration-class before -->
               <div class="test-method">
                 <span class="method-name">toSite(https://wltestmembersite.the777888.com)</span>
-                <span class="method-start">1674 ms</span>
+                <span class="method-start">1494 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method after">
                 <span class="method-name">logCaseStatus([TestResult name=toSite status=SUCCESS method=FEOfflineDeposit.toSite(java.lang.String)[pri:0, insta...)</span>
-                <span class="method-start">2914 ms</span>
+                <span class="method-start">3146 ms</span>
               </div> <!-- configuration-method after -->
               <div class="test-method">
                 <span class="method-name">closeAnnouncement</span>
-                <span class="method-start">2922 ms</span>
+                <span class="method-start">3156 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method after">
                 <span class="method-name">logCaseStatus([TestResult name=closeAnnouncement status=SUCCESS method=FEOfflineDeposit.closeAnnouncement()[pri:1,...)</span>
-                <span class="method-start">2974 ms</span>
+                <span class="method-start">3203 ms</span>
               </div> <!-- configuration-method after -->
               <div class="test-method">
                 <span class="method-name">login(qctestergame001)</span>
-                <span class="method-start">2976 ms</span>
+                <span class="method-start">3204 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method after">
                 <span class="method-name">logCaseStatus([TestResult name=login status=SUCCESS method=FEOfflineDeposit.login(java.lang.String)[pri:2, instanc...)</span>
-                <span class="method-start">6556 ms</span>
+                <span class="method-start">6565 ms</span>
               </div> <!-- configuration-method after -->
               <div class="test-method">
                 <span class="method-name">toDepositPage(qctestergame001)</span>
-                <span class="method-start">6557 ms</span>
+                <span class="method-start">6566 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method after">
                 <span class="method-name">logCaseStatus([TestResult name=toDepositPage status=SUCCESS method=FEOfflineDeposit.toDepositPage(java.lang.String...)</span>
-                <span class="method-start">8082 ms</span>
+                <span class="method-start">8095 ms</span>
               </div> <!-- configuration-method after -->
               <div class="test-method">
                 <span class="method-name">offlineDepositMethods(公司入款, 银行转账, 123, 测试, true)</span>
-                <span class="method-start">8084 ms</span>
+                <span class="method-start">8098 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method after">
                 <span class="method-name">logCaseStatus([TestResult name=offlineDepositMethods status=SUCCESS method=FEOfflineDeposit.offlineDepositMethods(...)</span>
-                <span class="method-start">10424 ms</span>
-              </div> <!-- configuration-method after -->
-              <div class="test-method">
-                <span class="method-name">cancelOfflineDepositRequest</span>
-                <span class="method-start">10426 ms</span>
-              </div> <!-- test-method -->
-              <div class="configuration-method after">
-                <span class="method-name">logCaseStatus([TestResult name=cancelOfflineDepositRequest status=SUCCESS method=FEOfflineDeposit.cancelOfflineDep...)</span>
-                <span class="method-start">13370 ms</span>
+                <span class="method-start">10338 ms</span>
               </div> <!-- configuration-method after -->
               <div class="configuration-class after">
                 <span class="method-name">shutDown</span>
-                <span class="method-start">13370 ms</span>
+                <span class="method-start">10340 ms</span>
               </div> <!-- configuration-class after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->

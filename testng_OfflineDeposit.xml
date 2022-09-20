@@ -14,9 +14,9 @@
 		<groups>
 			<run>
 				<!-- <exclude name="login" />
-				<exclude name="deposit" /> -->
-				<exclude name="confirmDeposit" />
-				<!-- <exclude name="cancelDeposit" />
+				<exclude name="deposit" />
+				<exclude name="offlineDepositMethods" />
+				<exclude name="verifyOfflineDepositID" />
 				<exclude name="cancelOfflineDepositRequest" />
 				<exclude name="loginBOPage" />
 				<exclude name="offlineDepositVerification" />
