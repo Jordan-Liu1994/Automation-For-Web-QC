@@ -241,8 +241,8 @@ public class OfflineDepositFE extends VariablesStorage {
 		}
 	}
 
-	public void cancelOfflineDepositRequest() throws FailedLoginException, InterruptedException {
-		WebElement cancelOfflineDepositRequest = bDriver.getDriver().findElement(By.id("cancelPending"));
+	public void cancelOfflineDepositRequest() throws FailedLoginException {
+		WebElement cancelOfflineDepositRequest = bDriver.getDriver().findElement(By.xpath("//div[@class='deposit_pending_container']//div//div[@class='deposit_finish_cancel']//a[@id='cancelPending']"));
 
 		if (cancelOfflineDepositRequest.isEnabled()) {
 			String cancelOfflineDepositRequestText = cancelOfflineDepositRequest.getText();
@@ -253,31 +253,34 @@ public class OfflineDepositFE extends VariablesStorage {
 			cReport.getExtentTest().fail(fail);
 			throw new FailedLoginException(fail);
 		}
+	}
 
+	public void cancelOfflineDepositRequestConfirmButton() throws FailedLoginException {
 		wait = new WebDriverWait(bDriver.getDriver(), 15);
-		WebElement confirmCancelOfflineDepositRequest = bDriver.getDriver().findElement(By.xpath("(//button[@class='btn_major active w-70'])[1]"));
-		wait.until(ExpectedConditions.visibilityOf(confirmCancelOfflineDepositRequest));
-		wait.until(ExpectedConditions.elementToBeClickable(confirmCancelOfflineDepositRequest));
-		String confirmCancelOfflineDepositRequestText = confirmCancelOfflineDepositRequest.getText();
+		WebElement cancelOfflineDepositRequestConfirmButton = bDriver.getDriver().findElement(By.xpath("(//button[@class='btn_major active w-70'])[1]"));
+		wait.until(ExpectedConditions.visibilityOf(cancelOfflineDepositRequestConfirmButton));
+		wait.until(ExpectedConditions.elementToBeClickable(cancelOfflineDepositRequestConfirmButton));
 
-		if (cancelOfflineDepositRequest.isEnabled()) {
-			confirmCancelOfflineDepositRequest.click();
-			cReport.getExtentTest().info("Clicked " + confirmCancelOfflineDepositRequestText);
+		if (cancelOfflineDepositRequestConfirmButton.isEnabled()) {
+			String cancelOfflineDepositRequestConfirmButtonText = cancelOfflineDepositRequestConfirmButton.getText();
+			cancelOfflineDepositRequestConfirmButton.click();
+			cReport.getExtentTest().info("Clicked " + cancelOfflineDepositRequestConfirmButtonText);
 		} else {
+			fail = "cancelOfflineDepositRequestConfirmButton failed";
 			cReport.getExtentTest().fail(fail);
 			throw new FailedLoginException(fail);
 		}
+	}
+	
+	public void cancelOfflineDepositRequestAfterConfirmPopUp() throws FailedLoginException, InterruptedException {
+		Thread.sleep(1500);
+		WebElement cancelOfflineDepositRequestAfterConfirmPopUp = bDriver.getDriver().findElement(By.xpath("//div[@class='alert_msg_body']//div[@class='msg_show']"));
 
-		Thread.sleep(3000);
-		wait = new WebDriverWait(bDriver.getDriver(), 15);
-		WebElement cancelOfflineDepositRequestSuccess = bDriver.getDriver().findElement(By.xpath("(//div[@class='msg_show'])[1]"));
-		wait.until(ExpectedConditions.visibilityOf(cancelOfflineDepositRequestSuccess));
-		String cancelOfflineDepositRequestSuccessText = cancelOfflineDepositRequestSuccess.getText();
-
-		if (cancelOfflineDepositRequestSuccess.isDisplayed()) {
-			cReport.getExtentTest().info(cancelOfflineDepositRequestSuccessText + " offline deposit is successfully rejected");
-			bDriver.getDriver().navigate().refresh();
+		if (cancelOfflineDepositRequestAfterConfirmPopUp.isDisplayed()) {
+			String cancelOfflineDepositRequestConfirmButtonText = cancelOfflineDepositRequestAfterConfirmPopUp.getText();
+			cReport.getExtentTest().info(cancelOfflineDepositRequestConfirmButtonText + " pop up appeared, offline deposit has been cancelled");
 		} else {
+			fail = "cancelOfflineDepositRequestAfterConfirmPopUp failed";
 			cReport.getExtentTest().fail(fail);
 			throw new FailedLoginException(fail);
 		}

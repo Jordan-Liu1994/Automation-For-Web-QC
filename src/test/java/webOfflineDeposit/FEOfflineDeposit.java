@@ -92,22 +92,24 @@ public class FEOfflineDeposit extends VariablesStorage {
 		offlineDF.setDepositAmount(depositAmount);
 		offlineDF.setDepositoryName(depositoryName);
 		offlineDF.joinPromoOrNotRadioButton(falseJoinPromo);
-//		offlineDF.verifyActualReceivedAmountIfNoJoinPromo(depositAmount);
-//		offlineDF.submitOfflineDepositRequest();
+		offlineDF.verifyActualReceivedAmountIfNoJoinPromo(depositAmount);
+		offlineDF.submitOfflineDepositRequest();
 	}
 
-//	@Test(priority = 5, groups = { "offlineDepositMethods", "confirmOfflineDepositPaid" })
-//	public void confirmOfflineDepositPaid() throws InterruptedException, FailedLoginException {
-//		cReport.createTest("confirmOfflineDepositPaid");
-//		oDFE.confirmOfflineDepositPaid();
-//	}
-//
-//	@Test(priority = 6, groups = "cancelOfflineDepositRequest")
-//	public void cancelOfflineDepositRequest() throws InterruptedException, FailedLoginException {
-//		cReport.createTest("cancelOfflineDepositRequest");
-//		oDFE.cancelOfflineDepositRequest();
-//	}
-//
+	@Test(priority = 5, groups = { "confirmDeposit" })
+	public void confirmOfflineDepositPaid() throws InterruptedException, FailedLoginException {
+		cReport.createTest("confirmOfflineDepositPaid");
+		offlineDF.confirmOfflineDepositPaid();
+	}
+
+	@Test(priority = 6, groups = "cancelDeposit")
+	public void cancelOfflineDepositRequest() throws InterruptedException, FailedLoginException {
+		cReport.createTest("cancelOfflineDepositRequest");
+		offlineDF.cancelOfflineDepositRequest();
+		offlineDF.cancelOfflineDepositRequestConfirmButton();
+		offlineDF.cancelOfflineDepositRequestAfterConfirmPopUp();
+	}
+
 //	@Test(priority = 7, groups = "verifyOfflineDepositID")
 //	@Parameters({ "userIDFE" })
 //	public void verifyOfflineDepositID(String userIDFE) throws InterruptedException, FailedLoginException {
