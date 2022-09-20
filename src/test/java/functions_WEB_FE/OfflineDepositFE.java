@@ -7,6 +7,7 @@ import javax.security.auth.login.FailedLoginException;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.ElementNotVisibleException;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebElement;
@@ -64,13 +65,11 @@ public class OfflineDepositFE extends VariablesStorage {
 
 	public void closeBeforeDepositInfoPopUp() throws FailedLoginException, InterruptedException {
 		try {
-			wait = new WebDriverWait(bDriver.getDriver(), 15);
 			WebElement closeBeforeDepositInfoPopUp = bDriver.getDriver().findElement(By.xpath("//button[@class='btn_major']"));
-			wait.until(ExpectedConditions.visibilityOf(closeBeforeDepositInfoPopUp));
-			wait.until(ExpectedConditions.elementToBeClickable(closeBeforeDepositInfoPopUp));
-			String closeBeforeDepositInfoPopUpText = closeBeforeDepositInfoPopUp.getText();
+			bDriver.getDriver().manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
 
 			if (closeBeforeDepositInfoPopUp.isDisplayed()) {
+				String closeBeforeDepositInfoPopUpText = closeBeforeDepositInfoPopUp.getText();
 				closeBeforeDepositInfoPopUp.click();
 				cReport.getExtentTest().info("Clicked " + closeBeforeDepositInfoPopUpText);
 			} else {
@@ -85,17 +84,13 @@ public class OfflineDepositFE extends VariablesStorage {
 	}
 
 	public void selectOfflineDepositOption(String offlineDepositMethod) throws FailedLoginException, InterruptedException {
-		bDriver.getDriver().manage().timeouts().pageLoadTimeout(15, TimeUnit.SECONDS);
-		wait = new WebDriverWait(bDriver.getDriver(), 15);
+		bDriver.getDriver().manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
 		WebElement offlineDepositOption = bDriver.getDriver().findElement(By.xpath("//div[@class='title'][contains(text(),'" + offlineDepositMethod + "')]"));
-		wait.until(ExpectedConditions.visibilityOf(offlineDepositOption));
-		wait.until(ExpectedConditions.elementToBeClickable(offlineDepositOption));
 
 		if (offlineDepositOption.isDisplayed()) {
 			String offlineDepositOptionText = offlineDepositOption.getText();
 			offlineDepositOption.click();
 			cReport.getExtentTest().info("Clicked " + offlineDepositOptionText);
-			Thread.sleep(1000);
 		} else {
 			fail = "selectOfflineDepositOption failed";
 			cReport.getExtentTest().fail(fail);
@@ -103,26 +98,31 @@ public class OfflineDepositFE extends VariablesStorage {
 	}
 
 	public void selectSpecificOfflineDepositMethod(String depositOptionType) throws FailedLoginException, InterruptedException {
-		Boolean specificOfflineDepositMethodValue = false;
+		try {
+			Boolean specificOfflineDepositMethodValue = false;
 
-		bDriver.getDriver().manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
-		wait = new WebDriverWait(bDriver.getDriver(), 15);
-		WebElement specificOfflineDepositMethod = bDriver.getDriver().findElement(By.xpath("//ul[@id='channel_items']"));
-		wait.until(ExpectedConditions.elementToBeClickable(specificOfflineDepositMethod));
+			bDriver.getDriver().manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
+			wait = new WebDriverWait(bDriver.getDriver(), 15);
+			WebElement specificOfflineDepositMethod = bDriver.getDriver().findElement(By.xpath("//ul[@id='channel_items']"));
+			wait.until(ExpectedConditions.elementToBeClickable(specificOfflineDepositMethod));
 
-		List<WebElement> specificOfflineDepositMethodTagNames = specificOfflineDepositMethod.findElements(By.tagName("li"));
-		for (WebElement specificOfflineDepositMethodLists : specificOfflineDepositMethodTagNames) {
-			String specificOfflineDepositMethodListsText = specificOfflineDepositMethodLists.getText();
-			if (specificOfflineDepositMethodListsText.equalsIgnoreCase(depositOptionType)) {
-				specificOfflineDepositMethodLists.click();
-				cReport.getExtentTest().info("Clicked " + depositOptionType);
-				specificOfflineDepositMethodValue = true;
+			List<WebElement> specificOfflineDepositMethodTagNames = specificOfflineDepositMethod.findElements(By.tagName("li"));
+			for (WebElement specificOfflineDepositMethodLists : specificOfflineDepositMethodTagNames) {
+				String specificOfflineDepositMethodListsText = specificOfflineDepositMethodLists.getText();
+				if (specificOfflineDepositMethodListsText.equalsIgnoreCase(depositOptionType)) {
+					Thread.sleep(1000);
+					specificOfflineDepositMethodLists.click();
+					cReport.getExtentTest().info("Clicked " + depositOptionType);
+					specificOfflineDepositMethodValue = true;
+				}
 			}
-		}
-		if (!specificOfflineDepositMethodValue) {
-			fail = "selectSpecificOfflineDepositMethod failed";
-			cReport.getExtentTest().fail(fail);
-			throw new FailedLoginException(fail);
+			if (!specificOfflineDepositMethodValue) {
+				fail = "selectSpecificOfflineDepositMethod failed";
+				cReport.getExtentTest().fail(fail);
+				throw new FailedLoginException(fail);
+			}
+		} catch (StaleElementReferenceException e) {
+			cReport.getExtentTest().info(depositOptionType + " already selected");
 		}
 	}
 
@@ -158,8 +158,10 @@ public class OfflineDepositFE extends VariablesStorage {
 	public void joinPromoOrNotRadioButton(String falseJoinPromo) throws FailedLoginException, InterruptedException {
 
 		try {
+			JavascriptExecutor js = (JavascriptExecutor) bDriver.getDriver();
 			WebElement joinPromoRadioButton = bDriver.getDriver().findElement(By.xpath("//div[@id='radio_txt']"));
 			WebElement doNotJoinPromoRadioButton = bDriver.getDriver().findElement(By.xpath("//div[@id='radio_txt_false']"));
+			js.executeScript("arguments[0].scrollIntoView(true);", joinPromoRadioButton);
 			String joinPromoRadioButtonText = joinPromoRadioButton.getText();
 			String doNotJoinPromoRadioButtonText = doNotJoinPromoRadioButton.getText();
 			if (falseJoinPromo.equalsIgnoreCase("true")) {

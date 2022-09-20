@@ -66,6 +66,7 @@ public class FrontEndAuthentication extends VariablesStorage {
 		loginF.setUserID(userIDFE);
 		loginF.setPassword(passwordFE);
 		loginF.setCaptcha(captchaFE);
+		loginF.setSliderCaptcha();
 		loginF.selectLoginButton();
 		loginF.verifyLogIn(userIDFE);
 	}

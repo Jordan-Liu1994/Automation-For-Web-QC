@@ -68,7 +68,8 @@ public class FEOfflineDeposit extends VariablesStorage {
 		loginF.loginOptionButton();
 		loginF.setUserID(userIDFE);
 		loginF.setPassword(passwordFE);
-		loginF.setCaptcha(captchaFE);
+//		loginF.setCaptcha(captchaFE);
+//		loginF.setSliderCaptcha();
 		loginF.selectLoginButton();
 		loginF.verifyLogIn(userIDFE);
 	}
@@ -79,10 +80,10 @@ public class FEOfflineDeposit extends VariablesStorage {
 		cReport.createTest("toDepositPage");
 		offlineDF.hoverUserID(userIDFE);
 		offlineDF.selectDepositOptionFromDropdown();
-		offlineDF.closeBeforeDepositInfoPopUp();
+//		offlineDF.closeBeforeDepositInfoPopUp();
 	}
 
-	@Test(priority = 4, dependsOnMethods = { "toDepositPage" })
+	@Test(priority = 4, groups = { "deposit" })
 	@Parameters({ "offlineDepositMethod", "depositOptionType", "depositAmount", "depositoryName", "falseJoinPromo" })
 	public void offlineDepositMethods(String offlineDepositMethod, String depositOptionType, int depositAmount, String depositoryName, String falseJoinPromo) throws InterruptedException, FailedLoginException {
 		cReport.createTest("offlineDepositMethods");
@@ -91,8 +92,8 @@ public class FEOfflineDeposit extends VariablesStorage {
 		offlineDF.setDepositAmount(depositAmount);
 		offlineDF.setDepositoryName(depositoryName);
 		offlineDF.joinPromoOrNotRadioButton(falseJoinPromo);
-		offlineDF.verifyActualReceivedAmountIfNoJoinPromo(depositAmount);
-//		oDFE.submitOfflineDepositRequest();
+//		offlineDF.verifyActualReceivedAmountIfNoJoinPromo(depositAmount);
+//		offlineDF.submitOfflineDepositRequest();
 	}
 
 //	@Test(priority = 5, groups = { "offlineDepositMethods", "confirmOfflineDepositPaid" })

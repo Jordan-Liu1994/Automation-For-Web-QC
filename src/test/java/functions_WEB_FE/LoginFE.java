@@ -6,6 +6,7 @@ import javax.security.auth.login.FailedLoginException;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -66,6 +67,7 @@ public class LoginFE extends VariablesStorage {
 		}
 	}
 
+//	DEPENDS ON REQUIREMENT
 	public void setCaptcha(String captcha) throws FailedLoginException {
 		try {
 			WebElement setCaptcha = bDriver.getDriver().findElement(By.id("captcha_code"));
@@ -84,10 +86,32 @@ public class LoginFE extends VariablesStorage {
 			cReport.getExtentTest().skip(skip);
 		}
 	}
+	
+//	DEPENDS ON REQUIREMENT
+	public void setSliderCaptcha() throws FailedLoginException, InterruptedException {		
+		try {
+			Actions builder = new Actions(bDriver.getDriver());
+			wait = new WebDriverWait(bDriver.getDriver(), 15);
+			WebElement setSliderCaptcha = bDriver.getDriver().findElement(By.xpath("//div[@class='gt_slider_knob gt_show']"));
+			wait.until(ExpectedConditions.elementToBeClickable(setSliderCaptcha));
+			
+			if (setSliderCaptcha.isDisplayed()) {
+				Thread.sleep(1000);
+				builder.moveToElement(setSliderCaptcha).clickAndHold().moveByOffset(100, 0).release().build().perform();
+				cReport.getExtentTest().info("Dragged captcha slider to the right by 100 pixels");
+				Thread.sleep(1000);
+				builder.moveByOffset(500, 0).build().perform();
+			}
+		} catch (NoSuchElementException e) {
+			skip = "setSliderCaptcha skipped";
+			cReport.getExtentTest().skip(skip);
+		}
+	}
 
 	public void selectLoginButton() throws FailedLoginException {
 		wait = new WebDriverWait(bDriver.getDriver(), 15);
 		WebElement selectLoginButton = bDriver.getDriver().findElement(By.id("login_popup_btn"));
+		wait.until(ExpectedConditions.visibilityOf(selectLoginButton));
 		wait.until(ExpectedConditions.elementToBeClickable(selectLoginButton));
 
 		if (selectLoginButton.isEnabled()) {

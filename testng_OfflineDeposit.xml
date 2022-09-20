@@ -8,14 +8,21 @@
 	<parameter name="depositoryName" value="测试"></parameter>
 	<parameter name="falseJoinPromo" value="true"></parameter>
 
-	<!--  <parameter name="BOUrl" value="https://backoffice.pr3l1v3.com"></parameter> 
+	<!-- <parameter name="BOUrl" value="https://backoffice.pr3l1v3.com"></parameter> 
 		<parameter name="BOUserID" value="automation001"></parameter> -->
 	<test thread-count="5" name="AuthenticationTest">
-		<!-- <groups> <run> <exclude name="login" /> <exclude name="deposit" /> 
-			<exclude name="offlineDepositMethods" /> <exclude name="verifyOfflineDepositID" 
-			/> <exclude name="cancelOfflineDepositRequest" /> <exclude name="loginBOPage" 
-			/> <exclude name="offlineDepositVerification" /> <exclude name="rejectOfflineDepositAfterVerification" 
-			/> </run> </groups> -->
+		<groups>
+			<run>
+				<!-- <exclude name="login" />
+				<exclude name="deposit" />
+				<exclude name="offlineDepositMethods" />
+				<exclude name="verifyOfflineDepositID" />
+				<exclude name="cancelOfflineDepositRequest" />
+				<exclude name="loginBOPage" />
+				<exclude name="offlineDepositVerification" />
+				<exclude name="rejectOfflineDepositAfterVerification" /> -->
+			</run>
+		</groups>
 		<classes>
 			<class name="webOfflineDeposit.FEOfflineDeposit" />
 		</classes>
