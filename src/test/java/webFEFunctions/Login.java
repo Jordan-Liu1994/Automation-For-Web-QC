@@ -1,4 +1,4 @@
-package functions_WEB_FE;
+package webFEFunctions;
 
 import java.util.concurrent.TimeUnit;
 
@@ -13,13 +13,9 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import utilities.CreateReport;
 import utilities.VariablesStorage;
 
-public class LoginFE extends VariablesStorage {
+public class Login extends VariablesStorage {
 
 	CreateReport cReport = new CreateReport();
-
-	WebDriverWait wait;
-	String fail;
-	String skip;
 
 	public void loginOptionButton() throws FailedLoginException {
 		wait = new WebDriverWait(bDriver.getDriver(), 15);
@@ -125,16 +121,14 @@ public class LoginFE extends VariablesStorage {
 		}
 	}
 
-	public void verifyLogIn(String userID) throws FailedLoginException, InterruptedException {
+	public void verifyLogin(String userID) throws FailedLoginException, InterruptedException {
 		bDriver.getDriver().manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
-		wait = new WebDriverWait(bDriver.getDriver(), 15);
 		WebElement userIDName = bDriver.getDriver().findElement(By.xpath("(//a[contains(text(),'" + userID + "')])[1]"));
-		wait.until(ExpectedConditions.visibilityOf(userIDName));
 
 		if (userIDName.isDisplayed()) {
 			cReport.getExtentTest().info("Account " + userID + " verified");
 		} else {
-			fail = "verifyLogIn failed";
+			fail = "verifyLogin failed";
 			cReport.getExtentTest().warning(fail);
 		}
 	}

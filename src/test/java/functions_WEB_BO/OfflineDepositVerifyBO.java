@@ -13,10 +13,10 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import functions_WEB_FE.OfflineDepositFE;
 import utilities.BaseDriver;
 import utilities.CreateReport;
 import utilities.VariablesStorage;
+import webFEFunctions.OfflineDepositFE;
 
 public class OfflineDepositVerifyBO extends VariablesStorage {
 

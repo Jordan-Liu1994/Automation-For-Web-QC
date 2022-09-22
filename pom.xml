@@ -14,7 +14,7 @@
 					<configuration>
 						<suiteXmlFiles>
 							<suiteXmlFile>
-                            ${basedir}\testng_Authentication.xml
+                            ${basedir}\Master.xml
                         </suiteXmlFile>
 						</suiteXmlFiles>
 						<argLine>-Dfile.encoding=UTF-8</argLine>
@@ -36,6 +36,12 @@
 	</properties>
 
 	<dependencies>
+
+		<dependency>
+			<groupId>com.sikulix</groupId>
+			<artifactId>sikulixapi</artifactId>
+			<version>2.0.5</version>
+		</dependency>
 
 		<dependency>
 			<groupId>org.projectlombok</groupId>

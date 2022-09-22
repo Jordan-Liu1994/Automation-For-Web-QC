@@ -1,4 +1,4 @@
-package functions_WEB_FE;
+package webFEFunctions;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -26,10 +26,6 @@ public class RegisterFE extends VariablesStorage {
 
 	CreateReport cReport = new CreateReport();
 	GenerateRandomNumbers gRNumbers = new GenerateRandomNumbers();
-
-	WebDriverWait wait;
-	String fail;
-	String skip;
 
 	String registerUserIDFE;
 
@@ -142,8 +138,6 @@ public class RegisterFE extends VariablesStorage {
 	}
 
 	public void setPhoneNumber() throws FailedLoginException, InterruptedException {
-		Boolean dayListValue = false;
-
 		try {
 			WebElement setPhoneNumber = bDriver.getDriver().findElement(By.id("r_mobile_number"));
 			String setPhoneNumberText = setPhoneNumber.getAttribute(attribute);

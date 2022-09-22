@@ -11,16 +11,16 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
-import functions_WEB_FE.Announcement;
-import functions_WEB_FE.LoginFE;
-import functions_WEB_FE.LogoutFE;
-import functions_WEB_FE.RegisterFE;
 import utilities.CreateReport;
 import utilities.ResultListener;
 import utilities.TakeScreenShot;
 import utilities.VariablesStorage;
+import webFEFunctions.Announcement;
+import webFEFunctions.Login;
+import webFEFunctions.LogoutFE;
+import webFEFunctions.RegisterFE;
 
-public class FrontEndAuthentication extends VariablesStorage {
+public class Authentication extends VariablesStorage {
 
 	private static String reportName = "FrontEndAuthentication";
 
@@ -28,10 +28,10 @@ public class FrontEndAuthentication extends VariablesStorage {
 	CreateReport cReport = new CreateReport();
 	ResultListener rListener = new ResultListener();
 
-	Announcement announcementF = new Announcement();
-	LoginFE loginF = new LoginFE();
-	LogoutFE logoutF = new LogoutFE();
-	RegisterFE registerF = new RegisterFE();
+	Announcement announce = new Announcement();
+	Login log = new Login();
+	LogoutFE logOut = new LogoutFE();
+	RegisterFE register = new RegisterFE();
 
 	@BeforeClass
 	@Parameters({ "platform", "browser", "javaVersion", "user" })
@@ -51,45 +51,45 @@ public class FrontEndAuthentication extends VariablesStorage {
 		bDriver.getURL(url);
 	}
 
-	@Test(priority = 1)
+	@Test(priority = 1, groups = { "announcement" })
 	public void closeAnnouncement() throws InterruptedException, FailedLoginException {
 		cReport.createTest("closeAnnouncement");
-		announcementF.closeAnnouncement();
-		announcementF.closeAnnouncementOverview();
+		announce.closeAnnouncement();
+		announce.closeAnnouncementOverview();
 	}
 
 	@Test(priority = 2, groups = { "login" })
 	@Parameters({ "userIDFE" })
 	public void login(String userIDFE) throws InterruptedException, FailedLoginException {
 		cReport.createTest("login");
-		loginF.loginOptionButton();
-		loginF.setUserID(userIDFE);
-		loginF.setPassword(passwordFE);
-		loginF.setCaptcha(captchaFE);
-		loginF.setSliderCaptcha();
-		loginF.selectLoginButton();
-		loginF.verifyLogIn(userIDFE);
+		log.loginOptionButton();
+		log.setUserID(userIDFE);
+		log.setPassword(passwordFE);
+		log.setCaptcha(captchaFE);
+		log.setSliderCaptcha();
+		log.selectLoginButton();
+		log.verifyLogin(userIDFE);
 	}
 
 	@Test(priority = 3, groups = { "logout" })
 	@Parameters({ "userIDFE" })
 	public void logout(String userIDFE) throws InterruptedException, FailedLoginException {
 		cReport.createTest("logout");
-		logoutF.selectLogoutButton(userIDFE);
-		logoutF.verifyLogout();
+		logOut.selectLogoutButton(userIDFE);
+		logOut.verifyLogout();
 	}
 
 	@Test(priority = 4, groups = { "register" })
 	public void register() throws InterruptedException, FailedLoginException {
 		cReport.createTest("register");
-		registerF.registerOptionButton();
-		registerF.setNewUserID();
-		registerF.setNewPassword(passwordFE);
-		registerF.setDOB(year, day);
-		registerF.setPhoneNumber();
-		registerF.setCaptcha(captchaFE);
-		registerF.selectRegisterButton();
-		registerF.verifyRegister();
+		register.registerOptionButton();
+		register.setNewUserID();
+		register.setNewPassword(passwordFE);
+		register.setDOB(year, day);
+		register.setPhoneNumber();
+		register.setCaptcha(captchaFE);
+		register.selectRegisterButton();
+		register.verifyRegister();
 	}
 
 	@AfterMethod

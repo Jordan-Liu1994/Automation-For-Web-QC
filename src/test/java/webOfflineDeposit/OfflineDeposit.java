@@ -13,16 +13,16 @@ import org.testng.annotations.Test;
 
 import functions_WEB_BO.LoginBO;
 import functions_WEB_BO.OfflineDepositVerifyBO;
-import functions_WEB_FE.Announcement;
-import functions_WEB_FE.LoginFE;
-import functions_WEB_FE.OfflineDepositFE;
 import utilities.BaseDriver;
 import utilities.CreateReport;
 import utilities.ResultListener;
 import utilities.TakeScreenShot;
 import utilities.VariablesStorage;
+import webFEFunctions.Announcement;
+import webFEFunctions.Login;
+import webFEFunctions.OfflineDepositFE;
 
-public class FEOfflineDeposit extends VariablesStorage {
+public class OfflineDeposit extends VariablesStorage {
 
 	private static String reportName = "FEOfflineDeposit";
 
@@ -30,8 +30,8 @@ public class FEOfflineDeposit extends VariablesStorage {
 	ResultListener rListener = new ResultListener();
 	TakeScreenShot takeSS = new TakeScreenShot();
 
-	Announcement announcementF = new Announcement();
-	LoginFE loginF = new LoginFE();
+	Announcement announce = new Announcement();
+	Login log = new Login();
 	OfflineDepositFE offlineDF = new OfflineDepositFE();
 	LoginBO loginB = new LoginBO();
 	OfflineDepositVerifyBO oDVBOF = new OfflineDepositVerifyBO();
@@ -54,24 +54,22 @@ public class FEOfflineDeposit extends VariablesStorage {
 		bDriver.getURL(url);
 	}
 
-	@Test(priority = 1)
+	@Test(priority = 1, groups = { "announcement" })
 	public void closeAnnouncement() throws InterruptedException, FailedLoginException {
 		cReport.createTest("closeAnnouncement");
-		announcementF.closeAnnouncement();
-		announcementF.closeAnnouncementOverview();
+		announce.closeAnnouncement();
+		announce.closeAnnouncementOverview();
 	}
 
 	@Test(priority = 2, groups = { "login" })
 	@Parameters({ "userIDFE" })
 	public void login(String userIDFE) throws InterruptedException, FailedLoginException {
 		cReport.createTest("login");
-		loginF.loginOptionButton();
-		loginF.setUserID(userIDFE);
-		loginF.setPassword(passwordFE);
-//		loginF.setCaptcha(captchaFE);
-//		loginF.setSliderCaptcha();
-		loginF.selectLoginButton();
-		loginF.verifyLogIn(userIDFE);
+		log.loginOptionButton();
+		log.setUserID(userIDFE);
+		log.setPassword(passwordFE);
+		log.selectLoginButton();
+		log.verifyLogin(userIDFE);
 	}
 
 	@Test(priority = 3, groups = "deposit")
@@ -80,7 +78,7 @@ public class FEOfflineDeposit extends VariablesStorage {
 		cReport.createTest("toDepositPage");
 		offlineDF.hoverUserID(userIDFE);
 		offlineDF.selectDepositOptionFromDropdown();
-//		offlineDF.closeBeforeDepositInfoPopUp();
+		offlineDF.closeBeforeDepositInfoPopUp();
 	}
 
 	@Test(priority = 4, groups = { "deposit" })

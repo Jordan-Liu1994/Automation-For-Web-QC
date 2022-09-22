@@ -1,4 +1,4 @@
-package functions_WEB_FE;
+package webFEFunctions;
 
 import javax.security.auth.login.FailedLoginException;
 

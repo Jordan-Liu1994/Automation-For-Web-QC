@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite name="Failed suite [Suite-AuthenticationTest]" guice-stage="DEVELOPMENT">
-  <parameter name="depositAmount" value="123"/>
-  <parameter name="falseJoinPromo" value="true"/>
-  <parameter name="depositOptionType" value="银行转账"/>
   <parameter name="javaVersion" value="JDK/JSE 17"/>
   <parameter name="browser" value="Chrome"/>
-  <parameter name="offlineDepositMethod" value="公司入款"/>
-  <parameter name="depositoryName" value="测试"/>
   <parameter name="user" value="Jordan"/>
   <parameter name="userIDFE" value="qctestergame001"/>
   <parameter name="platform" value="Web"/>
   <parameter name="url" value="https://wltestmembersite.the777888.com"/>
   <test thread-count="5" name="AuthenticationTest(failed)">
+    <groups>
+      <run>
+        <exclude name="announcement"/>
+      </run>
+    </groups>
     <classes>
-      <class name="webOfflineDeposit.FEOfflineDeposit">
+      <class name="webAuthentication.Authentication">
         <methods>
-          <include name="shutDown"/>
-          <include name="offlineDepositMethods" invocation-numbers="0"/>
-          <include name="startReportAndSetProperty"/>
+          <include name="endReport"/>
+          <include name="register"/>
           <include name="logCaseStatus"/>
+          <include name="startReportAndSetProperty"/>
         </methods>
-      </class> <!-- webOfflineDeposit.FEOfflineDeposit -->
+      </class> <!-- webAuthentication.Authentication -->
     </classes>
   </test> <!-- AuthenticationTest(failed) -->
 </suite> <!-- Failed suite [Suite-AuthenticationTest] -->

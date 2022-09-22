@@ -1,4 +1,4 @@
-package functions_WEB_FE;
+package webFEFunctions;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -31,9 +31,9 @@ public class OfflineDepositFE extends VariablesStorage {
 
 	public void hoverUserID(String userID) throws FailedLoginException, InterruptedException {
 		bDriver.getDriver().manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
-		wait = new WebDriverWait(bDriver.getDriver(), 15);
+//		wait = new WebDriverWait(bDriver.getDriver(), 15);
 		WebElement userIDName = bDriver.getDriver().findElement(By.xpath("(//a[contains(text(),'" + userID + "')])[1]"));
-		wait.until(ExpectedConditions.visibilityOf(userIDName));
+//		wait.until(ExpectedConditions.visibilityOf(userIDName));
 
 		if (userIDName.isDisplayed()) {
 			Actions builder = new Actions(bDriver.getDriver());

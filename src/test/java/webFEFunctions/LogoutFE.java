@@ -1,4 +1,4 @@
-package functions_WEB_FE;
+package webFEFunctions;
 
 import javax.security.auth.login.FailedLoginException;
 
@@ -14,10 +14,6 @@ import utilities.VariablesStorage;
 public class LogoutFE extends VariablesStorage {
 
 	CreateReport cReport = new CreateReport();
-
-	WebDriverWait wait;
-	String fail;
-	String skip;
 
 	public void selectLogoutButton(String userID) throws FailedLoginException, InterruptedException {		
 		WebElement userIDName = bDriver.getDriver().findElement(By.xpath("(//a[contains(text(),'" + userID + "')])[1]"));
