@@ -10,18 +10,21 @@
   <test thread-count="5" name="AuthenticationTest(failed)">
     <groups>
       <run>
-        <exclude name="announcement"/>
+        <exclude name="login"/>
+        <exclude name="logout"/>
       </run>
     </groups>
     <classes>
-      <class name="webAuthentication.Authentication">
+      <class name="webAuthentication.LoginAuth">
         <methods>
-          <include name="endReport"/>
-          <include name="register"/>
+          <include name="login"/>
+          <include name="closeAnnouncement"/>
+          <include name="toSite" invocation-numbers="0"/>
           <include name="logCaseStatus"/>
-          <include name="startReportAndSetProperty"/>
+          <include name="endReport"/>
+          <include name="logout"/>
         </methods>
-      </class> <!-- webAuthentication.Authentication -->
+      </class> <!-- webAuthentication.LoginAuth -->
     </classes>
   </test> <!-- AuthenticationTest(failed) -->
 </suite> <!-- Failed suite [Suite-AuthenticationTest] -->

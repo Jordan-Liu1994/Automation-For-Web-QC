@@ -6,36 +6,48 @@ import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 
 public class CreateReport {
 
-	private static ExtentSparkReporter spReport;
-	private static ExtentReports exReport;
-	private static ExtentTest exTest;
+	static ExtentSparkReporter sparkReport;
+	static ExtentReports extentReport;
+	static ExtentTest extentTest;
 
-	private String userDir = System.getProperty("user.dir");
-	private String reportFolderPath = userDir + ".\\src\\test\\resources\\reports\\";
+	static String userDirectory = System.getProperty("user.dir");
+	static String reportFolderPath = userDirectory + ".\\src\\test\\resources\\reports\\";
 
 	public void generateReport(String reportName, String platform, String browser, String javaVersion, String user) {
-		exReport = new ExtentReports();
-		spReport = new ExtentSparkReporter(reportFolderPath + reportName + ".html");
-		exReport.attachReporter(spReport);
-		exReport.setSystemInfo("Platform", platform);
-		exReport.setSystemInfo("Browser", browser);
-		exReport.setSystemInfo("Java version", javaVersion);
-		exReport.setSystemInfo("User", user);
+		extentReport = new ExtentReports();
+		sparkReport = new ExtentSparkReporter(reportFolderPath + reportName + ".html");
+		extentReport.attachReporter(sparkReport);
+		extentReport.setSystemInfo("Platform", platform);
+		extentReport.setSystemInfo("Browser", browser);
+		extentReport.setSystemInfo("Java version", javaVersion);
+		extentReport.setSystemInfo("User", user);
 	}
 
 	public void createTest(String testName) {
-		exTest = exReport.createTest(testName);
+		extentTest = extentReport.createTest(testName);
 	}
-
-	public void flushTest() {
-		exReport.flush();
-	}
-
-	public ExtentReports getExtentReport() {
-		return exReport;
-	}
-
+	
 	public ExtentTest getExtentTest() {
-		return exTest;
+		return extentTest;
+	}
+	
+	public void setExtentTestInfo(String infoText) {
+		extentTest.info(infoText);
+	}
+	
+	public void setExtentTestPass(String passText) {
+		extentTest.pass(passText);
+	}
+	
+	public void setExtentTestFail(String failText) {
+		extentTest.fail(failText);
+	}
+	
+	public void setExtentTestSkip(String skipText) {
+		extentTest.skip(skipText);
+	}
+	
+	public void flushReport() {
+		extentReport.flush();
 	}
 }

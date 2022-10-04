@@ -8,15 +8,53 @@
 <body>
 <table>
 <tr><th>Test</th><th># Passed</th><th># Skipped</th><th># Retried</th><th># Failed</th><th>Time (ms)</th><th>Included Groups</th><th>Excluded Groups</th></tr>
-<tr><th colspan="8">Suite-AuthenticationTest</th></tr>
-<tr><td><a href="#t0">AuthenticationTest</a></td><td class="num">5</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">26,516</td><td></td><td>rejectOfflineDepositAfterVerification, loginBOPage, verifyOfflineDepositID, cancelOfflineDepositRequest, offlineDepositVerification, offlineDepositMethods</td></tr>
+<tr><th colspan="8">ForTesting</th></tr>
+<tr><td><a href="#t0">Testing</a></td><td class="num">3</td><td class="num">0</td><td class="num">0</td><td class="num attn">3</td><td class="num">14,528</td><td></td><td>logout, register</td></tr>
 </table>
-<table id='summary'><thead><tr><th>Class</th><th>Method</th><th>Start</th><th>Time (ms)</th></tr></thead><tbody><tr><th colspan="4">Suite-AuthenticationTest</th></tr></tbody><tbody id="t0"><tr><th colspan="4">AuthenticationTest &#8212; passed</th></tr><tr class="passedeven"><td rowspan="5">webOfflineDeposit.OfflineDeposit</td><td><a href="#m0">closeAnnouncement</a></td><td rowspan="1">1663746450067</td><td rowspan="1">45</td></tr><tr class="passedeven"><td><a href="#m1">login</a></td><td rowspan="1">1663746450115</td><td rowspan="1">3522</td></tr><tr class="passedeven"><td><a href="#m2">offlineDepositMethods</a></td><td rowspan="1">1663746470206</td><td rowspan="1">1569</td></tr><tr class="passedeven"><td><a href="#m3">toDepositPage</a></td><td rowspan="1">1663746453640</td><td rowspan="1">16563</td></tr><tr class="passedeven"><td><a href="#m4">toSite</a></td><td rowspan="1">1663746448561</td><td rowspan="1">1491</td></tr></tbody>
+<table id='summary'><thead><tr><th>Class</th><th>Method</th><th>Start</th><th>Time (ms)</th></tr></thead><tbody><tr><th colspan="4">ForTesting</th></tr></tbody><tbody id="t0"><tr><th colspan="4">Testing &#8212; failed</th></tr><tr class="failedeven"><td rowspan="3">authenticationRunners.RegisterAuthentication</td><td><a href="#m0">closeAnnouncement</a></td><td rowspan="1">1664876699184</td><td rowspan="1">2</td></tr><tr class="failedeven"><td><a href="#m1">register</a></td><td rowspan="1">1664876699189</td><td rowspan="1">1</td></tr><tr class="failedeven"><td><a href="#m2">toSite</a></td><td rowspan="1">1664876699167</td><td rowspan="1">8</td></tr><tr><th colspan="4">Testing &#8212; passed</th></tr><tr class="passedeven"><td rowspan="3">authenticationRunners.LoginLogoutAuthentication</td><td><a href="#m3">closeAnnouncement</a></td><td rowspan="1">1664876690350</td><td rowspan="1">1976</td></tr><tr class="passedeven"><td><a href="#m4">login</a></td><td rowspan="1">1664876692329</td><td rowspan="1">5255</td></tr><tr class="passedeven"><td><a href="#m5">toSite</a></td><td rowspan="1">1664876687435</td><td rowspan="1">2891</td></tr></tbody>
 </table>
-<h2>AuthenticationTest</h2><h3 id="m0">webOfflineDeposit.OfflineDeposit#closeAnnouncement</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
-<h3 id="m1">webOfflineDeposit.OfflineDeposit#login</h3><table class="result"><tr class="param"><th>Parameter #1</th></tr><tr class="param stripe"><td>qctestergame001</td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
-<h3 id="m2">webOfflineDeposit.OfflineDeposit#offlineDepositMethods</h3><table class="result"><tr class="param"><th>Parameter #1</th><th>Parameter #2</th><th>Parameter #3</th><th>Parameter #4</th><th>Parameter #5</th></tr><tr class="param stripe"><td>公司入款</td><td>银行转账</td><td>123</td><td>测试</td><td>true</td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
-<h3 id="m3">webOfflineDeposit.OfflineDeposit#toDepositPage</h3><table class="result"><tr class="param"><th>Parameter #1</th></tr><tr class="param stripe"><td>qctestergame001</td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
-<h3 id="m4">webOfflineDeposit.OfflineDeposit#toSite</h3><table class="result"><tr class="param"><th>Parameter #1</th></tr><tr class="param stripe"><td>https://wltestmembersite.the777888.com</td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h2>Testing</h2><h3 id="m0">authenticationRunners.RegisterAuthentication#closeAnnouncement</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">org.openqa.selenium.NoSuchSessionException: Session ID is null. Using WebDriver after calling quit()?
+Build info: version: &apos;3.141.59&apos;, revision: &apos;e82be7d358&apos;, time: &apos;2018-11-14T08:17:03&apos;
+System info: host: &apos;CDWILT004&apos;, ip: &apos;192.168.88.159&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.3.1&apos;
+Driver info: driver.version: RemoteWebDriver
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:125)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:323)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElementByXPath(RemoteWebDriver.java:428)
+	at org.openqa.selenium.By$ByXPath.findElement(By.java:353)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:315)
+	at webFEFunctions.Announcement.closeAnnouncement(Announcement.java:24)
+	at authenticationRunners.RegisterAuthentication.closeAnnouncement(RegisterAuthentication.java:42)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+... Removed 27 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m1">authenticationRunners.RegisterAuthentication#register</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">org.openqa.selenium.NoSuchSessionException: Session ID is null. Using WebDriver after calling quit()?
+Build info: version: &apos;3.141.59&apos;, revision: &apos;e82be7d358&apos;, time: &apos;2018-11-14T08:17:03&apos;
+System info: host: &apos;CDWILT004&apos;, ip: &apos;192.168.88.159&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.3.1&apos;
+Driver info: driver.version: Driver
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:125)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)
+	at org.openqa.selenium.remote.RemoteWebDriver$RemoteWebDriverOptions$RemoteTimeouts.implicitlyWait(RemoteWebDriver.java:780)
+	at utilities.Driver.setTimeOut(Driver.java:55)
+	at webFEFunctions.RegisterFrontEnd.selectRegisterOption(RegisterFrontEnd.java:25)
+	at authenticationRunners.RegisterAuthentication.register(RegisterAuthentication.java:49)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+... Removed 27 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m2">authenticationRunners.RegisterAuthentication#toSite</h3><table class="result"><tr class="param"><th>Parameter #1</th></tr><tr class="param stripe"><td>https://wltestmembersite.the777888.com</td></tr><tr><th>Exception</th></tr><tr><td><div class="stacktrace">org.openqa.selenium.NoSuchSessionException: Session ID is null. Using WebDriver after calling quit()?
+Build info: version: &apos;3.141.59&apos;, revision: &apos;e82be7d358&apos;, time: &apos;2018-11-14T08:17:03&apos;
+System info: host: &apos;CDWILT004&apos;, ip: &apos;192.168.88.159&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.3.1&apos;
+Driver info: driver.version: Driver
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:125)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)
+	at org.openqa.selenium.remote.RemoteWebDriver.get(RemoteWebDriver.java:277)
+	at utilities.Driver.getURL(Driver.java:51)
+	at authenticationRunners.RegisterAuthentication.toSite(RegisterAuthentication.java:36)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+... Removed 27 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m3">authenticationRunners.LoginLogoutAuthentication#closeAnnouncement</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m4">authenticationRunners.LoginLogoutAuthentication#login</h3><table class="result"><tr class="param"><th>Parameter #1</th><th>Parameter #2</th></tr><tr class="param stripe"><td>qctestergame001</td><td>test123</td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m5">authenticationRunners.LoginLogoutAuthentication#toSite</h3><table class="result"><tr class="param"><th>Parameter #1</th></tr><tr class="param stripe"><td>https://wltestmembersite.the777888.com</td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
 </body>
 </html>

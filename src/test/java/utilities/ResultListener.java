@@ -2,24 +2,26 @@ package utilities;
 
 import org.testng.ITestResult;
 
-public class ResultListener extends VariablesStorage {
+public class ResultListener {
 
-	TakeScreenShot takeSS = new TakeScreenShot();
-	CreateReport cReport = new CreateReport();
-	String res;
+	TakeScreenShot takeScreenShot = new TakeScreenShot();
+	CreateReport createReport = new CreateReport();
 	
-	public void logCaseStatus(ITestResult result) throws Exception {
-		String resultOfCaseStatus = result.getName();
+	public void logStatus(ITestResult result) throws Exception {
+		String logStatus = result.getName();
 		if (result.getStatus() == ITestResult.SUCCESS) {
-			cReport.getExtentTest().pass("Step = " + resultOfCaseStatus + " is passed!");
+			createReport.setExtentTestPass(logStatus + " - Passed");
 		}
 		if (result.getStatus() == ITestResult.SKIP) {
-			cReport.getExtentTest().skip("Step = " + resultOfCaseStatus + " is skipped!");
+			createReport.setExtentTestSkip(logStatus + " - Skipped");
 		} else if (result.getStatus() == ITestResult.FAILURE) {
-			cReport.getExtentTest().fail("Step = " + resultOfCaseStatus + " is failed!");
-			res = resultOfCaseStatus + " fail.png";
-			takeSS.takeSnapShot(res);
-			cReport.getExtentTest().addScreenCaptureFromPath(takeSS.screenShotPathExtent() + res, resultOfCaseStatus);
+			createReport.setExtentTestFail(logStatus + " - Failed");
+			try {
+				String screenShotOfFailedResult = takeScreenShot.takeSnapShot(logStatus + ".png");
+				createReport.getExtentTest().addScreenCaptureFromPath(takeScreenShot.screenShotPathExtent() + screenShotOfFailedResult);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 	}
 }

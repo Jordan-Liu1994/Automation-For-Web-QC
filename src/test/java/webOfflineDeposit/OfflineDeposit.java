@@ -13,13 +13,13 @@ import org.testng.annotations.Test;
 
 import functions_WEB_BO.LoginBO;
 import functions_WEB_BO.OfflineDepositVerifyBO;
-import utilities.BaseDriver;
+import utilities.Driver;
 import utilities.CreateReport;
 import utilities.ResultListener;
 import utilities.TakeScreenShot;
 import utilities.VariablesStorage;
 import webFEFunctions.Announcement;
-import webFEFunctions.Login;
+import webFEFunctions.LoginFrontEnd;
 import webFEFunctions.OfflineDepositFE;
 
 public class OfflineDeposit extends VariablesStorage {
@@ -31,7 +31,7 @@ public class OfflineDeposit extends VariablesStorage {
 	TakeScreenShot takeSS = new TakeScreenShot();
 
 	Announcement announce = new Announcement();
-	Login log = new Login();
+	LoginFrontEnd log = new LoginFrontEnd();
 	OfflineDepositFE offlineDF = new OfflineDepositFE();
 	LoginBO loginB = new LoginBO();
 	OfflineDepositVerifyBO oDVBOF = new OfflineDepositVerifyBO();
@@ -147,7 +147,7 @@ public class OfflineDeposit extends VariablesStorage {
 
 	@AfterMethod
 	public void logCaseStatus(ITestResult result) throws Exception {
-		rListener.logCaseStatus(result);
+		rListener.logStatus(result);
 	}
 
 	@AfterClass

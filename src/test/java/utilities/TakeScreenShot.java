@@ -1,26 +1,26 @@
 package utilities;
 
 import java.io.File;
-import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 
-public class TakeScreenShot extends VariablesStorage {
+public class TakeScreenShot {
 
-	private static String userDir = System.getProperty("user.dir");
-	private static String pathOfSS = userDir + ".\\src\\test\\resources\\screenshots\\";
+	Driver driver = new Driver();
 
-	public void takeSnapShot(String fileWithPath) throws Exception {
-		TakesScreenshot scrShot = ((TakesScreenshot) bDriver.getDriver());
+	static String userDirectory = System.getProperty("user.dir");
+	static String pathOfScreenShot = userDirectory + ".\\src\\test\\resources\\screenshots\\";
+
+	public String takeSnapShot(String fileWithPath) throws Exception {
+		TakesScreenshot scrShot = ((TakesScreenshot) driver.getDriver());
 		File SrcFile = scrShot.getScreenshotAs(OutputType.FILE);
-		File DestFile = new File(pathOfSS + fileWithPath);
+		File DestFile = new File(pathOfScreenShot + fileWithPath);
 		FileUtils.copyFile(SrcFile, DestFile);
+		return fileWithPath;
 	}
-
+	
 	public String screenShotPathExtent() {
-		return pathOfSS;
+		return pathOfScreenShot;
 	}
 }

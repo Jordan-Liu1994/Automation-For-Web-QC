@@ -4,7 +4,7 @@
 <th>Method name</th>
 <th>Groups</th>
 </tr><tr>
-<td>webAuthentication.RegisterAuth</td>
+<td>authenticationRunners.RegisterAuthentication</td>
 <td>&nbsp;</td><td>&nbsp;</td></tr>
 <tr>
 <td align='center' colspan='3'>@Test</td>
@@ -25,11 +25,6 @@
 <td align='center' colspan='3'>@BeforeClass</td>
 </tr>
 <tr>
-<td>&nbsp;</td>
-<td>startReportAndSetProperty</td>
-<td>register </td>
-</tr>
-<tr>
 <td align='center' colspan='3'>@BeforeMethod</td>
 </tr>
 <tr>
@@ -47,7 +42,7 @@
 <td>endReport</td>
 <td>&nbsp;</td></tr>
 <tr>
-<td>webAuthentication.LoginAuth</td>
+<td>authenticationRunners.LoginLogoutAuthentication</td>
 <td>&nbsp;</td><td>&nbsp;</td></tr>
 <tr>
 <td align='center' colspan='3'>@Test</td>
@@ -55,11 +50,8 @@
 <tr>
 <td>&nbsp;</td>
 <td>logout</td>
-<td>&nbsp;</td></tr>
-<tr>
-<td>&nbsp;</td>
-<td>login</td>
-<td>&nbsp;</td></tr>
+<td>logout </td>
+</tr>
 <tr>
 <td>&nbsp;</td>
 <td>toSite</td>
@@ -69,7 +61,16 @@
 <td>closeAnnouncement</td>
 <td>&nbsp;</td></tr>
 <tr>
+<td>&nbsp;</td>
+<td>login</td>
+<td>&nbsp;</td></tr>
+<tr>
 <td align='center' colspan='3'>@BeforeClass</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>startReportAndSetProperty</td>
+<td>login </td>
 </tr>
 <tr>
 <td align='center' colspan='3'>@BeforeMethod</td>
@@ -79,7 +80,7 @@
 </tr>
 <tr>
 <td>&nbsp;</td>
-<td>logCaseStatus</td>
+<td>getlogs</td>
 <td>&nbsp;</td></tr>
 <tr>
 <td align='center' colspan='3'>@AfterClass</td>

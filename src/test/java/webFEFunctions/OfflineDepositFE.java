@@ -17,7 +17,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.SkipException;
 
-import utilities.BaseDriver;
+import utilities.Driver;
 import utilities.CreateReport;
 import utilities.VariablesStorage;
 
